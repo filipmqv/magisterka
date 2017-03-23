@@ -1,0 +1,29 @@
+<p>me</p>
+<select ng-model="myDhtId" id="inputMyDhtId" required>
+  <option ng-repeat="option in friends" value="{{option.dht_id}}">{{option.nick}}</option>
+</select>
+<p>friends:</p>
+<ul>
+  <li ng-repeat="item in friends">
+    {{item.nick}}
+  </li>
+</ul>
+<br>__________________<br>
+<p>Conversation</p>
+<ul>
+  <li ng-repeat="item in conversation">
+    {{item}}
+  </li>
+</ul>
+
+
+<form class="form-horizontal" role="form" ng-submit="sendMessage()">
+
+  <div class="input-group">
+    <input ng-model="message.text" type="text" class="form-control" id="inputMessage" placeholder="Type message..." required>
+    <span class="input-group-btn">
+        <button class="btn btn-secondary" type="submit">Send!</button>
+      </span>
+  </div>
+</form>
+<button class="btn btn-secondary" ng-click="checkmessages()">check!</button>

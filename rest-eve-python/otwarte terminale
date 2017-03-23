@@ -1,0 +1,6 @@
+sudo service mongod stop; mongod --dbpath=/home/filipmqv/tiwpr/eve-python-rest/data/db/
+robomongo, 
+grunt, 
+mongo (obojętnie skąd - konsola do interakcji), 
+python api.py
+/Pobrane   java -jar -Xmx1024m burpsuite_free_v1.7.03.jar
