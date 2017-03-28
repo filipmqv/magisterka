@@ -72,11 +72,11 @@ angular.module('webtorrentClientApp')
       }*/
       // TODO for each friend check DHT
       // TODO compare with previous
-      // TODO if new then add infohash to download
+      // TODO if new then add infohash to download - recursively
     }, 5000);
 
 
-    $scope.checkmessages = function () {
+    $scope.checkMessages = function () {
       // TODO zamiast wszystkich pobrać tylko z tych ID które należą do naszych znajomych w tej konwersacji
       DhtService.get({}, function (data) {
         var currentInfoHashes = data._items;
@@ -85,7 +85,7 @@ angular.module('webtorrentClientApp')
           if (currentInfohash && x.infohash !== currentInfohash) {
             addTorrentByInfoHash(currentInfohash);
           }
-        })
+        });
         $scope.lastInfoHashes = currentInfoHashes;
       });
       /*for (var x in $scope.lastInfoHashes) {
@@ -104,17 +104,16 @@ angular.module('webtorrentClientApp')
 
 
     $scope.sendMessage = function () {
-      // TODO zrobić z tego JSON do bufora, dodać nadawcę, datę, poprzedni infohash
+      // TODO KONIECZNIE MUSI BYĆ LOCK ŻEBY NIE DAŁO SIĘ WYSŁAĆ DWÓCH WIADOMOŚCI JEDNOCZEŚNIE I ONE BY NA SIEBIE NAWZAJEM NIE WSKAZYWAŁY
+      // TODO zrobić z tego JSON do bufora, dodać nadawcę, datę (tmstmp), poprzedni infohash
       // TODO zapisać bufor lub JSONA w localstorage
       var buf = new Buffer($scope.message.text);
-      buf.name = 'Some file name';
+      buf.name = 'Some file name'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
       client.seed(buf, function (torrent) {
-        var p = {};
-        p._id = $scope.myDhtId;
-        p.infohash = torrent.infoHash;
-        DhtService.update({}, p, function (data) {
-          console.log(data)
-        }, function (error) {
+        var dhtObject = {};
+        dhtObject._id = $scope.myDhtId;
+        dhtObject.infohash = torrent.infoHash;
+        DhtService.update({}, dhtObject, function (data) {}, function (error) {
           console.log(error);
         });
       });

@@ -9,6 +9,10 @@ CACHE_CONTROL = 'max-age=1,must-revalidate'
 
 IF_MATCH = False # TODO
 
+# TODO 
+#MONGO_USERNAME = '<your username>'
+#MONGO_PASSWORD = '<your password>'
+
 users = {
     'item_title': 'user',
     'additional_lookup': {
