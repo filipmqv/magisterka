@@ -10,17 +10,26 @@
 </ul>
 <br>__________________<br>
 <p>Conversation</p>
-<ul>
-  <li ng-repeat="item in conversation">
-    {{item}}
-  </li>
-</ul>
+
+<!--<div ng-repeat="item in conversation">-->
+  <!--{{item.infoHash}}  {{item.message.sender}} : {{item.message.text}}    t:{{item.message.timestamp | date:'medium'}}     {{item.message.previousInfoHash}}-->
+<!--</div>-->
+
+<table class="table-bordered conversation">
+  <tr ng-repeat="item in conversation | orderBy:'message.timestamp'">
+    <td>{{item.infoHash}}</td>
+    <td>{{item.message.sender}}</td>
+    <td>{{item.message.text}}</td>
+    <td>{{item.message.timestamp | date:'medium'}}</td>
+    <td>{{item.message.previousInfoHash}}</td>
+  </tr>
+</table>
 
 
 <form class="form-horizontal" role="form" ng-submit="sendMessage()">
 
   <div class="input-group">
-    <input ng-model="message.text" type="text" class="form-control" id="inputMessage" placeholder="Type message..." required>
+    <input ng-model="textInput" type="text" class="form-control" id="inputMessage" placeholder="Type message..." required>
     <span class="input-group-btn">
         <button class="btn btn-secondary" type="submit">Send!</button>
       </span>

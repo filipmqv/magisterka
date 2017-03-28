@@ -16,23 +16,15 @@ angular.module('webtorrentClientApp')
     var _ = require('lodash');
 
     var client = new WebTorrent();
-    var currentInfohash = '';
+    var myCurrentInfoHash = '';
 
     var clearVariables = function () {
       $scope.lastInfoHashes = [];
-      $scope.message = {};
+      $scope.textInput = '';
       $scope.conversation = [];
       $scope.friends = [];
-      $scope.myDhtId = '58d1b3640054800ca5e5764a'; // TODO
+      $scope.myDhtId = '58d1b3640054800ca5e5764a'; // TODO to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
     };
-
-    $scope.initController = function () {
-      clearVariables();
-      getLastInfoHashes();
-      getUsers();
-    };
-
-
 
     var getLastInfoHashes = function () {
       DhtService.get({}, function (data) {
@@ -46,60 +38,54 @@ angular.module('webtorrentClientApp')
       });
     };
 
+    $scope.initController = function () {
+      clearVariables();
+      //getLastInfoHashes();
+      getUsers();
+    };
+
+
+
+
+
     var addTorrentByInfoHash = function (infohash) {
       var magnetLink = 'magnet:?xt=urn:btih:'+ infohash +'&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com';
       client.add(magnetLink, onTorrent);
     };
 
     function onTorrent (torrent) {
-      console.log('dodano do pobierania ' + torrent.infoHash)
       torrent.on('done', function () {
         torrent.files.forEach(function(file){
           file.getBuffer(function (err, buffer) {
-            var bufferString = buffer.toString('utf8');
-            $scope.conversation.push({messageText: bufferString})
-            // todo pushować też poprzedni infohash, nadawcę, datę2
+            var message = JSON.parse(buffer.toString('utf8'));
+            $scope.conversation.push({infoHash: torrent.infoHash, message: message});
+            // todo zapisać w localforage
             $scope.$apply();
             // TODO sprawdzić pole poprzedniego infohasha i czy juz to mamy
+            if (message.previousInfoHash && !_.includes($scope.conversation, {infoHash: message.previousInfoHash})) {
+              addTorrentByInfoHash(message.previousInfoHash);
+            }
           })
         })
       })
     }
 
-    setInterval(function() {
-      //console.log(client.torrents)
-      /*for (var f in $scope.friends) {
-        var id = _.find($scope.lastInfoHashes, {'_id': f.dht_id})
-        addTorrentByInfoHash(id.infohash);
-      }*/
-      // TODO for each friend check DHT
-      // TODO compare with previous
-      // TODO if new then add infohash to download - recursively
-    }, 5000);
 
 
     $scope.checkMessages = function () {
       // TODO zamiast wszystkich pobrać tylko z tych ID które należą do naszych znajomych w tej konwersacji
+      // TODO docelowo sprawdzić wszystkie konwersacje
       DhtService.get({}, function (data) {
         var currentInfoHashes = data._items;
-        _.forEach($scope.lastInfoHashes, function (x) {
-          var currentInfohash = _.find(currentInfoHashes, {'_id': x._id}).infohash
-          if (currentInfohash && x.infohash !== currentInfohash) {
-            addTorrentByInfoHash(currentInfohash);
+        // for all friends check if there's new infohash
+        _.forEach(currentInfoHashes, function (current) {
+          var last = _.find($scope.lastInfoHashes, {'_id': current._id})
+          if (!last || last.infohash !== current.infohash) {
+            addTorrentByInfoHash(current.infohash);
           }
         });
         $scope.lastInfoHashes = currentInfoHashes;
       });
-      /*for (var x in $scope.lastInfoHashes) {
-        console.log(x)
-        addTorrentByInfoHash(x.infohash);
-      }*/
-      /*for (var f in $scope.friends) {
-        console.log(f)
-        var id = _.find($scope.lastInfoHashes, {'_id': f.dht_id})
-        addTorrentByInfoHash(id.infohash);
-        console.log(id)
-      }*/
     };
 
 
@@ -109,9 +95,13 @@ angular.module('webtorrentClientApp')
       // TODO KONIECZNIE MUSI BYĆ LOCK ŻEBY NIE DAŁO SIĘ WYSŁAĆ DWÓCH WIADOMOŚCI JEDNOCZEŚNIE I ONE BY NA SIEBIE NAWZAJEM NIE WSKAZYWAŁY
       // TODO zrobić z tego JSON do bufora, dodać nadawcę, datę (tmstmp), poprzedni infohash
       // TODO zapisać bufor lub JSONA w localstorage
-      var buf = new Buffer($scope.message.text);
-      buf.name = 'Some file name'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
+      // TODO sender - sprawdzać przy odbiorze czy się zgadza z tym kto wystawił infohash na swoim dhtId
+      var message = {text: $scope.textInput, timestamp: _.now(), sender: $scope.myDhtId, previousInfoHash: myCurrentInfoHash};
+      var buf = new Buffer(JSON.stringify(message));
+      buf.name = 'text'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
       client.seed(buf, function (torrent) {
+        myCurrentInfoHash = torrent.infoHash;
+        // add new infohash to dht
         var dhtObject = {};
         dhtObject._id = $scope.myDhtId;
         dhtObject.infohash = torrent.infoHash;
@@ -129,6 +119,10 @@ angular.module('webtorrentClientApp')
     client.on('error', function (err) {
       console.error('WEBTORRENT ERROR: ' + err.message);
     });
+
+    setInterval(function() {
+      $scope.checkMessages();
+    }, 5000)
 
     $scope.initController(); // init variables and get all data from server
   });
