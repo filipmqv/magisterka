@@ -1,0 +1,17 @@
+.conversation {
+  width: 100%;
+}
+
+.container {
+  margin-bottom:50px;
+}
+
+.send-message-form {
+  position:fixed;
+  /*height:50px;*/
+  /*background-color:red;*/
+  bottom:0px;
+  width: 90%;
+  margin-bottom:0px;
+}
+

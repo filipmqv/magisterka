@@ -17,6 +17,7 @@
 
 <table class="table-bordered conversation">
   <tr ng-repeat="item in conversation | orderBy:'message.timestamp'">
+    <td>{{$index + 1}}</td>
     <td>{{item.infoHash}}</td>
     <td>{{item.message.sender}}</td>
     <td>{{item.message.text}}</td>
@@ -26,7 +27,7 @@
 </table>
 
 
-<form class="form-horizontal" role="form" ng-submit="sendMessage()">
+<form class="form-horizontal send-message-form" role="form" ng-submit="sendMessage()">
 
   <div class="input-group">
     <input ng-model="textInput" type="text" class="form-control" id="inputMessage" placeholder="Type message..." required>

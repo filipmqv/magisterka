@@ -18,6 +18,9 @@ angular.module('webtorrentClientApp')
     var client = new WebTorrent();
     var myCurrentInfoHash = '';
 
+    const EventEmitter = require('events').EventEmitter
+    EventEmitter.defaultMaxListeners = 1000;
+
     var clearVariables = function () {
       $scope.lastInfoHashes = [];
       $scope.textInput = '';
@@ -91,24 +94,37 @@ angular.module('webtorrentClientApp')
 
 
 
+    var sendingInProgress = false;
+    var count = 0;
     $scope.sendMessage = function () {
-      // TODO KONIECZNIE MUSI BYĆ LOCK ŻEBY NIE DAŁO SIĘ WYSŁAĆ DWÓCH WIADOMOŚCI JEDNOCZEŚNIE I ONE BY NA SIEBIE NAWZAJEM NIE WSKAZYWAŁY
-      // TODO zrobić z tego JSON do bufora, dodać nadawcę, datę (tmstmp), poprzedni infohash
-      // TODO zapisać bufor lub JSONA w localstorage
-      // TODO sender - sprawdzać przy odbiorze czy się zgadza z tym kto wystawił infohash na swoim dhtId
-      var message = {text: $scope.textInput, timestamp: _.now(), sender: $scope.myDhtId, previousInfoHash: myCurrentInfoHash};
-      var buf = new Buffer(JSON.stringify(message));
-      buf.name = 'text'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
-      client.seed(buf, function (torrent) {
-        myCurrentInfoHash = torrent.infoHash;
-        // add new infohash to dht
-        var dhtObject = {};
-        dhtObject._id = $scope.myDhtId;
-        dhtObject.infohash = torrent.infoHash;
-        DhtService.update({}, dhtObject, function (data) {}, function (error) {
-          console.log(error);
+      if (!sendingInProgress) {
+        sendingInProgress = true;
+        // TODO zapisać bufor lub JSONA w localstorage
+        // TODO sender - sprawdzać przy odbiorze czy się zgadza z tym kto wystawił infohash na swoim dhtId
+        var message = {
+          text: $scope.textInput,
+          timestamp: _.now(),
+          sender: $scope.myDhtId,
+          previousInfoHash: myCurrentInfoHash
+        };
+        var buf = new Buffer(JSON.stringify(message));
+        buf.name = 'text'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
+        client.seed(buf, function (torrent) {
+          myCurrentInfoHash = torrent.infoHash;
+          $scope.conversation.push({infoHash: myCurrentInfoHash, message: message});
+          // add new infohash to dht
+          var dhtObject = {};
+          dhtObject._id = $scope.myDhtId;
+          dhtObject.infohash = torrent.infoHash;
+          DhtService.update({}, dhtObject, function (data) {
+          }, function (error) {
+            console.log(error);
+          });
+          sendingInProgress = false;
         });
-      });
+      } else {
+        console.log('rejected');
+      }
     };
 
 
@@ -128,7 +144,7 @@ angular.module('webtorrentClientApp')
   });
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":35,"lodash":83,"webtorrent":202}],2:[function(require,module,exports){
+},{"buffer":35,"events":62,"lodash":83,"webtorrent":202}],2:[function(require,module,exports){
 var ADDR_RE = /^\[?([^\]]+)\]?:(\d+)$/ // ipv4/ipv6/hostname + port
 
 var cache = {}
