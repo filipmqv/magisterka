@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ResourceServices'
+    'ResourceServices',
+    'luegg.directives'
   ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -16,6 +16,7 @@ angular.module('webtorrentClientApp')
     var client = new WebTorrent();
     var myCurrentInfoHash = '';
 
+    // prevent warnings about possible memory leak when >11 listeners added
     const EventEmitter = require('events').EventEmitter
     EventEmitter.defaultMaxListeners = 1000;
 
@@ -48,6 +49,9 @@ angular.module('webtorrentClientApp')
 
 
 
+    function isInfoHashInConversation(conversation, infohash) {
+      return _.includes(conversation, {infoHash: infohash})
+    }
 
     var addTorrentByInfoHash = function (infohash) {
       var magnetLink = 'magnet:?xt=urn:btih:'+ infohash +'&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com';
@@ -59,19 +63,19 @@ angular.module('webtorrentClientApp')
         torrent.files.forEach(function(file){
           file.getBuffer(function (err, buffer) {
             var message = JSON.parse(buffer.toString('utf8'));
+            // todo nie wyswietlać dopóki nie mamy wszystkich poprzednich wiadomości
+            // todo oddzielić wyświetlane wiadomosci od tych w pamięci (ogółem seedowanych - nie wszystkie muszą być na widoku)
             $scope.conversation.push({infoHash: torrent.infoHash, message: message});
             // todo zapisać w localforage
             $scope.$apply();
             // TODO sprawdzić pole poprzedniego infohasha i czy juz to mamy
-            if (message.previousInfoHash && !_.includes($scope.conversation, {infoHash: message.previousInfoHash})) {
+            if (message.previousInfoHash && !isInfoHashInConversation($scope.conversation, message.previousInfoHash)) {
               addTorrentByInfoHash(message.previousInfoHash);
             }
           })
         })
       })
     }
-
-
 
     $scope.checkMessages = function () {
       // TODO zamiast wszystkich pobrać tylko z tych ID które należą do naszych znajomych w tej konwersacji
@@ -81,7 +85,7 @@ angular.module('webtorrentClientApp')
         // for all friends check if there's new infohash
         _.forEach(currentInfoHashes, function (current) {
           var last = _.find($scope.lastInfoHashes, {'_id': current._id})
-          if (!last || last.infohash !== current.infohash) {
+          if (!last || (last.infohash !== current.infohash && !isInfoHashInConversation($scope.conversation, current.infohash))) {
             addTorrentByInfoHash(current.infohash);
           }
         });
@@ -92,9 +96,12 @@ angular.module('webtorrentClientApp')
 
 
 
+
+
     var sendingInProgress = false;
     var count = 0;
     $scope.sendMessage = function () {
+      // prevent sending 2 messages with the same previous infohash
       if (!sendingInProgress) {
         sendingInProgress = true;
         // TODO zapisać bufor lub JSONA w localstorage

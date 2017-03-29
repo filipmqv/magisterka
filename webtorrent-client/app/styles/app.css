@@ -1,17 +1,35 @@
+.wrap {
+  height: 100vh;
+  display: flex;
+}
+
+main {
+  flex: 1;
+  display: flex;
+}
+
+aside {
+  overflow-y: scroll;
+  padding: 2em;
+  flex: 1;
+}
+
+article {
+  flex: 4;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
 .conversation {
-  width: 100%;
+  overflow-y: scroll;
+  flex: 1 1 auto;
 }
 
-.container {
-  margin-bottom:50px;
+.bottom-input {
+  flex: 0 1 auto;
 }
 
-.send-message-form {
-  position:fixed;
-  /*height:50px;*/
-  /*background-color:red;*/
-  bottom:0px;
-  width: 90%;
-  margin-bottom:0px;
-}
+
+
 
