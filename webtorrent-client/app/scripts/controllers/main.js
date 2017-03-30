@@ -76,7 +76,6 @@ angular.module('webtorrentClientApp')
             $scope.conversation.push({infoHash: torrent.infoHash, message: message});
             // todo zapisać w localforage
             $scope.$apply();
-            // TODO sprawdzić pole poprzedniego infohasha i czy juz to mamy
             if (message.previousInfoHash && !isInfoHashInConversation($scope.conversation, message.previousInfoHash)) {
               console.log('adding previous ' + message.previousInfoHash)
               addTorrentByInfoHash(message.previousInfoHash);
@@ -108,7 +107,6 @@ angular.module('webtorrentClientApp')
 
 
     var sendingInProgress = false;
-    var count = 0;
     $scope.sendMessage = function () {
       // prevent sending 2 messages with the same previous infohash
       if (!sendingInProgress) {
