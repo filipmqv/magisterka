@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ResourceServices',
-    'luegg.directives'
+    'luegg.directives',
+    'LocalForageModule'
   ])
   .config(function ($routeProvider) {
     $routeProvider
