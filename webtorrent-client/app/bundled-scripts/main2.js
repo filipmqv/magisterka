@@ -16,10 +16,11 @@ angular.module('webtorrentClientApp')
     var _ = require('lodash');
 
     var client = new WebTorrent();
+    // TODO na starcie apki pobierz mój ostatni infohash i do niego od razu linkuj kolejną wiadomość
     var myCurrentInfoHash = '';
 
     // prevent warnings about possible memory leak when >11 listeners added
-    const EventEmitter = require('events').EventEmitter
+    const EventEmitter = require('events').EventEmitter;
     EventEmitter.defaultMaxListeners = 1000;
 
     var clearVariables = function () {
@@ -30,11 +31,11 @@ angular.module('webtorrentClientApp')
       $scope.myDhtId = '58d1b3640054800ca5e5764a'; // TODO to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
     };
 
-    var getLastInfoHashes = function () {
-      DhtService.get({}, function (data) {
-        $scope.lastInfoHashes = data._items;
-      });
-    };
+    // var getLastInfoHashes = function () {
+    //   DhtService.get({}, function (data) {
+    //     $scope.lastInfoHashes = data._items;
+    //   });
+    // };
 
     var getUsers = function () {
       UsersService.get({}, function (data) {
@@ -52,12 +53,19 @@ angular.module('webtorrentClientApp')
 
 
     function isInfoHashInConversation(conversation, infohash) {
-      return _.includes(conversation, {infoHash: infohash})
+      var found = _.find(conversation, _.matchesProperty('infoHash', infohash));
+      return (typeof found !== 'undefined');
+
     }
 
     var addTorrentByInfoHash = function (infohash) {
       var magnetLink = 'magnet:?xt=urn:btih:'+ infohash +'&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com';
-      client.add(magnetLink, onTorrent);
+      var existingTorrent = client.get(magnetLink)
+      if (!existingTorrent) {
+        client.add(magnetLink, onTorrent);
+      } else {
+        console.log(infohash + '   exists')
+      }
     };
 
     function onTorrent (torrent) {
@@ -72,6 +80,7 @@ angular.module('webtorrentClientApp')
             $scope.$apply();
             // TODO sprawdzić pole poprzedniego infohasha i czy juz to mamy
             if (message.previousInfoHash && !isInfoHashInConversation($scope.conversation, message.previousInfoHash)) {
+              console.log('adding previous ' + message.previousInfoHash)
               addTorrentByInfoHash(message.previousInfoHash);
             }
           })

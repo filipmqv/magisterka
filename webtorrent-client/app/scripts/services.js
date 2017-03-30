@@ -3,8 +3,8 @@
 var services = angular.module('ResourceServices', ['ngResource']);
 
 var lhost = 'http://0.0.0.0:5000/';
-//var rhcloud = 'http://server-foodplaner.rhcloud.com/rest/v1/'; // to change
-var domainUrl = lhost;
+var intrahost = 'http://192.168.1.5:5000/';
+var domainUrl = intrahost;
 
 services.factory('DhtService', function ($resource) {
   return $resource(domainUrl + 'dht/:dhtId', {dhtId:'@_id'},
