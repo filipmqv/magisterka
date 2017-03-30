@@ -45,6 +45,7 @@
     "test": "karma start test/karma.conf.js"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "webtorrent": "^0.98.14"
   }
 }

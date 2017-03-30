@@ -58,11 +58,11 @@ angular.module('webtorrentClientApp')
 
     var addTorrentByInfoHash = function (infohash) {
       var magnetLink = 'magnet:?xt=urn:btih:'+ infohash +'&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com';
-      var existingTorrent = client.get(magnetLink)
+      var existingTorrent = client.get(magnetLink);
       if (!existingTorrent) {
         client.add(magnetLink, onTorrent);
       } else {
-        console.log(infohash + '   exists')
+        console.log(infohash + '   exists');
       }
     };
 
@@ -77,12 +77,12 @@ angular.module('webtorrentClientApp')
             // todo zapisać w localforage
             $scope.$apply();
             if (message.previousInfoHash && !isInfoHashInConversation($scope.conversation, message.previousInfoHash)) {
-              console.log('adding previous ' + message.previousInfoHash)
+              console.log('adding previous ' + message.previousInfoHash);
               addTorrentByInfoHash(message.previousInfoHash);
             }
-          })
-        })
-      })
+          });
+        });
+      });
     }
 
     $scope.checkMessages = function () {
@@ -92,7 +92,7 @@ angular.module('webtorrentClientApp')
         var currentInfoHashes = data._items;
         // for all friends check if there's new infohash
         _.forEach(currentInfoHashes, function (current) {
-          var last = _.find($scope.lastInfoHashes, {'_id': current._id})
+          var last = _.find($scope.lastInfoHashes, {'_id': current._id});
           if (!last || (last.infohash !== current.infohash && !isInfoHashInConversation($scope.conversation, current.infohash))) {
             addTorrentByInfoHash(current.infohash);
           }
@@ -128,8 +128,7 @@ angular.module('webtorrentClientApp')
           var dhtObject = {};
           dhtObject._id = $scope.myDhtId;
           dhtObject.infohash = torrent.infoHash;
-          DhtService.update({}, dhtObject, function (data) {
-          }, function (error) {
+          DhtService.update({}, dhtObject, null, function (error) {
             console.log(error);
           });
           sendingInProgress = false;
@@ -150,7 +149,7 @@ angular.module('webtorrentClientApp')
 
     setInterval(function() {
       $scope.checkMessages();
-    }, 5000)
+    }, 5000);
 
     $scope.initController(); // init variables and get all data from server
   });
