@@ -6,13 +6,13 @@ var services = angular.module('ResourceServices', ['ngResource']);
 var intrahost = 'http://192.168.1.5:5000/';
 var domainUrl = intrahost;
 
-services.factory('DhtService', function ($resource) {
+services.factory('DhtFactory', function ($resource) {
   return $resource(domainUrl + 'dht/:dhtId', {dhtId:'@_id'},
     {
       'update': { method:'PUT' }
     });
 });
 
-services.factory('UsersService', function ($resource) {
+services.factory('UsersFactory', function ($resource) {
   return $resource(domainUrl + 'users');
 });

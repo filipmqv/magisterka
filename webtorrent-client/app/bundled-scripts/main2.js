@@ -10,7 +10,7 @@
  * Controller of the webtorrentClientApp
  */
 angular.module('webtorrentClientApp')
-  .controller('MainCtrl', function ($scope, DhtService, UsersService) {
+  .controller('MainCtrl', function ($scope, DhtFactory, UsersFactory) {
 
     var WebTorrent = require('webtorrent');
     var _ = require('lodash');
@@ -31,21 +31,14 @@ angular.module('webtorrentClientApp')
       $scope.myDhtId = '58d1b3640054800ca5e5764a'; // TODO to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
     };
 
-    // var getLastInfoHashes = function () {
-    //   DhtService.get({}, function (data) {
-    //     $scope.lastInfoHashes = data._items;
-    //   });
-    // };
-
     var getUsers = function () {
-      UsersService.get({}, function (data) {
+      UsersFactory.get({}, function (data) {
         $scope.friends = data._items;
       });
     };
 
     $scope.initController = function () {
       clearVariables();
-      //getLastInfoHashes();
       getUsers();
     };
 
@@ -90,7 +83,7 @@ angular.module('webtorrentClientApp')
     $scope.checkMessages = function () {
       // TODO zamiast wszystkich pobrać tylko z tych ID które należą do naszych znajomych w tej konwersacji
       // TODO docelowo sprawdzić wszystkie konwersacje
-      DhtService.get({}, function (data) {
+      DhtFactory.get({}, function (data) {
         var currentInfoHashes = data._items;
         // for all friends check if there's new infohash
         _.forEach(currentInfoHashes, function (current) {
@@ -130,7 +123,7 @@ angular.module('webtorrentClientApp')
           var dhtObject = {};
           dhtObject._id = $scope.myDhtId;
           dhtObject.infohash = torrent.infoHash;
-          DhtService.update({}, dhtObject, null, function (error) {
+          DhtFactory.update({}, dhtObject, null, function (error) {
             console.log(error);
           });
           sendingInProgress = false;
