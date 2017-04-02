@@ -17,18 +17,21 @@ users = {
     'item_title': 'user',
     'additional_lookup': {
         'url': 'regex("[\w]+")',
-        'field': 'nick',
+        'field': 'username',
     },
     'datasource': {
         'projection': {'password': 0}
     },
+    'public_methods': ['POST'],
     'schema': {
-        'nick': {
+        'username': {
             'type': 'string',
-            'required': True
+            'required': True,
+            'unique': True
         },
         'email': {
             'type': 'string',
+            'required': True,
             'unique': True
         },
         'password': {
@@ -51,7 +54,8 @@ dht_schema = {
 dht = {
     'item_title': 'dht',
     'pagination': False,
-    'schema': dht_schema
+    'schema': dht_schema,
+    'authentication': None
 }
 
 DOMAIN = {

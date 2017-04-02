@@ -1,9 +1,14 @@
+import bcrypt
 from eve import Eve
+from eve.auth import BasicAuth
+
+import base64
+from datetime import timedelta
+from flask import make_response, request, current_app, jsonify
+from functools import update_wrapper
 
 # snippet for flask crossdomain
-def crossdomain(origin=None, methods=None, headers=None,
-                max_age=21600, attach_to_all=True,
-                automatic_options=True):
+def crossdomain(origin=None, methods=None, headers=None, max_age=21600, attach_to_all=True, automatic_options=True):
     if methods is not None:
         methods = ', '.join(sorted(x.upper() for x in methods))
     if headers is not None and not isinstance(headers, basestring):
@@ -44,9 +49,45 @@ def crossdomain(origin=None, methods=None, headers=None,
 # end of snippet for flask crossdomain
 
 
+class BCryptAuth(BasicAuth):
+    def check_auth(self, email, password, allowed_roles, resource, method):
+        users = app.data.driver.db['users']
+        user = users.find_one({'email': email})
+        return user and bcrypt.hashpw(password.encode('utf-8'), user['salt'].encode('utf-8')) == user['password']
 
 
-app = Eve()
+app = Eve(auth=BCryptAuth)
+
+
+@app.route('/login', methods = ['POST', 'OPTIONS'])
+@crossdomain(origin='*',headers=['Content-Type','Authorization'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    users = app.data.driver.db['users']
+    user = users.find_one({'email': email})
+    if user and bcrypt.hashpw(password.encode('utf-8'), user['salt'].encode('utf-8')) == user['password']:
+        hashed = base64.b64encode(email+":"+password)
+        resp = jsonify(id = str(user.get('_id')), auth = 'Basic '+hashed)
+        resp.status_code = 200
+        return resp
+    else:
+        resp = jsonify(error = 'Wrong email or password.')
+        resp.status_code = 401
+        return resp
+
+
+# change password to hash with salt before registering new user
+def create_user(documents):
+    for document in documents:
+        document['salt'] = bcrypt.gensalt().encode('utf-8')
+        password = document['password'].encode('utf-8')
+        document['password'] = bcrypt.hashpw(password, document['salt'])
+
+app.on_insert_users += create_user
+
+
 
 if __name__ == '__main__':
-	app.run(threaded=True,host="0.0.0.0",port=int("5000"))
+    app.run(threaded=True,host="0.0.0.0",port=int("5000"))
