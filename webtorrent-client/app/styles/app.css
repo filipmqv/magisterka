@@ -1,11 +1,7 @@
 .wrap {
-  height: 100vh;
   display: flex;
-}
-
-main {
+  height: 100%;
   flex: 1;
-  display: flex;
 }
 
 aside {

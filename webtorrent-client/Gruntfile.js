@@ -30,8 +30,8 @@ module.exports = function (grunt) {
 
     browserify: {
       client: {
-        src: 'app/scripts/controllers/main.js',
-        dest: 'app/bundled-scripts/main2.js'
+        src: 'app/scripts/controllers/messenger.js',
+        dest: 'app/bundled-scripts/messenger2.js'
       }
     },
 
@@ -285,7 +285,7 @@ module.exports = function (grunt) {
     // cssmin: {
     //   dist: {
     //     files: {
-    //       '<%= yeoman.dist %>/styles/main.css': [
+    //       '<%= yeoman.dist %>/styles/index.css': [
     //         '.tmp/styles/{,*/}*.css'
     //       ]
     //     }
@@ -443,6 +443,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'browserify',
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
@@ -467,6 +468,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
+    'browserify',
     'useminPrepare',
     'concurrent:dist',
     'postcss',

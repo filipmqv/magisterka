@@ -33,6 +33,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/messenger', {
+        templateUrl: 'views/messenger.html',
+        controller: 'MessengerCtrl',
+        controllerAs: 'messenger'
+      })
       .otherwise({
         redirectTo: '/'
       });
