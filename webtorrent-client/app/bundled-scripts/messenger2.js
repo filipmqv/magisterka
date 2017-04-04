@@ -3,7 +3,7 @@
 'use strict';
 
 angular.module('webtorrentClientApp')
-  .controller('MessengerCtrl', function ($scope, $interval, DhtFactory, UsersFactory) {
+  .controller('MessengerCtrl', function ($scope, $interval, DhtFactory, UsersFactory, MessagesFactory) {
 
     var WebTorrent = require('webtorrent');
     var client = new WebTorrent();
@@ -16,7 +16,7 @@ angular.module('webtorrentClientApp')
     var clearVariables = function () {
       $scope.lastInfoHashes = [];
       $scope.textInput = '';
-      $scope.conversation = []; // service z wiadomościami
+      $scope.conversation = MessagesFactory.list; // service z wiadomościami
       $scope.friends = []; // TODO pobrać z serviceu o userze lub w ogóle w nim trzymać tylko
       $scope.myDhtId = $scope.currentUser.dhtId; // TODO per conversation; to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
     };
@@ -36,6 +36,15 @@ angular.module('webtorrentClientApp')
 
     var initController = function () {
       clearVariables();
+      MessagesFactory.init().then(function (list) {
+        _.forEach(list, function (item) {
+          var buf = new Buffer(JSON.stringify(item.message));
+          buf.name = 'text'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
+          client.seed(buf, function (torrent){
+            console.log(torrent.infoHash)
+          });
+        })
+      })
       getUsers();
       getMyCurrentInfoHash($scope.myDhtId);
     };
@@ -65,10 +74,11 @@ angular.module('webtorrentClientApp')
             var message = JSON.parse(buffer.toString('utf8'));
             // todo nie wyswietlać dopóki nie mamy wszystkich poprzednich wiadomości
             // todo oddzielić wyświetlane wiadomosci od tych w pamięci (ogółem seedowanych - nie wszystkie muszą być na widoku)
-            $scope.conversation.push({infoHash: torrent.infoHash, message: message});
+            //$scope.conversation.push({infoHash: torrent.infoHash, message: message});
+            MessagesFactory.add(torrent.infoHash, message);
             // todo zapisać w localforage
             $scope.$apply();
-            if (message.previousInfoHash && !isInfoHashInConversation($scope.conversation, message.previousInfoHash)) {
+            if (message.previousInfoHash && !isInfoHashInConversation(MessagesFactory.list, message.previousInfoHash)) {
               console.log('adding previous ' + message.previousInfoHash);
               addTorrentByInfoHash(message.previousInfoHash);
             }
@@ -85,7 +95,7 @@ angular.module('webtorrentClientApp')
         // for all friends check if there's new infohash
         _.forEach(currentInfoHashes, function (current) {
           var last = _.find($scope.lastInfoHashes, {'_id': current._id});
-          if (!last || (last.infohash !== current.infohash && !isInfoHashInConversation($scope.conversation, current.infohash))) {
+          if (!last || (last.infohash !== current.infohash && !isInfoHashInConversation(MessagesFactory.list, current.infohash))) {
             addTorrentByInfoHash(current.infohash);
           }
         });
@@ -115,7 +125,8 @@ angular.module('webtorrentClientApp')
         buf.name = 'text'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
         client.seed(buf, function (torrent) {
           myCurrentInfoHash = torrent.infoHash;
-          $scope.conversation.push({infoHash: myCurrentInfoHash, message: message});
+          //$scope.conversation.push({infoHash: myCurrentInfoHash, message: message});
+          MessagesFactory.add(torrent.infoHash, message);
           // add new infohash to dht
           var dhtObject = {};
           dhtObject._id = $scope.myDhtId;

@@ -16,8 +16,9 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'Services', // data holders
     'Resources', // all ngResources
-    'AuthServices', // services for auth
+    'AuthServices', // resources for auth
     'luegg.directives', // angular-scroll-glue - scrolling discussion div to bottom on change
     'LocalForageModule', // for async storage api including indexedDB
     'LocalStorageModule' // for sync storage like currentUser
