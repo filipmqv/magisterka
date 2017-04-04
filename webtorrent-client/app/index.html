@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/app.css">
     <link rel="stylesheet" href="styles/discussion.css">
+    <link rel="stylesheet" href="styles/login.css">
     <!-- endbuild -->
   </head>
   <body ng-app="webtorrentClientApp" ng-controller="MainCtrl" ng-cloak>
@@ -31,8 +32,8 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
-              <!--<span class="icon-bar"></span>-->
-              <!--<span class="icon-bar"></span>-->
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
 
             <a class="navbar-brand" href="#/"><i class="glyphicon glyphicon-apple"></i></a>
@@ -44,14 +45,15 @@
             <ul class="nav navbar-nav">
               <!--<li class="active"><a href="#!/">Home</a></li>-->
               <li><a ng-href="#!/">Home</a></li>
-              <!--<li><a ng-href="#!/about">About</a></li>-->
+              <li><a ng-href="#!/about">About</a></li>
+              <li><a ng-href="#!/messenger">Messenger</a></li>
               <!--<li><a ng-href="#!/">Contact</a></li>-->
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-              <li><a ng-href="#/user">Hello, {{currentUser.firstname}}</a></li>
-              <li><a ng-hide="currentUser.id" ng-href="#/login">Login</a></li>
-              <li><a ng-show="currentUser.id" href ng-click="logoutClick()">Logout</a></li>
+              <li><a ng-if="isAuthenticated()" ng-href="#!/user">Hello, {{currentUser.username}}</a></li>
+              <li><a ng-hide="isAuthenticated()" ng-href="#!/login">Login</a></li>
+              <li><a ng-show="isAuthenticated()" href ng-click="logoutClick()">Logout</a></li>
             </ul>
           </div>
         </div>
@@ -94,6 +96,7 @@
     <script src="bower_components/angular-scroll-glue/src/scrollglue.js"></script>
     <script src="bower_components/localforage/dist/localforage.js"></script>
     <script src="bower_components/angular-localforage/dist/angular-localForage.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -105,6 +108,7 @@
     <script src="bundled-scripts/messenger2.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/login.js"></script>
 
 
     <!-- endbuild -->

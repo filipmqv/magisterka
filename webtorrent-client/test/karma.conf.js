@@ -32,6 +32,7 @@ module.exports = function(config) {
       'bower_components/angular-scroll-glue/src/scrollglue.js',
       'bower_components/localforage/dist/localforage.js',
       'bower_components/angular-localforage/dist/angular-localForage.js',
+      'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

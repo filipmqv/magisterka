@@ -67,9 +67,11 @@ def login():
     password = data.get('password')
     users = app.data.driver.db['users']
     user = users.find_one({'email': email})
+    print user
     if user and bcrypt.hashpw(password.encode('utf-8'), user['salt'].encode('utf-8')) == user['password']:
         hashed = base64.b64encode(email+":"+password)
-        resp = jsonify(id = str(user.get('_id')), auth = 'Basic '+hashed)
+        resp = jsonify(id = str(user.get('_id')), auth = 'Basic '+hashed, role = user['role'], 
+            username = user['username'], dhtId = str(user.get('dht_id')))
         resp.status_code = 200
         return resp
     else:
@@ -84,6 +86,7 @@ def create_user(documents):
         document['salt'] = bcrypt.gensalt().encode('utf-8')
         password = document['password'].encode('utf-8')
         document['password'] = bcrypt.hashpw(password, document['salt'])
+        document['role'] = 'user'
 
 app.on_insert_users += create_user
 

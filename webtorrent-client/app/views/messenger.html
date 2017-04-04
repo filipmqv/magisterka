@@ -1,20 +1,16 @@
 <div class="wrap">
   <aside>
-    <div>
-      <p>me</p>
-      <select ng-model="myDhtId" id="inputMyDhtId" required>
-        <option ng-repeat="option in friends" value="{{option.dht_id}}">{{option.nick}}</option>
-      </select>
+    <div class="container">
       <p>friends:</p>
       <ul>
         <li ng-repeat="item in friends">
-          {{item.nick}}
+          {{item.username}}
         </li>
       </ul>
-    </div>
-    <button class="btn btn-secondary" ng-click="checkMessages()">check!</button>
 
-    {{allTorrents}}
+      <button class="btn btn-secondary" ng-click="checkMessages()">check!</button>
+    </div>
+
 
   </aside>
 

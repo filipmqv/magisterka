@@ -1,10 +1,10 @@
 'use strict';
 
-var services = angular.module('ResourceServices', ['ngResource']);
+var services = angular.module('Resources', ['ngResource']);
 
 
 services.factory('DhtFactory', function ($resource, ENDPOINT_URI) {
-  return $resource(ENDPOINT_URI + 'dht/:dhtId', {dhtId:'@_id'},
+  return $resource(ENDPOINT_URI + 'dht/:dhtId',
     {
       'update': { method:'PUT' }
     });

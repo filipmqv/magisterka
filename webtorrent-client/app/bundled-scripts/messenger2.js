@@ -3,26 +3,24 @@
 'use strict';
 
 angular.module('webtorrentClientApp')
-  .controller('MessengerCtrl', function ($scope, DhtFactory, UsersFactory) {
+  .controller('MessengerCtrl', function ($scope, $interval, DhtFactory, UsersFactory) {
 
     var WebTorrent = require('webtorrent');
+    var client = new WebTorrent();
     var _ = require('lodash');
 
-    var client = new WebTorrent();
-    // TODO na starcie apki pobierz mój ostatni infohash i do niego od razu linkuj kolejną wiadomość
-    var myCurrentInfoHash = '';
-
-    // prevent warnings about possible memory leak when >11 listeners added
+    // prevent warnings about possible memory leak when >11 listeners added (webtorrent)
     const EventEmitter = require('events').EventEmitter;
     EventEmitter.defaultMaxListeners = 1000;
 
     var clearVariables = function () {
       $scope.lastInfoHashes = [];
       $scope.textInput = '';
-      $scope.conversation = [];
-      $scope.friends = [];
-      $scope.myDhtId = '58d1b3640054800ca5e5764a'; // TODO to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
+      $scope.conversation = []; // service z wiadomościami
+      $scope.friends = []; // TODO pobrać z serviceu o userze lub w ogóle w nim trzymać tylko
+      $scope.myDhtId = $scope.currentUser.dhtId; // TODO per conversation; to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
     };
+    var myCurrentInfoHash = '';
 
     var getUsers = function () {
       UsersFactory.get({}, function (data) {
@@ -30,9 +28,16 @@ angular.module('webtorrentClientApp')
       });
     };
 
-    $scope.initController = function () {
+    var getMyCurrentInfoHash = function (userDhtId) {
+      DhtFactory.get({dhtId: userDhtId}, function (data) {
+        myCurrentInfoHash = data.infohash;
+      });
+    };
+
+    var initController = function () {
       clearVariables();
       getUsers();
+      getMyCurrentInfoHash($scope.myDhtId);
     };
 
 
@@ -41,7 +46,6 @@ angular.module('webtorrentClientApp')
     function isInfoHashInConversation(conversation, infohash) {
       var found = _.find(conversation, _.matchesProperty('infoHash', infohash));
       return (typeof found !== 'undefined');
-
     }
 
     var addTorrentByInfoHash = function (infohash) {
@@ -121,8 +125,6 @@ angular.module('webtorrentClientApp')
           });
           sendingInProgress = false;
         });
-      } else {
-        console.log('rejected');
       }
     };
 
@@ -135,11 +137,16 @@ angular.module('webtorrentClientApp')
       console.error('WEBTORRENT ERROR: ' + err.message);
     });
 
-    setInterval(function() {
+    var checkMessagesInterval = $interval(function() {
       $scope.checkMessages();
     }, 5000);
 
-    $scope.initController(); // init variables and get all data from server
+    $scope.$on('$destroy', function() {
+      $interval.cancel(checkMessagesInterval);
+      checkMessagesInterval = undefined;
+    });
+
+    initController(); // init variables and get all data from server
   });
 
 }).call(this,require("buffer").Buffer)

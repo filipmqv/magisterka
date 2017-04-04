@@ -16,29 +16,81 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ResourceServices',
-    'luegg.directives',
-    'LocalForageModule'
+    'Resources', // all ngResources
+    'AuthServices', // services for auth
+    'luegg.directives', // angular-scroll-glue - scrolling discussion div to bottom on change
+    'LocalForageModule', // for async storage api including indexedDB
+    'LocalStorageModule' // for sync storage like currentUser
   ])
   .constant('ENDPOINT_URI', 'http://192.168.1.5:5000/')
-  .config(function ($routeProvider) {
+  .constant('USER_ROLES', {
+    all: '*',
+    admin: 'admin',
+    user: 'user',
+    guest: 'guest'
+  })
+  .constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout',
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+  })
+  .config(function ($routeProvider, localStorageServiceProvider, USER_ROLES) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        data: {
+          authorizedRoles: [USER_ROLES.all]
+        }
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controllerAs: 'about',
+        data: {
+          authorizedRoles: [USER_ROLES.all]
+        }
       })
       .when('/messenger', {
         templateUrl: 'views/messenger.html',
         controller: 'MessengerCtrl',
-        controllerAs: 'messenger'
+        controllerAs: 'messenger',
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.user]
+        }
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        data: {
+          authorizedRoles: [USER_ROLES.all]
+        }
       })
       .otherwise({
         redirectTo: '/'
       });
+
+    localStorageServiceProvider
+      .setPrefix('webtorrentClientApp')
+      .setStorageType('localStorage')
+      .setNotify(true, true);
+  })
+  .run(function ($rootScope, AUTH_EVENTS, AuthService) {
+    $rootScope.$on('$routeChangeStart', function (event, next) {
+      var authorizedRoles = next.data.authorizedRoles;
+      if (authorizedRoles.indexOf('*') === -1 && !AuthService.isAuthorized(authorizedRoles)) {
+        event.preventDefault();
+        if (AuthService.isAuthenticated()) {
+          // user is not allowed
+          $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+        } else {
+          // user is not logged in
+          $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+        }
+      }
+    });
   });
