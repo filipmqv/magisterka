@@ -23,9 +23,19 @@ article {
 }
 
 .bottom-input {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
 }
 
+@media screen and (max-width: 768px) {
+  .wrap {
+    flex-flow: column;
+  }
 
+  aside {
+    flex: 0 0 auto;
+    height: 20%;
+    overflow: hidden;
+  }
+}
 
 
