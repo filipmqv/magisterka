@@ -12,6 +12,8 @@
 html, body {
   height: 100%;
   padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 body {
@@ -21,7 +23,7 @@ body {
 
 /* Custom page header */
 .header {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -36,16 +38,15 @@ body {
 }
 
 .main-view {
+  height: 100%;
+  width: 100%;
   flex: 1 1 auto;
   display: flex;
   flex-flow: row;
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+.ng-scope {
+  width: 100%;
 }
 
 /* Responsive: Portrait tablets and up */
