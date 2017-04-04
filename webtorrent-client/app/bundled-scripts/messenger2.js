@@ -45,7 +45,7 @@ angular.module('webtorrentClientApp')
 
     function isInfoHashInConversation(conversation, infohash) {
       var found = _.find(conversation, _.matchesProperty('infoHash', infohash));
-      return (typeof found !== 'undefined');
+      return !!found;
     }
 
     var addTorrentByInfoHash = function (infohash) {
