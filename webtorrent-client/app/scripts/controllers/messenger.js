@@ -38,11 +38,9 @@ angular.module('webtorrentClientApp')
         _.forEach(list, function (item) {
           var buf = new Buffer(JSON.stringify(item.message));
           buf.name = 'text'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
-          client.seed(buf, function (torrent){
-            console.log(torrent.infoHash)
-          });
-        })
-      })
+          client.seed(buf);
+        });
+      });
       getUsers();
       getMyCurrentInfoHash($scope.myDhtId);
     };
