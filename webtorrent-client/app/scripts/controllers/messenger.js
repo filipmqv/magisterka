@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('webtorrentClientApp')
-  .controller('MessengerCtrl', function ($scope, $interval, DhtFactory, UsersFactory, MessagesFactory) {
+  .controller('MessengerCtrl', function ($scope, $interval, DhtFactory, UsersFactory, MessagesFactory, lodash) {
 
     var WebTorrent = require('webtorrent');
     var client = new WebTorrent();
-    var _ = require('lodash');
 
     // prevent warnings about possible memory leak when >11 listeners added (webtorrent)
     const EventEmitter = require('events').EventEmitter;
@@ -35,7 +34,8 @@ angular.module('webtorrentClientApp')
     var initController = function () {
       clearVariables();
       MessagesFactory.init().then(function (list) {
-        _.forEach(list, function (item) {
+        lodash.forEach(list, function (item) {
+          // todo zastąpić to jedną funkcją i ją dać też w funkcji sendMessage
           var buf = new Buffer(JSON.stringify(item.message));
           buf.name = 'text'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
           client.seed(buf);
@@ -49,7 +49,7 @@ angular.module('webtorrentClientApp')
 
 
     function isInfoHashInConversation(conversation, infohash) {
-      var found = _.find(conversation, _.matchesProperty('infoHash', infohash));
+      var found = lodash.find(conversation, lodash.matchesProperty('infoHash', infohash));
       return !!found;
     }
 
@@ -70,9 +70,7 @@ angular.module('webtorrentClientApp')
             var message = JSON.parse(buffer.toString('utf8'));
             // todo nie wyswietlać dopóki nie mamy wszystkich poprzednich wiadomości
             // todo oddzielić wyświetlane wiadomosci od tych w pamięci (ogółem seedowanych - nie wszystkie muszą być na widoku)
-            //$scope.conversation.push({infoHash: torrent.infoHash, message: message});
             MessagesFactory.add(torrent.infoHash, message);
-            // todo zapisać w localforage
             $scope.$apply();
             if (message.previousInfoHash && !isInfoHashInConversation(MessagesFactory.list, message.previousInfoHash)) {
               console.log('adding previous ' + message.previousInfoHash);
@@ -89,8 +87,8 @@ angular.module('webtorrentClientApp')
       DhtFactory.get({}, function (data) {
         var currentInfoHashes = data._items;
         // for all friends check if there's new infohash
-        _.forEach(currentInfoHashes, function (current) {
-          var last = _.find($scope.lastInfoHashes, {'_id': current._id});
+        lodash.forEach(currentInfoHashes, function (current) {
+          var last = lodash.find($scope.lastInfoHashes, {'_id': current._id});
           if (!last || (last.infohash !== current.infohash && !isInfoHashInConversation(MessagesFactory.list, current.infohash))) {
             addTorrentByInfoHash(current.infohash);
           }
@@ -104,6 +102,17 @@ angular.module('webtorrentClientApp')
 
 
 
+
+
+    function updateDht(myDhtId, infoHash) {
+      var dhtObject = {};
+      dhtObject._id = myDhtId;
+      dhtObject.infohash = infoHash;
+      DhtFactory.update({}, dhtObject, null, function (error) {
+        console.log(error);
+      });
+    }
+
     var sendingInProgress = false;
     $scope.sendMessage = function () {
       // prevent sending 2 messages with the same previous infohash
@@ -113,7 +122,7 @@ angular.module('webtorrentClientApp')
         // TODO sender - sprawdzać przy odbiorze czy się zgadza z tym kto wystawił infohash na swoim dhtId
         var message = {
           text: $scope.textInput,
-          timestamp: _.now(),
+          timestamp: lodash.now(),
           sender: $scope.myDhtId,
           previousInfoHash: myCurrentInfoHash
         };
@@ -121,15 +130,8 @@ angular.module('webtorrentClientApp')
         buf.name = 'text'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
         client.seed(buf, function (torrent) {
           myCurrentInfoHash = torrent.infoHash;
-          //$scope.conversation.push({infoHash: myCurrentInfoHash, message: message});
           MessagesFactory.add(torrent.infoHash, message);
-          // add new infohash to dht
-          var dhtObject = {};
-          dhtObject._id = $scope.myDhtId;
-          dhtObject.infohash = torrent.infoHash;
-          DhtFactory.update({}, dhtObject, null, function (error) {
-            console.log(error);
-          });
+          updateDht($scope.myDhtId, torrent.infoHash);
           sendingInProgress = false;
         });
       }
