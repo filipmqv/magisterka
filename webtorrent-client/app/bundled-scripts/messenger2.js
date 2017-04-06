@@ -15,7 +15,7 @@ angular.module('webtorrentClientApp')
     var clearVariables = function () {
       $scope.lastInfoHashes = [];
       $scope.textInput = '';
-      $scope.conversation = MessagesFactory.list; // service z wiadomościami
+      $scope.conversation = MessagesFactory.list; // factory with messages
       $scope.friends = []; // TODO pobrać z serviceu o userze lub w ogóle w nim trzymać tylko
       $scope.myDhtId = $scope.currentUser.dhtId; // TODO per conversation; to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
     };
@@ -56,6 +56,9 @@ angular.module('webtorrentClientApp')
     }
 
     var addTorrentByInfoHash = function (infohash) {
+      if (infohash.length != 40) {
+        return;
+      }
       var magnetLink = 'magnet:?xt=urn:btih:'+ infohash +'&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com';
       var existingTorrent = client.get(magnetLink);
       if (!existingTorrent) {
@@ -104,6 +107,19 @@ angular.module('webtorrentClientApp')
 
 
 
+    var numberOfSingleMessages = 0;
+    var tryCompactMessages = function () {
+      // todo policz w puszowaniu ile wiadomości nie jest złączonych od czasu ostatniego łączenia, jeśli >5 to połącz
+      numberOfSingleMessages++;
+      if (numberOfSingleMessages > 1) {
+        var myMessages = lodash.filter($scope.conversation, function (value, index, array) {
+          return value.message.sender === $scope.myDhtId
+        });
+        console.log(myMessages)
+
+
+      }
+    };
 
 
     function updateDht(myDhtId, infoHash) {
@@ -111,7 +127,7 @@ angular.module('webtorrentClientApp')
       dhtObject._id = myDhtId;
       dhtObject.infohash = infoHash;
       DhtFactory.update({}, dhtObject, null, function (error) {
-        console.log(error);
+        console.error(error);
       });
     }
 
@@ -134,6 +150,7 @@ angular.module('webtorrentClientApp')
           myCurrentInfoHash = torrent.infoHash;
           MessagesFactory.add(torrent.infoHash, message);
           updateDht($scope.myDhtId, torrent.infoHash);
+          tryCompactMessages();
           sendingInProgress = false;
         });
       }

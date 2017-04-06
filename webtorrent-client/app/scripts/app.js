@@ -83,7 +83,11 @@ angular
   })
   .run(function ($rootScope, AUTH_EVENTS, AuthService) {
     $rootScope.$on('$routeChangeStart', function (event, next) {
-      var authorizedRoles = next.data.authorizedRoles;
+      var authorizedRoles = !!next && next.data ? next.data.authorizedRoles : null;
+      if (!authorizedRoles) {
+        event.preventDefault();
+        return;
+      }
       if (authorizedRoles.indexOf('*') === -1 && !AuthService.isAuthorized(authorizedRoles)) {
         event.preventDefault();
         if (AuthService.isAuthenticated()) {
