@@ -10,6 +10,7 @@ resources.factory('DhtFactory', function ($resource, ENDPOINT_URI) {
     });
 });
 
+// todo rename to FriendsFactory
 resources.factory('UsersFactory', function ($resource, ENDPOINT_URI) {
   return $resource(ENDPOINT_URI + 'users');
 });

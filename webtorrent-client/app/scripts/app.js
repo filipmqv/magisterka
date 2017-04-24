@@ -19,6 +19,7 @@ angular
     'Services', // data holders
     'Resources', // all ngResources
     'AuthServices', // resources for auth
+    'Torrents', // torrent services
     'luegg.directives', // angular-scroll-glue - scrolling discussion div to bottom on change
     'LocalForageModule', // for async storage api including indexedDB
     'LocalStorageModule', // for sync storage like currentUser
