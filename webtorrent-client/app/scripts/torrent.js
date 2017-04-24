@@ -95,8 +95,9 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
   var tryCompactMessages = function () {
     // todo policz w puszowaniu ile wiadomości nie jest złączonych od czasu ostatniego łączenia, jeśli >5 to połącz
     var numberOfSingleMessages = MessagesFactory.my.length;
+    console.log('in compact' + numberOfSingleMessages)
     if (numberOfSingleMessages > 3) {
-
+      console.log('dsfsdfs')
     }
   };
 
@@ -125,7 +126,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
       buf.name = 'text'; // TODO jakiś użytek z tego? odróżnienie wiadomości od załączników z nazwami? komponowanie "folderu"
       client.seed(buf, function (torrent) {
         myCurrentInfoHash = torrent.infoHash;
-        MessagesFactory.add(torrent.infoHash, message);
+        MessagesFactory.add(torrent.infoHash, message, myDhtId);
         updateDht(myDhtId, torrent.infoHash);
         tryCompactMessages();
         sendingInProgress = false;
