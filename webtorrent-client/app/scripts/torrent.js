@@ -50,7 +50,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
     });
   }
 
-  
+
 
   function seedOnInit() {
     // seed my messages and then other's
