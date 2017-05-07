@@ -38,7 +38,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
 
           var infoHashesBuf = createBufferWithName(controlMessage.message, 'control');
           bufs.push(infoHashesBuf);
-          client.seed(bufs, {name: 'control'});
+          client.seed(bufs, {name: 'control' + lvl});
         });
       }
     });
@@ -49,6 +49,8 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
       client.seed(createBuffer(item.message));
     });
   }
+
+  
 
   function seedOnInit() {
     // seed my messages and then other's
@@ -115,21 +117,21 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
   function onTorrent (torrent) {
     // todo jesli typ video to od razu dodać (nie czekać na 'done') jak w przykładzie, a na 'done' zapisać w localforage
     torrent.on('done', function () {
-      if (torrent.name === 'control') {
+      if (torrent.name.startsWith('control')) {
+        var levelForMessages = lodash.parseInt(torrent.name.slice(7));
         torrent.files.forEach(function (file) {
 
           file.getBuffer(function (err, buffer) {
             var message = getFromBuffer(buffer);
-            // TODO - a co jeśli to moja wiadomość? (bo np loguję się na nowym kompie) wtedy trzeba ją dać na odpowiedni level
             if (file.name === 'text' && !isInfoHashInConversation(MessagesFactory.getAll(), message.infoHash)) {
-              MessagesFactory.add(message.infoHash, message.message);
+              MessagesFactory.add(message.infoHash, message.message, myDhtId, levelForMessages);
             }
             if (file.name === 'control') {
               removeTorrents(message.content.infoHashes);
               removeTorrents(message.content.controlMessages);
               MessagesFactory.removeControlMessagesByInfoHash(message.content.controlMessages);
 
-              MessagesFactory.add(torrent.infoHash, message);
+              MessagesFactory.add(torrent.infoHash, message, myDhtId);
               if (message.previousInfoHash) {
                 addTorrentByInfoHash(message.previousInfoHash);
               }
@@ -145,7 +147,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
             var message = getFromBuffer(buffer);
 
             // todo nie wyswietlać dopóki nie mamy wszystkich poprzednich wiadomości
-            MessagesFactory.add(torrent.infoHash, message);
+            MessagesFactory.add(torrent.infoHash, message, myDhtId);
             console.log(lodash.now() + ' should apply ' + message.content);
             if (message.previousInfoHash && !isInfoHashInConversation(MessagesFactory.getAll(), message.previousInfoHash)) {
               console.log('adding previous ' + message.previousInfoHash);
@@ -219,8 +221,8 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
 
       MessagesFactory.moveLevelUp(level);
 
-
-      client.seed(bufs, {name: 'control'}, function (torrent) {
+      var torrentNameLevel = level + 1;
+      client.seed(bufs, {name: 'control' + torrentNameLevel}, function (torrent) {
         myCurrentInfoHash = torrent.infoHash;
         MessagesFactory.add(torrent.infoHash, infoHashesMsg, myDhtId);
         MessagesFactory.removeControlMessagesFromLevel(level);

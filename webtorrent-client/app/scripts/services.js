@@ -22,14 +22,15 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
     return Math.pow(5, level+1);
   };
 
-  function pushMessage(userDhtId, infoHash, message) {
+  function pushMessage(userDhtId, infoHash, message, level) {
     if (message.type === 'control' && userDhtId === message.sender) {
       var levelCounted = messages.getLevelFromLength(message.content.infoHashes.length); // count level based on number of regular messages it contains
       messages.control[levelCounted].push({infoHash: infoHash, message: message});
     } else if (message.type === 'control') {
       messages.otherControl.push({infoHash: infoHash, message: message});
     } else if (userDhtId === message.sender) {
-      messages.my[0].push({infoHash: infoHash, message: message});
+      level = level || 0;
+      messages.my[level].push({infoHash: infoHash, message: message});
     } else {
       messages.other.push({infoHash: infoHash, message: message});
     }
@@ -45,8 +46,8 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
     });
   };
 
-  messages.add = function(infoHash, message, userDhtId) {
-    pushMessage(userDhtId, infoHash, message);
+  messages.add = function(infoHash, message, userDhtId, level) {
+    pushMessage(userDhtId, infoHash, message, level);
     $localForage.setItem(infoHash, message);
   };
 
