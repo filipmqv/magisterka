@@ -11,10 +11,38 @@
       <button class="btn btn-secondary" ng-click="checkMessages()">check!</button>
 
       <!-- todo to remove -->
+      <br>
+
+      <ul ng-repeat="m in my">
+        <li>{{m.length}}</li>
+      </ul>
+      con
+      <ul ng-repeat="m in con">
+        <li>{{m.length}}</li>
+      </ul>
+      otCOn
+      {{otherControl.length}}
+      <br>
+      ot
+      {{ot.length}}
+      <!--<ul ng-repeat="m in otherControl">-->
+        <!--<li>{{m.length}}</li>-->
+      <!--</ul>-->
+      <!--ot-->
+      <!--<ul ng-repeat="m in ot">-->
+        <!--<li>{{m.length}}</li>-->
+      <!--</ul>-->
+
       <p>Current user</p>
       <ul ng-repeat="(key, val) in currentUser">
         <li>{{key}}: {{val}}</li>
       </ul>
+      <p>torrents {{getTorrents().length}}</p>
+      <ul ng-repeat="torrent in getTorrents()">
+        <li>{{torrent.infoHash}}</li>
+      </ul>
+      <br>
+
     </div>
 
 
@@ -32,7 +60,7 @@
               <img ng-src="images/avatar.gif" />
             </div>
             <div class="messages">
-              <p>{{$index + 1}}&nbsp;&nbsp;&nbsp;{{item.message.text}}</p>
+              <p>{{$index + 1}}&nbsp;&nbsp;&nbsp;{{item.message.content}}</p>
               <time ng-repeat="sentBy in friends | filter:item.message.sender">{{sentBy.username}} • {{item.message.timestamp | date:'H:mm:ss'}}</time><br/>
               <time>{{truncate(item.infoHash)}} • {{truncate(item.message.previousInfoHash)}}</time>
             </div>
