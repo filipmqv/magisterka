@@ -22,7 +22,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
     }, handleDhtError);
   }
 
-
+////////////////// init
 
   function seedByControlMessages(controlList, messagesList) {
     lodash.forEachRight(controlList, function (levelList) {
@@ -50,16 +50,38 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
     });
   }
 
+  function getControlMessagesToRemove(flatControlMessages) {
+    // return control messages which contain some messages that are also in other control message and are smaller then them
+    var toRemove = [];
+    lodash.forEach(flatControlMessages, function (controlMessage) {
+      var toPush = lodash.filter(flatControlMessages, function (item) {
+        return item.infoHash !== controlMessage.infoHash &&
+          item.message.content.infoHashes.length < controlMessage.message.content.infoHashes.length &&
+            lodash.intersection(item.message.content.infoHashes, controlMessage.message.content.infoHashes).length > 0
+      });
+      if (toPush.length > 0) {
+        toRemove.push(toPush);
+      }
+    });
+    return toRemove;
+  }
 
+  function removeUnnecessaryControlMessages(controlMessages) {
+    var infoHashesToRemove = lodash.chain(controlMessages)
+      .flattenDeep() // first flatten the list
+      .thru(getControlMessagesToRemove)
+      .map('infoHash')
+      .value();
+    MessagesFactory.removeControlMessagesByInfoHash(infoHashesToRemove);
+  }
 
   function seedOnInit() {
-    // seed my messages and then other's
+    // first remove control messages which are contained in other (bigger) control messages
+    removeUnnecessaryControlMessages(MessagesFactory.control);
+    removeUnnecessaryControlMessages(MessagesFactory.otherControl);
 
-    // todo usunąć rekurencyjnie z niższych leveli na bazie controlMessage.message.content.prevControlMsgs
-    // todo zbierać wiadomości do listy a potem jednym ruchem usunąć
-
+    // seed my messages (first control messages, then the rest)
     seedByControlMessages(MessagesFactory.control, MessagesFactory.my);
-    // seed rest of messages (which were not compacted)
     seedList(MessagesFactory.my[0]);
 
     // temporary tree of control messages
@@ -70,6 +92,8 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
     });
     var tempOther = [[], [], [], [], [], [], []];
     tempOther[0] = lodash.concat(tempOther[0], MessagesFactory.other);
+
+    // seed other's control messages then the rest of regular messages
     seedByControlMessages(tempOtherControl, tempOther);
     seedList(tempOther[0]);
   }
@@ -83,7 +107,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
   torrent.init = lodash.once(initialize);
 
 
-
+///////////// receive
 
 
   function removeTorrents(infoHashes) {
@@ -177,7 +201,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
 
 
 
-// sending
+/////////////// send
 
   var sendingQueue = [];
   var sendingInProgress = false;
@@ -192,7 +216,6 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
   }
 
   function tryCompactMessages(level) {
-    // todo jakie wiadomości zawiera i jakie kontrolne zastepuje bezposrednio - a przy inicie zanim usuniemy te kontrolne to sprawdzamy czy nie ma jeszcze poniżej nich innych kontrolnych rekurencyjnie
     var numberOfSingleMessages = MessagesFactory.my[level].length;
     var numberOfMessagesForLevel = MessagesFactory.numberOfMessagesForLevel(level);
     if (numberOfSingleMessages >= numberOfMessagesForLevel) {
@@ -231,7 +254,6 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
         if (noCompactInProgress) { // update only if there's no compacting in progress
           afterSending(torrent.infoHash);
         }
-
       });
     } else {
       return true; // no messages to compact on this level
@@ -299,6 +321,9 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
       sendMessageInner(textInput);
     }
   };
+
+
+////////////////// other
 
   torrent.getAllTorrents = function () {
     return client.torrents;
