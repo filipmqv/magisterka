@@ -2,11 +2,23 @@
   <aside>
     <div class="container">
       <p>friends:</p>
-      <ul>
-        <li ng-repeat="item in friends">
+      <ul ng-repeat="friendsList in friendsInConversations">
+        <li ng-repeat="item in friendsList">
           {{item.username}}
         </li>
       </ul>
+
+      <!--conversations<br>-->
+      <!--{{conversations}}-->
+      <!--<br><br>-->
+      <!--conversationsDhts<br>-->
+      <!--{{dhtIdsInConversations}}-->
+      <!--<br><br>-->
+      <!--friendsInConversations<br>-->
+      <!--{{friendsInConversations}}-->
+      <!--<br><br>-->
+      <!--currentConversationId<br>-->
+      <!--{{currentConversationId}}-->
 
       <button class="btn btn-secondary" ng-click="checkMessages()">check!</button>
 
@@ -61,7 +73,7 @@
             </div>
             <div class="messages">
               <p>{{$index + 1}}&nbsp;&nbsp;&nbsp;{{item.message.content}}</p>
-              <time ng-repeat="sentBy in friends | filter:item.message.sender">{{sentBy.username}} • {{item.message.timestamp | date:'H:mm:ss'}}</time><br/>
+              <time ng-repeat="sentBy in friendsInConversations[currentConversationId] | filter:item.message.sender">{{sentBy.username}} • {{item.message.timestamp | date:'H:mm:ss'}}</time><br/>
               <time>{{truncate(item.infoHash)}} • {{truncate(item.message.previousInfoHash)}}</time>
             </div>
           </li>

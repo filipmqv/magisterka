@@ -1,34 +1,58 @@
 'use strict';
 
 angular.module('webtorrentClientApp')
-  .controller('MessengerCtrl', function ($scope, $interval, DhtFactory, UsersFactory, MessagesFactory, TorrentFactory, lodash) {
+  .controller('MessengerCtrl', function ($scope, $interval, DhtFactory, UsersFactory, ConversationsFactory,
+                                         MessagesFactory, TorrentFactory, lodash, UserService) {
 
     var clearVariables = function () {
       $scope.my = MessagesFactory.my;
       $scope.con = MessagesFactory.control;
       $scope.otherControl = MessagesFactory.otherControl;
       $scope.ot = MessagesFactory.other;
+
       $scope.textInput = '';
+      $scope.dhtIdsInConversations = {};
       $scope.getConversation = MessagesFactory.getAll; // factory with messages
       $scope.getTorrents = TorrentFactory.getAllTorrents;
-      $scope.friends = []; // TODO pobrać z service'u o userze lub w ogóle w nim trzymać tylko
+      $scope.conversations = [];
+      $scope.currentConversationId = 0;
+      $scope.friendsInConversations = {}; // TODO pobrać z service'u o userze lub w ogóle w nim trzymać tylko
       $scope.myDhtId = $scope.currentUser.dhtId; // TODO per conversation; to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
     };
 
-    var getUsers = function () {
-      UsersFactory.get({}, function (data) {
-        $scope.friends = data._items;
+    var getUsersForConversation = function (conversation) {
+      ConversationsFactory.get({where: {conversation_id: conversation.conversation_id}}, function (data) {
+        var convId = conversation.conversation_id;
+        $scope.friendsInConversations[convId] = lodash.map(data._items, 'user_id')
+        $scope.dhtIdsInConversations[convId] = lodash.map(data._items, 'user_dht_id')
+      })
+    };
+
+    var getConversations = function () {
+      ConversationsFactory.get({where: {user_id: UserService.getCurrentUser().id}}, function (data) {
+        $scope.conversations = data._items;
+        $scope.currentConversationId = $scope.conversations[0].conversation_id;
+        // get other users involved in each conversation
+        lodash.forEach($scope.conversations, function (item) {
+          getUsersForConversation(item);
+        })
       });
     };
 
+    // var getUsers = function () {
+    //   UsersFactory.get({}, function (data) {
+    //     $scope.friends = data._items;
+    //   });
+    // };
+
     var initController = function () {
       clearVariables();
-      getUsers();
+      getConversations();
       TorrentFactory.init($scope.currentUser.dhtId);
     };
 
     $scope.checkMessages = function () {
-      TorrentFactory.checkMessages();
+      TorrentFactory.checkMessages($scope.dhtIdsInConversations);
     };
 
     $scope.sendMessage = function () {

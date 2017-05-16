@@ -185,20 +185,26 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
     }
   }
 
-  torrent.checkMessages = function () {
-    // TODO zamiast wszystkich pobrać tylko z tych ID które należą do naszych znajomych w tej konwersacji
-    // TODO docelowo sprawdzić wszystkie konwersacje
-    DhtFactory.get({}, function (data) {
-      var currentInfoHashes = data._items;
-      // for all friends check if there's new infohash
-      lodash.forEach(currentInfoHashes, function (current) {
-        var last = lodash.find(lastInfoHashes, {'_id': current._id});
-        if (!last || (last.infohash !== current.infohash && !isInfoHashInConversation(MessagesFactory.getAll(), current.infohash))) {
-          addTorrentByInfoHash(current.infohash);
-        }
-      });
-      lastInfoHashes = currentInfoHashes;
+  function checkInfoHashForDhtId(dhtId) {
+    DhtFactory.get({dhtId: dhtId}, function (data) {
+      // if there's newer inhohash for dhtId - add torrent and save as latest
+      var currentInfoHash = data;
+      var last = lodash.find(lastInfoHashes, {'_id': currentInfoHash._id});
+      if (!last || (last.infohash !== currentInfoHash.infohash && !isInfoHashInConversation(MessagesFactory.getAll(), currentInfoHash.infohash))) {
+        addTorrentByInfoHash(currentInfoHash.infohash);
+        lodash.pull(lastInfoHashes, last);
+        lastInfoHashes.push(currentInfoHash);
+      }
     }, handleDhtError);
+  }
+
+  torrent.checkMessages = function (dhtIdsInConversations) {
+    // check all conversations and all users in them
+    lodash.forEach(dhtIdsInConversations, function (dhtIds) {
+      lodash.forEach(dhtIds, function (dhtId) {
+        checkInfoHashForDhtId(dhtId);
+      })
+    })
   };
 
 

@@ -13,6 +13,26 @@ IF_MATCH = False # TODO
 #MONGO_USERNAME = '<your username>'
 #MONGO_PASSWORD = '<your password>'
 
+users_schema = {
+    'username': {
+        'type': 'string',
+        'required': True,
+        'unique': True
+    },
+    'email': {
+        'type': 'string',
+        'required': True,
+        'unique': True
+    },
+    'password': {
+        'type': 'string',
+        'required': True
+    },
+    'dht_id': {
+        'type': 'string'
+    }        
+}
+
 users = {
     'item_title': 'user',
     'additional_lookup': {
@@ -23,26 +43,58 @@ users = {
         'projection': {'password': 0}
     },
     'public_methods': ['POST'],
-    'schema': {
-        'username': {
-            'type': 'string',
-            'required': True,
-            'unique': True
-        },
-        'email': {
-            'type': 'string',
-            'required': True,
-            'unique': True
-        },
-        'password': {
-            'type': 'string',
-            'required': True
-        },
-        'dht_id': {
-            'type': 'string'
-        }        
+    'schema': users_schema
+}
+
+
+
+friends_schema = {
+    'friend1': {
+        'type': 'string',
+        'required': True
+    },
+    'friend2': {
+        'type': 'string',
+        'required': True
     }
 }
+
+friends = {
+    'item_title': 'friend',
+    'pagination': False,
+    'schema': friends_schema
+}
+
+
+
+conversation_schema = {
+    'conversation_id': {
+        'type': 'string',
+        'required': True
+    },
+    'user_id': {
+        'type': 'objectid',
+        'data_relation': {
+             'resource': 'users',
+             'field': '_id',
+             'embeddable': True
+        },
+        'required': True
+    },
+    'user_dht_id': {
+        'type': 'string',
+        'required': True
+    }
+}
+
+conversations = {
+    'item_title': 'conversation',
+    'pagination': False,
+    'schema': conversation_schema,
+    'query_objectid_as_string': True
+}
+
+
 
 dht_schema = {
     'infohash': {
@@ -58,7 +110,11 @@ dht = {
     'authentication': None
 }
 
+
+
 DOMAIN = {
     'dht': dht,
-    'users': users
+    'users': users,
+    'friends': friends,
+    'conversations': conversations
 }

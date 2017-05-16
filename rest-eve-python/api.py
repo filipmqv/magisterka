@@ -7,6 +7,8 @@ from datetime import timedelta
 from flask import make_response, request, current_app, jsonify
 from functools import update_wrapper
 
+import uuid
+
 # snippet for flask crossdomain
 def crossdomain(origin=None, methods=None, headers=None, max_age=21600, attach_to_all=True, automatic_options=True):
     if methods is not None:
@@ -87,8 +89,14 @@ def create_user(documents):
         document['password'] = bcrypt.hashpw(password, document['salt'])
         document['role'] = 'user'
 
-app.on_insert_users += create_user
+def check_conversation_id(documents):
+    for document in documents:
+        if document['conversation_id'] == 'dummy':
+            document['conversation_id'] = str(uuid.uuid4())
 
+
+app.on_insert_users += create_user
+app.on_insert_conversations += check_conversation_id
 
 
 if __name__ == '__main__':
