@@ -26,11 +26,11 @@
       ot
       {{ot.length}}
       <!--<ul ng-repeat="m in otherControl">-->
-        <!--<li>{{m.length}}</li>-->
+      <!--<li>{{m.length}}</li>-->
       <!--</ul>-->
       <!--ot-->
       <!--<ul ng-repeat="m in ot">-->
-        <!--<li>{{m.length}}</li>-->
+      <!--<li>{{m.length}}</li>-->
       <!--</ul>-->
 
       <p>Current user</p>
@@ -73,55 +73,20 @@
 
     <div class="bottom-input">
 
-      <form class="form-horizontal send-message-form" role="form" ng-submit="sendMessage()">
-        <div class="input-group">
-          <input ng-model="textInput" type="text" class="form-control" id="inputMessage" placeholder="Type message..." autocomplete="off">
-          <span class="input-group-btn">
+      <div>
+
+        <form class="send-message-form" role="form" ng-submit="sendMessage()">
+          <div class="input-group">
+            <input ng-model="textInput" type="text" class="form-control" id="inputMessage" placeholder="Type message..." autocomplete="off">
+            <span class="input-group-btn">
               <button class="btn btn-secondary" type="submit">Send!</button>
             </span>
-        </div>
-      </form>
+          </div>
+        </form>
+
+      </div>
 
     </div>
   </article>
 
 </div>
-
-
-
-
-
-
-
-<!--<span>Conversation</span>-->
-<!--<button class="btn btn-secondary" ng-click="checkMessages()">check!</button>-->
-<!--<div class="message-component" ng-repeat="item in conversation | orderBy:'message.timestamp'">-->
-<!--<div class="main-message-component">-->
-<!--<span>{{$index + 1}}</span>-->
-<!--<span>from: {{item.message.sender}}</span>&nbsp;&nbsp;&nbsp;-->
-<!--<span>{{item.message.text}}</span>-->
-<!--</div>-->
-<!--<div class="additional-message-component">-->
-<!--<span>{{item.infoHash}}</span>&nbsp;&nbsp;&nbsp;-->
-<!--<span class="time">{{item.message.timestamp | date:'medium'}}</span>-->
-<!--<span>{{item.message.previousInfoHash}}</span>-->
-<!--</div>-->
-
-<!--</div>-->
-
-
-
-
-
-
-
-<!--<table class="table-bordered conversation">-->
-<!--<tr ng-repeat="item in conversation | orderBy:'message.timestamp'">-->
-<!--<td>{{$index + 1}}</td>-->
-<!--<td>{{item.infoHash}}</td>-->
-<!--<td>{{item.message.sender}}</td>-->
-<!--<td>{{item.message.text}}</td>-->
-<!--<td>{{item.message.timestamp | date:'medium'}}</td>-->
-<!--<td>{{item.message.previousInfoHash}}</td>-->
-<!--</tr>-->
-<!--</table>-->

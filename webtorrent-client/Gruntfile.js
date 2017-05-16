@@ -32,6 +32,10 @@ module.exports = function (grunt) {
       client: {
         src: 'app/scripts/torrent.js',
         dest: 'app/bundled-scripts/torrent2.js'
+      },
+      client2: {
+        src: 'app/scripts/controllers/messenger.js',
+        dest: 'app/bundled-scripts/messenger2.js'
       }
     },
 

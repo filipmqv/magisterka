@@ -83,7 +83,7 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
   messages.changeLevelForMessages = function (list, fromLevel, toLevel, listOfMessagesToMove) {
     lodash.pullAll(list[fromLevel], listOfMessagesToMove);
     list[toLevel] = lodash.concat(list[toLevel], listOfMessagesToMove);
-  }
+  };
 
   messages.getAll = function () {
     return lodash.concat(lodash.flatten(messages.my), messages.other);

@@ -39,8 +39,6 @@ angular.module('webtorrentClientApp')
       return lodash.truncate(word, {'length': 8});
     };
 
-
-
     var checkMessagesInterval = $interval(function() {
       $scope.checkMessages();
     }, 5000);
