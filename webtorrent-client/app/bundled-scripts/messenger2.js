@@ -17,7 +17,7 @@ angular.module('webtorrentClientApp')
       $scope.getTorrents = TorrentFactory.getAllTorrents;
       $scope.conversations = [];
       $scope.currentConversationId = 0;
-      $scope.friendsInConversations = {}; // TODO pobrać z service'u o userze lub w ogóle w nim trzymać tylko
+      $scope.friendsInConversations = {};
       $scope.myDhtId = $scope.currentUser.dhtId; // TODO per conversation; to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
     };
 

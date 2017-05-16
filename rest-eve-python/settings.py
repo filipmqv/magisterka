@@ -40,7 +40,7 @@ users = {
         'field': 'username',
     },
     'datasource': {
-        'projection': {'password': 0}
+        'projection': {'password': 0, 'salt': 0}
     },
     'public_methods': ['POST'],
     'schema': users_schema
