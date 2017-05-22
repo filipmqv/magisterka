@@ -1,0 +1,136 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{csthesis}
+#
+#  Author: Cezary Sobaniec <cezary.sobaniec@cs.put.poznan.pl>
+#  $Id: csthesis.layout 2763 2012-03-02 20:23:36Z sobaniec $
+#
+
+# Input general definitions
+Format 35
+Input stdclass.inc
+Input numreport.inc
+DefaultModule dcs
+DefaultModule dcsthm
+
+Sides            2
+Provides amsmath 1
+Provides url     1
+
+NoStyle          Abstract
+
+
+Float
+  Type           algorithm
+  GuiName        Algorithm
+  Placement      tbph
+  Extension      loa
+  NumberWithin   none
+  Style          plain
+  ListName       "List of Algorithms"
+  IsPredefined   true
+  UsesFloatPkg   false
+End
+
+
+# Update of default settings from lyxmacros.inc
+Style LyX-Code
+  Category       MainText
+  Margin         Static
+  LatexType      Environment
+  LatexName      lyxcode
+  NextNoIndent   1
+  LeftMargin     MMM
+  RightMargin    ""
+  TopSep         0.5
+  BottomSep      0.5
+  Align          Left
+  AlignPossible  Block, Left, Right, Center
+  LabelType      No_Label
+  FreeSpacing    1
+  Spellcheck     0
+  Font
+    Family       Typewriter
+    Size         Small
+  EndFont
+  Preamble
+    \newlist{lyxcodelist}{itemize}{1}
+    \setlist[lyxcodelist]{listparindent=0pt,itemsep=0pt,parsep=0pt,partopsep=0pt}
+    \providecommand{\lyxcodesetup}{}
+    \newenvironment{lyxcode}
+      {\par\begin{lyxcodelist}\normalfont\ttfamily\small\lyxcodesetup\item[]}
+      {\end{lyxcodelist}}
+  EndPreamble
+End
+
+
+# labeling
+Style Labeling
+  Category       List
+  OptionalArgs   1
+  Margin         Manual
+  LatexType      List_Environment
+  LatexName      labelingx
+  NextNoindent   1
+  LabelSep       xxx
+  ParSkip        0.4
+  TopSep         0.7
+  BottomSep      0.7
+  ParSep         0.5
+  Align          Block
+  AlignPossible  Block, Left
+  LabelType      Manual
+  LabelString    "default"
+  Preamble
+    \newlength{\labelingxwidth}
+    \newenvironment{labelingx}[2][]%
+      {\ifthenelse{\equal{#2}{default}}%
+         {\setlength{\labelingxwidth}{\leftmargin}}
+         {\settowidth{\labelingxwidth}{#2}}
+       \begin{labeling}[leftmargin=\labelingxwidth,#1]}
+      {\end{labeling}}
+  EndPreamble
+End
+
+
+# enumerate
+Style Enumerate-Resume
+  CopyStyle      Enumerate
+  LatexParam     [resume]
+  OptionalArgs   0
+  LabelFont
+    Color        blue
+  EndFont
+End
+
+
+# optional arguments for standard lists
+IfStyle Itemize
+  OptionalArgs   1
+End
+
+IfStyle Enumerate
+  OptionalArgs   1
+End
+
+IfStyle Description
+  OptionalArgs   1
+End
+
+
+# widestandard
+Style WideStandard
+  Category       MainText
+  Margin         Static
+  LatexType      Environment
+  LatexName      widestandard
+  ParSkip        0.4
+  Align          Block
+  AlignPossible  Block, Left, Right, Center
+  LabelType      No_Label
+End
+
+
+# deprecated styles
+Style DispItems
+  Obsoletedby           Labeling
+End

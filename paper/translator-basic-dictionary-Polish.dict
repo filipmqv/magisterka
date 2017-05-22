@@ -1,0 +1,96 @@
+\ProvidesDictionary{translator-basic-dictionary}{Polish}
+
+\providetranslation{Abstract}{Streszczenie}
+\providetranslation{Addresses}{Adresy}
+\providetranslation{addresses}{adresy}
+\providetranslation{Address}{Adres}
+\providetranslation{address}{adres}
+\providetranslation{and}{i}
+\providetranslation{Appendix}{Załącznik}
+\providetranslation{Authors}{Autorzy}
+\providetranslation{authors}{autorzy}
+\providetranslation{Author}{Autor}
+\providetranslation{author}{autor}
+\providetranslation{Bibliography}{Literatura}
+\providetranslation{cc}{cc}
+\providetranslation{Chapters}{Rozdziały}
+\providetranslation{chapters}{rozdziały}
+\providetranslation{Chapter}{Rozdział}
+\providetranslation{chapter}{rozdział}
+\providetranslation{Conclusion}{Wniosek}
+\providetranslation{conclusion}{wniosek}
+\providetranslation{Contents}{Spis treści}
+\providetranslation{encl (plural)}{encl}
+\providetranslation{encl (singular)}{encl}
+\providetranslation{encl}{encl}
+\providetranslation{Figures}{Rysunki}
+\providetranslation{figures}{rysunki}
+\providetranslation{Figure}{Rysunek}
+\providetranslation{figure}{rysunek}
+\providetranslation{From}{Od}
+\providetranslation{from}{od}
+\providetranslation{Glossary}{Słowniczek}
+\providetranslation{Index}{Skorowidz}
+\providetranslation{Introduction}{Wstęp}
+\providetranslation{introduction}{wstęp}
+\providetranslation{List of Figures and Tables}{Spis rysunków i tabel}
+\providetranslation{List of Figures}{Spis rysunków}
+\providetranslation{List of Tables}{Spis tabel}
+\providetranslation{or}{lub}
+\providetranslation{Outline}{Plan}
+\providetranslation{Overview}{Streszczenie}
+\providetranslation{Pages}{Strony}
+\providetranslation{pages}{strony}
+\providetranslation{Page}{Strona}
+\providetranslation{page}{strona}
+\providetranslation{Paragraphs}{Akapity}
+\providetranslation{paragraphs}{akapity}
+\providetranslation{Paragraph}{Akapit}
+\providetranslation{paragraph}{akapit}
+\providetranslation{Parts}{Części}
+\providetranslation{parts}{części}
+\providetranslation{Part}{Część}
+\providetranslation{part}{część}
+\providetranslation{Preface}{Wstęp}
+\providetranslation{Proofs}{Dowody}
+\providetranslation{proofs}{dowody}
+\providetranslation{Proof}{Dowód}
+\providetranslation{proof}{dowód}
+\providetranslation{References}{Referencje}
+\providetranslation{Related work}{Inne prace}
+\providetranslation{Related Work}{Inne prace}
+\providetranslation{Sections}{Punkty}
+\providetranslation{sections}{punkty}
+\providetranslation{Section}{Punkt}
+\providetranslation{section}{punkt}
+\providetranslation{See also}{Zobacz również}
+\providetranslation{see also}{zobacz również}
+\providetranslation{See}{Zobacz}
+\providetranslation{see}{zobacz}
+\providetranslation{Sketch of Proofs}{Szkic dowodów}
+\providetranslation{Sketch of proofs}{Szkic dowodów}
+\providetranslation{Sketch of Proof}{Szkic dowodu}
+\providetranslation{Sketch of proof}{Szkic dowodu}
+\providetranslation{Subsections}{Podpunkty}
+\providetranslation{subsections}{podpunkty}
+\providetranslation{Subsection}{Podpunkt}
+\providetranslation{subsection}{podpunkt}
+\providetranslation{Summary}{Streszczenie}
+\providetranslation{Tables}{Tabele}
+\providetranslation{tables}{tabele}
+\providetranslation{Table}{Tabela}
+\providetranslation{table}{tabela}
+\providetranslation{To}{Do}
+\providetranslation{to}{do}
+
+% extra words:
+\providetranslation{Date}{Data}
+\providetranslation{date}{data}
+\providetranslation{Version}{Wersja}
+\providetranslation{version}{wersja}
+\providetranslation{Revision}{Wydanie}
+\providetranslation{revision}{wydanie}
+\providetranslation{Description}{Opis}
+\providetranslation{description}{opis}
+\providetranslation{Keywords}{Słowa kluczowe}
+\providetranslation{keywords}{słowa kluczowe}

@@ -1,0 +1,140 @@
+#\DeclareLyXModule{DCS Group Theorems}
+#DescriptionBegin
+#Theorems like Definition, Theorem, Lema
+#DescriptionEnd
+
+# Author: Cezary Sobaniec <cezary.sobaniec@cs.put.poznan.pl>
+
+# $Id$
+
+Format 35
+
+Style Case
+  Margin         First_Dynamic
+  LatexType      Environment
+  LatexName      case
+  NextNoIndent   0
+  ParIndent      MM
+  LabelSep       xx
+  ItemSep        0
+  TopSep         0.5
+  BottomSep      0.5
+  ParSep         0
+  Align          Block
+  AlignPossible  Block, Left
+  LabelType      Static
+  LabelString    Case #. 
+
+  # font & label font definition
+
+  LabelFont 
+    Shape        Italic
+  EndFont
+
+End
+
+Style Claim
+  CopyStyle      Case
+  LatexName      claim
+  LabelString    "Claim. " 
+End
+
+Style Conjecture
+  CopyStyle      Case
+  LatexName      conjecture
+  LabelString    "Conjecture #. " 
+End
+
+Style Corollary
+  CopyStyle      Case
+  LatexName      corollary
+  LabelString    "Corollary #. " 
+
+  # font & label font definition
+  Font 
+    Shape        Italic
+  EndFont
+
+  LabelFont 
+    Shape        Up
+    Series       Bold
+  EndFont
+
+End
+
+Style Definition
+  CopyStyle      Corollary
+  LatexName      definition
+  LabelString    "Definition #. "
+End
+
+Style Example
+  CopyStyle      Case
+  LatexName      example
+  LabelString    "Example #. "
+End
+
+Style Exercise
+  CopyStyle      Case
+  LatexName      exercise
+  LabelString    "Exercise #. "
+End
+
+Style Lemma
+  CopyStyle      Corollary
+  LatexName      lemma
+  LabelString    "Lemma #. "
+End
+
+Style Problem
+  CopyStyle      Exercise
+  LatexName      problem
+  LabelString    "Problem #. "
+End
+
+Style Proof
+  CopyStyle      Claim
+  LatexName      proof
+  LabelString    "Proof. "
+End
+
+Style Property
+  CopyStyle      Case
+  LatexName      property
+  LabelString    "Property #. "
+End
+
+Style Proposition
+  CopyStyle      Corollary
+  LatexName      proposition
+  LabelString    "Proposition #. "
+End
+
+Style Question
+  CopyStyle      Case
+  LatexName      question  
+  LabelString    "Question #. "
+End
+
+Style Remark
+  CopyStyle      Case
+  LatexName      remark
+  LabelString    "Remark #. "
+End
+
+Style Solution
+  CopyStyle      Case
+  LatexName      solution
+  LabelString    "Solution #. "
+End
+
+Style Theorem
+  CopyStyle      Corollary
+  LatexName      theorem
+  LabelString    "Theorem #. "
+End
+
+
+AddToPreamble
+\usepackage{dcsthm}
+EndPreamble

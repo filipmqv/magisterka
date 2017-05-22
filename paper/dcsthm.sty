@@ -1,0 +1,56 @@
+%
+%  Cezary Sobaniec <cezary.sobaniec@cs.put.poznan.pl>
+%
+%  $Id: dcsthm.sty 3316 2013-05-29 11:15:35Z sobaniec $
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dcsthm}[2013/05/29 v1.1 DCS Group theorems package]
+
+\RequirePackage{ifthen}
+\RequirePackage{amsthm}
+\RequirePackage{translator}
+
+\usedictionary{translator-theorem-dictionary}
+
+% theorems
+\newtheoremstyle{dcs}
+  {\bigskipamount}{\bigskipamount}
+  {\itshape}{0pt}{\scshape}{.}{1ex}{}
+\newtheoremstyle{dcsplain}
+  {\bigskipamount}{\bigskipamount}
+  {}{0pt}{\itshape}{.}{1ex}{}
+
+\theoremstyle{dcsplain}
+\ifthenelse{\isundefined{\chaptermark}}
+  {\newtheorem{example}{\translate{Example}}}
+  {\newtheorem{example}{\translate{Example}}[chapter]}
+\theoremstyle{dcs}
+\ifthenelse{\isundefined{\chaptermark}}
+  {\newtheorem{definition}{\translate{Definition}}
+   \newtheorem{conjecture}{\translate{Conjecture}}
+   \newtheorem{corollary}{\translate{Corollary}}
+   \newtheorem{exercise}{\translate{Exercise}}
+   \newtheorem{lemma}{\translate{Lemma}}
+   \newtheorem{problem}{\translate{Problem}}
+   \newtheorem{property}{\translate{Property}}
+   \newtheorem{proposition}{\translate{Proposition}}
+   \newtheorem{question}{\translate{Question}}
+   \newtheorem{remark}{\translate{Remark}}
+   \newtheorem{solution}{\translate{Solution}}
+   \newtheorem{theorem}{\translate{Theorem}}}
+  {\newtheorem{definition}{\translate{Definition}}[chapter]
+   \newtheorem{conjecture}{\translate{Conjecture}}[chapter]
+   \newtheorem{corollary}{\translate{Corollary}}[chapter]
+   \newtheorem{exercise}{\translate{Exercise}}[chapter]
+   \newtheorem{lemma}{\translate{Lemma}}[chapter]
+   \newtheorem{problem}{\translate{Problem}}[chapter]
+   \newtheorem{property}{\translate{Property}}[chapter]
+   \newtheorem{proposition}{\translate{Proposition}}[chapter]
+   \newtheorem{question}{\translate{Question}}[chapter]
+   \newtheorem{remark}{\translate{Remark}}[chapter]
+   \newtheorem{solution}{\translate{Solution}}[chapter]
+   \newtheorem{theorem}{\translate{Theorem}}[chapter]}
+\newenvironment{claim}
+  {\noindent\textit{Claim.}\bigskip}
+  {\par\bigskip}

@@ -1,0 +1,86 @@
+\ProvidesDictionary{translator-theorem-dictionary}{Polish}
+
+\providetranslation{Comments}{Komentarze}
+\providetranslation{comments}{komentarze}
+\providetranslation{Comment}{Komentarz}
+\providetranslation{comment}{komentarz}
+\providetranslation{Note}{Notka}
+\providetranslation{note}{notka}
+\providetranslation{Claim}{Stwierdzenie}
+\providetranslation{claim}{stwierdzenie}
+\providetranslation{Corollaries}{Corollaries}
+\providetranslation{corollaries}{corollaries}
+\providetranslation{Corollary}{Corollary}
+\providetranslation{corollary}{corollary}
+\providetranslation{Definitions}{Definicje}
+\providetranslation{definitions}{definicje}
+\providetranslation{Definition}{Definicja}
+\providetranslation{definition}{definicja}
+\providetranslation{Examples}{Przykłady}
+\providetranslation{examples}{przykłady}
+\providetranslation{Example}{Przykład}
+\providetranslation{example}{przykład}
+\providetranslation{Exercises}{Ćwiczenia}
+\providetranslation{exercises}{ćwiczenia}
+\providetranslation{Exercise}{Ćwiczenie}
+\providetranslation{exercise}{ćwiczenie}
+\providetranslation{Facts}{Facts}
+\providetranslation{facts}{facts}
+\providetranslation{Fact}{Fact}
+\providetranslation{fact}{fact}
+\providetranslation{Key Lemmas}{Key Lemmas}
+\providetranslation{key lemmas}{key lemmas}
+\providetranslation{Key Lemma}{Key Lemma}
+\providetranslation{key lemma}{key lemma}
+\providetranslation{Key Observations}{Key Observations}
+\providetranslation{key observations}{key observations}
+\providetranslation{Key Observation}{Key Observation}
+\providetranslation{key observation}{key observation}
+\providetranslation{Lemmas}{Lematy}
+\providetranslation{lemmas}{lematy}
+\providetranslation{Lemma}{Lemat}
+\providetranslation{lemma}{lemat}
+\providetranslation{Main Theorems}{Main Theorems}
+\providetranslation{main theorems}{main theorems}
+\providetranslation{Main Theorem}{Main Theorem}
+\providetranslation{main theorem}{main theorem}
+\providetranslation{Observations}{Obserwacje}
+\providetranslation{observations}{obserwacje}
+\providetranslation{Observation}{Obserwacja}
+\providetranslation{observation}{obserwacja}
+\providetranslation{Problems}{Problemy}
+\providetranslation{problems}{problemy}
+\providetranslation{Problem}{Problem}
+\providetranslation{problem}{problem}
+\providetranslation{Proofs}{Dowody}
+\providetranslation{proofs}{dowody}
+\providetranslation{Proof}{Dowód}
+\providetranslation{proof}{dowód}
+\providetranslation{Proof Sketch}{Proof Sketch}
+\providetranslation{Proof sketch}{Proof sketch}
+\providetranslation{proof sketch}{proof sketch}
+\providetranslation{Proof Sketches}{Proof Sketches}
+\providetranslation{Proof sketches}{Proof sketches}
+\providetranslation{proof sketches}{proof sketches}
+\providetranslation{Sketch of Proof}{Sketch of Proof}
+\providetranslation{Sketch of Proofs}{Sketch of Proofs}
+\providetranslation{Sketch of proof}{Sketch of proof}
+\providetranslation{Sketch of proofs}{Sketch of proofs}
+\providetranslation{sketch of proof}{sketch of proof}
+\providetranslation{sketch of proofs}{sketch of proofs}
+\providetranslation{Propositions}{Propositions}
+\providetranslation{propositions}{propositions}
+\providetranslation{Proposition}{Proposition}
+\providetranslation{proposition}{proposition}
+\providetranslation{Remarks}{Remarks}
+\providetranslation{remarks}{remarks}
+\providetranslation{Remark}{Remark}
+\providetranslation{remark}{remark}
+\providetranslation{Solutions}{Rozwiązania}
+\providetranslation{solutions}{rozwiązania}
+\providetranslation{Solution}{Rozwiązanie}
+\providetranslation{solution}{rozwiązanie}
+\providetranslation{Theorems}{Twierdzenia}
+\providetranslation{theorems}{twierdzenia}
+\providetranslation{Theorem}{Twierdzenie}
+\providetranslation{theorem}{twierdzenie}

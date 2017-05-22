@@ -1,0 +1,29 @@
+#\DeclareLyXModule{DCS Group Algorithms}
+#DescriptionBegin
+#dcsalg environment and algorithm float.
+#DescriptionEnd
+
+# Author: Cezary Sobaniec <cezary.sobaniec@cs.put.poznan.pl>
+
+# $Id$
+
+Format 35
+
+Provides float   1
+
+Float
+  Type                  algorithm
+  GuiName               Algorithm
+  Placement             tbhp
+  Extension             loa
+  NumberWithin          none
+  Style                 ruled
+  ListName              "List of Algorithms"
+  IsPredefined          true
+  UsesFloatPkg          false
+  RefPrefix             alg
+End
+
+AddToPreamble
+\usepackage{dcsalg}
+EndPreamble

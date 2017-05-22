@@ -1,0 +1,5 @@
+\ProvidesDictionary{translator-float-dictionary}{Polish}
+
+\providetranslation{Listing}{Program}
+\providetranslation{listing}{program}
+\providetranslation{Algorithm}{Alg.}
