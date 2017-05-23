@@ -1,28 +1,41 @@
 <div class="wrap">
   <aside>
     <div class="container">
-      <p>friends:</p>
-      <ul ng-repeat="friendsList in friendsInConversations">
-        <li ng-repeat="item in friendsList">
-          {{item.username}}
-        </li>
-      </ul>
+      <div ng-show="currentConversationId">
+        <p>conversation ID:</p>
+        <input type="text" ng-model="currentConversationId" class="form-control">
+        <button class="btn btn-secondary" clipboard supported="supported" text="currentConversationId" on-copied="copySuccess()" on-error="copyFail(err)">Copy</button>
+        <p>friends in conversation:</p>
+        <ul ng-repeat="friendsList in friendsInConversations">
+          <li ng-repeat="item in friendsList">
+            {{item.username}}
+          </li>
+        </ul>
+      </div>
+      <div ng-hide="currentConversationId">
+        <form>
+          <input id="conversationIdInput" ng-model="conversationIdInput" type="text" class="form-control" autocomplete="off" placeholder="conversation ID">
+          <button class="btn btn-secondary" ng-click="joinConversation()">Join</button>
+          <button class="btn btn-secondary" ng-click="createNewConversation()">Create new</button>
+        </form>
+      </div>
 
-      <!--conversations<br>-->
-      <!--{{conversations}}-->
+
+
+      <!--myConversations<br>-->
+      <!--{{myConversations}}-->
       <!--<br><br>-->
       <!--conversationsDhts<br>-->
       <!--{{dhtIdsInConversations}}-->
       <!--<br><br>-->
       <!--friendsInConversations<br>-->
-      <!--{{friendsInConversations}}-->
+      <!--{{friendsInConversations[currentConversationId]}}-->
       <!--<br><br>-->
-      <!--currentConversationId<br>-->
-      <!--{{currentConversationId}}-->
+
+
 
       <button class="btn btn-secondary" ng-click="checkMessages()">check!</button>
 
-      <!-- todo to remove -->
       <br>
 
       <ul ng-repeat="m in my">

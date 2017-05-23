@@ -11,45 +11,48 @@ angular.module('webtorrentClientApp')
       $scope.otherControl = MessagesFactory.otherControl;
       $scope.ot = MessagesFactory.other;
 
+      $scope.conversationIdInput = '';
       $scope.textInput = '';
       $scope.dhtIdsInConversations = {};
       $scope.getConversation = MessagesFactory.getAll; // factory with messages
       $scope.getTorrents = TorrentFactory.getAllTorrents;
-      $scope.conversations = [];
+      $scope.myConversations = [];
       $scope.currentConversationId = 0;
       $scope.friendsInConversations = {};
-      $scope.myDhtId = $scope.currentUser.dhtId; // TODO per conversation; to tylko dla danej konwersacji; pobierane z serwera razem z moim profilem
+      $scope.myDhtId = '';
     };
 
-    var getUsersForConversation = function (conversation) {
-      ConversationsFactory.get({where: {conversation_id: conversation.conversation_id}}, function (data) {
-        var convId = conversation.conversation_id;
-        $scope.friendsInConversations[convId] = lodash.map(data._items, 'user_id')
-        $scope.dhtIdsInConversations[convId] = lodash.map(data._items, 'user_dht_id')
-      })
+    var getUsersForConversation = function (conversationId) {
+      ConversationsFactory.get({where: {conversation_id: conversationId}}, function (data) {
+        var convId = conversationId;
+        $scope.friendsInConversations[convId] = lodash.map(data._items, function (item) {
+          return {user_dht_id: item.user_dht_id, username: item.user_id.username};
+        });
+        $scope.dhtIdsInConversations[convId] = lodash.map(data._items, 'user_dht_id');
+      });
     };
 
     var getConversations = function () {
       ConversationsFactory.get({where: {user_id: UserService.getCurrentUser().id}}, function (data) {
-        $scope.conversations = data._items;
-        $scope.currentConversationId = $scope.conversations[0].conversation_id;
-        // get other users involved in each conversation
-        lodash.forEach($scope.conversations, function (item) {
-          getUsersForConversation(item);
-        })
+        if (data._items.length > 0) {
+          $scope.myConversations = data._items;
+          $scope.currentConversationId = $scope.myConversations[0].conversation_id;
+          $scope.myDhtId = $scope.myConversations[0].user_dht_id;
+
+          // get other users involved in each conversation
+          lodash.forEach($scope.myConversations, function (item) {
+            getUsersForConversation(item.conversation_id);
+          });
+
+          // in the end init torrent factory
+          TorrentFactory.init($scope.myDhtId);
+        }
       });
     };
-
-    // var getUsers = function () {
-    //   UsersFactory.get({}, function (data) {
-    //     $scope.friends = data._items;
-    //   });
-    // };
 
     var initController = function () {
       clearVariables();
       getConversations();
-      TorrentFactory.init($scope.currentUser.dhtId);
     };
 
     $scope.checkMessages = function () {
@@ -60,6 +63,32 @@ angular.module('webtorrentClientApp')
       TorrentFactory.sendMessage($scope.textInput);
     };
 
+    function createOrJoinConversation(convId) {
+      // first obtain dhtId to store infohashes of messages in this conversation
+      DhtFactory.save({}, {infohash: 'new'}).$promise.then(function (data) {
+        var conversationObject = {
+          'conversation_id': convId,
+          'user_id': UserService.getCurrentUser().id,
+          'user_dht_id': data._id // todo hash from <user, convId> or follow bep44
+        };
+        ConversationsFactory.save({}, conversationObject, function () {
+          initController();
+        });
+      });
+    }
+
+
+    $scope.joinConversation = function () {
+      if ($scope.conversationIdInput && $scope.conversationIdInput !== '') {
+        createOrJoinConversation($scope.conversationIdInput);
+      }
+    };
+
+    $scope.createNewConversation = function () {
+      // server accepts dummy name of conversation to create new one with random UUID
+      createOrJoinConversation('dummy');
+    };
+
     $scope.truncate = function (word) {
       return lodash.truncate(word, {'length': 8});
     };
@@ -67,6 +96,10 @@ angular.module('webtorrentClientApp')
     var checkMessagesInterval = $interval(function() {
       $scope.checkMessages();
     }, 5000);
+
+    var checkUsersInConversation = $interval(function () {
+      getUsersForConversation($scope.currentConversationId)
+    }, 60000)
 
     var refreshConversationInterval = $interval(function() {
       // todo to jest hack, wymusza digest co sekundę...
@@ -76,11 +109,21 @@ angular.module('webtorrentClientApp')
     }, 1000);
 
     $scope.$on('$destroy', function() {
+      $interval.cancel(checkUsersInConversation);
+      checkUsersInConversation = undefined;
       $interval.cancel(checkMessagesInterval);
       checkMessagesInterval = undefined;
       $interval.cancel(refreshConversationInterval);
       refreshConversationInterval = undefined;
     });
+
+    $scope.copySuccess = function () {
+      console.log('Copied!');
+    };
+
+    $scope.copyFail = function (err) {
+      console.error('Error!', err);
+    };
 
     initController(); // init variables and get all data from server
   });

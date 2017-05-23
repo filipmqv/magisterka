@@ -23,7 +23,8 @@ angular
     'luegg.directives', // angular-scroll-glue - scrolling discussion div to bottom on change
     'LocalForageModule', // for async storage api including indexedDB
     'LocalStorageModule', // for sync storage like currentUser
-    'ngLodash'
+    'ngLodash',
+    'angular-clipboard'
   ])
   .constant('ENDPOINT_URI', 'http://192.168.1.5:5000/')
   .constant('USER_ROLES', {

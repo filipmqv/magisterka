@@ -27,10 +27,7 @@ users_schema = {
     'password': {
         'type': 'string',
         'required': True
-    },
-    'dht_id': {
-        'type': 'string'
-    }        
+    }    
 }
 
 users = {
@@ -90,8 +87,7 @@ conversation_schema = {
 conversations = {
     'item_title': 'conversation',
     'pagination': False,
-    'schema': conversation_schema,
-    'query_objectid_as_string': True
+    'schema': conversation_schema
 }
 
 

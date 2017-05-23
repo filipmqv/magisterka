@@ -100,14 +100,18 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
     seedList(tempOther[0]);
   }
 
-  function initialize(userDhtId) {
-    // todo czy to ONCE nie wymaga przeładowania strony po zalogowaniu, jesli ktoś sie wczesniej wylogował bez odświeżenia?
-    myDhtId = userDhtId;
-    getMyCurrentInfoHash(userDhtId);
-    MessagesFactory.init(userDhtId).then(seedOnInit);
-  }
-  torrent.init = lodash.once(initialize);
-
+  torrent.init = function(userDhtId) {
+    client.destroy(function (err) {
+      if (err) {
+        console.error(err);
+      }
+      client = new WebTorrent();
+      myDhtId = userDhtId;
+      getMyCurrentInfoHash(userDhtId);
+      MessagesFactory.init(userDhtId).then(seedOnInit);
+    });
+    // todo czy to nie wymaga przeładowania strony po zalogowaniu, jesli ktoś sie wczesniej wylogował bez odświeżenia?
+  };
 
 ///////////// receive
 
@@ -199,12 +203,12 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
   }
 
   torrent.checkMessages = function (dhtIdsInConversations) {
-    // check all conversations and all users in them
+    // check all myConversations and all users in them
     lodash.forEach(dhtIdsInConversations, function (dhtIds) {
       lodash.forEach(dhtIds, function (dhtId) {
         checkInfoHashForDhtId(dhtId);
-      })
-    })
+      });
+    });
   };
 
 

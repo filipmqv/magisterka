@@ -34,6 +34,7 @@ module.exports = function(config) {
       'bower_components/angular-localforage/dist/angular-localForage.js',
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'bower_components/ng-lodash/build/ng-lodash.js',
+      'bower_components/angular-clipboard/angular-clipboard.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
