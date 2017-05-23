@@ -10,7 +10,7 @@
 %  $Id: thesis-template.lyx,v 1.7 2011/12/22 12:10:18 sobaniec Exp $
 %
 \end_preamble
-\options thesis,openany
+\options thesis
 \use_default_options false
 \begin_modules
 dcs
@@ -169,10 +169,6 @@ mainmatter
 Wstęp
 \end_layout
 
-\begin_layout Chapter
-Istniejące rozwiązania
-\end_layout
-
 \begin_layout Standard
 W tym rozdziale zaprezentowano istniejące komunikatory dla dwóch osób oraz
  komunikatory grupowe.
@@ -315,6 +311,10 @@ Przytoczone aplikacje to pomysły na komunikatory oparte o mechanizm podobny
  Być może w przyszłości wady uda się zminimalizować, a zalety architektury
  opartej o blockchain okażą się kluczowe.
  
+\end_layout
+
+\begin_layout Chapter
+Istniejące rozwiązania
 \end_layout
 
 \begin_layout Chapter
