@@ -100,7 +100,11 @@ Filip Waligórski
 \end_layout
 
 \begin_layout Title
-Rozgłaszanie danych w grafach dużej skali
+Rozgłaszanie danych w
+\begin_inset space ~
+\end_inset
+
+grafach dużej skali
 \end_layout
 
 \begin_layout Date
@@ -176,15 +180,96 @@ Istniejące rozwiązania
 \begin_layout Standard
 W tym rozdziale zaprezentowano istniejące komunikatory dla dwóch osób oraz
  komunikatory grupowe.
- Ich cele i funkcjonalność są zbliżone choć realizują je z różnymi założeniami
- oraz bazując na różnych architekturach i koncepcjach.
- Poniżej opisane zostały wybrane rozwiązania z naciskiem na cechy wyróżniające
- je spośród konkurencyjnych aplikacji.
+ Ich cele i
+\begin_inset space ~
+\end_inset
+
+funkcjonalność są zbliżone choć realizują je z
+\begin_inset space ~
+\end_inset
+
+różnymi założeniami oraz bazując na różnych architekturach i
+\begin_inset space ~
+\end_inset
+
+koncepcjach.
+ Poniżej opisane zostały wybrane rozwiązania z
+\begin_inset space ~
+\end_inset
+
+naciskiem na cechy wyróżniające je spośród konkurencyjnych aplikacji.
+ 
+\end_layout
+
+\begin_layout Section
+Facebook Messenger 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "messenger"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jest to jeden z
+\begin_inset space ~
+\end_inset
+
+najpopularniejszych obecnie komunikatorów.
+ Oferuje zarówno czat dla 2 osób jak i
+\begin_inset space ~
+\end_inset
+
+grupowy.
+ Wspiera wysyłanie wszelkich multimediów i
+\begin_inset space ~
+\end_inset
+
+plików oraz dostarczanie wiadomości pod nieobecność nadawcy.
+ Dostępny jest na najszerszej gamie platform — jako aplikacja webowa, mobilna
+ oraz desktopowa, czym wyróżnia się na tle konkurencji.
+ Architektonicznie Messenger polega na 
+\begin_inset Quotes pld
+\end_inset
+
+centralnym serwerze
+\begin_inset Quotes prd
+\end_inset
+
+ przekazującym wiadomości.
+ Cudzysłów wynika z
+\begin_inset space ~
+\end_inset
+
+faktu, że pod pojęciem 
+\begin_inset Quotes pld
+\end_inset
+
+serwer
+\begin_inset Quotes prd
+\end_inset
+
+ kryje się ogromna infrastruktura złożona z
+\begin_inset space ~
+\end_inset
+
+wielu maszyn, którą firma musi utrzymywać.
+ Wadami tego komunikatora jest choćby brak wsparcia szyfrowania wiadomości
+ czy fakt, że nie jest to oprogramowanie open-source.
  
 \end_layout
 
 \begin_layout Section
 Bleep 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bleep"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -194,126 +279,452 @@ Bleep jest komunikatorem zaprojektowanym przez firmę rozwijającą protokół
  (brak aplikacji webowej).
  Kod źródłowy aplikacji nie został udostępniony (nie jest to open-source),
  co oznacza, że użytkownicy nie mogą upewnić się, czy aplikacja działa i
- została zaimplementowana zgodnie z założeniami.
- Bleep oferuje rozmowy dla dwóch osób, a w planach twórców ((?) powtórzenie)
- jest zaimplementowanie komunikacji grupowej.
- Wiadomości są szyfrowane przed wysłaniem na urządzeniu nadawcy i odszyfrowywane
- na urządzeniu odbiorcy – szyfrowanie end2end.
- (...)
-\end_layout
+\begin_inset space ~
+\end_inset
 
-\begin_layout Section
-Signal 
-\end_layout
+została zaimplementowana zgodnie z
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
-Twórcy aplikacji Signal skupili się przede wszystkim na bezpieczeństwie
- i prywatności użytkowników.
- Wiadomości są szyfrowane na urządzeniach więc pomimo faktu, że architektura
- zakłada obecność centralnego serwera, wiadomości przechowywane na nim nie
- mogą zostać odczytane przez osoby trzecie.
- Kod źródłowy jest dostępny publicznie co oznacza, że każdy może sprawdzić
- zgodność implementacji z oferowanymi założeniami.
- Podobnie jak w przypadku aplikacji Bleep, dostępne są natywne aplikacje
- mobilna i desktopowa.
- Możliwe jest prowadzenie rozmowy grupowej.
+założeniami.
+ Bleep oferuje rozmowy dla dwóch osób, a
+\begin_inset space ~
+\end_inset
+
+w
+\begin_inset space ~
+\end_inset
+
+planach twórców jest zaimplementowanie komunikacji grupowej.
+ Wiadomości są szyfrowane przed wysłaniem na urządzeniu nadawcy i
+\begin_inset space ~
+\end_inset
+
+odszyfrowywane na urządzeniu odbiorcy — szyfrowanie end to end.
  
 \end_layout
 
 \begin_layout Standard
-Podobne rozwiązania: Wire
+Jednak najważniejszą cechą wyróżniającą ten komunikator jest jego architektura
+ - brak centralnego serwera pośredniczącego w
+\begin_inset space ~
+\end_inset
+
+przekazywaniu wiadomości.
+ Komunikaty przesyłane są bezpośrednio między urządzeniami, jeśli oba są
+ dostępne w
+\begin_inset space ~
+\end_inset
+
+momencie wysyłania, a
+\begin_inset space ~
+\end_inset
+
+w
+\begin_inset space ~
+\end_inset
+
+przeciwnym przypadku wiadomość umieszczana jest w
+\begin_inset space ~
+\end_inset
+
+DHT (Distributed Hash Table) i
+\begin_inset space ~
+\end_inset
+
+przechowywana do czasu odebrania jej.
+ Specjalny mechanizm dba o
+\begin_inset space ~
+\end_inset
+
+to, by wiadomość nie zniknęła z
+\begin_inset space ~
+\end_inset
+
+DHT wcześniej.
+ Dane o
+\begin_inset space ~
+\end_inset
+
+koncie użytkownika oraz klucze szyfrujące pozostają lokalnie na urządzeniu.
+ 
+\end_layout
+
+\begin_layout Section
+Signal 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "signal"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Twórcy aplikacji Signal skupili się przede wszystkim na bezpieczeństwie
+ i
+\begin_inset space ~
+\end_inset
+
+prywatności użytkowników.
+ Wiadomości są szyfrowane na urządzeniach więc pomimo faktu, że architektura
+ zakłada obecność centralnego serwera, wiadomości przechowywane na nim nie
+ mogą zostać odczytane przez osoby trzecie.
+ Kod źródłowy jest dostępny publicznie co oznacza, że każdy może sprawdzić
+ zgodność implementacji z
+\begin_inset space ~
+\end_inset
+
+oferowanymi założeniami.
+ Podobnie jak w
+\begin_inset space ~
+\end_inset
+
+przypadku aplikacji Bleep, dostępne są natywne aplikacje mobilna i
+\begin_inset space ~
+\end_inset
+
+desktopowa.
+ Możliwe jest prowadzenie rozmowy grupowej pomimo zastosowania szyfrowania
+ wiadomości — treść zostaje zaszyfrowana symetrycznie (jedna wersja dla
+ wszystkich odbiorców niezależnie od ich liczby), a
+\begin_inset space ~
+\end_inset
+
+następnie sam klucz jest szyfrowany zgodnie z
+\begin_inset space ~
+\end_inset
+
+oczekiwaniami każdego z
+\begin_inset space ~
+\end_inset
+
+odbiorców z
+\begin_inset space ~
+\end_inset
+
+osobna.
+ Dzięki temu mechanizmowi uniknięto sytuacji, w
+\begin_inset space ~
+\end_inset
+
+której nadawca musiałby przygotować 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+n
+\end_layout
+
+\end_inset
+
+ wersji całej, potencjalnie dużej wiadomości dla 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+n
+\end_layout
+
+\end_inset
+
+ odbiorców.
+\end_layout
+
+\begin_layout Standard
+Podobne rozwiązania: Wire, WhatsApp, Telegram, Allo
 \end_layout
 
 \begin_layout Section
 Darkwire 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "darkwire"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Darkwire to aplikacja open-source oferująca komunikator grupowy z dostępem
- poprzez stronę internetową (aplikacja webowa).
+Darkwire to aplikacja open-source oferująca komunikator grupowy z
+\begin_inset space ~
+\end_inset
+
+dostępem poprzez stronę internetową (aplikacja webowa).
  W przeciwieństwie do większości rozwiązań użytkownik nie musi tworzyć konta
- by skorzystać z programu.
- W celu skomunikowania się z użytkownikami należy wymienić między nimi identyfik
-ator czatu (link do konkretnego pokoju) za pośrednictwem innego kanału komunikac
-yjnego (np.
+ by skorzystać z
+\begin_inset space ~
+\end_inset
+
+programu.
+ W celu skomunikowania się z
+\begin_inset space ~
+\end_inset
+
+użytkownikami należy wymienić między nimi identyfikator czatu (link do konkretne
+go pokoju) za pośrednictwem innego kanału komunikacyjnego (np.
  e-mail).
  Takie rozwiązanie zakłada, że identyfikator nie zostanie odgadnięty przez
- osoby trzecie – w przeciwnym przypadku będą one mogły odczytać wysyłane
- wiadomości.
- Architektura zakłada istnienie centralnego serwera uczestniczącego w przekazywa
-niu wiadomości.
+ osoby trzecie — w
+\begin_inset space ~
+\end_inset
+
+przeciwnym przypadku będą one mogły odczytać wysyłane wiadomości.
+ Architektura zakłada istnienie centralnego serwera uczestniczącego w
+\begin_inset space ~
+\end_inset
+
+przekazywaniu wiadomości.
  Z racji faktu, że aplikacja ma otwarte źródła, każdy może uruchomić swój
  własny serwer.
- Komunikaty są szyfrowane na urządzeniu (w przeglądarce) przed wysłaniem,
- zatem serwer nie zna treści wiadomości.
+ Komunikaty są szyfrowane na urządzeniu (w
+\begin_inset space ~
+\end_inset
+
+przeglądarce) przed wysłaniem, zatem serwer nie zna treści wiadomości.
  Centralny serwer przesyła wiadomości tylko do tych uczestników, którzy
- są dostępni w momencie nadania wiadomości (brak wsparcia dla odbierania
- starszych wiadomości).
+ są dostępni w
+\begin_inset space ~
+\end_inset
+
+momencie nadania wiadomości (brak wsparcia dla odbierania starszych wiadomości
+ czy wysyłania wiadomości do użytkowników niedostępnych w
+\begin_inset space ~
+\end_inset
+
+danej chwili).
  
 \end_layout
 
 \begin_layout Section
 Friends 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "friends"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Ten niszowy projekt open-source oferuje aplikację desktopową i umożliwia
- czat grupowy.
+Ten niszowy projekt open-source oferuje aplikację desktopową i
+\begin_inset space ~
+\end_inset
+
+umożliwia czat grupowy.
+ Szyfrowanie wiadomości nie zostało do tej pory zrealizowane, ale jest jednym
+ z
+\begin_inset space ~
+\end_inset
+
+punktów przyszłego rozwoju.
  Głównym celem twórców było stworzenie programu niezależnego od centralnego
  serwera oraz umożliwiającego rozmowę przy użyciu alternatywnych kanałów
  komunikacyjnych (np.
- poprzez Bluetooth) w sytuacji gdy połączenie internetowe jest niedostępne.
+ poprzez Bluetooth) w
+\begin_inset space ~
+\end_inset
+
+sytuacji gdy połączenie internetowe jest niedostępne.
  Aplikacja wykorzystuje algorytm plotkowania (gossiping) oraz replikuje
  wiadomości przy użyciu drzewa skrótów (hash tree, Merkle DAG, DAG - Directed
  Acyclic Graph).
- Dzięki temu wiadomości w czacie mogą zostać połączone nawet w przypadku,
- gdy ktoś nadał komunikaty będąc odłączonym od sieci – mechanizm podobny
- do łączenia zmian w repozytorium kodu.
- Szyfrowanie wiadomości nie zostało do tej pory zrealizowane, ale jest jednym
- z punktów przyszłego rozwoju.
+ Dzięki temu wiadomości w
+\begin_inset space ~
+\end_inset
+
+czacie mogą zostać połączone nawet w
+\begin_inset space ~
+\end_inset
+
+przypadku, gdy ktoś nadał komunikaty będąc odłączonym od sieci — mechanizm
+ podobny do łączenia zmian w
+\begin_inset space ~
+\end_inset
+
+repozytorium kodu.
+ Gwarantuje to ostateczną spójność — przykładowy scenariusz dla 3 użytkowników:
+ 
+\end_layout
+
+\begin_layout Enumerate
+Wiadomość wysłana przez użytkownika A została odebrana przez użytkownika
+ B, który dołączył ją do swojego drzewa wiadomości.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Użytkownik A stał się niedostępny.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Użytkownik C stał się dostępny i
+\begin_inset space ~
+\end_inset
+
+odebrał od użytkownika B zmienioną wersję drzewa i
+\begin_inset space ~
+\end_inset
+
+w
+\begin_inset space ~
+\end_inset
+
+ten sposób dowiedział się o
+\begin_inset space ~
+\end_inset
+
+wiadomości wysłanej przez użytkownika A pomimo faktu, że ten jest w
+\begin_inset space ~
+\end_inset
+
+tej chwili niedostępny.
+ 
 \end_layout
 
 \begin_layout Section
 Tox 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tox"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Tox jest z założenia rozproszonym i szyfrowanym protokołem do wymiany wiadomości.
+Tox jest z
+\begin_inset space ~
+\end_inset
+
+założenia rozproszonym i
+\begin_inset space ~
+\end_inset
+
+szyfrowanym protokołem do wymiany wiadomości.
  Powstało kilkanaście implementacji klientów obsługujących go co pozwala
- na komunikowanie się z użytkownikami różnych aplikacji.
+ na komunikowanie się z
+\begin_inset space ~
+\end_inset
+
+użytkownikami różnych aplikacji.
  Wśród zaimplementowanych aplikacji są programy na komputery stacjonarne
  oraz smartfony.
- Wiadomości są przesyłane bezpośrednio między nadawcą i odbiorcą dlatego
- obie strony muszą być dostępne jednocześnie.
+ Wiadomości są przesyłane bezpośrednio między nadawcą i
+\begin_inset space ~
+\end_inset
+
+odbiorcą dlatego obie strony muszą być dostępne jednocześnie.
  Brak wsparcia dostarczania wiadomości gdy jedna strona jest niedostępna
  to duża wada wszystkich aplikacji implementujących ten rodzaj transmisji
  P2P.
- Jednym z rozwiązań tego problemu zaproponowanym przez twórców protokołu
- jest skorzystanie z serwerów, którym użytkownik ufa i których zadaniem
- jest przekazywanie wiadomości do odbiorcy pod nieobecność nadawcy.
- Narusza to jednak założenie o rozproszeniu systemu (braku centralnych węzłów).
- Wsparcie dla komunikacji grupowej jest jednym z celów rozwoju protokołu.
+ Jednym z
+\begin_inset space ~
+\end_inset
+
+rozwiązań tego problemu zaproponowanym przez twórców protokołu jest skorzystanie
+ z
+\begin_inset space ~
+\end_inset
+
+serwerów, którym użytkownik ufa i
+\begin_inset space ~
+\end_inset
+
+których zadaniem jest przekazywanie wiadomości do odbiorcy pod nieobecność
+ nadawcy.
+ Narusza to jednak założenie o
+\begin_inset space ~
+\end_inset
+
+rozproszeniu systemu (braku centralnych węzłów).
+ Wsparcie dla komunikacji grupowej jest jednym z
+\begin_inset space ~
+\end_inset
+
+celów rozwoju protokołu.
  
 \end_layout
 
 \begin_layout Section
 ZeroChat, ZeroMail, BitMessage 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "zeronet"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bitmessage-main"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Przytoczone aplikacje to pomysły na komunikatory oparte o mechanizm podobny
- do transakcji kryptowalutowych.
- Wysłanie wiadomości wymaga obliczenia funkcji skrótu z zadanym prefiksem
- (proof of work) i umieszczenia bloku w łańcuchu (blockchain).
- Samo tylko wyliczenie funkcji skrótu powinno z definicji zająć około 4
- minut (https://bitmessage.org/bitmessage.pdf), podczas gdy pozostałe komunikatory
- dążą do uzyskania czasu dostarczenia wiadomości bliskiego zeru (rozmowa
- w czasie rzeczywistym).
+Przytoczone aplikacje realizują pomysły na komunikatory oparte o
+\begin_inset space ~
+\end_inset
+
+mechanizm podobny do transakcji kryptowalutowych.
+ Wysłanie wiadomości wymaga obliczenia funkcji skrótu z
+\begin_inset space ~
+\end_inset
+
+zadanym prefiksem (proof of work) i
+\begin_inset space ~
+\end_inset
+
+umieszczenia bloku w
+\begin_inset space ~
+\end_inset
+
+łańcuchu (blockchain).
+ Samo tylko wyliczenie funkcji skrótu powinno z
+\begin_inset space ~
+\end_inset
+
+definicji zająć około 4 minut 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bitmessage-pdf"
+
+\end_inset
+
+, podczas gdy pozostałe komunikatory dążą do uzyskania czasu dostarczenia
+ wiadomości bliskiego zeru (rozmowa w
+\begin_inset space ~
+\end_inset
+
+czasie rzeczywistym).
  Mimo tej znaczącej wady należy potraktować te projekty jako próbę stworzenia
- rozwiązania o innej architekturze niż dotychczas zaprezentowane (centralny
- serwer lub P2P).
- Być może w przyszłości wady uda się zminimalizować, a zalety architektury
- opartej o blockchain okażą się kluczowe.
+ rozwiązania o
+\begin_inset space ~
+\end_inset
+
+innej architekturze niż dotychczas zaprezentowane (centralny serwer lub
+ P2P).
+ Być może w
+\begin_inset space ~
+\end_inset
+
+przyszłości wady uda się zminimalizować, a
+\begin_inset space ~
+\end_inset
+
+zalety architektury opartej o
+\begin_inset space ~
+\end_inset
+
+blockchain okażą się kluczowe.
  
 \end_layout
 
@@ -331,6 +742,115 @@ Wyniki testów
 
 \begin_layout Chapter
 Wnioski
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+backmatter
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "messenger"
+
+\end_inset
+
+https://pl-pl.messenger.com/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bleep"
+
+\end_inset
+
+http://www.bleep.pm/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "signal"
+
+\end_inset
+
+https://whispersystems.org/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "darkwire"
+
+\end_inset
+
+https://darkwire.io/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "friends"
+
+\end_inset
+
+http://moose-team.github.io/friends/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "tox"
+
+\end_inset
+
+https://tox.chat/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "zeronet"
+
+\end_inset
+
+https://zeronet.readthedocs.io/en/latest/using_zeronet/sample_sites/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bitmessage-main"
+
+\end_inset
+
+https://bitmessage.org/wiki/Main_Page
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bitmessage-pdf"
+
+\end_inset
+
+https://bitmessage.org/bitmessage.pdf
 \end_layout
 
 \end_body
