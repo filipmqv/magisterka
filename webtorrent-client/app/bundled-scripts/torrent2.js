@@ -203,7 +203,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
   }
 
   torrent.checkMessages = function (dhtIdsInConversations) {
-    // check all myConversations and all users in them
+    // check all conversations and all users in them
     lodash.forEach(dhtIdsInConversations, function (dhtIds) {
       lodash.forEach(dhtIds, function (dhtId) {
         checkInfoHashForDhtId(dhtId);
