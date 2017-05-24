@@ -97,8 +97,8 @@ angular.module('webtorrentClientApp')
     }, 5000);
 
     var checkUsersInConversation = $interval(function () {
-      getUsersForConversation($scope.currentConversationId)
-    }, 60000)
+      getUsersForConversation($scope.currentConversationId);
+    }, 60000);
 
     var refreshConversationInterval = $interval(function() {
       // todo to jest hack, wymusza digest co sekundę...
