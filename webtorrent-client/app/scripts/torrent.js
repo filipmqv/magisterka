@@ -143,7 +143,6 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
   }
 
   function onTorrent (torrent) {
-    // todo jesli typ video to od razu dodać (nie czekać na 'done') jak w przykładzie, a na 'done' zapisać w localforage
     if (torrent.name.startsWith('control')) {
       var levelForMessages = lodash.parseInt(torrent.name.slice(7));
       torrent.files.forEach(function (file) {
@@ -180,11 +179,10 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
           }
         });
       });
-    } else {
+    }
       // todo przeorganizować całą tę sekcję i wyrzycić powtarzający sie kod
       // todo zrobić otrzymywanie, zapisywanie, wyswietlanie i init plików (dowolnych)
       // todo jeśli typ z załącznikiem to najpierw trzeba przygotować dymek czatu (na bazie wiadomości) i w niego wstawić załącznik
-    }
   }
 
   function checkInfoHashForDhtId(dhtId) {
@@ -315,7 +313,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
       myCurrentInfoHash = torrent.infoHash;
       MessagesFactory.add(torrent.infoHash, message, myDhtId);
 
-      var noCompactInProgress = tryCompactMessages(0); // TODO kompaktować tylko te tekstowe czy wideo też??
+      var noCompactInProgress = tryCompactMessages(0);
       if (noCompactInProgress) { // only if there's no compacting in progress
         afterSending(torrent.infoHash);
       }
