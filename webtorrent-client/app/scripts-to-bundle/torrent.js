@@ -286,7 +286,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
       type: actualType,
       content: input,
       timestamp: lodash.now(),
-      sender: userDhtId, // todo dhtId z konwersacji
+      sender: userDhtId,
       previousInfoHash: prevInfoHash
     };
   }

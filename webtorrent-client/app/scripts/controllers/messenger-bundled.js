@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('webtorrentClientApp')
-  .controller('MessengerCtrl', function ($scope, $interval, DhtFactory, UsersFactory, ConversationsFactory,
+  .controller('MessengerCtrl', function ($scope, $interval, $window, DhtFactory, UsersFactory, ConversationsFactory,
                                          MessagesFactory, TorrentFactory, lodash, UserService) {
 
     var clearVariables = function () {
@@ -88,6 +88,13 @@ angular.module('webtorrentClientApp')
       // server accepts dummy name of conversation to create new one with random UUID
       createOrJoinConversation('dummy');
     };
+
+    $scope.clearStorageAndRefresh = function () {
+      //localStorage.clear(); // stay logged in but clear messages
+      MessagesFactory.clearAll().then(function () {
+        $window.location.reload();
+      });
+    }
 
     $scope.truncate = function (word) {
       return lodash.truncate(word, {'length': 8});
