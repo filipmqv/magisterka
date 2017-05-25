@@ -11,7 +11,7 @@ angular.module('webtorrentClientApp')
     $scope.login = function (credentials) {
       AuthService.login(credentials).then(function () {
         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-        $location.path('/');
+        $location.path('/messenger');
       }, function () {
         $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
       });
