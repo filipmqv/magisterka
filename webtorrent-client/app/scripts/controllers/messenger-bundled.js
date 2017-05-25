@@ -61,6 +61,7 @@ angular.module('webtorrentClientApp')
 
     $scope.sendMessage = function () {
       TorrentFactory.sendMessage($scope.textInput);
+      $scope.textInput = '';
     };
 
     function createOrJoinConversation(convId) {

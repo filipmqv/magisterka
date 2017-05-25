@@ -3,10 +3,19 @@
 angular.module('webtorrentClientApp')
   .controller('LoginCtrl', function ($scope, $rootScope, AUTH_EVENTS, AuthService, UserService, $location) {
 
-    $scope.credentials = {
-      email: 'moz@wp.pl',
-      password: 'password'
-    };
+    // for testing and quick filling the form
+    $scope.credentialsInput = {};
+    $scope.usernames = ['moz', 'chrome', 'oper', 'h1', 'h2', 'h3', 'h4'];
+    var emailEnding = '@wp.pl';
+    var password = 'password';
+
+    $scope.fillCredentials = function (username) {
+      $scope.credentialsInput.email = username + emailEnding;
+      $scope.credentialsInput.password = password;
+    }
+
+
+
 
     $scope.login = function (credentials) {
       AuthService.login(credentials).then(function () {
