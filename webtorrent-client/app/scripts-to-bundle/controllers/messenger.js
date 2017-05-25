@@ -4,6 +4,9 @@ angular.module('webtorrentClientApp')
   .controller('MessengerCtrl', function ($scope, $interval, $window, DhtFactory, UsersFactory, ConversationsFactory,
                                          MessagesFactory, TorrentFactory, lodash, UserService) {
 
+    // var testMode = true;
+    // var testNumberOfObtainedMsgs = 0;
+
     var clearVariables = function () {
       $scope.my = MessagesFactory.my;
       $scope.con = MessagesFactory.control;

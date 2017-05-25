@@ -86,7 +86,7 @@
               <img ng-src="images/avatar.gif" />
             </div>
             <div class="messages">
-              <p>{{$index + 1}}&nbsp;&nbsp;&nbsp;{{item.message.content}}</p>
+              <p id="message{{$index}}">{{$index + 1}}&nbsp;&nbsp;&nbsp;{{item.message.content}}</p>
               <time ng-repeat="sentBy in friendsInConversations[currentConversationId] | filter:item.message.sender">{{sentBy.username}} • {{item.message.timestamp | date:'H:mm:ss'}}</time><br/>
               <time>{{truncate(item.infoHash)}} • {{truncate(item.message.previousInfoHash)}}</time>
             </div>
