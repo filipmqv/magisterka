@@ -12,7 +12,7 @@ angular.module('webtorrentClientApp')
     $scope.fillCredentials = function (username) {
       $scope.credentialsInput.email = username + emailEnding;
       $scope.credentialsInput.password = password;
-    }
+    };
 
 
 

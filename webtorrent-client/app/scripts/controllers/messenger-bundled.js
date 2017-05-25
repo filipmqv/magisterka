@@ -5,8 +5,6 @@ angular.module('webtorrentClientApp')
   .controller('MessengerCtrl', function ($scope, $interval, $window, DhtFactory, UsersFactory, ConversationsFactory,
                                          MessagesFactory, TorrentFactory, lodash, UserService) {
 
-    // var testMode = true;
-    // var testNumberOfObtainedMsgs = 0;
 
     var clearVariables = function () {
       $scope.my = MessagesFactory.my;
@@ -98,7 +96,7 @@ angular.module('webtorrentClientApp')
       MessagesFactory.clearAll().then(function () {
         $window.location.reload();
       });
-    }
+    };
 
     $scope.truncate = function (word) {
       return lodash.truncate(word, {'length': 8});

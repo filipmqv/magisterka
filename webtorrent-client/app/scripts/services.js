@@ -93,9 +93,9 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
     return $q(function (resolve) {
       $localForage.clear().then(function () {
         resolve();
-      })
+      });
     });
-  }
+  };
 
   return messages;
 });
