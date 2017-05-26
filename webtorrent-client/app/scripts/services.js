@@ -10,6 +10,13 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
   messages.other = [];
   messages.otherControl = [];
 
+  function clearVariables() {
+    messages.my = [[], [], [], [], [], [], []];
+    messages.control = [[], [], [], [], [], [], []];
+    messages.other = [];
+    messages.otherControl = [];
+  }
+
   function logn(base, val) {
     return Math.log(val) / Math.log(base);
   }
@@ -37,6 +44,7 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
   }
 
   messages.init = function (userDhtId) {
+    clearVariables();
     return $q(function(resolve) {
       $localForage.iterate(function(value, key) {
         pushMessage(userDhtId, key, value);

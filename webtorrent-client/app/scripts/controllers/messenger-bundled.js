@@ -98,8 +98,9 @@ angular.module('webtorrentClientApp')
       });
     };
 
-    $scope.truncate = function (word) {
-      return lodash.truncate(word, {'length': 8});
+    $scope.truncate = function (word, length) {
+      length = length || 9;
+      return lodash.truncate(word, {'length': length});
     };
 
     var checkMessagesInterval = $interval(function() {
