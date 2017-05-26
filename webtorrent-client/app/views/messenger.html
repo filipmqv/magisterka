@@ -75,7 +75,10 @@
 
       <p>torrents {{getTorrents().length}}</p>
       <ol>
-        <li ng-repeat="torrent in getTorrents() | orderBy:'infoHash'">{{torrent.infoHash}}</li>
+        <li ng-repeat="torrent in getTorrents() | orderBy:'infoHash'">
+          <span ng-style="{'background-color':'#'+torrent.infoHash.substring(0,6), 'width':'50px', 'display': 'inline-block'}">&nbsp</span>
+          {{truncate(torrent.infoHash)}}
+          </li>
       </ol>
       <br>
 
