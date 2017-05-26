@@ -4,7 +4,7 @@
 
 var services = angular.module('Torrents', []);
 
-services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFactory, lodash){
+services.factory('TorrentFactory', function($localForage, $timeout, DhtFactory, MessagesFactory, lodash){
   var torrent = {};
 
   var WebTorrent = require('webtorrent');
@@ -117,11 +117,13 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
 
 
   function removeTorrents(infoHashes) {
-    lodash.forEach(infoHashes, function(i) {
-      if (client.get(i)) {
-        client.remove(i, handleIfError);
-      }
-    });
+    $timeout(function () {
+      lodash.forEach(infoHashes, function(i) {
+        if (client.get(i)) {
+          client.remove(i, handleIfError);
+        }
+      });
+    }, 5000);
   }
 
   function isInfoHashInConversation(conversation, infohash) {
@@ -153,6 +155,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
           var message = getFromBuffer(buffer);
           if (file.name === 'text' && !isInfoHashInConversation(MessagesFactory.getAll(), message.infoHash)) {
             MessagesFactory.add(message.infoHash, message.message, myDhtId, levelForMessages);
+            console.log(lodash.now() + ' should apply ' + message.message.content);
           }
           if (file.name === 'control') {
             removeTorrents(message.content.infoHashes);
@@ -161,6 +164,7 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
 
             MessagesFactory.add(torrent.infoHash, message, myDhtId);
             if (message.previousInfoHash) {
+              console.log('adding previous ' + message.previousInfoHash);
               addTorrentByInfoHash(message.previousInfoHash);
             }
           }
@@ -173,8 +177,10 @@ services.factory('TorrentFactory', function($localForage, DhtFactory, MessagesFa
           var message = getFromBuffer(buffer);
 
           // todo nie wyswietlać dopóki nie mamy wszystkich poprzednich wiadomości
-          MessagesFactory.add(torrent.infoHash, message, myDhtId);
-          console.log(lodash.now() + ' should apply ' + message.content);
+          if (!isInfoHashInConversation(MessagesFactory.getAll(), torrent.infoHash)) {
+            MessagesFactory.add(torrent.infoHash, message, myDhtId);
+            console.log(lodash.now() + ' should apply ' + message.content);
+          }
           if (message.previousInfoHash && !isInfoHashInConversation(MessagesFactory.getAll(), message.previousInfoHash)) {
             console.log('adding previous ' + message.previousInfoHash);
             addTorrentByInfoHash(message.previousInfoHash);
