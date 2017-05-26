@@ -4,7 +4,7 @@
 
 var services = angular.module('Torrents', []);
 
-services.factory('TorrentFactory', function($localForage, $timeout, DhtFactory, MessagesFactory, lodash){
+services.factory('TorrentFactory', function($localForage, $timeout, $interval, DhtFactory, MessagesFactory, lodash){
   var torrent = {};
 
   var WebTorrent = require('webtorrent');
@@ -117,13 +117,21 @@ services.factory('TorrentFactory', function($localForage, $timeout, DhtFactory, 
 
 
   function removeTorrents(infoHashes) {
-    $timeout(function () {
+    // workaround for time testing with protractor (timeout-->interval called once)
+    $interval(function () {
       lodash.forEach(infoHashes, function(i) {
         if (client.get(i)) {
           client.remove(i, handleIfError);
         }
       });
-    }, 5000);
+    }, 5000, 1, true);
+    // $timeout(function () {
+    //   lodash.forEach(infoHashes, function(i) {
+    //     if (client.get(i)) {
+    //       client.remove(i, handleIfError);
+    //     }
+    //   });
+    // }, 5000);
   }
 
   function isInfoHashInConversation(conversation, infohash) {
