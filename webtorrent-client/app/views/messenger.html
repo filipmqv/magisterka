@@ -63,7 +63,7 @@
         <li>{{key}}: {{val}}</li>
       </ul>
       <p>torrents {{getTorrents().length}}</p>
-      <ul ng-repeat="torrent in getTorrents()">
+      <ul ng-repeat="torrent in getTorrents()| orderBy:'infoHash'">
         <li>{{torrent.infoHash}}</li>
       </ul>
       <br>
