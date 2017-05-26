@@ -3,14 +3,21 @@
     <div class="container">
       <div ng-show="currentConversationId">
         <p>conversation ID:</p>
-        <input type="text" ng-model="currentConversationId" class="form-control">
-        <button class="btn btn-secondary" clipboard supported="supported" text="currentConversationId" on-copied="copySuccess()" on-error="copyFail(err)">Copy</button>
+        <form class="send-message-form" role="form">
+          <div class="input-group">
+            <input type="text" ng-model="currentConversationId" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary" clipboard supported="supported" text="currentConversationId" on-copied="copySuccess()" on-error="copyFail(err)">Copy</button>
+            </span>
+          </div>
+        </form>
+
         <p>friends in conversation:</p>
-        <ul ng-repeat="friendsList in friendsInConversations">
-          <li ng-repeat="item in friendsList">
+        <p ng-repeat="friendsList in friendsInConversations">
+          <span ng-repeat="item in friendsList">
             {{item.username}}
-          </li>
-        </ul>
+          </span>
+        </p>
       </div>
       <div ng-hide="currentConversationId">
         <form>
@@ -38,18 +45,26 @@
 
       <br>
 
-      <ul ng-repeat="m in my">
-        <li>{{m.length}}</li>
-      </ul>
-      con
-      <ul ng-repeat="m in con">
-        <li>{{m.length}}</li>
-      </ul>
-      otCOn
-      {{otherControl.length}}
-      <br>
-      ot
-      {{ot.length}}
+      <table class="table">
+        <tr>
+          <th>m</th>
+          <td ng-repeat="m in my">{{m.length}}</td>
+        </tr>
+        <tr>
+          <th>ctrl</th>
+          <td ng-repeat="m in con">{{m.length}}</td>
+        </tr>
+        <tr>
+          <th>ot</th>
+          <td>{{ot.length}}</td>
+        </tr>
+        <tr>
+          <th>otCtrl</th>
+          <td>{{otherControl.length}}</td>
+        </tr>
+      </table>
+
+
       <!--<ul ng-repeat="m in otherControl">-->
       <!--<li>{{m.length}}</li>-->
       <!--</ul>-->
@@ -58,14 +73,10 @@
       <!--<li>{{m.length}}</li>-->
       <!--</ul>-->
 
-      <p>Current user</p>
-      <ul ng-repeat="(key, val) in currentUser">
-        <li>{{key}}: {{val}}</li>
-      </ul>
       <p>torrents {{getTorrents().length}}</p>
-      <ul ng-repeat="torrent in getTorrents()| orderBy:'infoHash'">
-        <li>{{torrent.infoHash}}</li>
-      </ul>
+      <ol>
+        <li ng-repeat="torrent in getTorrents() | orderBy:'infoHash'">{{torrent.infoHash}}</li>
+      </ol>
       <br>
 
     </div>
@@ -79,8 +90,8 @@
       <section class="module">
 
         <!--todo wiadomość jako component-->
-        <ol class="discussion" ng-repeat="item in getConversation() | orderBy:'message.timestamp'">
-          <li ng-class="myDhtId===item.message.sender ? 'self' : 'other'">
+        <ol class="discussion">
+          <li ng-repeat="item in getConversation() | orderBy:'message.timestamp'" ng-class="myDhtId===item.message.sender ? 'self' : 'other'">
             <div class="avatar">
               <img ng-src="images/avatar.gif" />
             </div>
