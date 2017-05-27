@@ -2,7 +2,7 @@
 
 var services = angular.module('Torrents', []);
 
-services.factory('TorrentFactory', function($localForage, $timeout, $interval, DhtFactory, MessagesFactory, lodash){
+services.factory('TorrentFactory', function($localForage, $timeout, $interval, DhtFactory, MessagesFactory, lodash, TESTING_MODE){
   var torrent = {};
 
   var WebTorrent = require('webtorrent');
@@ -123,13 +123,6 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
         }
       });
     }, 5000, 1, true);
-    // $timeout(function () {
-    //   lodash.forEach(infoHashes, function(i) {
-    //     if (client.get(i)) {
-    //       client.remove(i, handleIfError);
-    //     }
-    //   });
-    // }, 5000);
   }
 
   function isInfoHashInConversation(conversation, infohash) {
@@ -152,49 +145,55 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     }
   }
 
+  function addPreviousInfoHash(previousInfoHash) {
+    if (previousInfoHash && !isInfoHashInConversation(MessagesFactory.getAll(), previousInfoHash)) {
+      console.log('adding previous ' + previousInfoHash);
+      addTorrentByInfoHash(previousInfoHash);
+    }
+  }
+
+  function addTextToConversation(infoHash, message, levelForMessages) {
+    if (!isInfoHashInConversation(MessagesFactory.getAll(), infoHash)) {
+      MessagesFactory.add(infoHash, message, myDhtId, levelForMessages);
+      console.log(lodash.now() + ' should apply ' + message.content);
+    }
+  }
+
+  function handleControlTorrentFile(torrent, file, levelForMessages) {
+    file.getBuffer(function (err, buffer) {
+      var message = getFromBuffer(buffer);
+      if (file.name === 'text') {
+        addTextToConversation(message.infoHash, message.message, levelForMessages);
+      } else if (file.name === 'control') {
+        removeTorrents(message.content.infoHashes);
+        removeTorrents(message.content.controlMessages);
+        MessagesFactory.removeControlMessagesByInfoHash(message.content.controlMessages);
+        MessagesFactory.add(torrent.infoHash, message, myDhtId);
+        addPreviousInfoHash(message.previousInfoHash);
+      }
+    });
+  }
+
+  function handleTextTorrentFile(torrent, file) {
+    file.getBuffer(function (err, buffer) {
+      var message = getFromBuffer(buffer);
+      // todo nie wyswietlać dopóki nie mamy wszystkich poprzednich wiadomości
+      addTextToConversation(torrent.infoHash, message);
+      addPreviousInfoHash(message.previousInfoHash);
+    });
+  }
+
   function onTorrent (torrent) {
     if (torrent.name.startsWith('control')) {
       var levelForMessages = lodash.parseInt(torrent.name.slice(7));
       torrent.files.forEach(function (file) {
-
-        file.getBuffer(function (err, buffer) {
-          var message = getFromBuffer(buffer);
-          if (file.name === 'text' && !isInfoHashInConversation(MessagesFactory.getAll(), message.infoHash)) {
-            MessagesFactory.add(message.infoHash, message.message, myDhtId, levelForMessages);
-            console.log(lodash.now() + ' should apply ' + message.message.content);
-          }
-          if (file.name === 'control') {
-            removeTorrents(message.content.infoHashes);
-            removeTorrents(message.content.controlMessages);
-            MessagesFactory.removeControlMessagesByInfoHash(message.content.controlMessages);
-
-            MessagesFactory.add(torrent.infoHash, message, myDhtId);
-            if (message.previousInfoHash) {
-              console.log('adding previous ' + message.previousInfoHash);
-              addTorrentByInfoHash(message.previousInfoHash);
-            }
-          }
-        });
-
+        handleControlTorrentFile(torrent, file, levelForMessages);
       });
     } else if (torrent.name === 'text') {
       torrent.files.forEach(function (file) {
-        file.getBuffer(function (err, buffer) {
-          var message = getFromBuffer(buffer);
-
-          // todo nie wyswietlać dopóki nie mamy wszystkich poprzednich wiadomości
-          if (!isInfoHashInConversation(MessagesFactory.getAll(), torrent.infoHash)) {
-            MessagesFactory.add(torrent.infoHash, message, myDhtId);
-            console.log(lodash.now() + ' should apply ' + message.content);
-          }
-          if (message.previousInfoHash && !isInfoHashInConversation(MessagesFactory.getAll(), message.previousInfoHash)) {
-            console.log('adding previous ' + message.previousInfoHash);
-            addTorrentByInfoHash(message.previousInfoHash);
-          }
-        });
+        handleTextTorrentFile(torrent, file);
       });
     }
-      // todo przeorganizować całą tę sekcję i wyrzycić powtarzający sie kod
       // todo zrobić otrzymywanie, zapisywanie, wyswietlanie i init plików (dowolnych)
       // todo jeśli typ z załącznikiem to najpierw trzeba przygotować dymek czatu (na bazie wiadomości) i w niego wstawić załącznik
   }
