@@ -28,6 +28,7 @@ angular
   ])
   // .constant('ENDPOINT_URI', 'http://192.168.1.5:5000/')
   .constant('ENDPOINT_URI', 'https://webtorrent-chat-server.herokuapp.com/')
+  .constant('TESTING_MODE', true)
   .constant('USER_ROLES', {
     all: '*',
     admin: 'admin',
