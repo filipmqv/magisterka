@@ -11,10 +11,14 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
   messages.otherControl = [];
 
   function clearVariables() {
-    messages.my = [[], [], [], [], [], [], []];
-    messages.control = [[], [], [], [], [], [], []];
-    messages.other = [];
-    messages.otherControl = [];
+    lodash.forEach(messages.my, function (item) {
+      item = [];
+    });
+    lodash.forEach(messages.control, function (item) {
+      item = [];
+    });
+    messages.other.splice(0);
+    messages.otherControl.splice(0);
   }
 
   function logn(base, val) {
