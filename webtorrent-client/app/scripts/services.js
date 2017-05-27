@@ -10,13 +10,15 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
   messages.other = [];
   messages.otherControl = [];
 
+  function clearArrayOfArays(arr) {
+    for (var i = 0, len = arr.length; i < len; i++) {
+      arr[i] = [];
+    }
+  }
+
   function clearVariables() {
-    lodash.forEach(messages.my, function (item) {
-      item = [];
-    });
-    lodash.forEach(messages.control, function (item) {
-      item = [];
-    });
+    clearArrayOfArays(messages.my);
+    clearArrayOfArays(messages.control);
     messages.other.splice(0);
     messages.otherControl.splice(0);
   }
