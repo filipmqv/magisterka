@@ -156,6 +156,7 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     if (!isInfoHashInConversation(MessagesFactory.getAll(), infoHash)) {
       MessagesFactory.add(infoHash, message, myDhtId, levelForMessages);
       console.log(lodash.now() + ' should apply ' + message.content);
+      TESTING_MODE_AUTO_REPLAY(message.content);
     }
   }
 
@@ -164,7 +165,6 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
       var message = getFromBuffer(buffer);
       if (file.name === 'text') {
         addTextToConversation(message.infoHash, message.message, levelForMessages);
-        TESTING_MODE_AUTO_REPLAY(message.message.content);
       } else if (file.name === 'control') {
         removeTorrents(message.content.infoHashes);
         removeTorrents(message.content.controlMessages);
@@ -181,8 +181,6 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
       // todo nie wyswietlać dopóki nie mamy wszystkich poprzednich wiadomości
       addTextToConversation(torrent.infoHash, message);
       addPreviousInfoHash(message.previousInfoHash);
-
-      TESTING_MODE_AUTO_REPLAY(message.content);
     });
   }
 
@@ -372,8 +370,8 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
 
   function TESTING_MODE_AUTO_REPLAY(content) {
     if (TESTING_MODE) {
-      if (content.startsWith('end')) {
-        torrent.sendMessage('auto reply');
+      if (content.startsWith('AUTO_REPLY_REQUEST')) {
+        torrent.sendMessage('reply for ' + content);
       }
     }
   }
