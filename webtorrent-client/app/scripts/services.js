@@ -3,6 +3,8 @@
 var services = angular.module('Services', []);
 
 services.factory('MessagesFactory', function($localForage, $q, lodash){
+  const NUMBER_OF_MESSAGES_FOR_LEVEL = 5;
+
   var messages = {};
 
   messages.my = [[], [], [], [], [], [], []];
@@ -28,11 +30,11 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
   }
 
   messages.getLevelFromLength = function(len) {
-    return Math.floor(logn(5, len));
+    return Math.floor(logn(NUMBER_OF_MESSAGES_FOR_LEVEL, len));
   };
 
   messages.numberOfMessagesForLevel = function (level) {
-    return Math.pow(5, level+1);
+    return Math.pow(NUMBER_OF_MESSAGES_FOR_LEVEL, level+1);
   };
 
   function pushMessage(userDhtId, infoHash, message, level) {

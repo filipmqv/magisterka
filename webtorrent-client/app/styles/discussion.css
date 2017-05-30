@@ -69,7 +69,10 @@
 .messages span {
   font-size: 1.5rem;
   margin: 0 0 0 0;
+  overflow-wrap: break-word;
   word-wrap: break-word;
+  word-break: break-all;
+  hyphens: auto;
   max-width: 62vw;
 }
 .messages time {
