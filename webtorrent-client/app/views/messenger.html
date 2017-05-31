@@ -76,11 +76,17 @@
       <p>torrents {{getTorrents().length}}</p>
       <ol>
         <li ng-repeat="torrent in getTorrents() | orderBy:'infoHash'">
-          <span ng-style="{'background-color':'#'+torrent.infoHash.substring(0,6), 'width':'50px', 'display': 'inline-block'}">&nbsp</span>
-          {{truncate(torrent.infoHash)}}
+          <span class="color-block" ng-style="{'background-color':'#'+torrent.infoHash.substring(0,6)}">&nbsp</span>
+          {{truncate(torrent.infoHash)}} prs: {{torrent.numPeers}}
           </li>
       </ol>
-      <br>
+      <p>last infoHashes {{getLastInfoHashes().length}}</p>
+      <ol>
+        <li ng-repeat="ih in getLastInfoHashes() | orderBy:'infohash'">
+          <span class="color-block" ng-style="{'background-color':'#'+ih.infohash.substring(0,6)}">&nbsp</span>
+          {{truncate(ih.infohash)}}
+        </li>
+      </ol>
 
     </div>
 
@@ -104,7 +110,12 @@
                 <span class="message-content" id="message{{$index}}">{{item.message.content}}</span>
               </div>
               <time ng-repeat="sentBy in friendsInConversations[currentConversationId] | filter:item.message.sender">{{sentBy.username}} • {{item.message.timestamp | date:'H:mm:ss'}}</time><br/>
-              <time>{{truncate(item.infoHash)}} • {{truncate(item.message.previousInfoHash)}}</time>
+              <time>
+                <span class="color-block" ng-style="{'background-color':'#'+item.infoHash.substring(0,6)}">&nbsp</span>
+                {{truncate(item.infoHash)}} •
+                <span class="color-block" ng-style="{'background-color':'#'+item.message.previousInfoHash.substring(0,6)}">&nbsp</span>
+                {{truncate(item.message.previousInfoHash)}}
+              </time>
             </div>
           </li>
         </ol>

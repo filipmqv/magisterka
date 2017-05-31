@@ -75,7 +75,7 @@
   hyphens: auto;
   max-width: 62vw;
 }
-.messages time {
+.messages time, time .color-block {
   font-size: 1.0rem;
   color: rgba(45, 45, 45, 0.88);
 }

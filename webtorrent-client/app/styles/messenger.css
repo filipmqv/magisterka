@@ -41,6 +41,16 @@ article {
   cursor: pointer;
 }
 
+ul, ol {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.color-block {
+  width: 25px;
+  display: inline-block;
+}
+
 @media screen and (max-width: 768px) {
   .wrap {
     flex-flow: column;

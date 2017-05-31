@@ -17,6 +17,7 @@ angular.module('webtorrentClientApp')
       $scope.dhtIdsInConversations = {};
       $scope.getConversation = MessagesFactory.getAll; // factory with messages
       $scope.getTorrents = TorrentFactory.getAllTorrents;
+      $scope.getLastInfoHashes = TorrentFactory.getLastInfoHashes;
       $scope.myConversations = [];
       $scope.currentConversationId = 0;
       $scope.friendsInConversations = {};
@@ -105,7 +106,7 @@ angular.module('webtorrentClientApp')
 
     var checkMessagesInterval = $interval(function() {
       $scope.checkMessages();
-    }, 5000);
+    }, 2000);
 
     var checkUsersInConversation = $interval(function () {
       getUsersForConversation($scope.currentConversationId);

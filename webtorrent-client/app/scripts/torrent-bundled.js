@@ -353,6 +353,9 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     return client.torrents;
   };
 
+  torrent.getLastInfoHashes = function () {
+    return lastInfoHashes;
+  }
 
   client.on('error', function (err) {
     console.error('WEBTORRENT ERROR: ' + err.message);
