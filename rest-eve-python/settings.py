@@ -15,13 +15,10 @@ ITEM_METHODS = ['GET','PUT','DELETE'] # dla konkretnego id
 X_DOMAINS = '*'
 X_HEADERS = ['Authorization','If-Match','Access-Control-Expose-Headers','Content-Type','Pragma','Cache-Control']
 X_EXPOSE_HEADERS = ['Origin', 'X-Requested-With', 'Content-Type', 'Accept']
-CACHE_CONTROL = 'max-age=1,must-revalidate'
+CACHE_CONTROL = 'max-age=5,must-revalidate'
+CACHE_EXPIRES = 5
 
 IF_MATCH = False # TODO
-
-# TODO 
-#MONGO_USERNAME = '<your username>'
-#MONGO_PASSWORD = '<your password>'
 
 users_schema = {
     'username': {
