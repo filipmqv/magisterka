@@ -736,6 +736,36 @@ Koncepcja
 Architektura
 \end_layout
 
+\begin_layout Standard
+webrtc
+\end_layout
+
+\begin_layout Standard
+p2p
+\end_layout
+
+\begin_layout Standard
+bittorent
+\end_layout
+
+\begin_layout Standard
+webtorrent
+\end_layout
+
+\begin_layout Standard
+Stun ICE, NAT traversal, 90% wszystkich połączeń, ogromne liczby - to idzie
+ w tysiące połączeń na minutę
+\end_layout
+
+\begin_layout Standard
+rysunek co jest z czym połączone
+\end_layout
+
+\begin_layout Standard
+webrtc i webworkers póki co nie ma tego https://github.com/w3c/webrtc-pc/issues/2
+30
+\end_layout
+
 \begin_layout Chapter
 Wyniki testów
 \end_layout
