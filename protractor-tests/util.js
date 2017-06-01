@@ -1,5 +1,5 @@
-var MAIN_URL = 'http://192.168.1.5:9000/';
-// var MAIN_URL = 'https://webtorrent-chat-client.herokuapp.com/';
+// var MAIN_URL = 'http://192.168.1.5:9000/';
+var MAIN_URL = 'https://webtorrent-chat-client.herokuapp.com/';
 
 function sleep(bwser, ms) {
 	bwser.sleep(ms)
@@ -25,9 +25,11 @@ function sendMessage(bwser, text) {
 	sendButton.click();
 }
 
+const numberOfOnlineUsersInConversation = 4;
 
 module.exports = {
 	sleep: sleep,
 	login: login,
-	sendMessage: sendMessage
+	sendMessage: sendMessage,
+	numOfOnlineUsers: numberOfOnlineUsersInConversation
 }
