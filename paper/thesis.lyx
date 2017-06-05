@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass dcsbook
+\textclass ../../texmf/tex/latex/commonstuff/dcsbook
 \begin_preamble
 %
 %  $Id: thesis-template.lyx,v 1.7 2011/12/22 12:10:18 sobaniec Exp $
@@ -46,7 +46,7 @@ dcs
 \pdf_breaklinks true
 \pdf_pdfborder true
 \pdf_colorlinks true
-\pdf_backref false
+\pdf_backref section
 \pdf_pdfusetitle true
 \pdf_quoted_options "urlcolor=linkcolor,linkcolor=linkcolor,citecolor=linkcolor"
 \papersize a4paper
@@ -732,38 +732,466 @@ blockchain okażą się kluczowe.
 Koncepcja
 \end_layout
 
+\begin_layout Standard
+W niniejszym rozdziale opisano technologie i protokoły wykorzystane do opracowan
+ia koncepcji i implementacji rozproszonego komunikatora grupowego.
+ Konkretnie, są to: protokół BitTorrent przedstawiony w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:bittorent"
+
+\end_inset
+
+ oraz jego implementacja w języku JavaScript — WebTorrent — punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:webtorrent"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+BitTorrent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bittorrent"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:bittorent"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+BitTorrent to protokół komunikacyjny pozwalający na wymianę i dystrybucję
+ plików przez Internet.
+ Jego główną zaletą jest podział plików na części i możliwość pobierania
+ tych części od użytkowników, którzy w danym momencie również uczestniczą
+ w procesie udostępniania.
+ Pozwala to na znaczne odciążenie serwera.
+ W szczególności możliwe jest nawet wyłączenie serwera, a plik pozostanie
+ dostępny do pobrania, jeśli tylko wszystkie jego fragmenty zostały przed
+ wyłączeniem rozesłane do zainteresowanych komputerów (wystarczy, że jedna
+ maszyna posiada daną część i podzieli się nią z pozostałymi).
+ 
+\end_layout
+
+\begin_layout Subsection
+Podstawowe pojęcia
+\end_layout
+
+\begin_layout Standard
+Poniżej znajduje się lista najważniejszych pojęć związanych z protokołem
+ wraz z krótkim wyjaśnieniem ich znaczenia:
+\end_layout
+
+\begin_layout Itemize
+Torrent — plik lub zbiór plików udostępnionych do pobrania.
+\end_layout
+
+\begin_layout Itemize
+.torrent metafile — dodatkowy plik z metadanymi dotyczącymi udostępnionych
+ plików.
+ Zawiera między innymi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+nazwy i rozmiary plików, 
+\end_layout
+
+\begin_layout Itemize
+liczbę i rozmiar fragmentów, na jakie zostały podzielone pliki, 
+\end_layout
+
+\begin_layout Itemize
+listę skrótów SHA-1 fragmentów w celu weryfikacji poprawności,
+\end_layout
+
+\begin_layout Itemize
+adresy URL trackerów.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+piece, block — podczas przygotowywania torrenta pliki dzielone są na fragmenty
+ (piece), a każdy taki fragment składa się z bloków (block).
+ Blok jest najmniejszą jednostką, którą można przesłać przez sieć między
+ użytkownikami.
+ Aby udostępniać fragment użytkownik musi posiadać wszystkie jego bloki.
+ 
+\end_layout
+
+\begin_layout Itemize
+info hash — 160-bitowa wartość będąca wynikiem funkcji skrótu SHA-1, której
+ podawana jest część metapliku .torrent (nazwy plików i lista skrótów fragmentów).
+ Info hash pozwala jednoznacznie zidentyfikować dany torrent.
+ 
+\end_layout
+
+\begin_layout Itemize
+tracker — serwer, którego zadaniem jest przechowywanie adresów IP użytkowników
+ pobierających dany torrent.
+ Pozwala użytkownikom na znalezienie siebie nawzajem.
+ 
+\end_layout
+
+\begin_layout Itemize
+klient (client) — program uruchomiony na komputerze użytkownika, który pozwala
+ na pobieranie plików z wykorzystaniem protokołu BitTorrent.
+\end_layout
+
+\begin_layout Itemize
+peer — węzeł (komputer, klient) pobierający i wysyłający fragmenty torrenta.
+ Zazwyczaj nie posiada jeszcze wszystkich fragmentów.
+\end_layout
+
+\begin_layout Itemize
+seed — peer posiadający wszystkie fragmenty.
+ 
+\end_layout
+
+\begin_layout Itemize
+swarm — grupa peerów pobierających dany torrent.
+\end_layout
+
+\begin_layout Itemize
+peer-to-peer (P2P) — sieć złożona z komputerów, które komunikują się ze
+ sobą np.
+ w celu wymiany plików.
+ Peery tworzą sieć P2P.
+\end_layout
+
+\begin_layout Itemize
+Distributed Hash Table (DHT) — rozproszona tablica mieszająca — sieć składająca
+ się z węzłów, które umożliwiają zapisywanie i odczytywanie rekordów w formie
+ klucz-wartość.
+ Węzły dzielą między sobą zbiór wszystkich kluczy.
+ W kontekście protokołu BitTorrent, DHT może zastąpić rolę trackera.
+\end_layout
+
+\begin_layout Itemize
+magnet link — link pozwalający na uzyskanie metadanych torrenta bez konieczności
+ pobierania metapliku .torrent.
+ Link powinien zawierać przynajmniej info hash torrenta oraz listę trackerów.
+\end_layout
+
+\begin_layout Subsection
+Scenariusz pobrania torrenta
+\end_layout
+
+\begin_layout Standard
+W celu pobrania torrenta niezbędne są następujące czynności:
+\end_layout
+
+\begin_layout Enumerate
+Pobranie metapliku .torrent lub poznanie (kliknięcie) magnet linku identyfikujące
+go dany torrent.
+ Zazwyczaj informacje te można uzyskać na stronach internetowych katalogujących
+ istniejące torrenty (wyszukiwarkach torrentów).
+\end_layout
+
+\begin_layout Enumerate
+Uzyskanie listy trackerów z metapliku lub magnet linka.
+\end_layout
+
+\begin_layout Enumerate
+Pobranie z trackera listy peerów uczestniczących w udostępnianiu torrenta.
+\end_layout
+
+\begin_layout Enumerate
+Pobranie fragmentów torrenta od peerów.
+\end_layout
+
+\begin_layout Subsection
+Jak komunikują się peery
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:jak-komunikuja"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+BitTorrent używa 12 typów wiadomości do prowadzenia komunikacji pomiędzy
+ peerami:
+\end_layout
+
+\begin_layout Itemize
+hand-shake — wiadomość rozpoczynająca połączenie,
+\end_layout
+
+\begin_layout Itemize
+bitfield — wskazuje, jakie fragmenty posiada peer, 
+\end_layout
+
+\begin_layout Itemize
+keep-alive — wiadomość podtrzymująca otwarte połączenie, 
+\end_layout
+
+\begin_layout Itemize
+port — informuje o zmianie portu, 
+\end_layout
+
+\begin_layout Itemize
+choke, unchoke, interested, not interested — 4 wiadomości informujące o
+ zmianie stanu peera (związane z algorytmem z punktu 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:choking-alg"
+
+\end_inset
+
+), 
+\end_layout
+
+\begin_layout Itemize
+have — wiadomość informująca o tym, że peer otrzymał nowy fragment, 
+\end_layout
+
+\begin_layout Itemize
+request — żądanie fragmentu, 
+\end_layout
+
+\begin_layout Itemize
+piece — wiadomość zawierająca fragment torrenta, 
+\end_layout
+
+\begin_layout Itemize
+cancel — wiadomość anulująca żądanie fragmentu.
+ 
+\end_layout
+
+\begin_layout Subsection
+Choking algorithm 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:choking-alg"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+W idealnej sytuacji wymiana plików za pośrednictwem protokołu BitTorrent
+ jest sprawiedliwa, to znaczy każdy peer może pobierać pliki, ale jednocześnie
+ powinien udostępniać posiadane fragmenty innym.
+ By zapobiec sytuacji, w której peer blokuje wysyłanie posiadanych fragmentów,
+ wprowadzono odpowiedni algorytm.
+ Wykorzystuje on 4 typy wiadomości spośród wspomnianych w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:choking-alg"
+
+\end_inset
+
+.
+ Polega on na tym, że dany klient pozwala (unchoke) na pobieranie fragmentów
+ od siebie tylko tym peerom, którzy posiadają i udostępnią klientowi swoje
+ fragmenty.
+ Pobieranie wymaga zatem kooperacji i wymiany interesujących, brakujących
+ fragmentów.
+ Bez tej wymiany połączenie zostaje przerwane (choke).
+ 
+\end_layout
+
+\begin_layout Subsection
+Wady i zalety protokołu
+\end_layout
+
+\begin_layout Standard
+Wśród zalet protokołu znajduje się przede wszystkim wspomniane na początku
+ zmniejszone obciążenie serwera.
+ Prędkość pobierania może osiągnąć wyższą wartość niż limit transferu wychodzące
+go z serwera — ograniczeniem jest jedynie dostępność pliku wśród peerów
+ oraz limit transferu przychodzącego do danego klienta.
+ Rozesłanie pliku o rozmiarze 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+
+ do 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+n
+\end_layout
+
+\end_inset
+
+ odbiorców bez użycia protokołu wymagałoby transferu danych o rozmiarze
+ 
+\begin_inset Formula $m\cdotp n$
+\end_inset
+
+ z węzła udostępniającego, natomiast z użyciem protokołu ilość danych wysłanych
+ przez nadawcę mieści się w przedziale 
+\begin_inset Formula $\left\langle m;m\cdotp n\right\rangle $
+\end_inset
+
+.
+ Kolejną zaletą jest możliwość pobierania pliku nawet, jeśli oryginalny
+ nadawca (twórca torrenta) jest niedostępny (zakładając oczywiście, że w
+ swarmie rozesłane zostały najpierw wszystkie fragmenty pliku) — cecha ta
+ okaże się przydatna podczas implementacji komunikatora grupowego.
+ 
+\end_layout
+
+\begin_layout Standard
+Do wad protokołu należy zaliczyć zwiększone obciążenie oraz narzut komunikacyjny
+ po stronie klienta — konieczność koordynacji pobierania i udostępniania,
+ wysyłanie i odbieranie wiadomości kontrolnych.
+ Wadą może być sam fakt, że klient zobowiązany jest do udostępniania pobieranego
+ pliku.
+ Jedną z ważniejszych kwestii, o jakie należy zadbać jest również dostępność
+ pliku — klient nie pobierze całego torrenta jeśli nie znajdzie w sieci
+ wszystkich jego fragmentów (tak zwany 
+\begin_inset Quotes pld
+\end_inset
+
+problem ostatniego fragmentu
+\begin_inset Quotes prd
+\end_inset
+
+).
+ Dodatkowo problematyczne może być wyszukanie metapliku .torrent lub magnet
+ linku odpowiadającego danemu torrentowi.
+ 
+\end_layout
+
+\begin_layout Standard
+Protokół z założenia powinien być w pełni rozproszony i nie polegać na żadnych
+ publicznych serwerach — jedynie na bezpośredniej komunikacji użytkowników
+ końcowych (P2P).
+ Niestety kilka usług serwerowych jest wciąż aktywnie wykorzystywanych do
+ prawidłowego działania sieci:
+\end_layout
+
+\begin_layout Itemize
+serwer hostujący metapliki .torrent lub magnet linki pozwalający na wyszukiwanie
+ interesujących plików po nazwie, tagach, innych właściwościach, oferujący
+ statystyki torrenta, komentarze itp.
+ — może zostać zastąpiony wyszukiwarką torrentów wbudowaną w klienta, który
+ wysyła zapytanie do podłączonych peerów, one przekazują je dalej, aż do
+ momentu otrzymania odpowiedzi.
+\end_layout
+
+\begin_layout Itemize
+tracker — istnieją jednak rozwiązania umożliwiające śledzenie swarmu bez
+ użycia zewnętrznego serwera np.
+ DHT, PEX (Peer Exchange).
+\end_layout
+
+\begin_layout Itemize
+serwery pośredniczące w nawiązaniu połączenia dwóch klientów ukrytych w
+ prywatnych sieciach IP (wykorzystujących translację adresów)
+\end_layout
+
+\begin_layout Section
+WebTorrent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "webtorrent"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:webtorrent"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+WebTorrent to biblioteka napisana w języku JavaScript, implementująca protokół
+ BitTorrent.
+ Dzięki zastosowaniu tego języka możliwe jest użycie protokołu w skrypcie
+ wykonywanym w przeglądarce po wejściu na stronę internetową.
+ Biblioteki można również użyć jako moduł w programie dla platformy Node.js.
+ Funkcjonalność oferowana w obu przypadkach jest niemal identyczna (poza
+ kilkoma sytuacjami wynikającymi z ograniczeń danej platformy).
+ 
+\end_layout
+
 \begin_layout Chapter
 Architektura
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 webrtc
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+angular
+\end_layout
+
+\begin_layout Itemize
+python eve jako lekki serwer rest (co robi, że jest też mockiem)
+\end_layout
+
+\begin_layout Itemize
 p2p
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 bittorent
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 webtorrent
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 Stun ICE, NAT traversal, 90% wszystkich połączeń, ogromne liczby - to idzie
  w tysiące połączeń na minutę
 \end_layout
 
-\begin_layout Standard
+\begin_deeper
+\begin_layout Itemize
+https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 rysunek co jest z czym połączone
 \end_layout
 
-\begin_layout Standard
-webrtc i webworkers póki co nie ma tego https://github.com/w3c/webrtc-pc/issues/2
-30
+\begin_layout Itemize
+webrtc w webworkers - póki co nie ma tego https://github.com/w3c/webrtc-pc/issues
+/230
 \end_layout
 
 \begin_layout Chapter
@@ -881,6 +1309,26 @@ key "bitmessage-pdf"
 \end_inset
 
 https://bitmessage.org/bitmessage.pdf
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bittorrent"
+
+\end_inset
+
+http://www.bittorrent.org/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "webtorrent"
+
+\end_inset
+
+https://webtorrent.io/
 \end_layout
 
 \end_body
