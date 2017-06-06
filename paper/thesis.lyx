@@ -46,7 +46,7 @@ dcs
 \pdf_breaklinks true
 \pdf_pdfborder true
 \pdf_colorlinks true
-\pdf_backref section
+\pdf_backref false
 \pdf_pdfusetitle true
 \pdf_quoted_options "urlcolor=linkcolor,linkcolor=linkcolor,citecolor=linkcolor"
 \papersize a4paper
@@ -802,8 +802,8 @@ Torrent — plik lub zbiór plików udostępnionych do pobrania.
 \end_layout
 
 \begin_layout Itemize
-.torrent metafile — dodatkowy plik z metadanymi dotyczącymi udostępnionych
- plików.
+metaplik .torrent (.torrent metafile) — dodatkowy plik z metadanymi dotyczącymi
+ udostępnionych plików.
  Zawiera między innymi:
 \end_layout
 
@@ -1002,7 +1002,7 @@ W idealnej sytuacji wymiana plików za pośrednictwem protokołu BitTorrent
  Wykorzystuje on 4 typy wiadomości spośród wspomnianych w punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:choking-alg"
+reference "subsec:jak-komunikuja"
 
 \end_inset
 
@@ -1017,7 +1017,7 @@ reference "subsec:choking-alg"
 \end_layout
 
 \begin_layout Subsection
-Wady i zalety protokołu
+Zalety i wady protokołu
 \end_layout
 
 \begin_layout Standard
@@ -1150,6 +1150,120 @@ WebTorrent to biblioteka napisana w języku JavaScript, implementująca protokó
 Architektura
 \end_layout
 
+\begin_layout Standard
+System komunikatora grupowego będący przedmiotem niniejszej pracy magisterskiej
+ został oparty częściowo o architekturę klient-serwer, jednakże rola serwera
+ została maksymalnie ograniczona, a częściowo o architekturę rozproszoną
+ peer-to-peer (przy użyciu protokołu BitTorrent).
+ W pierwszym typie architektury można wyróżnić 3 warstwy logiczne (3-layer
+ architecture) — klienty, serwer oraz baza danych.
+ Rysunek 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Architektura-komunikatora"
+
+\end_inset
+
+ przedstawia opisywaną architekturę.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/architektura.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Architektura komunikatora 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Architektura-komunikatora"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Klient jest aplikacją webową typu Single Page Application.
+ Oznacza to, że cały kod źródłowy oraz niezbędne widoki pobierane są z serwera
+ przy pierwszym połączeniu.
+\end_layout
+
+\begin_layout Standard
+Oprócz wspomnianego serwera umożliwiającego pobranie plików HTML, CSS oraz
+ JS do działania programu niezbędny jest drugi serwer o architekturze REST.
+ Umożliwia on rejestrację i autoryzację użytkowników oraz jest odpowiedzialny
+ za tworzenie konwersacji i przydzielanie do nich odpowiednich użytkowników.
+\end_layout
+
+\begin_layout Standard
+Serwer REST komunikuje się z trzecią warstwą — bazą danych.
+ Baza danych typu dokumentowego (NoSQL) przechowuje niezbędne minimum informacji
+ o użytkowniku, dzięki którym możliwe jest prowadzenie rozmów.
+ 
+\end_layout
+
+\begin_layout Standard
+Kolejnym modułem jest wbudowana w klienta biblioteka WebTorrent do obsługi
+ protokołu BitTorrent.
+ Pozwala ona na bezpośrednią komunikację pomiędzy klientami.
+ Wykorzystywana jest do przekazywania wiadomości.
+ 
+\end_layout
+
+\begin_layout Standard
+Z specyfikacji biblioteki i protokołu wynika między innymi konieczność utrzymywa
+nia dodatkowych serwerów — trackerów.
+ Ze względu na fakt, że biblioteka jest oprogramowaniem open-source, istnieje
+ możliwość samodzielnego uruchomienia tego typu serwera, jednak na potrzeby
+ testów nie było to konieczne — istnieją w sieci publiczne trackery, z których
+ można skorzystać.
+\end_layout
+
+\begin_layout Standard
+Przedostatnim modułem koniecznym do prawidłowego działania komunikatora
+ jest rozproszona tablica mieszająca (DHT) utrzymywana przez klienty, a
+ używana do zapisywania i odczytywania info hasha najnowszej wysyłanej wiadomośc
+i.
+ Klient w momencie rozpoczęcia udostępniania wiadomości zapisuje jej info
+ hash w DHT, a odbiorcy mogą go odczytać i rozpocząć pobieranie komunikatu.
+ 
+\end_layout
+
+\begin_layout Standard
+Ostatnim potrzebnym elementem są publiczne serwery STUN (Session Traversal
+ Utilities for NAT).
+ Dzięki nim możliwe jest skomunikowanie ze sobą dwóch klientów znajdujących
+ się w sieciach, których ruter stosuje translację adresów.
+ Takie serwery również istnieją w sieci więc ich implementacja i uruchomienie
+ nie było konieczne.
+ Za łączenie się z nimi odpowiedzialna jest biblioteka WebTorrent.
+\end_layout
+
 \begin_layout Itemize
 webrtc
 \end_layout
@@ -1175,6 +1289,10 @@ webtorrent
 \end_layout
 
 \begin_layout Itemize
+planktos - pobieranie strony jako torrent (odciążenie serwera aplikacji)
+\end_layout
+
+\begin_layout Itemize
 Stun ICE, NAT traversal, 90% wszystkich połączeń, ogromne liczby - to idzie
  w tysiące połączeń na minutę
 \end_layout
@@ -1192,6 +1310,10 @@ rysunek co jest z czym połączone
 \begin_layout Itemize
 webrtc w webworkers - póki co nie ma tego https://github.com/w3c/webrtc-pc/issues
 /230
+\end_layout
+
+\begin_layout Itemize
+dht - że to mock
 \end_layout
 
 \begin_layout Chapter
