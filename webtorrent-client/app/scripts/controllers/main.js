@@ -8,7 +8,7 @@
  * Controller of the webtorrentClientApp
  */
 angular.module('webtorrentClientApp')
-  .controller('MainCtrl', function ($scope, $rootScope, USER_ROLES, AUTH_EVENTS, AuthService, UserService, $location) {
+  .controller('MainCtrl', function ($scope, $rootScope, USER_ROLES, AUTH_EVENTS, AuthService, UserService, $location, TorrentFactory) {
     $scope.currentUser = {};
 
     $scope.isAuthenticated = function() {
@@ -30,6 +30,7 @@ angular.module('webtorrentClientApp')
 
     $scope.logoutClick = function () {
       $scope.currentUser = AuthService.logout();
+      TorrentFactory.exit();
       $location.path('/');
     };
 

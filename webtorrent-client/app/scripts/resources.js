@@ -6,6 +6,10 @@ var resources = angular.module('Resources', ['ngResource']);
 resources.factory('DhtFactory', function ($resource, ENDPOINT_URI) {
   return $resource(ENDPOINT_URI + 'dht/:dhtId', {dhtId:'@_id'},
     {
+      get: {
+        method: 'GET',
+        headers: { 'Cache-Control' : 'no-cache' }
+      },
       'update': { method:'PUT' }
     });
 });

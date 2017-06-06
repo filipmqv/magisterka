@@ -105,6 +105,10 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
     return lodash.concat(lodash.flatten(messages.my), messages.other);
   };
 
+  messages.getMessagesAndControl = function () {
+    return lodash.concat(lodash.flatten(messages.my), lodash.flatten(messages.control), messages.other, messages.otherControl);
+  }
+
   messages.clearAll = function () {
     return $q(function (resolve) {
       $localForage.clear().then(function () {

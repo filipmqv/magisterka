@@ -13,11 +13,11 @@
         </form>
 
         <p>friends in conversation:</p>
-        <p ng-repeat="friendsList in friendsInConversations">
-          <span ng-repeat="item in friendsList">
-            {{item.username}}
-          </span>
-        </p>
+        <ol ng-repeat="friendsList in friendsInConversations">
+          <li ng-repeat="item in friendsList">
+            {{item.username}} {{item.user_dht_id}}
+          </li>
+        </ol>
       </div>
       <div ng-hide="currentConversationId">
         <form>

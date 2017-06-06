@@ -25,7 +25,7 @@ function sendMessage(bwser, text) {
 	sendButton.click();
 }
 
-const numberOfOnlineUsersInConversation = 4;
+const numberOfOnlineUsersInConversation = 3;
 
 module.exports = {
 	sleep: sleep,

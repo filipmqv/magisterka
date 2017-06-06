@@ -100,16 +100,24 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     seedList(tempOther[0]);
   }
 
+  function actualInit(userDhtId) {
+    client = new WebTorrent();
+    myDhtId = userDhtId;
+    getMyCurrentInfoHash(userDhtId);
+    MessagesFactory.init(userDhtId).then(seedOnInit);
+  }
+
   torrent.init = function(userDhtId) {
-    client.destroy(function (err) {
-      if (err) {
-        console.error(err);
-      }
-      client = new WebTorrent();
-      myDhtId = userDhtId;
-      getMyCurrentInfoHash(userDhtId);
-      MessagesFactory.init(userDhtId).then(seedOnInit);
-    });
+    if (client && !client.destroyed) {
+      // if not destroyed - destroy first
+      client.destroy(function (err) {
+        if (err) return console.error(err); // but continue anyway
+        actualInit(userDhtId);
+      });
+    } else {
+      actualInit(userDhtId);
+    }
+
     // todo czy to nie wymaga przeładowania strony po zalogowaniu, jesli ktoś sie wczesniej wylogował bez odświeżenia?
   };
 
@@ -143,19 +151,22 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     var magnetLink = getMagnetLink(infohash);
     var existingTorrent = client.get(magnetLink);
     if (!existingTorrent) {
-      client.add(magnetLink, onTorrent);
+      client.add(magnetLink, {
+        // announce: 'ws://webtorrent-chat-tracker.herokuapp.com'
+        // announce: 'ws://192.168.1.5:8000'
+      }, onTorrent);
     }
   }
 
   function addPreviousInfoHash(previousInfoHash) {
-    if (previousInfoHash && !isInfoHashInConversation(MessagesFactory.getAll(), previousInfoHash)) {
+    if (previousInfoHash && !isInfoHashInConversation(MessagesFactory.getMessagesAndControl(), previousInfoHash)) {
       console.log('adding previous ' + previousInfoHash);
       addTorrentByInfoHash(previousInfoHash);
     }
   }
 
   function addTextToConversation(infoHash, message, levelForMessages) {
-    if (!isInfoHashInConversation(MessagesFactory.getAll(), infoHash)) {
+    if (!isInfoHashInConversation(MessagesFactory.getMessagesAndControl(), infoHash)) {
       MessagesFactory.add(infoHash, message, myDhtId, levelForMessages);
       console.log(lodash.now() + ' should apply ' + message.content);
       TESTING_MODE_AUTO_REPLAY(message.content);
@@ -186,7 +197,15 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     });
   }
 
+  var a = []
   function onTorrent (torrent) {
+    if (!lodash.find(a, torrent.wires[0].peerId)) a.push(torrent.wires[0].peerId)
+    console.log(torrent)
+    a.forEach(function (i) {
+      console.log('adding ' + i)
+      console.log(torrent.addPeer(i))
+    })
+
     if (torrent.name.startsWith('control')) {
       var levelForMessages = lodash.parseInt(torrent.name.slice(7));
       torrent.files.forEach(function (file) {
@@ -206,7 +225,8 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
       // if there's newer inhohash for dhtId - add torrent and save as latest
       var currentInfoHash = data;
       var last = lodash.find(lastInfoHashes, {'_id': currentInfoHash._id});
-      if (!last || (last.infohash !== currentInfoHash.infohash && !isInfoHashInConversation(MessagesFactory.getAll(), currentInfoHash.infohash))) {
+      if (!last || (last.infohash !== currentInfoHash.infohash &&
+              !isInfoHashInConversation(MessagesFactory.getMessagesAndControl(), currentInfoHash.infohash))) {
         addTorrentByInfoHash(currentInfoHash.infohash);
         lodash.pull(lastInfoHashes, last);
         lastInfoHashes.push(currentInfoHash);
@@ -296,10 +316,9 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
   }
 
   function createMessage(input, userDhtId, prevInfoHash, type) {
-    var actualType = type || 'text';
     // TODO sender - sprawdzać przy odbiorze czy się zgadza z tym kto wystawił infohash na swoim dhtId
     return {
-      type: actualType,
+      type: type || 'text',
       content: input,
       timestamp: lodash.now(),
       sender: userDhtId,
@@ -346,6 +365,11 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     }
   };
 
+/////////////// close
+
+  torrent.exit = function () {
+    client.destroy();
+  }
 
 ////////////////// other
 
@@ -355,6 +379,10 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
 
   torrent.getLastInfoHashes = function () {
     return lastInfoHashes;
+  };
+
+  torrent.getA = function () {
+    return a;
   }
 
   client.on('error', function (err) {

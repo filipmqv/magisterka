@@ -5,6 +5,7 @@ angular.module('webtorrentClientApp')
   .controller('MessengerCtrl', function ($scope, $interval, $window, DhtFactory, UsersFactory, ConversationsFactory,
                                          MessagesFactory, TorrentFactory, lodash, UserService) {
 
+    const CHECK_MESSAGES_INTERVAL_TIME = 2000;
 
     var clearVariables = function () {
       $scope.my = MessagesFactory.my;
@@ -18,6 +19,7 @@ angular.module('webtorrentClientApp')
       $scope.getConversation = MessagesFactory.getAll; // factory with messages
       $scope.getTorrents = TorrentFactory.getAllTorrents;
       $scope.getLastInfoHashes = TorrentFactory.getLastInfoHashes;
+      $scope.a = TorrentFactory.getA
       $scope.myConversations = [];
       $scope.currentConversationId = 0;
       $scope.friendsInConversations = {};
@@ -106,7 +108,7 @@ angular.module('webtorrentClientApp')
 
     var checkMessagesInterval = $interval(function() {
       $scope.checkMessages();
-    }, 2000);
+    }, CHECK_MESSAGES_INTERVAL_TIME);
 
     var checkUsersInConversation = $interval(function () {
       getUsersForConversation($scope.currentConversationId);
