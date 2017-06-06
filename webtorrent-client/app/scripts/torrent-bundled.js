@@ -111,7 +111,9 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     if (client && !client.destroyed) {
       // if not destroyed - destroy first
       client.destroy(function (err) {
-        if (err) return console.error(err); // but continue anyway
+        if (err) {
+          return console.error(err);
+        }
         actualInit(userDhtId);
       });
     } else {
@@ -151,10 +153,7 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     var magnetLink = getMagnetLink(infohash);
     var existingTorrent = client.get(magnetLink);
     if (!existingTorrent) {
-      client.add(magnetLink, {
-        // announce: 'ws://webtorrent-chat-tracker.herokuapp.com'
-        // announce: 'ws://192.168.1.5:8000'
-      }, onTorrent);
+      client.add(magnetLink, onTorrent);
     }
   }
 
@@ -197,15 +196,7 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     });
   }
 
-  var a = []
   function onTorrent (torrent) {
-    if (!lodash.find(a, torrent.wires[0].peerId)) a.push(torrent.wires[0].peerId)
-    console.log(torrent)
-    a.forEach(function (i) {
-      console.log('adding ' + i)
-      console.log(torrent.addPeer(i))
-    })
-
     if (torrent.name.startsWith('control')) {
       var levelForMessages = lodash.parseInt(torrent.name.slice(7));
       torrent.files.forEach(function (file) {
@@ -369,7 +360,7 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
 
   torrent.exit = function () {
     client.destroy();
-  }
+  };
 
 ////////////////// other
 
@@ -380,10 +371,6 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
   torrent.getLastInfoHashes = function () {
     return lastInfoHashes;
   };
-
-  torrent.getA = function () {
-    return a;
-  }
 
   client.on('error', function (err) {
     console.error('WEBTORRENT ERROR: ' + err.message);

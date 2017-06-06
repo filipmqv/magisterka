@@ -19,7 +19,6 @@ angular.module('webtorrentClientApp')
       $scope.getConversation = MessagesFactory.getAll; // factory with messages
       $scope.getTorrents = TorrentFactory.getAllTorrents;
       $scope.getLastInfoHashes = TorrentFactory.getLastInfoHashes;
-      $scope.a = TorrentFactory.getA
       $scope.myConversations = [];
       $scope.currentConversationId = 0;
       $scope.friendsInConversations = {};

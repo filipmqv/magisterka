@@ -109,7 +109,9 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     if (client && !client.destroyed) {
       // if not destroyed - destroy first
       client.destroy(function (err) {
-        if (err) return console.error(err); // but continue anyway
+        if (err) {
+          return console.error(err);
+        }
         actualInit(userDhtId);
       });
     } else {
