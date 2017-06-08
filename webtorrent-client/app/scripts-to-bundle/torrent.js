@@ -1,4 +1,16 @@
-'use strict';
+'use strict'
+
+const rtcConfig = {
+  'iceServers': [
+    {
+      'urls': 'stun:stun.l.google.com:19305'
+    }
+  ]
+};
+
+const trackerOpts = {
+  rtcConfig: rtcConfig
+};
 
 var services = angular.module('Torrents', []);
 
@@ -6,7 +18,9 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
   var torrent = {};
 
   var WebTorrent = require('webtorrent');
-  var client = new WebTorrent();
+  var client = new WebTorrent({
+    tracker: trackerOpts
+  });
 
   // prevent warnings about possible memory leak when >11 listeners added (webtorrent)
   const EventEmitter = require('events').EventEmitter;
@@ -99,7 +113,9 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
   }
 
   function actualInit(userDhtId) {
-    client = new WebTorrent();
+    client = new WebTorrent({
+      tracker: trackerOpts
+    });
     myDhtId = userDhtId;
     getMyCurrentInfoHash(userDhtId);
     MessagesFactory.init(userDhtId).then(seedOnInit);
