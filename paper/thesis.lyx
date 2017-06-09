@@ -9,8 +9,14 @@
 %
 %  $Id: thesis-template.lyx,v 1.7 2011/12/22 12:10:18 sobaniec Exp $
 %
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
 \end_preamble
-\options thesis,openany
+\options thesis, openany
 \use_default_options false
 \begin_modules
 dcs
@@ -218,11 +224,11 @@ Jest to jeden z
 \end_inset
 
 najpopularniejszych obecnie komunikatorów.
- Oferuje zarówno czat dla 2 osób jak i
+ Oferuje zarówno rozmowy dla 2 osób jak i
 \begin_inset space ~
 \end_inset
 
-grupowy.
+grupowe.
  Wspiera wysyłanie wszelkich multimediów i
 \begin_inset space ~
 \end_inset
@@ -256,9 +262,14 @@ serwer
 \end_inset
 
 wielu maszyn, którą firma musi utrzymywać.
- Wadami tego komunikatora jest choćby brak wsparcia szyfrowania wiadomości
- czy fakt, że nie jest to oprogramowanie open-source.
- 
+ Wadą tego komunikatora jest brak wsparcia szyfrowania wiadomości.
+ Kod źródłowy aplikacji nie został udostępniony (nie jest to open-source),
+ co oznacza, że za wprowadzanie zmian i dodawanie nowych funkcji odpowiedzialny
+ jest tylko wydawca — społeczność użytkowników nie ma możliwości ingerowania
+ w funkcjonalność.
+ Jest to wada w sytuacji, gdy nowa wersja oprogramowania zawiera niechciane
+ przez użytkowników dodatki (zbędne lub na przykład szpiegujące), a nie
+ zawiera takich, które są przez nich wyczekiwane.
 \end_layout
 
 \begin_layout Section
@@ -277,16 +288,8 @@ Bleep jest komunikatorem zaprojektowanym przez firmę rozwijającą protokół
  BitTorrent.
  Do dyspozycji użytkowników oddano aplikację mobilną oraz aplikację desktopową
  (brak aplikacji webowej).
- Kod źródłowy aplikacji nie został udostępniony (nie jest to open-source),
- co oznacza, że użytkownicy nie mogą upewnić się, czy aplikacja działa i
-\begin_inset space ~
-\end_inset
-
-została zaimplementowana zgodnie z
-\begin_inset space ~
-\end_inset
-
-założeniami.
+ Podobnie jak w przypadku Messengera z poprzedniego punktu, nie jest to
+ oprogramowanie open-source.
  Bleep oferuje rozmowy dla dwóch osób, a
 \begin_inset space ~
 \end_inset
@@ -368,9 +371,13 @@ Twórcy aplikacji Signal skupili się przede wszystkim na bezpieczeństwie
 \end_inset
 
 prywatności użytkowników.
- Wiadomości są szyfrowane na urządzeniach więc pomimo faktu, że architektura
+ Wiadomości są szyfrowane na urządzeniach, więc pomimo faktu, że architektura
  zakłada obecność centralnego serwera, wiadomości przechowywane na nim nie
  mogą zostać odczytane przez osoby trzecie.
+ Jednakże, ten typ architektury posiada znaczącą wadę — jeśli serwer stanie
+ się niedostępny (na przykład z powodu jego awarii lub braku łączności z
+ nim — awarii łącza komunikacyjnego) to niemożliwe jest prowadzenie rozmów
+ (dotyczy to każdej aplikacji z centralnym serwerem).
  Kod źródłowy jest dostępny publicznie co oznacza, że każdy może sprawdzić
  zgodność implementacji z
 \begin_inset space ~
@@ -436,6 +443,23 @@ n
 Podobne rozwiązania: Wire, WhatsApp, Telegram, Allo
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO osobno whatsapp - jego sposób na apkę webową, skoro można mieć tylko
+ jednego klienta na konto i serwer zapomina wiadomości, które zostały dostarczon
+e do wszystkich to jak to jest zrobione - telefon przekazuje do przeglądarki
+ (szyfrowanie jest tylko w telefonie i on pośredniczy w rozmowie jeśli ktoś
+ ją prowadzi z aki webowej)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Darkwire 
 \begin_inset CommandInset citation
@@ -463,9 +487,9 @@ programu.
 \begin_inset space ~
 \end_inset
 
-użytkownikami należy wymienić między nimi identyfikator czatu (link do konkretne
-go pokoju) za pośrednictwem innego kanału komunikacyjnego (np.
- e-mail).
+użytkownikami należy wymienić między nimi identyfikator konwersacji (link
+ do konkretnego pokoju) korzystając z innego sposobu komunikacji (np.
+ poprzez e-mail, SMS czy osobiście).
  Takie rozwiązanie zakłada, że identyfikator nie zostanie odgadnięty przez
  osoby trzecie — w
 \begin_inset space ~
@@ -514,7 +538,7 @@ Ten niszowy projekt open-source oferuje aplikację desktopową i
 \begin_inset space ~
 \end_inset
 
-umożliwia czat grupowy.
+umożliwia prowadzenie rozmów grupowych.
  Szyfrowanie wiadomości nie zostało do tej pory zrealizowane, ale jest jednym
  z
 \begin_inset space ~
@@ -531,12 +555,19 @@ punktów przyszłego rozwoju.
 sytuacji gdy połączenie internetowe jest niedostępne.
  Aplikacja wykorzystuje algorytm plotkowania (gossiping) oraz replikuje
  wiadomości przy użyciu drzewa skrótów (hash tree, Merkle DAG, DAG - Directed
- Acyclic Graph).
+ Acyclic Graph 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "merkle"
+
+\end_inset
+
+).
  Dzięki temu wiadomości w
 \begin_inset space ~
 \end_inset
 
-czacie mogą zostać połączone nawet w
+konwersacji mogą zostać połączone nawet w
 \begin_inset space ~
 \end_inset
 
@@ -546,7 +577,9 @@ przypadku, gdy ktoś nadał komunikaty będąc odłączonym od sieci — mechani
 \end_inset
 
 repozytorium kodu.
- Gwarantuje to ostateczną spójność — przykładowy scenariusz dla 3 użytkowników:
+ Wykorzystanie opisanych powyżej mechanizmów gwarantuje ostateczną spójność
+ otrzymanych wiadomości — każdy uczestnik rozmowy ostatecznie będzie widział
+ taki sam zbiór wiadomości — przykładowy scenariusz dla 3 użytkowników:
  
 \end_layout
 
@@ -607,7 +640,7 @@ założenia rozproszonym i
 \end_inset
 
 szyfrowanym protokołem do wymiany wiadomości.
- Powstało kilkanaście implementacji klientów obsługujących go co pozwala
+ Powstało kilkanaście implementacji klientów obsługujących go, co pozwala
  na komunikowanie się z
 \begin_inset space ~
 \end_inset
@@ -621,8 +654,8 @@ użytkownikami różnych aplikacji.
 
 odbiorcą dlatego obie strony muszą być dostępne jednocześnie.
  Brak wsparcia dostarczania wiadomości gdy jedna strona jest niedostępna
- to duża wada wszystkich aplikacji implementujących ten rodzaj transmisji
- P2P.
+ to duża wada wszystkich aplikacji implementujących wskazany powyżej rodzaj
+ transmisji P2P.
  Jednym z
 \begin_inset space ~
 \end_inset
@@ -670,12 +703,10 @@ key "bitmessage-main"
 \end_layout
 
 \begin_layout Standard
-Przytoczone aplikacje realizują pomysły na komunikatory oparte o
-\begin_inset space ~
-\end_inset
-
-mechanizm podobny do transakcji kryptowalutowych.
- Wysłanie wiadomości wymaga obliczenia funkcji skrótu z
+Przytoczone aplikacje realizują pomysły na komunikatory bazujące na mechanizmie
+ podobnym do transakcji kryptowalutowych.
+ Wysłanie wiadomości wymaga umieszczenia wiadomości w bloku, obliczenia
+ funkcji skrótu z
 \begin_inset space ~
 \end_inset
 
@@ -712,6 +743,12 @@ czasie rzeczywistym).
 
 innej architekturze niż dotychczas zaprezentowane (centralny serwer lub
  P2P).
+ Przykładowymi zaletami architektury blockchain są: brak centralnego serwera
+ lub centrów danych, nad którymi kontrolę ma jedna firma decydująca o sposobie
+ ich działania lub ich wyłączeniu, skalowalność oraz brak możliwości ingerencji
+ w zapisane dane — wraz z upływem czasu maleje prawdopodobieństwo, że treść
+ wiadomości zapisana w blockchainie ulegnie zmianie (wynika to wprost z
+ własności tej technologii).
  Być może w
 \begin_inset space ~
 \end_inset
@@ -720,12 +757,24 @@ przyszłości wady uda się zminimalizować, a
 \begin_inset space ~
 \end_inset
 
-zalety architektury opartej o
-\begin_inset space ~
+zalety architektury blockchain okażą się kluczowe.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO tabelka porównawcza, serwer, szyfrowanie, platformy, łatwość prowadzenia
+ rozmów (czy np trzeba wymienić się czymś wcześniej innym sposobem czy od
+ razu można zacząć gadać (np bez konta), czy konto wymagane, jakie dane
+ przekazujemy firmie, wiadomości grupowe?, 
+\end_layout
+
 \end_inset
 
-blockchain okażą się kluczowe.
- 
+
 \end_layout
 
 \begin_layout Chapter
@@ -798,7 +847,7 @@ Poniżej znajduje się lista najważniejszych pojęć związanych z protokołem
 \end_layout
 
 \begin_layout Itemize
-Torrent — plik lub zbiór plików udostępnionych do pobrania.
+torrent — plik lub zbiór plików udostępnionych do pobrania.
 \end_layout
 
 \begin_layout Itemize
@@ -916,6 +965,33 @@ Pobranie fragmentów torrenta od peerów.
 \end_layout
 
 \begin_layout Subsection
+Scenariusz utworzenia torrenta
+\end_layout
+
+\begin_layout Standard
+W celu udostępnienia torrenta należy:
+\end_layout
+
+\begin_layout Enumerate
+Stworzyć metaplik .torrent dla udostępnianych treści oraz utworzyć listę
+ trackerów, które będą nadzorowały pobieranie treści.
+\end_layout
+
+\begin_layout Enumerate
+Rozpocząć udostępnianie torrenta.
+\end_layout
+
+\begin_layout Enumerate
+Umieścić metaplik .torrent w miejscu, z którego zainteresowani będą mogli
+ go pobrać (np.
+ na zewnętrznym serwerze).
+ Alternatywnie można rozpowszechnić magnet link lub sam info hash — w ostatniej
+ sytuacji osoba zainteresowana pobraniem torrenta musi znać listę trackerów,
+ które koordynują pobieranie.
+ 
+\end_layout
+
+\begin_layout Subsection
 Jak komunikują się peery
 \end_layout
 
@@ -1007,13 +1083,58 @@ reference "subsec:jak-komunikuja"
 \end_inset
 
 .
- Polega on na tym, że dany klient pozwala (unchoke) na pobieranie fragmentów
- od siebie tylko tym peerom, którzy posiadają i udostępnią klientowi swoje
+ i polega na tym, że dany klient pozwala (unchoke) na pobieranie fragmentów
+ od siebie tylko tym peerom, które posiadają i udostępnią klientowi swoje
  fragmenty.
  Pobieranie wymaga zatem kooperacji i wymiany interesujących, brakujących
  fragmentów.
  Bez tej wymiany połączenie zostaje przerwane (choke).
  
+\end_layout
+
+\begin_layout Subsection
+Serwery potrzebne do działania protokołu
+\end_layout
+
+\begin_layout Standard
+Protokół z założenia powinien być w pełni rozproszony i nie polegać na żadnych
+ publicznych serwerach — jedynie na bezpośredniej komunikacji użytkowników
+ końcowych (P2P).
+ Niestety kilka usług serwerowych jest wciąż aktywnie wykorzystywanych do
+ prawidłowego działania sieci:
+\end_layout
+
+\begin_layout Itemize
+serwer hostujący metapliki .torrent lub magnet linki pozwalający na wyszukiwanie
+ interesujących plików po nazwie, tagach, innych właściwościach, oferujący
+ statystyki torrenta, komentarze itp.
+ — może zostać zastąpiony wyszukiwarką torrentów wbudowaną w klienta, który
+ wysyła zapytanie do podłączonych peerów, one przekazują je dalej, aż do
+ momentu otrzymania odpowiedzi,
+\end_layout
+
+\begin_layout Itemize
+tracker — istnieją jednak rozwiązania umożliwiające śledzenie swarmu bez
+ użycia zewnętrznego serwera np.
+ DHT, PEX (Peer Exchange),
+\end_layout
+
+\begin_layout Itemize
+serwery pośredniczące w nawiązaniu połączenia dwóch klientów ukrytych w
+ prywatnych sieciach IP (wykorzystujących translację adresów sieciowych).
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO NAT - doczytać i może coś jeszcze dopisać
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1086,34 +1207,6 @@ problem ostatniego fragmentu
  
 \end_layout
 
-\begin_layout Standard
-Protokół z założenia powinien być w pełni rozproszony i nie polegać na żadnych
- publicznych serwerach — jedynie na bezpośredniej komunikacji użytkowników
- końcowych (P2P).
- Niestety kilka usług serwerowych jest wciąż aktywnie wykorzystywanych do
- prawidłowego działania sieci:
-\end_layout
-
-\begin_layout Itemize
-serwer hostujący metapliki .torrent lub magnet linki pozwalający na wyszukiwanie
- interesujących plików po nazwie, tagach, innych właściwościach, oferujący
- statystyki torrenta, komentarze itp.
- — może zostać zastąpiony wyszukiwarką torrentów wbudowaną w klienta, który
- wysyła zapytanie do podłączonych peerów, one przekazują je dalej, aż do
- momentu otrzymania odpowiedzi.
-\end_layout
-
-\begin_layout Itemize
-tracker — istnieją jednak rozwiązania umożliwiające śledzenie swarmu bez
- użycia zewnętrznego serwera np.
- DHT, PEX (Peer Exchange).
-\end_layout
-
-\begin_layout Itemize
-serwery pośredniczące w nawiązaniu połączenia dwóch klientów ukrytych w
- prywatnych sieciach IP (wykorzystujących translację adresów)
-\end_layout
-
 \begin_layout Section
 WebTorrent 
 \begin_inset CommandInset citation
@@ -1144,6 +1237,68 @@ WebTorrent to biblioteka napisana w języku JavaScript, implementująca protokó
  Funkcjonalność oferowana w obu przypadkach jest niemal identyczna (poza
  kilkoma sytuacjami wynikającymi z ograniczeń danej platformy).
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO 
+\end_layout
+
+\begin_layout Itemize
+ograniczenia względem BT, czego WT nie implementuje a co robi inaczej (np
+ UDP->WebRTC)
+\end_layout
+
+\begin_layout Itemize
+webrtc DODATKOWY względem BitTorrent serwer potrzebny signalling (w przypadku
+ WebTorrent jest nim tracker)
+\end_layout
+
+\begin_layout Itemize
+stun, ICE, NAT traversal, 90% wszystkich połączeń to STUN (screen z wiresharka),
+ ogromne liczby - to idzie w tysiące połączeń na minutę
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
+\end_layout
+
+\begin_layout Itemize
+https://www.html5rocks.com/en/tutorials/webrtc/basics/#toc-signaling — signaling
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ICE to protokół do przechodzenia przez firewalle
+\end_layout
+
+\begin_layout Itemize
+A STUN server is used to get an external network address.
+ 
+\end_layout
+
+\begin_layout Itemize
+TURN servers are used to relay traffic if direct (peer to peer) connection
+ fails.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+webrtc w webworkers niedostępne - https://github.com/w3c/webrtc-pc/issues/230
+\end_layout
+
+\begin_layout Itemize
+webrtc wymaga też signalling server
+\end_layout
+
+\end_deeper
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -1210,12 +1365,29 @@ name "fig:Architektura-komunikatora"
 \begin_layout Standard
 Klient jest aplikacją webową typu Single Page Application.
  Oznacza to, że cały kod źródłowy oraz niezbędne widoki pobierane są z serwera
- przy pierwszym połączeniu.
+ (
+\begin_inset Quotes pld
+\end_inset
+
+Serwer aplikacji
+\begin_inset Quotes prd
+\end_inset
+
+ na rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Architektura-komunikatora"
+
+\end_inset
+
+) przy pierwszym połączeniu.
+ 
 \end_layout
 
 \begin_layout Standard
-Oprócz wspomnianego serwera umożliwiającego pobranie plików HTML, CSS oraz
- JS do działania programu niezbędny jest drugi serwer o architekturze REST.
+Oprócz wspomnianego serwera aplikacji umożliwiającego pobranie plików HTML,
+ CSS oraz JS do działania programu niezbędny jest drugi serwer o architekturze
+ REST.
  Umożliwia on rejestrację i autoryzację użytkowników oraz jest odpowiedzialny
  za tworzenie konwersacji i przydzielanie do nich odpowiednich użytkowników.
 \end_layout
@@ -1255,25 +1427,221 @@ i.
 \end_layout
 
 \begin_layout Standard
-Ostatnim potrzebnym elementem są publiczne serwery STUN (Session Traversal
- Utilities for NAT).
+Ostatnim elementem są publiczne serwery STUN (Session Traversal Utilities
+ for NAT).
  Dzięki nim możliwe jest skomunikowanie ze sobą dwóch klientów znajdujących
- się w sieciach, których ruter stosuje translację adresów.
+ się w sieciach, których router stosuje translację adresów sieciowych.
  Takie serwery również istnieją w sieci więc ich implementacja i uruchomienie
  nie było konieczne.
  Za łączenie się z nimi odpowiedzialna jest biblioteka WebTorrent.
 \end_layout
 
-\begin_layout Itemize
-webrtc
+\begin_layout Section
+Serwer REST i Baza Danych
+\end_layout
+
+\begin_layout Standard
+Serwer został napisany w języku Python z użyciem biblioteki Eve 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "python-eve"
+
+\end_inset
+
+, która w łatwy sposób pozwala uruchomić serwer REST oferujący podstawowe
+ operacje CRUD (Create, Read, Update, Delete) na obiektach.
+ Biblioteka automatycznie generuje dla obiektów ścieżki dostępu REST z odpowiedn
+imi metodami HTTP oraz zapisuje zmiany dokonywane na obiektach w podłączonej
+ bazie danych.
+ Wybór tej biblioteki wynika z faktu, że serwer REST w projekcie pełni niewielką
+ rolę — wraz z bazą danych przechowuje jedynie te dane, które nie powinny
+ zostać utracone, a mogłyby, gdyby były zapisane jedynie w przeglądarce
+ użytkownika — wtedy użytkownik straciłby dostęp do swojego konta i informacji
+ o przynależności do konwersacji.
+ 
+\end_layout
+
+\begin_layout Standard
+Serwer przechowuje dane w nierelacyjnej (dokumentowej) bazie danych MongoDB.
+ Struktura dokumentów w bazie odzwierciedla bezpośrednio schemat zaprojektowany
+ w serwerze.
+ 
+\end_layout
+
+\begin_layout Standard
+W kolejnych punktach przybliżono szczegóły obiektów 
+\begin_inset Quotes pld
+\end_inset
+
+użytkownik
+\begin_inset Quotes prd
+\end_inset
+
+ i 
+\begin_inset Quotes pld
+\end_inset
+
+konwersacja
+\begin_inset Quotes prd
+\end_inset
+
+ — ich atrybuty i metody REST.
+ 
+\end_layout
+
+\begin_layout Subsection
+Użytkownicy i logowanie
+\end_layout
+
+\begin_layout Standard
+Encja user posiada następujące atrybuty: 
 \end_layout
 
 \begin_layout Itemize
-angular
+id (nadawany automatycznie), 
 \end_layout
 
 \begin_layout Itemize
-python eve jako lekki serwer rest (co robi, że jest też mockiem)
+username, 
+\end_layout
+
+\begin_layout Itemize
+email, 
+\end_layout
+
+\begin_layout Itemize
+password,
+\end_layout
+
+\begin_layout Itemize
+salt.
+ 
+\end_layout
+
+\begin_layout Standard
+W trakcie rejestracji serwer automatycznie uzupełnia pole salt, które wraz
+ z przesłanym hasłem zostaje zapisane jako wynik funkcji skrótu kryptograficzneg
+o BCrypt.
+ Zapewnia to wyższy poziom bezpieczeństwa niż przechowywanie hasła w takiej
+ postaci, w jakiej zostało ono przesłane przez użytkownika.
+ Niezalogowany użytkownik ma dostęp jedynie do metody POST na kolekcji users
+ (rejestracja nowego użytkownika) oraz metody login.
+ Dopiero po zalogowaniu możliwe jest odczytanie szczegółów swojego profilu
+ lub profilu innej osoby (metodą GET z podaniem odpowiedniego id).
+ 
+\end_layout
+
+\begin_layout Subsection
+Konwersacje
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Konwersacje"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Encja conversations posiada atrybuty: 
+\end_layout
+
+\begin_layout Itemize
+id (nadawany automatycznie), 
+\end_layout
+
+\begin_layout Itemize
+conversation_id (nazwa konwersacji; może być zdefiniowana przez użytkownika
+ lub nadana losowo przez serwer), 
+\end_layout
+
+\begin_layout Itemize
+user_id (id użytkownika),
+\end_layout
+
+\begin_layout Itemize
+user_dht_id (klucz, pod którym użytkownik umieszcza info hash najnowszej
+ wiadomości dla danej konwersacji w DHT).
+\end_layout
+
+\begin_layout Standard
+Ścieżki REST dla obiektu konwersacje są dostępne dla zalogowanego użytkownika.
+ Taka osoba ma kilka możliwości:
+\end_layout
+
+\begin_layout Itemize
+stworzenie i automatyczne dołączenie do nowej konwersacji lub dołączenie
+ do już istniejącej konwersacji (metoda POST), 
+\end_layout
+
+\begin_layout Itemize
+pobranie informacji o użytkownikach, którzy uczestniczą w tej samej konwersacji
+ co użytkownik, np.
+ ich user_dht_id (metoda GET),
+\end_layout
+
+\begin_layout Itemize
+wypisanie się z konwersacji (metoda DELETE).
+\end_layout
+
+\begin_layout Section
+Klient i biblioteka WebTorrent
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+// TODO
+\end_layout
+
+\begin_layout Plain Layout
+co umożliwia użytkownikowi
+\end_layout
+
+\begin_layout Plain Layout
+składa się z modułu torrent i message factory, za co są odpowiedzialne
+\end_layout
+
+\begin_layout Itemize
+jaką strukturę tworzą peery (w jednej konwersacji, między konwersacjami)
+ - to chyba zależy od biblioteki kogo z kim połączy, peery mogą tworzyć
+ od łańcucha, przez ring po graf pełny
+\end_layout
+
+\begin_layout Itemize
+algorytm zmniejszający liczbę jednoczesnych torrentów (bo wiadomość = torrent
+ by zapchało klienta równoległymi połąćzeniami)
+\end_layout
+
+\begin_layout Itemize
+inne implementacyjne ciekawostki (zajrzeć do kodu)
+\end_layout
+
+\begin_layout Itemize
+założenia - dostarczanie offline, brak ograniczenia na liczbę użytkowników
+ w ramach jednej konwersacji, czy konwersacje nie wpływają na siebie?
+\end_layout
+
+\begin_layout Itemize
+komunikat- struktura 
+\begin_inset Quotes pld
+\end_inset
+
+czym jest komunikat
+\begin_inset Quotes prd
+\end_inset
+
+ w DOCU
+\end_layout
+
+\begin_layout Itemize
+szczegółowo (jakie biblioteki, technologie) jak się komunikują te moduły?
+ websocket, webrtc itp?
 \end_layout
 
 \begin_layout Itemize
@@ -1281,39 +1649,306 @@ p2p
 \end_layout
 
 \begin_layout Itemize
-bittorent
-\end_layout
-
-\begin_layout Itemize
-webtorrent
-\end_layout
-
-\begin_layout Itemize
 planktos - pobieranie strony jako torrent (odciążenie serwera aplikacji)
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zaimplementowany w ramach projektu klient jest aplikacją webową typu Single
+ Page Application.
+ Do jej przygotowania wykorzystano framework AngularJS.
+ Integralną częścią programu jest moduł do obsługi protokołu BitTorrent
+ — biblioteka WebTorrent.
+ Wygląd komunikatora przedstawiony został na rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wygląd-aplikacji-klienta"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/wiadomosci.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Wygląd aplikacji klienta
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Wygląd-aplikacji-klienta"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Program klienta pozwala użytkownikowi na zalogowanie się do systemu komunikatora.
+ Następnie użytkownik może dołączyć do konwersacji podając jej nazwę (conversati
+on_id z punktu 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Konwersacje"
+
+\end_inset
+
+) lub utworzyć nową konwersację.
+ Głównym celem programu jest prowadzenie rozmowy z innymi użytkownikami,
+ którzy są zapisani do tej samej konwersacji — użytkownicy wysyłają i odbierają
+ wiadomości.
+ Kluczową cechą komunikatora jest sposób, w jaki instancje programu wymieniają
+ się wiadomościami — nowo utworzona wiadomość W kolejnych punktach przybliżone
+ zostaną szczegóły działania programu.
+\end_layout
+
+\begin_layout Subsection
+Inicjalizacja
+\end_layout
+
+\begin_layout Subsection
+Logowanie
+\end_layout
+
+\begin_layout Subsection
+Utworzenie lub dołączenie do konwersacji 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO 
+\end_layout
+
 \begin_layout Itemize
-Stun ICE, NAT traversal, 90% wszystkich połączeń, ogromne liczby - to idzie
- w tysiące połączeń na minutę
+dołączanie użytkownika, tworzenie (rozpoczynanie) konwersacji lub dołączanie
+ do istniejącej (qrcode wykorzystywany powszechnie w innych apkach), jak
+ to działa po kolei
+\end_layout
+
+\begin_layout Itemize
+pomysł na dołączenie podobny do Darkwire - trzeba znać id konwersacji, choć
+ mając serwer REST można by mieć znajomych i ich dodawać do konw
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Wysłanie wiadomości
+\end_layout
+
+\begin_layout Subsubsection
+Struktura komunikatu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO 
+\end_layout
+
+\begin_layout Itemize
+normalna rozmowa (odpytywanie dht o nowy infohash, dodanie IH do clienta,
+ normalne pobieranie wraz ze sprawdzeniem, czy posiadamy wcześniejszą wiadomość;
+ wstawienie wiadomości, dodanie IH do DHT, seedowanie)
+\end_layout
+
+\begin_layout Itemize
+scenariusz z przekazywaniem offline (nadawca niedostępny, przekazuje inna
+ osoba w konwersacji lub serwer pośrednik) ktoś musi być dostępny żeby nam
+ przekazać starsze komunikaty
+\end_layout
+
+\begin_layout Itemize
+przechowywanie danych w IndexedDB
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Odebranie wiadomości
+\end_layout
+
+\begin_layout Section
+DHT
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO 
+\end_layout
+
+\begin_layout Plain Layout
+wspomnieć o kademlii, że było powolne, choć w miarę działało, jednak by
+ się
+\begin_inset space ~
+\end_inset
+
+przydało w webworkers działające, ale ostatecznie mock
+\end_layout
+
+\begin_layout Itemize
+dht - że to mock bo nie ma obsługi webrtc w webworkers, a istniejące rozwiązanie
+ jest zbyt wolne
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Przed przystąpieniem do pracy nad projektem zakładano, że...
+\end_layout
+
+\begin_layout Section
+Bezpieczeństwo, kryptografia, JavaScript
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+JS- problemy z bezpieczenstwem, krypto, szyfrowanie wiadomości, przechowywanie
+ kluczy, ataki
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
+póki co zdecydowana większość źródeł mówi, że nie da się tego rozwiązać
+ poprawnie.
+ 
+\end_layout
+
+\begin_layout Itemize
+klucze można na wiele sposobów wykraść (choćby ataki XSS, wstrzyknięcie
+ kodu po stronie serwera lub już w przeglądarce).
+ 
+\end_layout
+
+\begin_layout Itemize
+Klucz przechowywany w zmiennej można odczytać.
+ 
+\end_layout
+
+\begin_layout Itemize
+Żeby wysyłać zaszyfrowane wiadomości z pominięciem serwera (poprzez torrentowy
+ swarm) trzeba je zaszyfrować w przeglądarce oraz trzymać klucz prywatny
+ do odszyfrowania tych, które otrzymamy.
+ Jeśli wysyłamy wiadomość do innego użytkownika który jest online - można
+ użyć webRTC, który ma wbudowane szyfrowanie.
+ 
+\end_layout
+
+\begin_layout Itemize
+W zwykłej aplikacji webowej klucze czy tokeny można trzymać w ciasteczkach
+ httpOnly i jest to dość bezpieczne.
+ Problem jest taki, że takie ciasteczka można wysyłać jedynie do serwera,
+ a jeśli nie są httpOnly to nie są bezpieczne.
+ Nadal można odczytać (odszyfrowaną) wiadomość bezpośrednio ze strony.
+ 
+\end_layout
+
+\begin_layout Itemize
+Połączenia browser<->browser w JS - nie można ciastek wykorzystać.
+ 
+\end_layout
+
+\begin_layout Itemize
+Plugin do przeglądarki (bezpieczne będzie tylko customowe gui w panelu wyświetla
+nym przez plugin).
+ 
+\end_layout
+
+\begin_layout Itemize
+Mobile? - przykładowo taki Bleep czy Signal mogą działać na telefonach i
+ bezpiecznie szyfrować na urządzeniu, bo nie korzystają z JS i mają więcej
+ dostępnych mechanizmów przechowywania klucza prywatnego.
+ 
+\end_layout
+
+\begin_layout Itemize
+oczywiście są też zespoły pracujące nad polepszeniem sytuacji (stąd powstają
+ takie projekty jak webCrypto).
+ Być może w przyszłości problemy wymienione powyżej staną się nieaktualne.
+ 
+\end_layout
+
+\begin_layout Itemize
+nikt wcześniej nie zrobił poważnego projektu apki webowej nastawionego na
+ prywatność i bezpieczeństwo (a nie dlatego, że nikt na to nie wpadł - wręcz
+ przeciwnie, na stronach niektórych otwartych sieci społ.
+ były wpisy dlaczego nie zdecydowali się na apkę webową np http://secushare.org/e
+nd2end).
+ Patrząc jednak na to, że ludzie korzystają choćby z fejsbuka czy maili,
+ gdzie wiadomości są przesyłane bezpiecznym kanałem, ale na serwerach trzymane
+ są w plaintekście, być może takie połowiczne rozwiązanie już będzie krokiem
+ naprzód.
+ 
+\end_layout
+
+\begin_layout Itemize
+W apkach innych niż webowe - klucze prywatne (takie, których używamy np
+ do łączenia się przez SSH albo szyfrowania poczty) przechowywane w folderze
+ na komputerze też nie są zwykle niczym chronione.
+ Nie można ich jednak tak łatwo wykraść, są też sposoby by ochronę zwiększyć.
+ W JS póki co nie ma takiej możliwości.
+ 
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-rysunek co jest z czym połączone
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-webrtc w webworkers - póki co nie ma tego https://github.com/w3c/webrtc-pc/issues
-/230
-\end_layout
 
-\begin_layout Itemize
-dht - że to mock
 \end_layout
 
 \begin_layout Chapter
@@ -1350,7 +1985,7 @@ key "messenger"
 
 \end_inset
 
-https://pl-pl.messenger.com/
+https://pl-pl.messenger.com/ (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1360,7 +1995,7 @@ key "bleep"
 
 \end_inset
 
-http://www.bleep.pm/
+http://www.bleep.pm/ (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1370,7 +2005,7 @@ key "signal"
 
 \end_inset
 
-https://whispersystems.org/
+https://whispersystems.org/ (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1380,7 +2015,7 @@ key "darkwire"
 
 \end_inset
 
-https://darkwire.io/
+https://darkwire.io/ (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1390,7 +2025,21 @@ key "friends"
 
 \end_inset
 
-http://moose-team.github.io/friends/
+http://moose-team.github.io/friends/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "merkle"
+
+\end_inset
+
+Becker, Georg.
+ "Merkle Signature Schemes, Merkle Trees and Their Cryptanalysis".
+ Ruhr-Universität Bochum, 2008.
+ http://www.emsec.rub.de/media/crypto/attachments/files/2011/04/becker_1.pdf
+ (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1400,7 +2049,7 @@ key "tox"
 
 \end_inset
 
-https://tox.chat/
+https://tox.chat/ (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1410,7 +2059,8 @@ key "zeronet"
 
 \end_inset
 
-https://zeronet.readthedocs.io/en/latest/using_zeronet/sample_sites/
+https://zeronet.readthedocs.io/en/latest/using_zeronet/sample_sites/ (dostęp
+ 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1420,7 +2070,7 @@ key "bitmessage-main"
 
 \end_inset
 
-https://bitmessage.org/wiki/Main_Page
+https://bitmessage.org/wiki/Main_Page (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1430,7 +2080,7 @@ key "bitmessage-pdf"
 
 \end_inset
 
-https://bitmessage.org/bitmessage.pdf
+https://bitmessage.org/bitmessage.pdf (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1440,7 +2090,7 @@ key "bittorrent"
 
 \end_inset
 
-http://www.bittorrent.org/
+http://www.bittorrent.org/ (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -1450,7 +2100,17 @@ key "webtorrent"
 
 \end_inset
 
-https://webtorrent.io/
+https://webtorrent.io/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "python-eve"
+
+\end_inset
+
+http://python-eve.org/ (dostęp 09.06.2017)
 \end_layout
 
 \end_body
