@@ -21,8 +21,9 @@ angular.module('webtorrentClientApp')
       AuthService.login(credentials).then(function () {
         $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
         $location.path('/messenger');
-      }, function () {
+      }, function (err) {
         $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
+        $scope.error = err.data.error;
       });
     };
   });

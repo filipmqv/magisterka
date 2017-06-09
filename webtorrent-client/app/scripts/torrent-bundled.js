@@ -1,18 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (Buffer){
-'use strict'
-
-const rtcConfig = {
-  'iceServers': [
-    {
-      'urls': 'stun:stun.l.google.com:19305'
-    }
-  ]
-};
-
-const trackerOpts = {
-  rtcConfig: rtcConfig
-};
+'use strict';
 
 var services = angular.module('Torrents', []);
 
@@ -20,9 +8,7 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
   var torrent = {};
 
   var WebTorrent = require('webtorrent');
-  var client = new WebTorrent({
-    tracker: trackerOpts
-  });
+  var client = new WebTorrent();
 
   // prevent warnings about possible memory leak when >11 listeners added (webtorrent)
   const EventEmitter = require('events').EventEmitter;
@@ -115,9 +101,7 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
   }
 
   function actualInit(userDhtId) {
-    client = new WebTorrent({
-      tracker: trackerOpts
-    });
+    client = new WebTorrent();
     myDhtId = userDhtId;
     getMyCurrentInfoHash(userDhtId);
     MessagesFactory.init(userDhtId).then(seedOnInit);
