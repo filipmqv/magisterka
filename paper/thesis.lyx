@@ -472,6 +472,16 @@ key "darkwire"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Darkwire"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Darkwire to aplikacja open-source oferująca komunikator grupowy z
 \begin_inset space ~
 \end_inset
@@ -942,6 +952,16 @@ Scenariusz pobrania torrenta
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Scenariusz pobrania torrenta"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 W celu pobrania torrenta niezbędne są następujące czynności:
 \end_layout
 
@@ -966,6 +986,16 @@ Pobranie fragmentów torrenta od peerów.
 
 \begin_layout Subsection
 Scenariusz utworzenia torrenta
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Scenariusz utworzenia torrenta"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1264,6 +1294,10 @@ stun, ICE, NAT traversal, 90% wszystkich połączeń to STUN (screen z wireshark
 
 \begin_deeper
 \begin_layout Itemize
+https://github.com/webtorrent/webtorrent/issues/145
+\end_layout
+
+\begin_layout Itemize
 https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
 \end_layout
 
@@ -1525,10 +1559,20 @@ o BCrypt.
  Zapewnia to wyższy poziom bezpieczeństwa niż przechowywanie hasła w takiej
  postaci, w jakiej zostało ono przesłane przez użytkownika.
  Niezalogowany użytkownik ma dostęp jedynie do metody POST na kolekcji users
- (rejestracja nowego użytkownika) oraz metody login.
+ (rejestracja nowego użytkownika) oraz metody login (POST) — zalogowanie
+ się do systemu.
  Dopiero po zalogowaniu możliwe jest odczytanie szczegółów swojego profilu
  lub profilu innej osoby (metodą GET z podaniem odpowiedniego id).
  
+\end_layout
+
+\begin_layout Standard
+W przypadku prawidłowego zalogowania serwer odsyła użytkownikowi szczegóły
+ jego konta oraz dane poświadczające prawidłowe zalogowanie.
+ Kontrola dostępu do ścieżek REST udostępnionych tylko dla zalogowanych
+ użytkowników wykorzystuje najprostszy mechanizm autoryzacji — nagłówek
+ HTTP Basic Authentication, który klient wypełnia danymi otrzymanymi od
+ serwera podczas logowania.
 \end_layout
 
 \begin_layout Subsection
@@ -1546,7 +1590,7 @@ name "subsec:Konwersacje"
 \end_layout
 
 \begin_layout Standard
-Encja conversations posiada atrybuty: 
+Atrybuty encji conversations zostały wymienione poniżej: 
 \end_layout
 
 \begin_layout Itemize
@@ -1599,49 +1643,14 @@ status open
 // TODO
 \end_layout
 
-\begin_layout Plain Layout
-co umożliwia użytkownikowi
-\end_layout
-
-\begin_layout Plain Layout
-składa się z modułu torrent i message factory, za co są odpowiedzialne
-\end_layout
-
-\begin_layout Itemize
-jaką strukturę tworzą peery (w jednej konwersacji, między konwersacjami)
- - to chyba zależy od biblioteki kogo z kim połączy, peery mogą tworzyć
- od łańcucha, przez ring po graf pełny
-\end_layout
-
-\begin_layout Itemize
-algorytm zmniejszający liczbę jednoczesnych torrentów (bo wiadomość = torrent
- by zapchało klienta równoległymi połąćzeniami)
-\end_layout
-
 \begin_layout Itemize
 inne implementacyjne ciekawostki (zajrzeć do kodu)
 \end_layout
 
 \begin_layout Itemize
-założenia - dostarczanie offline, brak ograniczenia na liczbę użytkowników
- w ramach jednej konwersacji, czy konwersacje nie wpływają na siebie?
-\end_layout
-
-\begin_layout Itemize
-komunikat- struktura 
-\begin_inset Quotes pld
-\end_inset
-
-czym jest komunikat
-\begin_inset Quotes prd
-\end_inset
-
- w DOCU
-\end_layout
-
-\begin_layout Itemize
-szczegółowo (jakie biblioteki, technologie) jak się komunikują te moduły?
- websocket, webrtc itp?
+założenia - dostarczanie offline (może to być serwer imitujący użytkownika
+ przyjaciel, jak w Tox), brak ograniczenia na liczbę użytkowników w ramach
+ jednej konwersacji, czy konwersacje nie wpływają na siebie?
 \end_layout
 
 \begin_layout Itemize
@@ -1694,7 +1703,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Wygląd aplikacji klienta
+Wygląd aplikacji klienta, ekran komunikatora
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Wygląd-aplikacji-klienta"
@@ -1729,20 +1738,205 @@ reference "subsec:Konwersacje"
  którzy są zapisani do tej samej konwersacji — użytkownicy wysyłają i odbierają
  wiadomości.
  Kluczową cechą komunikatora jest sposób, w jaki instancje programu wymieniają
- się wiadomościami — nowo utworzona wiadomość W kolejnych punktach przybliżone
- zostaną szczegóły działania programu.
-\end_layout
+ się wiadomościami — nowo utworzona wiadomość wraz z pewnymi metadanymi
+ jest traktowana jako plik i upubliczniana w sieci P2P w sposób opisany
+ w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Scenariusz utworzenia torrenta"
 
-\begin_layout Subsection
-Inicjalizacja
+\end_inset
+
+.
+ Odbiór wiadomości przebiega według scenariusza opisanego w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Scenariusz pobrania torrenta"
+
+\end_inset
+
+.
+ W kolejnych punktach przybliżone zostaną szczegóły działania programu.
 \end_layout
 
 \begin_layout Subsection
 Logowanie
 \end_layout
 
+\begin_layout Standard
+Na rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ekran-logowania"
+
+\end_inset
+
+ zaprezentowano wygląd ekranu logowania.
+ Formularz pozwala na podanie adresu email oraz hasła niezbędnych do zalogowania
+ się do systemu komunikatora.
+ Zatwierdzenie danych przyciskiem 
+\begin_inset Quotes pld
+\end_inset
+
+Sign in
+\begin_inset Quotes prd
+\end_inset
+
+ powoduje wysłanie ich do serwera REST, na którym przechodzą one weryfikację,
+ czy dany użytkownik istnieje oraz czy podał prawidłowe hasło.
+ W przypadku pomyślnego uwierzytelnienia, serwer odsyła szczegóły konta
+ użytkownika i dane niezbędne do autoryzacji, a klient zapisuje je w pamięci
+ przeglądarki (local storage).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/logowanie.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ekran logowania
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ekran-logowania"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Inicjalizacja modułów
+\end_layout
+
+\begin_layout Standard
+Poprawne zalogowanie do serwisu pozwala na przejście do głównego ekranu
+ komunikatora (przedstawiony na rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Wygląd-aplikacji-klienta"
+
+\end_inset
+
+).
+ Po wyświetleniu tego widoku następuje pobranie z serwera REST niezbędnych
+ informacji o konwersacji (jeśli użytkownik już w jakiejś uczestniczy),
+ uruchomienie modułu torrent (wykorzystującego bibliotekę WebTorrent, odpowiedzi
+alnego za wymianę wiadomości) oraz modułu, którego zadaniem jest przechowywanie
+ posiadanych wiadomości i kontakt z bazą danych wbudowaną w przeglądarkę.
+ Szczegółowo ten proces został omówiony poniżej.
+\end_layout
+
+\begin_layout Standard
+Jeśli użytkownik był zapisany do konwersacji to klient pobiera z serwera
+ REST szczegółowe informacje o tej konwersacji (atrybuty przedstawione w
+ punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Konwersacje"
+
+\end_inset
+
+) oraz dane o innych uczestnikach tej konwersacji — między innymi ich identyfika
+tor user_dht_id, który jest niezbędny w procesie odbierania wiadomości.
+ Jeżeli użytkownik nie uczestniczył jeszcze w żadnej konwersacji to wyświetlone
+ zostaje pole umożliwiające podanie jej nazwy (conversation_id) — rysunek
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Dołączanie-do-konwersacji"
+
+\end_inset
+
+.
+ Szczegóły dołączania do konwersacji opisano w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:utw-dolacz-do-konwersacji"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Kolejnym krokiem jest uruchomienie modułu odpowiedzialnego za przechowywanie
+ wiadomości (nazywany dalej modułem wiadomości).
+ Moduł korzysta z bazy danych typu klucz-wartość znajdującej się w przeglądarce
+ (IndexedDB) do 
+\begin_inset Quotes pld
+\end_inset
+
+trwałego
+\begin_inset Quotes prd
+\end_inset
+
+ zapisywania wysłanych i odebranych wiadomości.
+ Słowo 
+\begin_inset Quotes pld
+\end_inset
+
+trwałego
+\begin_inset Quotes prd
+\end_inset
+
+ jest ujęte w cudzysłów, ponieważ użytkownik może w każdej chwili usunąć
+ dane.
+ Jedynym sposobem, by je w takiej sytuacji odzyskać jest pobranie ich od
+ innego użytkownika.
+ Podczas inicjalizacji moduł wczytuje do pamięci podręcznej wszystkie wiadomości
+ znajdujące się w bazie danych — dzięki temu będą one dostępne dla modułu
+ torrent.
+\end_layout
+
+\begin_layout Standard
+Ostatni etap przygotowania aplikacji do pełnego działania wymaga uruchomienia
+ modułu torrent obsługującego komunikację poprzez protokół BitTorrent.
+ W ramach inicjalizacji moduł włącza klienta sieci torrent i rozpoczyna
+ ponowne udostępnianie posiadanych wiadomości.
+\end_layout
+
 \begin_layout Subsection
 Utworzenie lub dołączenie do konwersacji 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:utw-dolacz-do-konwersacji"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1754,14 +1948,144 @@ TODO
 \end_layout
 
 \begin_layout Itemize
-dołączanie użytkownika, tworzenie (rozpoczynanie) konwersacji lub dołączanie
- do istniejącej (qrcode wykorzystywany powszechnie w innych apkach), jak
- to działa po kolei
+jaką strukturę tworzą peery (w jednej konwersacji, między konwersacjami)
+ - to chyba zależy od biblioteki kogo z kim połączy, peery mogą tworzyć
+ od łańcucha, przez ring po graf pełny
 \end_layout
 
-\begin_layout Itemize
-pomysł na dołączenie podobny do Darkwire - trzeba znać id konwersacji, choć
- mając serwer REST można by mieć znajomych i ich dodawać do konw
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+W celu prowadzenia rozmowy z użytkownikami konieczne jest dołączenie do
+ wspólnej konwersacji.
+ Rysunek 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Dołączanie-do-konwersacji"
+
+\end_inset
+
+ pokazuje formularz umożliwiający utworzenie nowej rozmowy lub podanie nazwy
+ istniejącej.
+ Użytkownik może rozpocząć nową konwersację i poczekać, aż inni do niej
+ dołączą lub samemu dołączyć do już istniejącej.
+ 
+\end_layout
+
+\begin_layout Standard
+W pierwszym przypadku użytkownik wybiera opcję 
+\begin_inset Quotes pld
+\end_inset
+
+Create new
+\begin_inset Quotes prd
+\end_inset
+
+.
+ Aplikacja wysyła do serwera REST żądanie stworzenia konwersacji o losowej
+ nazwie.
+ Serwer automatycznie dołącza użytkownika do nowej konwersacji i odpowiada
+ odsyłając nazwę konwersacji (conversation_id).
+ Użytkownik zobaczy tę nazwę w polu 
+\begin_inset Quotes pld
+\end_inset
+
+conversation ID
+\begin_inset Quotes prd
+\end_inset
+
+.
+ Zadaniem użytkownika jest teraz rozesłanie nazwy konwersacji do osób, z
+ którymi chce prowadzić rozmowę.
+ Może to zrobić, podobnie jak w przypadku komunikatora Darkwire (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Darkwire"
+
+\end_inset
+
+), na przykład za pośrednictwem email, SMS lub przekazać osobiście.
+\end_layout
+
+\begin_layout Standard
+Drugi przypadek zakłada, że użytkownik otrzymał od kogoś nazwę konwersacji
+ — wpisuje ją w pole 
+\begin_inset Quotes pld
+\end_inset
+
+conversation ID
+\begin_inset Quotes prd
+\end_inset
+
+ i zatwierdza przyciskiem 
+\begin_inset Quotes pld
+\end_inset
+
+Join
+\begin_inset Quotes prd
+\end_inset
+
+.
+ Klient wysyła do serwera REST żądanie, a serwer zapisuje w bazie danych
+ fakt dołączenia użytkownika do konwersacji.
+ Serwer w odpowiedzi informuje klienta o pomyślnym zakończeniu procedury.
+ 
+\end_layout
+
+\begin_layout Standard
+Dodatkowym założeniem, które należy spełnić w obu przypadkach przed dołączeniem
+ do konwersacji jest posiadanie przez użytkownika unikalnego user_dht_id
+ (atrybut z punktu 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Konwersacje"
+
+\end_inset
+
+).
+ Jest to klucz w DHT, pod którym użytkownik umieszcza informację o najnowszej
+ wysłanej przez siebie wiadomości (jej info hash).
+ Wartość user_dht_id powinna być unikalna.
+ Należy ją przesłać razem z żądaniem opisanym w powyższych przypadkach.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/dolacz.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dołączanie do konwersacji
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Dołączanie-do-konwersacji"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1773,22 +2097,12 @@ pomysł na dołączenie podobny do Darkwire - trzeba znać id konwersacji, choć
 Wysłanie wiadomości
 \end_layout
 
-\begin_layout Subsubsection
-Struktura komunikatu
-\end_layout
-
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 TODO 
-\end_layout
-
-\begin_layout Itemize
-normalna rozmowa (odpytywanie dht o nowy infohash, dodanie IH do clienta,
- normalne pobieranie wraz ze sprawdzeniem, czy posiadamy wcześniejszą wiadomość;
- wstawienie wiadomości, dodanie IH do DHT, seedowanie)
 \end_layout
 
 \begin_layout Itemize
@@ -1797,8 +2111,175 @@ scenariusz z przekazywaniem offline (nadawca niedostępny, przekazuje inna
  przekazać starsze komunikaty
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aby wysłać wiadomość użytkownik podaje jej treść w polu 
+\begin_inset Quotes pld
+\end_inset
+
+Type message
+\begin_inset Quotes prd
+\end_inset
+
+ i zatwierdza przyciskiem 
+\begin_inset Quotes pld
+\end_inset
+
+Send
+\begin_inset Quotes prd
+\end_inset
+
+.
+ Dalsze czynności wykonuje moduł torrent.
+ Najpierw tworzy strukturę wiadomości (szerzej opisaną w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Struktura komunikatu"
+
+\end_inset
+
+).
+ Następnie rozpoczyna udostępnianie komunikatu w sieci P2P zgodnie z opisem
+ z punktu 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Scenariusz utworzenia torrenta"
+
+\end_inset
+
+ (jest to zadanie biblioteki WebTorrent).
+ Kolejnym krokiem jest zapamiętanie info hasha udostępnionej wiadomości.
+ Klient zapisuje komunikat za pośrednictwem modułu wiadomości w bazie danych
+ IndexedDB — kluczem jest info hash, a wartością struktura wiadomości.
+ 
+\end_layout
+
+\begin_layout Standard
+W trakcie implementowania programu zaobserwowano, że wraz ze wzrostem liczby
+ wiadomości traktowanie jednej wiadomości jako jeden torrent bardzo szybko
+ prowadzi do nadmiernego zużywania zasobów, a nawet do błędnego zakończenia
+ programu.
+ Z tego powodu zdecydowano o zaprojektowaniu i wdrożeniu algorytmu zmniejszające
+go liczbę jednocześnie udostępnianych torrentów.
+ W ogólności polega on na okresowym zastępowaniu torrentów zawierających
+ pojedynczą wiadomość (poziom 0) jednym torrentem (nazywanym dalej torrentem
+ kontrolnym), który składa się z wielu wiadomości (poziom 1).
+ Algorytm wykonuje się rekurencyjnie — jeśli powstanie zbyt dużo torrentów
+ kontrolnych na poziomie 1 to zostaną one połączone w jeden torrent kontrolny
+ na poziomie 2, itd.
+ Algorytm uruchamiany jest jako kolejny krok po zleceniu zapisu do bazy
+ danych.
+ Został opisany szczegółowo poniżej:
+\end_layout
+
+\begin_layout Enumerate
+Jeżeli na danym poziomie znajduje się zbyt dużo wiadomości (więcej niż zadany
+ próg) to rozpocznij procedurę zamieniania wielu torrentów w jeden torrent
+ kontrolny.
+ W przeciwnym przypadku zakończ algorytm.
+\end_layout
+
+\begin_layout Enumerate
+Stwórz listę wiadomości, które znajdą się w nowym torrencie kontrolnym.
+\end_layout
+
+\begin_layout Enumerate
+Stwórz listę info hashy, które posiadają wiadomości znajdujące się na liście
+ w punkcie 2.
+ Dodatkowo, jeśli torrent kontrolny będzie zastępował inne torrenty kontrolne,
+ stwórz listę info hashy zastępowanych torrentów kontrolnych.
+\end_layout
+
+\begin_layout Enumerate
+Stwórz strukturę wiadomości (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Struktura komunikatu"
+
+\end_inset
+
+), w polu 
+\begin_inset Quotes pld
+\end_inset
+
+treść
+\begin_inset Quotes prd
+\end_inset
+
+ umieść listy z punktu 3.
+\end_layout
+
+\begin_layout Enumerate
+Usuń z klienta sieci P2P torrenty o info hashach znajdujących się na listach
+ z punktu 3.
+\end_layout
+
+\begin_layout Enumerate
+Rozpocznij udostępnianie pliku składającego się z wszystkich wiadomości
+ z punktu 2 oraz wiadomości z punktu 4 — procedura identyczna jak wysyłanie
+ zwykłej wiadomości.
+ W bazie danych zapisywana jest wiadomość z punktu 4 oraz usuwane z niej
+ są te zastąpione.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Jeśli stworzenie nowego torrenta kontrolnego spowodowało, że na jego poziomie
+ znalazło się zbyt wiele torrentów, wykonaj algorytm dla tego poziomu.
+\end_layout
+
+\begin_layout Standard
+Po zakończeniu algorytmu należy wykonać ostatni krok, którym jest umieszczenie
+ wartości najnowszego info hasha w DHT pod kluczem user_dht_id.
+ Działanie DHT zostało szczegółowo opisane w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:DHT"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Dla poprawnego działania programu kluczowe jest, by kolejna nowa wiadomość
+ przeszła procedurę wysyłania dopiero po zakończeniu procedury wysyłania
+ poprzedniej wiadomości.
+ Wynika to z konieczności podania wartości poprzedniego info hasha w strukturze
+ wiadomości.
+ 
+\end_layout
+
+\begin_layout Subsection
+Odebranie wiadomości
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Odebranie_wiadomości"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
 \begin_layout Itemize
-przechowywanie danych w IndexedDB
+odpytywanie dht o nowy infohash, dodanie IH do clienta, normalne pobieranie
+ wraz ze sprawdzeniem, czy posiadamy wcześniejszą wiadomość
 \end_layout
 
 \end_inset
@@ -1806,12 +2287,38 @@ przechowywanie danych w IndexedDB
 
 \end_layout
 
-\begin_layout Subsection
-Odebranie wiadomości
+\begin_layout Standard
+Procedura odebrania wiadomości rozpoczyna się okresowym sprawdzeniem najnowszej
+ wartości info hash w DHT dla kluczy user_dht_id poszczególnych uczestników
+ rozmowy.
+ Moduł torrent sprawdza, czy torrenty o tych info hashach znajdują się na
+ liście pobieranych torrentów lub czy zostały już pobrane i znajdują się
+ na liście wiadomości w module wiadomości.
+ Jeśli żaden z powyższych warunków nie jest spełniony, wtedy na podstawie
+ wartości info hash tworzony jest magnet link i rozpoczyna się procedura
+ pobrania torrenta (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Scenariusz pobrania torrenta"
+
+\end_inset
+
+).
+ 
 \end_layout
 
-\begin_layout Section
-DHT
+\begin_layout Subsection
+Struktura komunikatu
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Struktura komunikatu"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1820,6 +2327,49 @@ status open
 
 \begin_layout Plain Layout
 TODO 
+\end_layout
+
+\begin_layout Itemize
+komunikat- struktura 
+\begin_inset Quotes pld
+\end_inset
+
+czym jest komunikat
+\begin_inset Quotes prd
+\end_inset
+
+ w DOCU
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+DHT
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:DHT"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO 
+\end_layout
+
+\begin_layout Plain Layout
+jak to powinno działać (że przechowuje klucz id użytkownika –> infohash)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1951,6 +2501,39 @@ W apkach innych niż webowe - klucze prywatne (takie, których używamy np
 
 \end_layout
 
+\begin_layout Standard
+tekst
+\end_layout
+
+\begin_layout Section
+Dalszy rozwój
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+pomysły na dalszy rozwój
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+zamiast przekazywać convId- zrobić relację friend-friend - wtedy osoba tworząca
+ lub uczestnik może dołączać nowe osoby (lub QR code dla osoby która samodzielni
+e dołącza)
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Wyniki testów
 \end_layout
@@ -2036,7 +2619,11 @@ key "merkle"
 \end_inset
 
 Becker, Georg.
- "Merkle Signature Schemes, Merkle Trees and Their Cryptanalysis".
+ 
+\begin_inset Quotes pld
+\end_inset
+
+Merkle Signature Schemes, Merkle Trees and Their Cryptanalysis".
  Ruhr-Universität Bochum, 2008.
  http://www.emsec.rub.de/media/crypto/attachments/files/2011/04/becker_1.pdf
  (dostęp 09.06.2017)
