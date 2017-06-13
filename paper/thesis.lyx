@@ -284,6 +284,16 @@ key "bleep"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:bleep"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Bleep jest komunikatorem zaprojektowanym przez firmę rozwijającą protokół
  BitTorrent.
  Do dyspozycji użytkowników oddano aplikację mobilną oraz aplikację desktopową
@@ -358,6 +368,16 @@ Signal
 \begin_inset CommandInset citation
 LatexCommand cite
 key "signal"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:signal"
 
 \end_inset
 
@@ -1141,6 +1161,17 @@ serwer hostujący metapliki .torrent lub magnet linki pozwalający na wyszukiwan
  — może zostać zastąpiony wyszukiwarką torrentów wbudowaną w klienta, który
  wysyła zapytanie do podłączonych peerów, one przekazują je dalej, aż do
  momentu otrzymania odpowiedzi,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO kademlia - wspomnieć że pozwala na wyszukiwanie zawartości w sieciach
+ P2P bez potrzeby centralnego serwera, to jest oparte na DHT
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -2094,6 +2125,258 @@ name "fig:Dołączanie-do-konwersacji"
 \end_layout
 
 \begin_layout Subsection
+Struktura komunikatu
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Struktura komunikatu"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wiadomość przesyłana między uczestnikami rozmowy ma następującą strukturę:
+\end_layout
+
+\begin_layout Itemize
+content (treść wiadomości),
+\end_layout
+
+\begin_layout Itemize
+type (typ wiadomości, tekst, plik lub kontrolna),
+\end_layout
+
+\begin_layout Itemize
+timestamp (znacznik czasu nadania wiadomości),
+\end_layout
+
+\begin_layout Itemize
+sender (nadawca wiadomości),
+\end_layout
+
+\begin_layout Itemize
+previousInfoHash (wartość info hash poprzedniej wiadomości).
+\end_layout
+
+\begin_layout Standard
+Z własności protokołu BitTorrent wynika, że torrenty są niemodyfikowalne
+ (immutable) — zawartość plików lub ich liczba nie może ulec zmianie bez
+ zmiany wartości info hash.
+ Konieczne zatem było przyjęcie założenia, że każda nowa wiadomość wysłana
+ przez użytkownika staje się nowym torrentem.
+ Scenariusz, w którym użytkownik dodaje wiadomość jako kolejny plik do istniejąc
+ego torrenta jest na chwilę obecną niemożliwy do zrealizowania, chociaż
+ istnieją próby wdrożenia takiej możliwości (w protokole BitTorrent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bep46-bt"
+
+\end_inset
+
+ oraz w bibliotece WebTorrent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bep46-wt"
+
+\end_inset
+
+).
+ Niemniej jednak zdecydowano o zachowaniu przyjętego założenia.
+ 
+\end_layout
+
+\begin_layout Standard
+Zastosowanie znaczników czasowych pozwala na zdefiniowanie kolejności wiadomości
+ — ich odbiorcy będą w stanie posortować odbierane komunikaty zgodnie z
+ porządkiem FIFO.
+ Znaczniki dodatkowo gwarantują globalne uporządkowanie wiadomości (total
+ order) — jeśli wszyscy użytkownicy w ramach konwersacji odbiorą wszystkie
+ wiadomości (każdy będzie posiadał identyczny zbiór), to zobaczą je w takiej
+ samej kolejności.
+ 
+\end_layout
+
+\begin_layout Standard
+Użycie znaczników nie gwarantuje jednak przyczynowego uporządkowania (causal
+ order), ponieważ zegary na maszynach użytkowników nie są zsynchronizowane.
+ W większości przypadków 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+niewielka
+\end_layout
+
+\end_inset
+
+ różnica czasu pozwoli na zachowanie uporządkowania przyczynowego.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Niewielka
+\end_layout
+
+\end_inset
+
+ różnica czasu 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ pomiędzy zegarami na maszynach dwóch użytkowników 
+\begin_inset Formula $U_{N}$
+\end_inset
+
+ (użytkownik-nadawca) i 
+\begin_inset Formula $U_{O}$
+\end_inset
+
+ (użytkownik-odbiorca) oznacza, że 
+\begin_inset Formula $\Delta t<min(t)+t_{0}$
+\end_inset
+
+, gdzie:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $min(t)$
+\end_inset
+
+ to minimalny czas, który upłynie od momentu nadania wiadomości 
+\begin_inset Formula $m$
+\end_inset
+
+ przez 
+\begin_inset Formula $U_{N}$
+\end_inset
+
+ (ustawienia czasu nadania w polu timestamp) do momentu odebrania wiadomości
+ 
+\begin_inset Formula $m$
+\end_inset
+
+ przez 
+\begin_inset Formula $U_{O}$
+\end_inset
+
+ (wyświetlenia wiadomości 
+\begin_inset Formula $m$
+\end_inset
+
+ u odbiorcy), 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t_{0}$
+\end_inset
+
+ to czas potrzebny na napisanie i nadanie odpowiedzi zależnej przyczynowo
+ od wiadomości 
+\begin_inset Formula $m$
+\end_inset
+
+ przez 
+\begin_inset Formula $U_{O}$
+\end_inset
+
+, przy czym w ogólności może on wynosić 0 (zero).
+\end_layout
+
+\begin_layout Standard
+Możliwy jest jednak następujący scenariusz:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Delta t>min(t)$
+\end_inset
+
+, 
+\begin_inset Formula $t_{0}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $T_{N}>T_{O}$
+\end_inset
+
+, gdzie 
+\begin_inset Formula $T_{N}$
+\end_inset
+
+ i 
+\begin_inset Formula $T_{O}$
+\end_inset
+
+ to stan zegara maszyny nadawcy/odbiorcy w danym momencie, a nierówność
+ oznacza, że gdyby porównać w tym samym momencie zegary obu maszyn, to zegar
+ maszyny nadawcy będzie wskazywał wyższą wartość.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $U_{N}$
+\end_inset
+
+ wysyła wiadomość 
+\begin_inset Formula $m$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $U_{O}$
+\end_inset
+
+ odbiera wiadomość 
+\begin_inset Formula $m$
+\end_inset
+
+ i od razu na nią odpowiada (
+\begin_inset Formula $t_{0}=0$
+\end_inset
+
+), wysyłając wiadomość 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ Timestamp ustawiony w odpowiedzi 
+\begin_inset Formula $n$
+\end_inset
+
+ będzie miał niższą wartość niż timestamp otrzymany w wiadomości 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ Zarówno 
+\begin_inset Formula $U_{N}$
+\end_inset
+
+ jak i 
+\begin_inset Formula $U_{O}$
+\end_inset
+
+ zaobserwują ten fakt — wiadomość 
+\begin_inset Formula $n$
+\end_inset
+
+ zostanie wyświetlona powyżej wiadomości 
+\begin_inset Formula $m$
+\end_inset
+
+ (co oznacza, że została wysłana wcześniej).
+ 
+\end_layout
+
+\begin_layout Subsection
 Wysłanie wiadomości
 \end_layout
 
@@ -2270,24 +2553,6 @@ name "subsec:Odebranie_wiadomości"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-odpytywanie dht o nowy infohash, dodanie IH do clienta, normalne pobieranie
- wraz ze sprawdzeniem, czy posiadamy wcześniejszą wiadomość
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Procedura odebrania wiadomości rozpoczyna się okresowym sprawdzeniem najnowszej
  wartości info hash w DHT dla kluczy user_dht_id poszczególnych uczestników
  rozmowy.
@@ -2304,46 +2569,24 @@ reference "subsec:Scenariusz pobrania torrenta"
 \end_inset
 
 ).
+ Biblioteka WebTorrent pozwala na zarządzanie plikami w trakcie ich pobierania
+ — możliwe jest odczytanie zawartości wiadomości pobranych w całości, podczas
+ gdy pozostałe pliki są dalej przesyłane.
+ Odczytana wiadomość zostaje zapisana za pośrednictwem modułu wiadomości
+ w bazie danych oraz na liście wiadomości do wyświetlenia użytkownikowi.
+ Oprócz tego moduł torrent sprawdza, czy poprzednia wiadomość wysłana przez
+ nadawcę znajduje się na liście wiadomości lub liście pobieranych torrentów.
+ Jeśli nie — moduł rozpoczyna procedurę pobierania tej wiadomości.
+\end_layout
+
+\begin_layout Standard
+W sytuacji, gdy pobierany torrent był torrentem kontrolnym, moduł torrent
+ usuwa z klienta sieci P2P torrenty, które torrent kontrolny zastępuje.
+ Moduł zapisuje również w bazie danych brakujące wiadomości, o ile istnieje
+ taka konieczność.
+ Podobnie jak w przypadku zwykłego torrenta, jeśli brakuje poprzedniej wiadomośc
+i, moduł zacznie jej pobieranie.
  
-\end_layout
-
-\begin_layout Subsection
-Struktura komunikatu
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Struktura komunikatu"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO 
-\end_layout
-
-\begin_layout Itemize
-komunikat- struktura 
-\begin_inset Quotes pld
-\end_inset
-
-czym jest komunikat
-\begin_inset Quotes prd
-\end_inset
-
- w DOCU
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -2361,38 +2604,107 @@ name "sec:DHT"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO 
-\end_layout
-
-\begin_layout Plain Layout
-jak to powinno działać (że przechowuje klucz id użytkownika –> infohash)
-\end_layout
-
-\begin_layout Plain Layout
-wspomnieć o kademlii, że było powolne, choć w miarę działało, jednak by
- się
-\begin_inset space ~
-\end_inset
-
-przydało w webworkers działające, ale ostatecznie mock
-\end_layout
-
-\begin_layout Itemize
-dht - że to mock bo nie ma obsługi webrtc w webworkers, a istniejące rozwiązanie
- jest zbyt wolne
-\end_layout
-
-\end_inset
-
-
+Moduł DHT czyli rozproszona tablica mieszająca jest systemem składającym
+ się z wielu węzłów pozwalającym na przechowywanie informacji.
+ Węzłem staje się każdy klient systemu komunikatora.
+ Węzły dzielą między sobą pewien zbiór kluczy i posiadają możliwość komunikowani
+a się z innymi węzłami i przesyłania im posiadanych informacji.
+ Zadaniem węzła jest przechowywanie informacji dotyczących przypisanego
+ mu podzbioru kluczy.
+ Każda informacja zapisywana w DHT posiada etykietę (w przypadku systemu
+ komunikatora jest nią user_dht_id), która następnie zamieniana jest na
+ klucz przez funkcję haszującą.
+ Informacją w systemie komunikatora jest info hash najnowszej wysłanej przez
+ klienta wiadomości.
+ 
 \end_layout
 
 \begin_layout Standard
-Przed przystąpieniem do pracy nad projektem zakładano, że...
+Przed przystąpieniem do pracy nad projektem zakładano, że biblioteka WebTorrent
+ jest wyposażona w mechanizm opisany powyżej.
+ Jest to częściowo prawda — wersja biblioteki dla programów na platformę
+ Node.js posiada taką możliwość.
+ Niestety brakuje jej w wersji dla przeglądarek.
+ Powody dla braku wsparcia DHT w bibliotece WebTorrent w przeglądarce są
+ następujące:
+\end_layout
+
+\begin_layout Itemize
+Przeglądarki mogą komunikować się bezpośrednio ze sobą jedynie dzięki protokołow
+i WebRTC.
+ Funkcjonuje on poprawnie dla niewielkiej liczby jednoczesnych połączeń,
+ jednak na potrzeby zaimplementowania DHT konieczne byłoby utrzymywanie
+ większej liczby równoległych połączeń, co może prowadzić do szybkiego wyczerpan
+ia zasobów przeglądarki.
+\end_layout
+
+\begin_layout Itemize
+Jednym ze sposobów zaimplementowania DHT dla biblioteki WebTorrent jest
+ zaadaptowanie algorytmu Kademlia działającego już dla protokołu BitTorrent.
+ Wymaga on jednak zapamiętywania listy węzłów, z którymi dany węzeł nawiązał
+ dotychczas połączenie, a to oznacza, że połączenia WebRTC muszą pozostać
+ otwarte (nie można ich zakończyć).
+ Jest to o wiele bardziej kosztowne w przypadku WebRTC niż w oryginalnej
+ implementacji, która korzysta z bezpołączeniowego protokołu komunikacji
+ UDP.
+\end_layout
+
+\begin_layout Itemize
+Kolejnym, bardzo istotnym problemem jest brak wsparcia protokołu WebRTC
+ dla dedykowanych wątków roboczych (WebWorker, ServiceWorker, itp.).
+ Bez tego wsparcia kod pozwalający na obsługę DHT musi być wykonywany w
+ głównym wątku danej strony internetowej, a to może doprowadzić nawet do
+ całkowitego zablokowania interfejsu.
+ W chwili obecnej trwają próby wprowadzenia wsparcia protokołu dla wątków
+ roboczych — być może w przyszłości ten problem zostanie rozwiązany.
+ 
+\end_layout
+
+\begin_layout Standard
+W zaistniałej sytuacji przeprowadzono poszukiwania alternatywnej biblioteki
+ udostępniającej mechanizm DHT dla przeglądarek.
+ Znalezione biblioteki pozwalały programiście na zdefiniowanie kanału wymiany
+ informacji pomiędzy węzłami 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kademlia-dht"
+
+\end_inset
+
+ lub posiadały działający mechanizm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kadtools"
+
+\end_inset
+
+.
+ Jednakże w trakcie wstępnych testów okazało się, że żadna biblioteka nie
+ zapewnia satysfakcjonujących rezultatów — informacje były przesyłane zbyt
+ długo lub w ogóle nie docierały do niektórych węzłów.
+ 
+\end_layout
+
+\begin_layout Standard
+Ze względu na brak zaimplementowanego mechanizmu DHT w bibliotece WebTorrent
+ oraz niesatysfakcjonujące alternatywy zdecydowano o zastąpieniu tego mechanizmu
+ atrapą (mock).
+ Funkcjonalność tego rozwiązania pozostaje niezmienna — każdy klient ma
+ możliwość zapisania najnowszej wartości info hash pod określonym kluczem
+ (user_dht_id) oraz odczytania tej informacji.
+ Zmianie uległ sposób przechowywania informacji — zadanie to nie należy
+ już do sieci powiązanych ze sobą klientów, a stało się jednym z zadań serwera
+ REST.
+ Serwer udostępnia ścieżkę REST /dht, która umożliwia następujące akcje:
+\end_layout
+
+\begin_layout Itemize
+metoda HTTP GET z parametrem user_dht_id pozwala na pobranie wartości przechowyw
+anej dla klucza user_dht_id,
+\end_layout
+
+\begin_layout Itemize
+metoda POST pozwala na zapisanie wartości dla klucza user_dht_id.
 \end_layout
 
 \begin_layout Section
@@ -2413,12 +2725,6 @@ JS- problemy z bezpieczenstwem, krypto, szyfrowanie wiadomości, przechowywanie
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-póki co zdecydowana większość źródeł mówi, że nie da się tego rozwiązać
- poprawnie.
- 
-\end_layout
-
 \begin_layout Itemize
 klucze można na wiele sposobów wykraść (choćby ataki XSS, wstrzyknięcie
  kodu po stronie serwera lub już w przeglądarce).
@@ -2502,7 +2808,222 @@ W apkach innych niż webowe - klucze prywatne (takie, których używamy np
 \end_layout
 
 \begin_layout Standard
-tekst
+Mobilne i dektopowe klienty aplikacji Bleep (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:bleep"
+
+\end_inset
+
+) oraz aplikacji Signal (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:signal"
+
+\end_inset
+
+) oferują szyfrowanie wiadomości.
+ Webowy klient aplikacji Darkwire (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Darkwire"
+
+\end_inset
+
+) również.
+ W ramach niniejszej pracy magisterskiej zbadano sposób implementacji tego
+ mechanizmu w przytoczonych aplikacjach oraz podjęto próbę zaprojektowania
+ go dla systemu komunikatora.
+ Poufność wiadomości w systemie komunikatora byłaby konieczna, ponieważ
+ każdy użytkownik systemu (ale też osoba spoza niego) ma możliwość pobrania
+ i odczytania treści przesyłanych wiadomości.
+ Ostatecznie zrezygnowano z wdrożenia szyfrowania wiadomości, choć technicznie
+ jest to osiągalne, ponieważ mechanizm ten posiadałby istotne wady mogące
+ powodować brak gwarancji poufności przesyłanych danych.
+ Powody tej decyzji oraz podsumowanie badań opisano w poniższych punktach.
+\end_layout
+
+\begin_layout Subsection
+Darkwire
+\end_layout
+
+\begin_layout Standard
+Aplikacja webowa Darkwire automatycznie szyfruje wiadomości w przeglądarce
+ użytkownika przed wysłaniem ich do serwera.
+ Serwer przesyła wiadomość do odbiorców.
+ Po dotarciu do nich, treść jest odszyfrowywana.
+ W programie zastosowano kryptografię klucza publicznego do stworzenia klucza
+ symetrycznego danej wiadomości.
+ Aplikacja korzysta z web cryptography API 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "web cryptography api"
+
+\end_inset
+
+ do zarządzania kluczami kryptograficznymi.
+ 
+\end_layout
+
+\begin_layout Standard
+Scenariusz uruchomienia programu i przesłania zaszyfrowanej wiadomości jest
+ następujący 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "darkwire szyfrowanie how it works"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Podczas uruchomienia, program tworzy nową rozmowę (chat room) oraz parę
+ kluczy (publiczny i prywatny).
+ 
+\end_layout
+
+\begin_layout Enumerate
+W momencie dołączenia nowej osoby do rozmowy, aplikacje użytkowników wymieniają
+ się kluczami publicznymi uczestników rozmowy.
+ 
+\end_layout
+
+\begin_layout Enumerate
+W celu wysłania wiadomości program najpierw generuje 3 nowe klucze: symetryczny
+ klucz sesji, klucz podpisujący (umożliwiający weryfikację sygnatury wiadomości)
+ oraz wektor inicjalizacyjny (initialization vector).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Treść wiadomości zostaje zaszyfrowana przy pomocy klucza sesji i wektora
+ inicjalizacyjnego.
+ Oprócz tego tworzona jest sygnatura wiadomości przy użyciu klucza podpisującego.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Klucz sesji i klucz podpisujący zostają zaszyfrowane kluczami publicznymi
+ odbiorców, dla każdego z osobna — ta technika pozwala na uniknięcie szyfrowania
+ całej treści wiadomości osobno dla wszystkich odbiorców.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Ostatnim krokiem przed wysłaniem wiadomości jest przygotowanie paczki danych
+ do wysłania — składa się ona z zaszyfrowanej wiadomości, wektora inicjalizacyjn
+ego, sygnatury wiadomości, zaszyfrowanego klucza sesji oraz zaszyfrowanego
+ klucza podpisującego.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Odbiorca, po otrzymaniu takiej paczki danych, odszyfrowuje swoim kluczem
+ prywatnym klucze sesji i podpisujący.
+ Używając odszyfrowanego klucza sesji i wektora inicjalizacyjnego odbiorca
+ odszyfrowuje treść wiadomości i może zweryfikować sygnaturę wiadomości
+ odszyfrowanym kluczem podpisującym.
+ 
+\end_layout
+
+\begin_layout Standard
+Przedstawiony scenariusz gwarantuje poufność wiadomości i autentyczność
+ odbiorcy 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO // autentyczność? w sensie że wiemy że odbiorca jest tym za kogo się
+ podaje (podpis)
+\end_layout
+
+\end_inset
+
+ podczas normalnej pracy aplikacji.
+ Istnieją jednak wektory ataku pozwalające na zdobycie kluczy prywatnych
+ i w konsekwencji na odczytanie przesłanych wiadomości czy podszywanie się
+ pod nadawcę.
+ Głównym problemem z punktu widzenia bezpieczeństwa jest przechowywanie
+ klucza prywatnego w zmiennej w skrypcie JavaScript.
+ Wykorzystując choćby atak XSS (Cross-site scripting) możliwe jest pozyskanie
+ wrażliwych danych.
+ Oprócz tego każdy, komu uda się uruchomić własny skrypt w tej samej domenie
+ (origin) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+// TODO sprawdzić i czy to nie powtórzenie z XSS
+\end_layout
+
+\end_inset
+
+ również może pozyskać te dane — hakerzy, twórcy aplikacji z własnej woli
+ lub zmuszeni przez np.
+ agencję rządową.
+ 
+\end_layout
+
+\begin_layout Subsection
+Bleep i Signal
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+// TODO aplikacje natywne — bezpieczeństwo klucza jest wyższe, szersza gama
+ mechanizmów dbania o niego choć i tak zalezy od tego, jak użytkownik dba
+ o swój system operacyjny, użycie krypto klucza publicznego, prywatny nie
+ opuszcza urządzenia, problem przy kom grupowej - narzut komunikacyjny
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+// TODO darkwire- zmienna JS do przechowywania kluczy - błąd, można podsłuchać,
+ nie ma jak bezpiecznie zapisać na kompie (przechowywanie klucza), podatność
+ aplikacji internetowych na ataki np xss
+\end_layout
+
+\begin_layout Itemize
+anyone who can get JavaScript to run on the same origin as the alleged “Trust
+ No One” service can get access to your encryption keys
+\end_layout
+
+\begin_layout Itemize
+The potential attacks are numerous: hackers (or governments) could compromise
+ MEGA’s servers and change the file.
+ A MEGA insider could place a malicious payload inside this file.
+ Governments could coerce MEGA into placing a malicious payload inside the
+ file.
+ Or MEGA could just decide they want to grab everyone’s keys.
+ If any of these things were to happen, the security of the entire system
+ has been lost.
+\end_layout
+
+\begin_layout Plain Layout
+// TODO wysłanie klucza na serwer — musimy ufać serwerowi (a co robimy w
+ przypadku fejsa...?) - jedynie kanay muszą być bezpieczne, https
+\end_layout
+
+\begin_layout Plain Layout
+// TODO przyszłe WebCrypto — może będzie bezpieczniejsze, jeśli nie będzie
+ możliwości dostępu do klucza nieuprawnionemu kodowi
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2526,6 +3047,17 @@ pomysły na dalszy rozwój
 zamiast przekazywać convId- zrobić relację friend-friend - wtedy osoba tworząca
  lub uczestnik może dołączać nowe osoby (lub QR code dla osoby która samodzielni
 e dołącza)
+\end_layout
+
+\begin_layout Itemize
+spójność przyczynowa - dodanie zegara wektorowego ostatnio widzianych wiadomości
+ od pozostałych userów
+\end_layout
+
+\begin_layout Itemize
+serwery - znajomi, lub klienty znajomych, którzy pośredniczą w wymianie
+ wiadomości, zwiększają liczbę osób w swarmie (lepsza wydajność), ale nie
+ mogą odczytać wiadomości (szyfrowanie)
 \end_layout
 
 \end_deeper
@@ -2698,6 +3230,86 @@ key "python-eve"
 \end_inset
 
 http://python-eve.org/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bep46-bt"
+
+\end_inset
+
+http://www.bittorrent.org/beps/bep_0046.html
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bep46-wt"
+
+\end_inset
+
+https://github.com/webtorrent/webtorrent/issues/886
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "kademlia-dht"
+
+\end_inset
+
+https://github.com/jeanlauliac/kademlia-dht
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "kadtools"
+
+\end_inset
+
+https://github.com/kadtools/kad
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "web cryptography api"
+
+\end_inset
+
+https://developer.mozilla.org/en-US/docs/Web/API/Window/crypto
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "darkwire szyfrowanie how it works"
+
+\end_inset
+
+https://github.com/seripap/darkwire.io#how-it-works
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "webCrypto API w3"
+
+\end_inset
+
+https://www.w3.org/TR/WebCryptoAPI/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "webCrypto experimental "
+
+\end_inset
+
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API
 \end_layout
 
 \end_body
