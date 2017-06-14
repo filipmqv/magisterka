@@ -219,6 +219,16 @@ key "messenger"
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:messenger"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Jest to jeden z
 \begin_inset space ~
 \end_inset
@@ -262,7 +272,17 @@ serwer
 \end_inset
 
 wielu maszyn, którą firma musi utrzymywać.
- Wadą tego komunikatora jest brak wsparcia szyfrowania wiadomości.
+ Wadą tego komunikatora jest brak domyślnego wsparcia szyfrowania wiadomości
+ — opcję można włączyć tylko w aplikacji mobilnej dla poszczególnych konwersacji
+, jednak nie każdy użytkownik jest tej opcji świadomy.
+ Szyfrowanie w aplikacji webowej nie jest dostępne 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "messenger-encryption"
+
+\end_inset
+
+.
  Kod źródłowy aplikacji nie został udostępniony (nie jest to open-source),
  co oznacza, że za wprowadzanie zmian i dodawanie nowych funkcji odpowiedzialny
  jest tylko wydawca — społeczność użytkowników nie ma możliwości ingerowania
@@ -854,6 +874,19 @@ name "sec:bittorent"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO co ja wykorzystuję z tego?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 BitTorrent to protokół komunikacyjny pozwalający na wymianę i dystrybucję
  plików przez Internet.
  Jego główną zaletą jest podział plików na części i możliwość pobierania
@@ -1183,9 +1216,7 @@ tracker — istnieją jednak rozwiązania umożliwiające śledzenie swarmu bez
 \begin_layout Itemize
 serwery pośredniczące w nawiązaniu połączenia dwóch klientów ukrytych w
  prywatnych sieciach IP (wykorzystujących translację adresów sieciowych).
-\end_layout
-
-\begin_layout Itemize
+ 
 \begin_inset Note Note
 status open
 
@@ -2712,96 +2743,10 @@ Bezpieczeństwo, kryptografia, JavaScript
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Bezpieczeństwo, krypto, JS"
 
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-JS- problemy z bezpieczenstwem, krypto, szyfrowanie wiadomości, przechowywanie
- kluczy, ataki
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-klucze można na wiele sposobów wykraść (choćby ataki XSS, wstrzyknięcie
- kodu po stronie serwera lub już w przeglądarce).
- 
-\end_layout
-
-\begin_layout Itemize
-Klucz przechowywany w zmiennej można odczytać.
- 
-\end_layout
-
-\begin_layout Itemize
-Żeby wysyłać zaszyfrowane wiadomości z pominięciem serwera (poprzez torrentowy
- swarm) trzeba je zaszyfrować w przeglądarce oraz trzymać klucz prywatny
- do odszyfrowania tych, które otrzymamy.
- Jeśli wysyłamy wiadomość do innego użytkownika który jest online - można
- użyć webRTC, który ma wbudowane szyfrowanie.
- 
-\end_layout
-
-\begin_layout Itemize
-W zwykłej aplikacji webowej klucze czy tokeny można trzymać w ciasteczkach
- httpOnly i jest to dość bezpieczne.
- Problem jest taki, że takie ciasteczka można wysyłać jedynie do serwera,
- a jeśli nie są httpOnly to nie są bezpieczne.
- Nadal można odczytać (odszyfrowaną) wiadomość bezpośrednio ze strony.
- 
-\end_layout
-
-\begin_layout Itemize
-Połączenia browser<->browser w JS - nie można ciastek wykorzystać.
- 
-\end_layout
-
-\begin_layout Itemize
-Plugin do przeglądarki (bezpieczne będzie tylko customowe gui w panelu wyświetla
-nym przez plugin).
- 
-\end_layout
-
-\begin_layout Itemize
-Mobile? - przykładowo taki Bleep czy Signal mogą działać na telefonach i
- bezpiecznie szyfrować na urządzeniu, bo nie korzystają z JS i mają więcej
- dostępnych mechanizmów przechowywania klucza prywatnego.
- 
-\end_layout
-
-\begin_layout Itemize
-oczywiście są też zespoły pracujące nad polepszeniem sytuacji (stąd powstają
- takie projekty jak webCrypto).
- Być może w przyszłości problemy wymienione powyżej staną się nieaktualne.
- 
-\end_layout
-
-\begin_layout Itemize
-nikt wcześniej nie zrobił poważnego projektu apki webowej nastawionego na
- prywatność i bezpieczeństwo (a nie dlatego, że nikt na to nie wpadł - wręcz
- przeciwnie, na stronach niektórych otwartych sieci społ.
- były wpisy dlaczego nie zdecydowali się na apkę webową np http://secushare.org/e
-nd2end).
- Patrząc jednak na to, że ludzie korzystają choćby z fejsbuka czy maili,
- gdzie wiadomości są przesyłane bezpiecznym kanałem, ale na serwerach trzymane
- są w plaintekście, być może takie połowiczne rozwiązanie już będzie krokiem
- naprzód.
- 
-\end_layout
-
-\begin_layout Itemize
-W apkach innych niż webowe - klucze prywatne (takie, których używamy np
- do łączenia się przez SSH albo szyfrowania poczty) przechowywane w folderze
- na komputerze też nie są zwykle niczym chronione.
- Nie można ich jednak tak łatwo wykraść, są też sposoby by ochronę zwiększyć.
- W JS póki co nie ma takiej możliwości.
- 
-\end_layout
-
-\end_deeper
 \end_inset
 
 
@@ -2834,13 +2779,29 @@ reference "sec:Darkwire"
  W ramach niniejszej pracy magisterskiej zbadano sposób implementacji tego
  mechanizmu w przytoczonych aplikacjach oraz podjęto próbę zaprojektowania
  go dla systemu komunikatora.
- Poufność wiadomości w systemie komunikatora byłaby konieczna, ponieważ
- każdy użytkownik systemu (ale też osoba spoza niego) ma możliwość pobrania
- i odczytania treści przesyłanych wiadomości.
- Ostatecznie zrezygnowano z wdrożenia szyfrowania wiadomości, choć technicznie
+ 
+\end_layout
+
+\begin_layout Standard
+Poufność wiadomości w systemie komunikatora jest konieczna, ponieważ każdy
+ użytkownik systemu (ale też osoba spoza niego) ma możliwość pobrania i
+ odczytania treści wiadomości przesyłanych jako torrenty.
+ Gdyby wiadomość była zaszyfrowana, posiadanie jej w takiej formie nie powoduje
+ negatywnych skutków.
+ Głównym problemem do rozwiązania jest przechowywanie kluczy pozwalających
+ na odczytanie zaszyfrowanych wiadomości i podpisywanie wysyłanych treści.
+ Problem przechowywania dotyczy zarówno zarządzania kluczami w trakcie pracy
+ aplikacji jak i po jej zamknięciu — zapisanie kluczy w pamięci trwałej.
+ Klucz prywatny nie powinien być wysyłany poza urządzenie, na którym został
+ wygenerowany.
+ 
+\end_layout
+
+\begin_layout Standard
+Ostatecznie zrezygnowano z wdrożenia szyfrowania wiadomości, choć technicznie
  jest to osiągalne, ponieważ mechanizm ten posiadałby istotne wady mogące
  powodować brak gwarancji poufności przesyłanych danych.
- Powody tej decyzji oraz podsumowanie badań opisano w poniższych punktach.
+ Podsumowanie badań opisano w poniższych punktach.
 \end_layout
 
 \begin_layout Subsection
@@ -2892,13 +2853,13 @@ W momencie dołączenia nowej osoby do rozmowy, aplikacje użytkowników wymieni
 \begin_layout Enumerate
 W celu wysłania wiadomości program najpierw generuje 3 nowe klucze: symetryczny
  klucz sesji, klucz podpisujący (umożliwiający weryfikację sygnatury wiadomości)
- oraz wektor inicjalizacyjny (initialization vector).
+ oraz wektor inicjujący (initialization vector).
  
 \end_layout
 
 \begin_layout Enumerate
 Treść wiadomości zostaje zaszyfrowana przy pomocy klucza sesji i wektora
- inicjalizacyjnego.
+ inicjującego.
  Oprócz tego tworzona jest sygnatura wiadomości przy użyciu klucza podpisującego.
  
 \end_layout
@@ -2912,56 +2873,84 @@ Klucz sesji i klucz podpisujący zostają zaszyfrowane kluczami publicznymi
 
 \begin_layout Enumerate
 Ostatnim krokiem przed wysłaniem wiadomości jest przygotowanie paczki danych
- do wysłania — składa się ona z zaszyfrowanej wiadomości, wektora inicjalizacyjn
-ego, sygnatury wiadomości, zaszyfrowanego klucza sesji oraz zaszyfrowanego
- klucza podpisującego.
+ do wysłania — składa się ona z zaszyfrowanej wiadomości, wektora inicjującego,
+ sygnatury wiadomości, zaszyfrowanego klucza sesji oraz zaszyfrowanego klucza
+ podpisującego.
  
 \end_layout
 
 \begin_layout Enumerate
 Odbiorca, po otrzymaniu takiej paczki danych, odszyfrowuje swoim kluczem
  prywatnym klucze sesji i podpisujący.
- Używając odszyfrowanego klucza sesji i wektora inicjalizacyjnego odbiorca
- odszyfrowuje treść wiadomości i może zweryfikować sygnaturę wiadomości
- odszyfrowanym kluczem podpisującym.
+ Używając odszyfrowanego klucza sesji i wektora inicjującego odbiorca odszyfrowu
+je treść wiadomości i może zweryfikować sygnaturę wiadomości odszyfrowanym
+ kluczem podpisującym.
  
 \end_layout
 
 \begin_layout Standard
 Przedstawiony scenariusz gwarantuje poufność wiadomości i autentyczność
- odbiorcy 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO // autentyczność? w sensie że wiemy że odbiorca jest tym za kogo się
- podaje (podpis)
-\end_layout
-
-\end_inset
-
- podczas normalnej pracy aplikacji.
+ odbiorcy podczas normalnej pracy aplikacji.
  Istnieją jednak wektory ataku pozwalające na zdobycie kluczy prywatnych
- i w konsekwencji na odczytanie przesłanych wiadomości czy podszywanie się
- pod nadawcę.
+ i w konsekwencji na odczytanie przesłanych wiadomości czy przejęcie kontroli
+ nad kontem użytkownika i podszywanie się pod nadawcę.
  Głównym problemem z punktu widzenia bezpieczeństwa jest przechowywanie
- klucza prywatnego w zmiennej w skrypcie JavaScript.
- Wykorzystując choćby atak XSS (Cross-site scripting) możliwe jest pozyskanie
- wrażliwych danych.
- Oprócz tego każdy, komu uda się uruchomić własny skrypt w tej samej domenie
- (origin) 
+ klucza prywatnego jako wartość zmiennej w skrypcie JavaScript (lub w niezabezpi
+eczony sposób w local storage czy IndexedDB).
+ Wykorzystując choćby atak XSS (Cross-site scripting), czyli uruchomienie
+ własnego skryptu osadzonego w treści atakowanej strony, można pozyskać
+ wrażliwe dane.
+ Zmiany w kodzie strony może dokonać nie tylko cracker, ale również twórca
+ oprogramowania z własnej woli lub zmuszony przez trzecią stronę (np.
+ agencję rządową).
+ 
+\end_layout
+
+\begin_layout Standard
+Użycie powyższej metody do przechowywania wrażliwych danych może prowadzić
+ do ich kradzieży i ujawnienia treści wiadomości.
+ Jako usprawiedliwienie można podać przykład Messengera (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:messenger"
+
+\end_inset
+
+), który nie stosuje w ogóle szyfrowania wiadomości — jedynym zabezpieczeniem
+ jest przesyłanie ich do serwera szyfrowanymi kanałami.
+ W bazie danych są one zapisywane w takiej samej formie, w jakiej zostały
+ wprowadzone przez użytkownika.
+ Zdobycie dostępu do bazy danych przez osoby niepowołane spowoduje ujawnienie
+ treści wiadomości.
+ Niemniej jednak, taki wektor ataku wydaje się być mniej prawdopodobny —
+ bazy danych są zazwyczaj lepiej zabezpieczone niż komputery użytkowników
+ 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-// TODO sprawdzić i czy to nie powtórzenie z XSS
+TODO jakieś źródło czy potwierdzenie? Bardziej formalnie?
 \end_layout
 
 \end_inset
 
- również może pozyskać te dane — hakerzy, twórcy aplikacji z własnej woli
- lub zmuszeni przez np.
- agencję rządową.
+
+\end_layout
+
+\begin_layout Standard
+W aplikacjach webowych istnieje jeszcze inna możliwość przesyłania i przechowywa
+nia poufnych informacji (np.
+ tokenów uwierzytelniających), a mianowicie ciasteczka (cookies).
+ Te małe fragmenty tekstu są wysyłane przez serwer do klienta w nagłówku
+ HTTP, a przeglądarka odsyła je wraz z kolejnymi żądaniami.
+ W celu zabezpieczenia tych informacji stosuje się szyfrowany protokół (np.
+ HTTPS) oraz ustawia niezbędne flagi (jak choćby httpOnly, secure, domain,
+ path itd.).
+ Ustawienie pierwszej flagi skutkuje brakiem dostępu do zawartości ciasteczka
+ z poziomu kodu JavaScript.
+ Niestety w systemie komunikatora ten sposób przechowywania poufnych informacji
+ nie może być wykorzystany, gdyż większość operacji wykonywanych jest z
+ poziomu skryptu, a komunikaty przesyłane są innymi protokołami niż HTTP.
  
 \end_layout
 
@@ -2970,64 +2959,230 @@ Bleep i Signal
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-// TODO aplikacje natywne — bezpieczeństwo klucza jest wyższe, szersza gama
- mechanizmów dbania o niego choć i tak zalezy od tego, jak użytkownik dba
- o swój system operacyjny, użycie krypto klucza publicznego, prywatny nie
- opuszcza urządzenia, problem przy kom grupowej - narzut komunikacyjny
-\end_layout
-
-\end_inset
-
-
+Natywne aplikacje mobilne mają nad aplikacjami webowymi istotną przewagę
+ — umożliwiają programistom dostęp do pamięci trwałej urządzenia.
+ Dodatkowo, systemy mobilne zwiększają bezpieczeństwo przechowywanych informacji
+ poprzez izolację danych zapisywanych przez konkretną aplikację — inne programy
+ nie mają dostępu do tych obszarów.
+ Ta możliwość pozwala na znacznie bezpieczniejsze przechowywanie poufnych
+ danych.
+ Wszelkie operacje związane z szyfrowaniem odbywają się na urządzeniach
+ użytkowników.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+Oprócz tego, twórcy przytoczonych aplikacji zastosowali znacznie bardziej
+ rozbudowany mechanizm przesyłania wiadomości niż w przypadku aplikacji
+ Darkwire.
+ W aplikacji Signal wprowadzono choćby 
+\begin_inset Quotes pld
+\end_inset
 
-\begin_layout Plain Layout
-// TODO darkwire- zmienna JS do przechowywania kluczy - błąd, można podsłuchać,
- nie ma jak bezpiecznie zapisać na kompie (przechowywanie klucza), podatność
- aplikacji internetowych na ataki np xss
-\end_layout
+The Double Ratchet Algorithm
+\begin_inset Quotes prd
+\end_inset
 
-\begin_layout Itemize
-anyone who can get JavaScript to run on the same origin as the alleged “Trust
- No One” service can get access to your encryption keys
-\end_layout
-
-\begin_layout Itemize
-The potential attacks are numerous: hackers (or governments) could compromise
- MEGA’s servers and change the file.
- A MEGA insider could place a malicious payload inside this file.
- Governments could coerce MEGA into placing a malicious payload inside the
- file.
- Or MEGA could just decide they want to grab everyone’s keys.
- If any of these things were to happen, the security of the entire system
- has been lost.
-\end_layout
-
-\begin_layout Plain Layout
-// TODO wysłanie klucza na serwer — musimy ufać serwerowi (a co robimy w
- przypadku fejsa...?) - jedynie kanay muszą być bezpieczne, https
-\end_layout
-
-\begin_layout Plain Layout
-// TODO przyszłe WebCrypto — może będzie bezpieczniejsze, jeśli nie będzie
- możliwości dostępu do klucza nieuprawnionemu kodowi
-\end_layout
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "signal double ratchet"
 
 \end_inset
 
+ — algorytm gwarantujący własność utajnienia przekazywania (forward secrecy).
+ Każda wiadomość jest szyfrowana innym kluczem.
+ Ponadto, nawet jeśli cracker uzyskałby dostęp do pojedynczej wiadomości
+ i jej metadanych, nie może na ich podstawie obliczyć wartości poprzednich
+ ani przyszłych kluczy.
+ Podobny mechanizm oferuje aplikacja Bleep 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bleep forward secrecy"
 
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Twórcy aplikacji Bleep umożliwiają użytkownikom wysyłanie wiadomości pod
+ nieobecność odbiorcy — zapisywana jest ona wtedy w DHT.
+ Węzłami w DHT są aplikacje użytkowników, więc dane przechowywane w DHT
+ również muszą być zaszyfrowane 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bleep forward secrecy offline"
+
+\end_inset
+
+.
+ Algorytm jest podobny do przedstawionego powyżej z niewielką zmianą — nowy
+ klucz generowany jest nie dla każdej wiadomości, a dla paczki wiadomości
+ nadanych podczas nieobecności odbiorcy.
+ Gdy odbiorca staje się dostępny, odczytuje wiadomości i generuje nowy klucz.
+ 
+\end_layout
+
+\begin_layout Subsection
+Inne pomysły i wnioski
+\end_layout
+
+\begin_layout Standard
+Badanie rozwiązań wdrożonych w powyższych aplikacjach doprowadziło do powstania
+ innych koncepcji rozwoju systemu komunikatora prowadzących do zabezpieczenia
+ konwersacji między użytkownikami.
+ Przedstawione zostały poniżej.
+\end_layout
+
+\begin_layout Itemize
+Przechowywanie kluczy publicznych i prywatnych w bazie danych z dostępem
+ poprzez serwer REST.
+ Klucze mogą być generowane przez serwer lub przez klienta.
+ Rozwiązanie nie jest poprawne jeśli zakłada się, że nikt poza nadawcą i
+ odbiorcami nie ma prawa odczytać treści wiadomości.
+ Jeśli jednak założenie to zostanie złagodzone i oprócz wspomnianych osób
+ dostęp do treści wiadomości będzie miał zaufany serwer, rozwiązanie mogłoby
+ zostać wprowadzone.
+ W tej sytuacji uzyskuje się skalę poufności podobną do aplikacji Messenger
+ (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:messenger"
+
+\end_inset
+
+), w przypadku której wiadomości również mogą być odczytane z bazy danych.
+ 
+\end_layout
+
+\begin_layout Itemize
+Rozwinięciem poprzedniego rozwiązania byłoby wygenerowanie pary kluczy po
+ stronie klienta oraz dodatkowe zabezpieczenie ich w taki sposób, by jedynie
+ użytkownik miał możliwość ich odczytania po podaniu hasła dostępu.
+ Następnie, bezpieczne dane są wysyłane do serwera i tam przechowywane.
+ Na żądanie klienta, na przykład podczas uruchamiania aplikacji, dane są
+ pobierane, użytkownik podaje hasło i uzyskuje dostęp do poufnych informacji.
+ Niestety, oba rozwiązania są w dalszym ciągu podatne na kradzież danych
+ — odszyfrowane klucze są przetwarzane przez skrypt i mogą zostać przechwycone.
+\end_layout
+
+\begin_layout Itemize
+Ostatnim, póki co koncepcyjnym, pomysłem jest zastosowanie Web Cryptography
+ API 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "webCrypto API w3,webCrypto experimental "
+
+\end_inset
+
+.
+ Konieczne jest jednak założenie, że nie będzie istniała możliwość odczytania
+ czy importu kluczy prywatnych z poziomu kodu JavaScript.
+ Wszelkie operacje na poufnych danych (generowanie kluczy, szyfrowanie i
+ odszyfrowywanie danych) powinny być wykonywane przez algorytmy zaimplementowane
+ bezpośrednio w przeglądarce — dzięki temu unika się przechowywania kluczy
+ prywatnych w zmiennych i ich przetwarzania przez kod JavaScript, a to z
+ kolei uniemożliwia ich kradzież.
+ Algorytmy dostępne byłyby przez API.
+ 
 \end_layout
 
 \begin_layout Section
 Dalszy rozwój
+\end_layout
+
+\begin_layout Standard
+Poniżej opisano pokrótce kilka idei rozwijających system komunikatora.
+\end_layout
+
+\begin_layout Itemize
+Zaimplementowanie relacji znajomości pomiędzy użytkownikami.
+ Dzięki temu osoba tworząca konwersację będzie mogła od razu dopisać do
+ niej uczestników wybierając ich z listy swoich znajomych.
+ Kwestią do rozstrzygnięcia pozostaje w tej sytuacji wybranie, kto ma przypisać
+ uczestnikom wartość user_dht_id (osoba tworząca konwersację czy każdy jej
+ członek z osobna).
+\end_layout
+
+\begin_layout Itemize
+Zagwarantowanie spójności przyczynowej wiadomości i wyświetlanie komunikatów
+ dopiero, gdy pobrane zostały wszystkie poprzednie.
+ Obie własności spowodują bardziej realistyczne wrażenie prowadzenia rozmowy.
+ Jeśli użytkownik wysłał wiadomość 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+
+ w odpowiedzi na otrzymaną wiadomość 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+
+ to pojawią się one w oknie rozmowy w odpowiedniej kolejności — najpierw
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+a
+\end_layout
+
+\end_inset
+
+, potem 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+b
+\end_layout
+
+\end_inset
+
+.
+ Jest to możliwe do osiągnięcia, jeśli wiadomości będą zawierały zegar wektorowy
+ z wartościami ostatnio odebranych wiadomości.
+\end_layout
+
+\begin_layout Itemize
+Szyfrowanie wiadomości.
+ Sposoby implementacji oraz ich znane wady opisano w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Bezpieczeństwo, krypto, JS"
+
+\end_inset
+
+.
+ Niemniej jednak ta własność jest niezbędna, by treść wiadomości nie mogła
+ zostać odczytana przez osoby niepowołane (użytkowników nie należących do
+ danej konwersacji).
+ 
+\end_layout
+
+\begin_layout Itemize
+Zagwarantowanie dostarczenia wiadomości w sytuacji, gdy użytkownik uruchamia
+ aplikację i żaden z uczestników konwersacji nie jest dostępny.
+ Problem ten może zostać rozwiązany na przykład poprzez dodanie serwera
+ do konwersacji jako uczestnika.
+ Serwer ten wykonywałby taki sam kod programu co inni klienci, z jednym
+ wyjątkiem — nie miałby możliwości odszyfrowywania wiadomości ani nadawania
+ własnych komunikatów.
+ Alternatywnym sposobem rozwiązania problemu byłoby powierzenie przekazywania
+ wiadomości programom należącym do znajomych użytkowników.
+ Oni również nie mieliby możliwości odczytania i modyfikacji treści wiadomości.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3039,28 +3194,17 @@ TODO
 \end_layout
 
 \begin_layout Itemize
-pomysły na dalszy rozwój
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-zamiast przekazywać convId- zrobić relację friend-friend - wtedy osoba tworząca
- lub uczestnik może dołączać nowe osoby (lub QR code dla osoby która samodzielni
-e dołącza)
+twarde spacje po jednoliterowych słowach
 \end_layout
 
 \begin_layout Itemize
-spójność przyczynowa - dodanie zegara wektorowego ostatnio widzianych wiadomości
- od pozostałych userów
+zredagowanie rozdziału
 \end_layout
 
 \begin_layout Itemize
-serwery - znajomi, lub klienty znajomych, którzy pośredniczą w wymianie
- wiadomości, zwiększają liczbę osób w swarmie (lepsza wydajność), ale nie
- mogą odczytać wiadomości (szyfrowanie)
+inne todosy
 \end_layout
 
-\end_deeper
 \end_inset
 
 
@@ -3101,6 +3245,17 @@ key "messenger"
 \end_inset
 
 https://pl-pl.messenger.com/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "messenger-encryption"
+
+\end_inset
+
+https://www.facebook.com/help/messenger-app/811527538946901?helpref=uf_permalink
+ (dostęp 13.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -3156,9 +3311,8 @@ Becker, Georg.
 \end_inset
 
 Merkle Signature Schemes, Merkle Trees and Their Cryptanalysis".
- Ruhr-Universität Bochum, 2008.
- http://www.emsec.rub.de/media/crypto/attachments/files/2011/04/becker_1.pdf
- (dostęp 09.06.2017)
+ Ruhr-Universität Bochum, 2008, http://www.emsec.rub.de/media/crypto/attachments/fi
+les/2011/04/becker_1.pdf (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -3239,7 +3393,7 @@ key "bep46-bt"
 
 \end_inset
 
-http://www.bittorrent.org/beps/bep_0046.html
+http://www.bittorrent.org/beps/bep_0046.html (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -3249,7 +3403,7 @@ key "bep46-wt"
 
 \end_inset
 
-https://github.com/webtorrent/webtorrent/issues/886
+https://github.com/webtorrent/webtorrent/issues/886 (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -3259,7 +3413,7 @@ key "kademlia-dht"
 
 \end_inset
 
-https://github.com/jeanlauliac/kademlia-dht
+https://github.com/jeanlauliac/kademlia-dht (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -3269,7 +3423,7 @@ key "kadtools"
 
 \end_inset
 
-https://github.com/kadtools/kad
+https://github.com/kadtools/kad (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -3279,7 +3433,7 @@ key "web cryptography api"
 
 \end_inset
 
-https://developer.mozilla.org/en-US/docs/Web/API/Window/crypto
+https://developer.mozilla.org/en-US/docs/Web/API/Window/crypto (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -3289,7 +3443,48 @@ key "darkwire szyfrowanie how it works"
 
 \end_inset
 
-https://github.com/seripap/darkwire.io#how-it-works
+https://github.com/seripap/darkwire.io#how-it-works (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "signal double ratchet"
+
+\end_inset
+
+Trevor Perrin, Moxie Marlinspike, 
+\begin_inset Quotes pld
+\end_inset
+
+The Double Ratchet Algorithm
+\begin_inset Quotes prd
+\end_inset
+
+, 2016, https://whispersystems.org/docs/specifications/doubleratchet/doubleratche
+t.pdf (dostęp 13.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bleep forward secrecy"
+
+\end_inset
+
+http://engineering.bittorrent.com/2014/12/11/authentication-and-forward-secrecy-in
+-bleep/ (dostęp 14.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bleep forward secrecy offline"
+
+\end_inset
+
+http://engineering.bittorrent.com/2015/08/06/forward-secrecy-for-offline-messages-
+in-bleep/ (dostęp 14.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -3299,7 +3494,7 @@ key "webCrypto API w3"
 
 \end_inset
 
-https://www.w3.org/TR/WebCryptoAPI/
+https://www.w3.org/TR/WebCryptoAPI/ (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -3309,7 +3504,7 @@ key "webCrypto experimental "
 
 \end_inset
 
-https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API
+https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API (dostęp 09.06.2017)
 \end_layout
 
 \end_body
