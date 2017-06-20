@@ -6,7 +6,7 @@ angular.module('webtorrentClientApp')
 
     const CHECK_MESSAGES_INTERVAL_TIME = 2000;
     // var socket = io('http://localhost:3000');
-    var socket = io('https://webtorrent-socketio.herokuapp.com/');
+    var socket = window.io('https://webtorrent-socketio.herokuapp.com/');
 
     var clearVariables = function () {
       $scope.my = MessagesFactory.my;
@@ -148,7 +148,7 @@ angular.module('webtorrentClientApp')
 
     $scope.emitClear = function () {
       socket.emit('request_clear');
-    }
+    };
 
     socket.on('set_NUMBER_OF_MESSAGES_FOR_LEVEL', function (data) {
       localStorageService.set('NUMBER_OF_MESSAGES_FOR_LEVEL', data.number);
