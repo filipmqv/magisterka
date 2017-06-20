@@ -253,7 +253,7 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
   function tryCompactMessages(level) {
     var numberOfSingleMessages = MessagesFactory.my[level].length;
     var numberOfMessagesForLevel = MessagesFactory.numberOfMessagesForLevel(level);
-    if (numberOfSingleMessages >= numberOfMessagesForLevel) {
+    if (numberOfMessagesForLevel > 1 && numberOfSingleMessages >= numberOfMessagesForLevel) {
       // create control message
       // get messages which will be compacted into this new control message
       var sortedMessages = lodash.sortBy(MessagesFactory.my[level], 'infoHash');

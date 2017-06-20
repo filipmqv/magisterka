@@ -2,8 +2,8 @@
 
 var services = angular.module('Services', []);
 
-services.factory('MessagesFactory', function($localForage, $q, lodash){
-  const NUMBER_OF_MESSAGES_FOR_LEVEL = 5;
+services.factory('MessagesFactory', function($localForage, localStorageService, $q, lodash){
+  var NUMBER_OF_MESSAGES_FOR_LEVEL = 5;
 
   var messages = {};
 
@@ -53,6 +53,7 @@ services.factory('MessagesFactory', function($localForage, $q, lodash){
 
   messages.init = function (userDhtId) {
     clearVariables();
+    NUMBER_OF_MESSAGES_FOR_LEVEL = localStorageService.get('NUMBER_OF_MESSAGES_FOR_LEVEL') || 5;
     return $q(function(resolve) {
       $localForage.iterate(function(value, key) {
         pushMessage(userDhtId, key, value);

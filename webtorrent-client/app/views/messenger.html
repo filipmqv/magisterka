@@ -90,6 +90,19 @@
 
     </div>
 
+    <!--TODO FOR TESTS ONLY-->
+    <div>
+    <form class="set-form" role="form">
+      <div class="input-group">
+        <input id="reqSetInput" type="text" ng-model="testSetNumOfMsgForLvl" class="form-control">
+        <span class="input-group-btn">
+              <button id="reqSetButton" class="btn btn-secondary" ng-click="emitSetNumOfMsgForLvl()">emit set</button>
+            </span>
+      </div>
+    </form>
+    <button id="reqClearButton" class="btn btn-secondary" ng-click="emitClear()">emit clear</button>
+    </div>
+
 
   </aside>
 

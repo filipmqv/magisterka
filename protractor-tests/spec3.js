@@ -37,6 +37,7 @@ describe('Protractor WCC Tests With Other Browsers with Auto Replying', function
 
   beforeAll(function() {
     util.login(browser, 'test1@wp.pl');
+    util.emitSet(browser, '5');
   });
 
   var originalTimeout;

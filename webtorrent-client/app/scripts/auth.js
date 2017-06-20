@@ -92,25 +92,3 @@ authServices.service('UserService', function(localStorageService) {
     return currentUser;
   };
 });
-
-// authServices.service('Session', function () {
-//   this.putEtag = function (etag) {
-//     this.etag = etag;
-//   };
-//   this.removeEtag = function () {
-//     this.etag = null;
-//   };
-//   this.create = function (userId, username, userAuth, userRole) {
-//     this.userId = userId;
-//     this.username = username;
-//     this.userAuth = userAuth;
-//     this.userRole = userRole;
-//   };
-//   this.destroy = function () {
-//     this.userId = null;
-//     this.username = null;
-//     this.userAuth = null;
-//     this.userRole = null;
-//   };
-// });
-//

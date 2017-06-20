@@ -3,9 +3,11 @@
 
 angular.module('webtorrentClientApp')
   .controller('MessengerCtrl', function ($scope, $interval, $window, DhtFactory, UsersFactory, ConversationsFactory,
-                                         MessagesFactory, TorrentFactory, lodash, UserService) {
+                                         MessagesFactory, TorrentFactory, lodash, UserService, localStorageService) {
 
     const CHECK_MESSAGES_INTERVAL_TIME = 2000;
+    // var socket = io('http://localhost:3000');
+    var socket = io('https://webtorrent-socketio.herokuapp.com/');
 
     var clearVariables = function () {
       $scope.my = MessagesFactory.my;
@@ -138,6 +140,32 @@ angular.module('webtorrentClientApp')
     };
 
     initController(); // init variables and get all data from server
+
+    // TODO FOR TESTING ONLY
+
+    socket.on('clear', function () {
+      $scope.clearStorageAndRefresh();
+    });
+
+    $scope.emitClear = function () {
+      socket.emit('request_clear');
+    }
+
+    socket.on('set_NUMBER_OF_MESSAGES_FOR_LEVEL', function (data) {
+      localStorageService.set('NUMBER_OF_MESSAGES_FOR_LEVEL', data.number);
+      $scope.clearStorageAndRefresh();
+    });
+
+    $scope.emitSetNumOfMsgForLvl = function () {
+      console.log($scope.testSetNumOfMsgForLvl);
+      socket.emit('request_set_NUMBER_OF_MESSAGES_FOR_LEVEL', {
+        number: $scope.testSetNumOfMsgForLvl
+      });
+    };
+
+    socket.on('', function () {
+
+    });
   });
 
 },{}]},{},[1]);
