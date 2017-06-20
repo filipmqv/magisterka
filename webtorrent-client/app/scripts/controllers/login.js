@@ -5,7 +5,8 @@ angular.module('webtorrentClientApp')
 
     // for testing and quick filling the form
     $scope.credentialsInput = {};
-    $scope.usernames = ['moz', 'chrome', 'oper', 'h1', 'h2', 'h3', 'h4', 'test1', 'test2', 'test3'];
+    $scope.usernames = ['moz', 'chrome', 'oper', 'h1', 'h2', 'h3', 'h4',
+      'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test8', 'test9'];
     var emailEnding = '@wp.pl';
     var password = 'password';
 
