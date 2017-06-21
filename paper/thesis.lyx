@@ -2232,6 +2232,24 @@ Zastosowanie znaczników czasowych pozwala na zdefiniowanie kolejności wiadomo�
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Plain Layout
+czy na pewno jest total order lub fifo jeśli wyswietlimy najpierw nowszą
+ wiadomośc, a potem starszą? (brak czekania na odebranie pprzednich wiadomości)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Użycie znaczników nie gwarantuje jednak przyczynowego uporządkowania (causal
  order), ponieważ zegary na maszynach użytkowników nie są zsynchronizowane.
  W większości przypadków 
@@ -3205,6 +3223,15 @@ zredagowanie rozdziału
 inne todosy
 \end_layout
 
+\begin_layout Itemize
+infohash - kolizje?
+\end_layout
+
+\begin_layout Itemize
+reużywanie swarmów- w końcu każda wiadomość w konwersacji ma tych samych
+ użytkowników - optymalizacja
+\end_layout
+
 \end_inset
 
 
@@ -3212,6 +3239,28 @@ inne todosy
 
 \begin_layout Chapter
 Wyniki testów
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+środowisko, jakie parametry maszyn, sieci, firewall był/ nie było jeśli
+ w sieci domowej to też np różne konfiguracje, 
+\end_layout
+
+\begin_layout Itemize
+jeden lab, między labami, w domu w jednej sieci, w domu między sieciami
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
