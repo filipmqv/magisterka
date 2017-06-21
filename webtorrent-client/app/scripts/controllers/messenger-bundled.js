@@ -6,8 +6,9 @@ angular.module('webtorrentClientApp')
                                          MessagesFactory, TorrentFactory, lodash, UserService, localStorageService) {
 
     const CHECK_MESSAGES_INTERVAL_TIME = 2000;
-    var socket = window.io('http://192.168.1.5:3000');
-    // var socket = window.io('https://webtorrent-socketio.herokuapp.com/');
+    // TODO socketio is for tests only
+    // var socket = window.io('http://192.168.1.5:3000');
+    var socket = window.io('https://webtorrent-socketio.herokuapp.com/');
 
     var clearVariables = function () {
       $scope.my = MessagesFactory.my;

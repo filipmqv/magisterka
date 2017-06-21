@@ -1,5 +1,5 @@
-const MAIN_URL = 'http://192.168.1.5:9000/';
-// const MAIN_URL = 'https://webtorrent-chat-client.herokuapp.com/';
+// const MAIN_URL = 'http://192.168.1.5:9000/';
+const MAIN_URL = 'https://webtorrent-chat-client.herokuapp.com/';
 
 
 
