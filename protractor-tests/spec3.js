@@ -1,9 +1,10 @@
 var util = require('./util.js');
+var params = require('./test-params.js');
 
 describe('Protractor WCC Tests With Other Browsers with Auto Replying', function() {
   var conversation = element.all(by.repeater('item in getConversation()'));
   var until = protractor.ExpectedConditions; // for waiting condition
-  var offset = 0;
+
 
   function waitForMessage(textToWait, seconds) {
     var elWithTextToWait = $$('.discussion .message-content').filter(function(elem, index) {
@@ -19,25 +20,28 @@ describe('Protractor WCC Tests With Other Browsers with Auto Replying', function
     browser.wait(until.presenceOf(elToWait), seconds * 1000);
   }
 
-  function sendAndWait(text, idToWait) {
-    var start;
-    browser.controlFlow().execute(function() {
-      start = new Date().getTime();
-    });
+  function sendAndWait(text, minMsgId, maxMsgId) {
+    util.startCounting(browser);
 
     util.sendMessage(browser, text);
-    waitForMessageWithId(idToWait, 120);
-
     browser.controlFlow().execute(function() {
-      var endTime = new Date().getTime();
-      var total = endTime - start;
-      console.log(text + ' total = ' + total + 'ms');
-    });
+      for (var idToWait = minMsgId; idToWait <= maxMsgId; idToWait++) {
+        console.log('waiting for ' + idToWait)
+        waitForMessageWithId(idToWait, 120);
+        util.finishCounting(browser, '         ' + text);
+      }
+      
+    })
+    
+
+    util.finishCounting(browser, text);
   }
 
   beforeAll(function() {
     util.login(browser, 'test1@wp.pl');
-    util.emitSet(browser, '5');
+    if (params.clearAllClients) {
+      util.setAllOptions(browser, params.numOfOnlineUsers-1, params.numberOfMsgsForLevel);
+    }
   });
 
   var originalTimeout;
@@ -55,15 +59,32 @@ describe('Protractor WCC Tests With Other Browsers with Auto Replying', function
   });
 
   it('should get X (offset) messages first', function() {
-    if (offset) waitForMessageWithId(offset - 1, 120);
+    if (params.offset) {
+      util.startCounting(browser);
+      waitForMessageWithId(params.offset - 1, 120);
+      util.finishCounting(browser, 'waiting for ' + params.offset + ' msgs');
+    }
   });
 
-  it('should wait for all responses before next request', function() {
-    for(var i = 0; i < 30; i++) {
-      var msgId = offset + i * util.numOfOnlineUsers + util.numOfOnlineUsers - 1;
-      sendAndWait('AUTO_REPLY_REQUEST ' + i, msgId);
-    }
-  })
+  if (params.doRespondingTest) { 
+    it('should wait for all responses before next request', function() {
+      for(var i = 0; i < params.numberOfMsgsToRespond; i++) {
+        var minMsgId = params.offset + (i-1) * params.numOfOnlineUsers + params.numOfOnlineUsers;
+        var maxMsgId = params.offset + i * params.numOfOnlineUsers + params.numOfOnlineUsers - 1;
+        sendAndWait('AUTO_REPLY_REQUEST ' + i, minMsgId, maxMsgId);
+      }
+    })
+  }
+
+  if (params.doSendingWithoutResposeTest) {
+    it('should send X messages without waiting', function() {
+      for(var i = 0; i < params.numberOfMsgsToSendWithoutResponse; i++) {
+        var msgId = params.offset + i * params.numOfOnlineUsers + params.numOfOnlineUsers - 1;
+        util.sendMessage(browser, 'normal msg ' + i);
+      }
+      util.sleep(browser, 120)
+    })
+  }
 
 
 

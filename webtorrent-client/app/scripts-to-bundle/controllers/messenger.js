@@ -5,8 +5,8 @@ angular.module('webtorrentClientApp')
                                          MessagesFactory, TorrentFactory, lodash, UserService, localStorageService) {
 
     const CHECK_MESSAGES_INTERVAL_TIME = 2000;
-    // var socket = io('http://localhost:3000');
-    var socket = window.io('https://webtorrent-socketio.herokuapp.com/');
+    var socket = window.io('http://192.168.1.5:3000');
+    // var socket = window.io('https://webtorrent-socketio.herokuapp.com/');
 
     var clearVariables = function () {
       $scope.my = MessagesFactory.my;
@@ -49,7 +49,7 @@ angular.module('webtorrentClientApp')
           });
 
           // in the end init torrent factory
-          TorrentFactory.init($scope.myDhtId);
+          TorrentFactory.init($scope.myDhtId, localStorageService.get('REPLYER'));
         }
       });
     };
@@ -148,6 +148,7 @@ angular.module('webtorrentClientApp')
 
     $scope.emitClear = function () {
       socket.emit('request_clear');
+      $scope.clearStorageAndRefresh();
     };
 
     socket.on('set_NUMBER_OF_MESSAGES_FOR_LEVEL', function (data) {
@@ -160,9 +161,33 @@ angular.module('webtorrentClientApp')
       socket.emit('request_set_NUMBER_OF_MESSAGES_FOR_LEVEL', {
         number: $scope.testSetNumOfMsgForLvl
       });
+      localStorageService.set('NUMBER_OF_MESSAGES_FOR_LEVEL', $scope.testSetNumOfMsgForLvl);
+      $scope.clearStorageAndRefresh();
     };
 
-    socket.on('', function () {
-
+    socket.on('set_REPLYER', function (data) {
+      localStorageService.set('REPLYER', data.replyer);
+      $scope.clearStorageAndRefresh();
     });
+
+    $scope.emitReplyerNumber = function () {
+      socket.emit('request_set_REPLYER', {
+        replyers: $scope.testNumberOfReplyers
+      });
+    };
+
+    socket.on('options', function (data) {
+      localStorageService.set('REPLYER', data.replyer);
+      localStorageService.set('NUMBER_OF_MESSAGES_FOR_LEVEL', data.number);
+      $scope.clearStorageAndRefresh();
+    });
+
+    $scope.emitOptions = function () {
+      socket.emit('request_options', {
+        number: $scope.testSetNumOfMsgForLvl,
+        replyers: $scope.testNumberOfReplyers
+      });
+      localStorageService.set('NUMBER_OF_MESSAGES_FOR_LEVEL', $scope.testSetNumOfMsgForLvl);
+      $scope.clearStorageAndRefresh();
+    };
   });

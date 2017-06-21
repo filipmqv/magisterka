@@ -5,6 +5,9 @@ var services = angular.module('Torrents', []);
 services.factory('TorrentFactory', function($localForage, $timeout, $interval, DhtFactory, MessagesFactory, lodash, TESTING_MODE){
   var torrent = {};
 
+  // TODO FOR TESTING
+  var TESTING_REPLYER = true;
+
   var WebTorrent = require('webtorrent');
   var client = new WebTorrent();
 
@@ -105,7 +108,8 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
     MessagesFactory.init(userDhtId).then(seedOnInit);
   }
 
-  torrent.init = function(userDhtId) {
+  torrent.init = function(userDhtId, replyer) {
+    TESTING_REPLYER = replyer !== null ? replyer : true;
     if (client && !client.destroyed) {
       // if not destroyed - destroy first
       client.destroy(function (err) {
@@ -387,7 +391,7 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
 ////////////////////// TESTING_MODE functions
 
   function TESTING_MODE_AUTO_REPLAY(content) {
-    if (TESTING_MODE) {
+    if (TESTING_MODE && TESTING_REPLYER) {
       if (content.startsWith('AUTO_REPLY_REQUEST')) {
         torrent.sendMessage('reply for ' + content);
       }

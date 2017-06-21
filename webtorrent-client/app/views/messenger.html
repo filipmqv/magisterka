@@ -78,7 +78,7 @@
         <li ng-repeat="torrent in getTorrents() | orderBy:'infoHash'">
           <span class="color-block" ng-style="{'background-color':'#'+torrent.infoHash.substring(0,6)}">&nbsp</span>
           {{truncate(torrent.infoHash)}} prs: {{torrent.numPeers}}
-          </li>
+        </li>
       </ol>
       <p>last infoHashes {{getLastInfoHashes().length}}</p>
       <ol>
@@ -92,15 +92,27 @@
 
     <!--TODO FOR TESTS ONLY-->
     <div>
-    <form class="set-form" role="form">
-      <div class="input-group">
-        <input id="reqSetInput" type="text" ng-model="testSetNumOfMsgForLvl" class="form-control">
-        <span class="input-group-btn">
+      <button id="reqClearButton" class="btn btn-secondary" ng-click="emitClear()">emit clear</button>
+
+      <form class="set-form" role="form">
+        <div class="input-group">
+          <input id="reqSetInput" type="text" ng-model="testSetNumOfMsgForLvl" class="form-control" placeholder="NUMBER_OF_MESSAGES_FOR_LEVEL">
+          <span class="input-group-btn">
               <button id="reqSetButton" class="btn btn-secondary" ng-click="emitSetNumOfMsgForLvl()">emit set</button>
             </span>
-      </div>
-    </form>
-    <button id="reqClearButton" class="btn btn-secondary" ng-click="emitClear()">emit clear</button>
+        </div>
+      </form>
+
+      <form class="set-form" role="form">
+        <div class="input-group">
+          <input id="reqReplyerInput" type="text" ng-model="testNumberOfReplyers" class="form-control" placeholder="number of replyers">
+          <span class="input-group-btn">
+              <button id="reqReplyerButton" class="btn btn-secondary" ng-click="emitReplyerNumber()">emit repl</button>
+            </span>
+        </div>
+      </form>
+
+      <button id="reqOptionsBtn" class="btn btn-secondary" ng-click="emitOptions()">emit options</button>
     </div>
 
 

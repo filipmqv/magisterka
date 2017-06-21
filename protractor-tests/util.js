@@ -1,8 +1,26 @@
-var MAIN_URL = 'http://192.168.1.5:9000/';
-// var MAIN_URL = 'https://webtorrent-chat-client.herokuapp.com/';
+const MAIN_URL = 'http://192.168.1.5:9000/';
+// const MAIN_URL = 'https://webtorrent-chat-client.herokuapp.com/';
 
-function sleep(bwser, ms) {
-	bwser.sleep(ms)
+
+
+function sleep(bwser, seconds) {
+	bwser.sleep(seconds * 1000)
+}
+
+var start;
+function startCounting(browser) {
+	browser.controlFlow().execute(function() {
+		console.log('start counting')
+	 	start = new Date().getTime();
+	});
+}
+
+function finishCounting(browser, text) {
+	browser.controlFlow().execute(function() {
+		var endTime = new Date().getTime();
+		var total = endTime - start;
+		console.log(text + ' >>> ' + total + 'ms');
+	});
 }
 
 function login(bwser, email, password) {
@@ -25,8 +43,6 @@ function sendMessage(bwser, text) {
 	sendButton.click();
 }
 
-const numberOfOnlineUsersInConversation = 3;
-
 function clearAllBrowsers(bwser) {
 	var clearBtn = bwser.element(by.id('reqClearButton'));
 	clearBtn.click();
@@ -39,11 +55,30 @@ function emitSet(bwser, number) {
 	setBtn.click();
 }
 
+function setReplyers(bwser, numberOfReplyers) {
+	var setBtn = bwser.element(by.id('reqReplyerButton'));
+	var txt = bwser.element(by.id('reqReplyerInput'));
+	txt.sendKeys(numberOfReplyers);
+	setBtn.click();
+}
+
+function setAllOptions(bwser, numberOfReplyers, numberOfMessagesForLevel) {
+	var setBtn = bwser.element(by.id('reqOptionsBtn'));
+	var replInput = bwser.element(by.id('reqReplyerInput'));
+	var numInput = bwser.element(by.id('reqSetInput'));
+	replInput.sendKeys(numberOfReplyers.toString());
+	numInput.sendKeys(numberOfMessagesForLevel.toString());
+	setBtn.click();
+}
+
 module.exports = {
 	sleep: sleep,
+	startCounting: startCounting,
+	finishCounting: finishCounting,
 	login: login,
 	sendMessage: sendMessage,
 	clearAllBrowsers: clearAllBrowsers,
 	emitSet: emitSet,
-	numOfOnlineUsers: numberOfOnlineUsersInConversation
+	setReplyers: setReplyers,
+	setAllOptions: setAllOptions
 }
