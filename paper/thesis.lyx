@@ -3232,6 +3232,13 @@ reużywanie swarmów- w końcu każda wiadomość w konwersacji ma tych samych
  użytkowników - optymalizacja
 \end_layout
 
+\begin_layout Itemize
+częste usuwanie zbędnych torrentów - strata zasobów, lepszy byłby sposób
+ z nadpisywaniem i reużywaniem infohashy, jeśli byłby mechanizm kontroli
+ nowych plików w torrencie - nie wyrzucanie starego torrenta i pobieranie
+ tego samego, tylko doklejanie do tego co już zostało pobrane nowej treści
+\end_layout
+
 \end_inset
 
 
