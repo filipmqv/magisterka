@@ -5,43 +5,41 @@ describe('Protractor WCC Tests With Other Browsers with Auto Replying', function
   var conversation = element.all(by.repeater('item in getConversation()'));
   var until = protractor.ExpectedConditions; // for waiting condition
 
-
-  function waitForMessage(textToWait, seconds) {
-    var elWithTextToWait = $$('.discussion .message-content').filter(function(elem, index) {
-      return elem.getText().then(function(text) {
-        return text === textToWait;
-      });
-    }).first()
-    browser.wait(until.presenceOf(elWithTextToWait), seconds * 1000);
-  }
-
   function waitForMessageWithId(idToWait, seconds) {
     var elToWait = $('#message' + idToWait)
     browser.wait(until.presenceOf(elToWait), seconds * 1000);
   }
 
-  function sendAndWait(text, minMsgId, maxMsgId) {
-    util.startCounting(browser);
+  function doSendingTest(i) {
+    it('should send a reques', function() {
+      util.sendMessage(browser, 'AUTO_REPLY_REQUEST ' + i);
+      util.startCounting(browser);
+    });
+  }
 
-    util.sendMessage(browser, text);
-    browser.controlFlow().execute(function() {
-      for (var idToWait = minMsgId; idToWait <= maxMsgId; idToWait++) {
-        console.log('waiting for ' + idToWait)
-        waitForMessageWithId(idToWait, 120);
-        util.finishCounting(browser, '         ' + text);
-      }
-      
+  function doWaitingTest(i, idToWait) {
+    it('should wait for response with ID', function() {
+      waitForMessageWithId(idToWait, 120);
+      util.finishCounting(browser, '    ' + 'AUTO_REPLY_REQUEST ' + i);
     })
-    
+  }
 
-    util.finishCounting(browser, text);
+  function getRange(i) {
+    var minMsgId = params.offset + (i-1) * params.numOfOnlineUsers + params.numOfOnlineUsers + 1;
+    var maxMsgId = params.offset + i * params.numOfOnlineUsers + params.numOfOnlineUsers - 1;
+    return util.range(minMsgId, maxMsgId)
   }
 
   beforeAll(function() {
-    util.login(browser, 'test1@wp.pl');
-    if (params.clearAllClients) {
+    util.login(browser, params.email);
+    if (params.setOptionsAndClearAllClients) {
       util.setAllOptions(browser, params.numOfOnlineUsers-1, params.numberOfMsgsForLevel);
     }
+    console.log('email: ' + params.email)
+    console.log('replyers: ' + (params.numOfOnlineUsers-1))
+    console.log('browsers_on: ' + params.browsersOn)
+    console.log('msgs_for_lvl: ' + params.numberOfMsgsForLevel)
+    console.log('set_done?: '+ params.setOptionsAndClearAllClients)
   });
 
   var originalTimeout;
@@ -58,22 +56,24 @@ describe('Protractor WCC Tests With Other Browsers with Auto Replying', function
     expect(conversation.count()).toEqual(0);
   });
 
-  it('should get X (offset) messages first', function() {
-    if (params.offset) {
+  if (params.offset) {
+    it('should get X (offset) messages first', function() {
       util.startCounting(browser);
       waitForMessageWithId(params.offset - 1, 120);
       util.finishCounting(browser, 'waiting for ' + params.offset + ' msgs');
-    }
-  });
+    });
+  }
 
   if (params.doRespondingTest) { 
-    it('should wait for all responses before next request', function() {
-      for(var i = 0; i < params.numberOfMsgsToRespond; i++) {
-        var minMsgId = params.offset + (i-1) * params.numOfOnlineUsers + params.numOfOnlineUsers;
-        var maxMsgId = params.offset + i * params.numOfOnlineUsers + params.numOfOnlineUsers - 1;
-        sendAndWait('AUTO_REPLY_REQUEST ' + i, minMsgId, maxMsgId);
-      }
-    })
+    var range = util.range(0, params.numberOfMsgsToRespond-1);
+    range.map(function(i) {
+      doSendingTest(i);
+
+      var rangeOfIdsToWait = getRange(i);
+      rangeOfIdsToWait.map(function(idToWait){
+        doWaitingTest(i, idToWait);
+      })
+    });
   }
 
   if (params.doSendingWithoutResposeTest) {

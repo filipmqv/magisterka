@@ -7,10 +7,13 @@ function sleep(bwser, seconds) {
 	bwser.sleep(seconds * 1000)
 }
 
+function range(begin, end) {
+	return Array.apply(null, Array(end-begin+1)).map(function (_, i) {return i+begin;});
+}
+
 var start;
 function startCounting(browser) {
 	browser.controlFlow().execute(function() {
-		console.log('start counting')
 	 	start = new Date().getTime();
 	});
 }
@@ -24,7 +27,7 @@ function finishCounting(browser, text) {
 }
 
 function login(bwser, email, password) {
-	email = email || 'moz@wp.pl';
+	email = email || 'test1@wp.pl';
 	password = password || 'password';
 	bwser.get(MAIN_URL + '#!/login');
 	var loginEl = bwser.element(by.id('inputEmail'));
@@ -73,6 +76,7 @@ function setAllOptions(bwser, numberOfReplyers, numberOfMessagesForLevel) {
 
 module.exports = {
 	sleep: sleep,
+	range: range,
 	startCounting: startCounting,
 	finishCounting: finishCounting,
 	login: login,
