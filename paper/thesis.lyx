@@ -3270,6 +3270,103 @@ jeden lab, między labami, w domu w jednej sieci, w domu między sieciami
 
 \end_layout
 
+\begin_layout Standard
+Po zakończeniu prac nad systemem komunikatora przeprowadzono serię testów
+ mających na celu zbadanie wydajności aplikacji.
+ Pod uwagę wzięto następujące kryteria:
+\end_layout
+
+\begin_layout Enumerate
+rozmiar wiadomości,
+\end_layout
+
+\begin_layout Enumerate
+liczba uruchomionych klientów (dostępnych użytkowników),
+\end_layout
+
+\begin_layout Enumerate
+liczba wiadomości w konwersacji,
+\end_layout
+
+\begin_layout Enumerate
+liczba wiadomości, która zostaje umieszczona w torrencie kontrolnym,
+\end_layout
+
+\begin_layout Enumerate
+sposób podłączenia klientów do sieci — klienty znajdują się w jednej sieci
+ / w różnych sieciach oraz czy jest to sieć domowa / uczelniana,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO poprawić ten punkt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+zbadanie, czy uruchomienie w jednej sieci wielu klientów obsługujących różne
+ konwersacje wpływa na wydajność.
+\end_layout
+
+\begin_layout Standard
+Ponadto, zaproponowano następujące scenariusze:
+\end_layout
+
+\begin_layout Enumerate
+Jeden nadawca wysyła wiadomość 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+
+ i czeka na odpowiedzi od wszystkich.
+ Odpowiedzi są wysyłane natychmiast po otrzymaniu wiadomości 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+
+.
+ Zmierzono czas otrzymania poszczególnych odpowiedzi od momentu nadania
+ wiadomości 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+m
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Jeden nadawca wysyła wszystkie wiadomości bez czekania na odpowiedzi — zmierzono
+ czas otrzymania przez wszystkich odbiorców pełnej listy wiadomości.
+\end_layout
+
+\begin_layout Enumerate
+Jeden klient dołącza do konwersacji.
+ Zmierzono czas otrzymania pełnej listy wiadomości przez dołączającego klienta.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Chapter
 Wnioski
 \end_layout

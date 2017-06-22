@@ -132,7 +132,7 @@
             <div class="messages">
               <div>
                 <span>{{$index + 1}}&nbsp;&nbsp;&nbsp;</span>
-                <span class="message-content" id="message{{$index}}">{{item.message.content}}</span>
+                <span class="message-content" id="message{{$index}}">{{truncate(item.message.content, 1000)}}</span>
               </div>
               <time ng-repeat="sentBy in friendsInConversations[currentConversationId] | filter:item.message.sender">{{sentBy.username}} • {{item.message.timestamp | date:'H:mm:ss'}}</time><br/>
               <time>
