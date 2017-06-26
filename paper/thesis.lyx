@@ -1716,10 +1716,6 @@ założenia - dostarczanie offline (może to być serwer imitujący użytkownika
 \end_layout
 
 \begin_layout Itemize
-p2p
-\end_layout
-
-\begin_layout Itemize
 planktos - pobieranie strony jako torrent (odciążenie serwera aplikacji)
 \end_layout
 
@@ -2430,6 +2426,16 @@ Wysłanie wiadomości
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Wysyłanie wiadomości"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -2585,6 +2591,29 @@ Dla poprawnego działania programu kluczowe jest, by kolejna nowa wiadomość
  Wynika to z konieczności podania wartości poprzedniego info hasha w strukturze
  wiadomości.
  
+\end_layout
+
+\begin_layout Standard
+Domyślnie algorytm umieszcza 5 wiadomości w torrencie kontrolnym.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Plain Layout
+wspomnieć że po 5 sekundach są usuwane torrenty które zostały zastąpione,
+ ale może warto by ten czas wydłużyć, żeby klienty online w momencie nadania
+ miały szansę pobrać te wiadomosci
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3203,12 +3232,35 @@ Zagwarantowanie dostarczenia wiadomości w sytuacji, gdy użytkownik uruchamia
  
 \end_layout
 
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO w dht oraz w wiadomościach mogłyby być listy ostatnich IH (danego usera,
+ ale też innych, które widział w momencie wysyłania), a nie tylko jeden
+ ostatni (bo tak, to się
+\begin_inset space ~
+\end_inset
+
+nadpisuje i jak ktoś sie spóźni to nie otrzyma danego IH tylko już nowszy.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 TODO
+\end_layout
+
+\begin_layout Itemize
+zmniejszenie liczby odwołań do DHT - na pewno nie po każdej wiadomości
 \end_layout
 
 \begin_layout Itemize
@@ -3239,6 +3291,19 @@ częste usuwanie zbędnych torrentów - strata zasobów, lepszy byłby sposób
  tego samego, tylko doklejanie do tego co już zostało pobrane nowej treści
 \end_layout
 
+\begin_layout Itemize
+jednak lepsze by było bezpośrednie wysyłanie wiadomości przez webrtc + zostawian
+ie w DHT dla offlineowych userów
+\end_layout
+
+\begin_layout Itemize
+zaobserwowano znaczne wykorzystanie łącza (blokowanie innych połączeń)
+\end_layout
+
+\begin_layout Itemize
+dalszy rozwój - przesyłanie plików
+\end_layout
+
 \end_inset
 
 
@@ -3257,12 +3322,8 @@ TODO
 \end_layout
 
 \begin_layout Itemize
-środowisko, jakie parametry maszyn, sieci, firewall był/ nie było jeśli
- w sieci domowej to też np różne konfiguracje, 
-\end_layout
-
-\begin_layout Itemize
-jeden lab, między labami, w domu w jednej sieci, w domu między sieciami
+część testów kończy się błedem lub zawieszeniem (np brak pobierania dalszych
+ wiadomości przez dłuższy czas)
 \end_layout
 
 \end_inset
@@ -3273,19 +3334,86 @@ jeden lab, między labami, w domu w jednej sieci, w domu między sieciami
 \begin_layout Standard
 Po zakończeniu prac nad systemem komunikatora przeprowadzono serię testów
  mających na celu zbadanie wydajności aplikacji.
+ W punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Kryteria"
+
+\end_inset
+
+ przedstawiono parametry, w przypadku których zmiana wartości mogłaby wpłynąć
+ na wydajność aplikacji.
+ W punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Scenariusze testowe"
+
+\end_inset
+
+ przybliżono scenariusze testowe, a w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:specyfikacja"
+
+\end_inset
+
+ opisano specyfikację maszyn testowych.
+ W dalszej części znajdują się szczegółowe opisy poszczególnych testów oraz
+ wnioski, które z nich wynikają.
+\end_layout
+
+\begin_layout Section
+Kryteria 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Kryteria"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wymienione poniżej parametry zwiększyły zróżnicowanie testów.
+ Ich zmiana może pozytywnie lub negatywnie wpływać na wydajność aplikacji.
  Pod uwagę wzięto następujące kryteria:
 \end_layout
 
 \begin_layout Enumerate
 rozmiar wiadomości,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO jesli to nawet bardzo długi tekst to nie ma wpływu (no może ma na input),
+ a jak to jest plik no to zależy od szybkości łącza i pewnie ten choke
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
-liczba uruchomionych klientów (dostępnych użytkowników),
+liczba uruchomionych klientów (dostępnych użytkowników) oraz liczba klientów
+ wysyłających wiadomości,
 \end_layout
 
 \begin_layout Enumerate
 liczba wiadomości w konwersacji,
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO to raczej nie wpływa o ile są dobrze skompaktowane
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -3299,7 +3427,11 @@ sposób podłączenia klientów do sieci — klienty znajdują się w jednej sie
 status open
 
 \begin_layout Plain Layout
-TODO poprawić ten punkt
+TODO poprawić ten punkt (zredagować)
+\end_layout
+
+\begin_layout Itemize
+w labie (jedna sieć) wszystkie wiadomości idą 10 sekund więc to zinterpolować
 \end_layout
 
 \end_inset
@@ -3310,14 +3442,50 @@ TODO poprawić ten punkt
 \begin_layout Enumerate
 zbadanie, czy uruchomienie w jednej sieci wielu klientów obsługujących różne
  konwersacje wpływa na wydajność.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+W powolnej sieci może wływać, bo to generalnie kosztowne - nie jest to kwestia
+ różnych konwersacji tylko ogólnie liczba klientów
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Scenariusze testowe
 \end_layout
 
 \begin_layout Standard
-Ponadto, zaproponowano następujące scenariusze:
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Scenariusze testowe"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zaproponowano następujące scenariusze:
 \end_layout
 
 \begin_layout Enumerate
-Jeden nadawca wysyła wiadomość 
+Jeden nadawca wysyła wszystkie wiadomości bez czekania na odpowiedzi — zmierzono
+ czas otrzymania przez wszystkich odbiorców pełnej listy wiadomości.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Jeden nadawca 
+\begin_inset Formula $U_{N}$
+\end_inset
+
+ wysyła wiadomość 
 \begin_inset Flex Emph
 status open
 
@@ -3327,7 +3495,7 @@ m
 
 \end_inset
 
- i czeka na odpowiedzi od wszystkich.
+ i czeka na odpowiedzi od wszystkich odbiorców.
  Odpowiedzi są wysyłane natychmiast po otrzymaniu wiadomości 
 \begin_inset Flex Emph
 status open
@@ -3339,8 +3507,11 @@ m
 \end_inset
 
 .
- Zmierzono czas otrzymania poszczególnych odpowiedzi od momentu nadania
- wiadomości 
+ Zmierzono czas otrzymania poszczególnych odpowiedzi przez nadawcę 
+\begin_inset Formula $U_{N}$
+\end_inset
+
+ od momentu nadania wiadomości 
 \begin_inset Flex Emph
 status open
 
@@ -3351,24 +3522,946 @@ m
 \end_inset
 
 .
+ Scenariusz ma symulować naturalną rozmowę, w której uczestnicy odpowiadają
+ na otrzymaną wiadomość dopiero, gdy ją otrzymają.
+ Pomiar czasu zaczyna się w momencie wysłania wiadomości przez nadawcę 
+\begin_inset Formula $U_{N}$
+\end_inset
+
+, a kończy się w momencie otrzymania przez nadawcę 
+\begin_inset Formula $U_{N}$
+\end_inset
+
+ odpowiedzi od danego odbiorcy (dla każdego odbiorcy z osobna).
+ Czas przesłania wiadomości w jedną stronę jest (uśredniając) połową uzyskanego
+ wyniku.
+ Nadawca 
+\begin_inset Formula $U_{N}$
+\end_inset
+
+ wyśle kolejną wiadomość dopiero po otrzymaniu wszystkich odpowiedzi.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
 \end_layout
 
-\begin_layout Enumerate
-Jeden nadawca wysyła wszystkie wiadomości bez czekania na odpowiedzi — zmierzono
- czas otrzymania przez wszystkich odbiorców pełnej listy wiadomości.
+\begin_layout Itemize
+w tym teście kompaktowanie nie ma zbyt dużego znaczenia (nie licząc oczywiście
+ tego, że nie trzeba utrzymywać tylu torrentów ile wiadomości po dłuższym
+ czasie), bo klient i tak czeka aż wszysycy dostaną wszystko)
+\end_layout
+
+\begin_layout Itemize
+brak kompaktowania - 70 torrentów zawiesza stronę, więc kompaktowanie jest
+ potrzebne
+\end_layout
+
+\begin_layout Itemize
+scenariusz zakłada ze wszyscy piszą równo i w tym samym momencie im się
+ zmniejsza liczba wiadomości a w życiu to dla różnych osób te momenty się
+\begin_inset space ~
+\end_inset
+
+rozjadą (jedni piszą więcej wiadomości, inni mniej) więc czas się raczej
+ uśredni
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
 Jeden klient dołącza do konwersacji.
  Zmierzono czas otrzymania pełnej listy wiadomości przez dołączającego klienta.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO -kilku klientów dołącza, a kilku jest dostępnych - większa kooperacja
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+test tylko lokalne linuxy (ręcznie mierzony czas)
+\end_layout
+
+\begin_layout Itemize
+test tylko vlaby (może jeden z nich być protractorem) - na vlabach w firefoxie
+ klient nie przesyłał nic
+\end_layout
+
+\begin_layout Itemize
+więcej napisać o ICE
+\end_layout
+
+\begin_layout Itemize
+im niższa liczba wiadomości do skompaktowania tym częściej pobiera się te
+ same dane, policzyć ile jest torrentów dla poszczególnej liczby wiadomości
+ dla różnych liczb wiadomości do skomapktowania np dla 5: 1-1, 2-2, 3-3,
+ 4-4, 5-1, 6-2, 7-3, 24-8, 25-1, 26-2 itd, dla 4: 1-1, 2-2, 3-3, 4-4, 
+\end_layout
+
+\begin_layout Itemize
+czas odebrania wiadomości waha się do powiedzmy max 2 minut?? co i tak jest
+ połową tego co w blockchainie
+\end_layout
+
+\begin_layout Itemize
+opera vpn nie działa (ogólnie vpny)
+\end_layout
+
+\begin_layout Itemize
+wpływ na łącze w domu (ile komunikatów jest przesyłanych, że głównie stun,
+ ile MB?, zrzut z wiresharka)
+\end_layout
+
+\begin_layout Itemize
+testy w labie - pozwoliły wykazać max liczbę torrentów na takich mocnych
+ maszynach - użytkownicy zwykle maja o wiele słabsze kompy (tak jak w testach
+ w sieci domowej)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Specyfikacja komputerów i środowiska testowe
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:specyfikacja"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Część testów przeprowadzono w laboratorium wyposażonym w komputery stacjonarne
+ posiadające adresy IP w tej samej podsieci — komputer tego typu będzie
+ dalej oznaczony jako K1.
+ Dodatkowo, w powyższych testach wykorzystano komputer podłączony do odrębnej
+ podsieci (nazwany dalej K2).
+ Druga część testów została przeprowadzona na komputerach podłączonych do
+ jednej sieci domowej — w tych testach wykorzystano komputer K3 oraz komputer
+ K4.
+ Podział testów na części przeprowadzane w różnych środowiskach pozwolił
+ na zwiększenie różnorodności konfiguracji oraz zaobserwowanie zjawisk,
+ które występują w jednym z środowisk, a nie zachodzą w drugim — szczegóły
+ zostały opisane w dalszej części rozdziału.
+\end_layout
+
+\begin_layout Standard
+Specyfikacja komputerów K1 w laboratorium jest następująca:
+\end_layout
+
+\begin_layout Itemize
+procesor 8 rdzeniowy,
+\end_layout
+
+\begin_layout Itemize
+32 GB pamięci RAM,
+\end_layout
+
+\begin_layout Itemize
+system operacyjny Linux (OpenSUSE 42.1), 
+\end_layout
+
+\begin_layout Itemize
+przeglądarka Google Chrome (wersja 56), 
+\end_layout
+
+\begin_layout Itemize
+prędkość łącza w laboratorium: pobieranie 400 Mbps, wysyłanie 200 Mbps (komputer
+y w laboratorium posiadają adresy IP w tej samej podsieci).
+ 
+\end_layout
+
+\begin_layout Standard
+Specyfikacja komputera K2 (w laboratorium) oraz K3 (w sieci domowej):
+\end_layout
+
+\begin_layout Itemize
+procesor 4 rdzeniowy,
+\end_layout
+
+\begin_layout Itemize
+8 GB pamięci RAM,
+\end_layout
+
+\begin_layout Itemize
+system operacyjny Linux (Ubuntu 16.04),
+\end_layout
+
+\begin_layout Itemize
+przeglądarka Google Chrome (wersja 59) + przeglądarka Opera (wersja 45)
+ (symulowanie 2 klientów na jednej maszynie, jeśli testy odbywały się w
+ sieci domowej)
+\end_layout
+
+\begin_layout Itemize
+prędkość łącza w laboratorium (K2): pobieranie 400 Mbps, wysyłanie 200 Mbps,
+\end_layout
+
+\begin_layout Itemize
+prędkość łącza w sieci domowej (K3): pobieranie 6 Mbps, wysyłanie 1 Mbps.
+\end_layout
+
+\begin_layout Standard
+Specyfikacja komputera K4:
+\end_layout
+
+\begin_layout Itemize
+procesor 4 rdzeniowy,
+\end_layout
+
+\begin_layout Itemize
+8 GB pamięci RAM,
+\end_layout
+
+\begin_layout Itemize
+system operacyjny Windows 7,
+\end_layout
+
+\begin_layout Itemize
+przeglądarka Google Chrome (wersja 59) + przeglądarka Opera (wersja 45)
+ (symulowanie 2 klientów na jednej maszynie)
+\end_layout
+
+\begin_layout Itemize
+prędkość łącza w sieci domowej: pobieranie 6 Mbps, wysyłanie 1 Mbps.
+\end_layout
+
+\begin_layout Section
+Wysłanie pojedynczej wiadomości
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Wysłanie pojed wiad"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Celem testu było sprawdzenie czasu przesłania pojedynczej wiadomości od
+ nadawcy do odbiorcy (scenariusz 1).
+ Wynik stanowi punkt odniesienia dla kolejnych testów, w których wysyłana
+ jest większa liczba wiadomości w różnych konfiguracjach testowanych kryteriów.
+ 
+\end_layout
+
+\begin_layout Standard
+Pomiar czasu rozpoczynał się w momencie nadania wiadomości, a kończył dla
+ każdego odbiorcy z osobna w momencie odebrania przez niego wiadomości.
+ W ramach pojedynczego testu pomiar został uśredniony.
+ Otrzymane czasy zostały zaprezentowane na wykresie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Czas-odebrania-pojedynczej"
+
+\end_inset
+
+.
+ Na osi poziomej oznaczono liczbę klientów uruchomionych w trakcie testu
+ — jeden z nich jest nadawcą, a pozostali odbiorcami.
+ Na osi pionowej znajduje się średni czas odebrania wiadomości przez poszczególn
+ych odbiorców.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/1 wiadomość.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Czas odebrania pojedynczej wiadomości w zależności o liczby klientów
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Czas-odebrania-pojedynczej"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Najniższy czas dostarczenia notowany jest w sieci domowej (K3 <> K4).
+ Na komputerach K3 i K4 były uruchomione 1 lub 2 klienty (w osobnych oknach
+ przeglądarki) — stąd możliwość przetestowania od 2 do 4 klientów.
+ Średni czas wynosi od około 2 sekund dla 2 klientów do 7 sekund dla 4 klientów,
+ jednakże szczegółowe pomiary wykazały znaczne odchyły od średniej — minimalny
+ czas wyniósł ok.
+ 0,5 sekundy, podczas gdy maksymalny mógł wynieść nawet 30 sekund.
+ Na czas przesyłu ma wpływ między innymi częstotliwość sprawdzania wartości
+ info hash w DHT — domyślnie są to 2 sekundy.
+ Jeśli odbiorca sprawdzi wartość tuż przed ustawieniem nowej wartości przez
+ nadawcę to dowie się o nowej wiadomości dopiero przy kolejnym sprawdzeniu.
+ 
+\end_layout
+
+\begin_layout Standard
+Średnio 10-11 sekund trwa przesyłanie wiadomości pomiędzy komputerami K1
+ (K1 <> K1).
+ Czas nie ulega zmianie, gdy wiadomość odbierana jest przez większą liczbę
+ klientów.
+ 
+\end_layout
+
+\begin_layout Standard
+Najdłużej wiadomość była przesyłana między komputerami K2 i K1 (K2 <> K1).
+ Minimalny czas odebrania wiadomości wyniósł około 50 sekund, a średni był
+ niewiele wyższy — ok 51 sekund.
+\end_layout
+
+\begin_layout Standard
+Wyniki testu wskazują na jeszcze jedną zależność — przesłanie wiadomości
+ w sieci lokalnej (czy to laboratoryjnej, czy domowej) trwa krócej niż przesłani
+e pomiędzy komputerami znajdującymi się w różnych podsieciach.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+inny wykres, jednak to wolniej idzie?, duże wahania, od prawie od razu do
+ czekania bardzo długo
+\end_layout
+
+\begin_layout Itemize
+liczba klientów nie ma znaczenia bo czas nawiązania połączenia (czyli zanim
+ zacznie się faktyczny algorytm bittorent) jest tak duży, że zanim ktoś
+ dostanie wiadomość i będzie mógł zostać seedem to juz
+\begin_inset space ~
+\end_inset
+
+wszyscy otrzymają od oryginalnego nadawcy - to samo się tyczy scenraiusza
+ 3 - mimo błędu, że nie ma pełnych list IH i trzeba po jednej wiadomości
+ pobierać to czas się
+\begin_inset space ~
+\end_inset
+
+nie skraca, jest zawsze większy niż to utarte minimum
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Wpływ rozmiaru wiadomości
+\end_layout
+
+\begin_layout Standard
+Nie zaobserwowano istotnego wzrostu czasu przesyłania wiadomości w zależności
+ od długości tekstu będącego treścią komunikatu.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO o tym wspomnieć? Pytanie do Ani
+\end_layout
+
+\begin_layout Plain Layout
+W trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania
+ plików (na przykład obrazów lub filmów).
+ Ta funkcjonalność nie znalazła się w końcowej wersji systemu, jednak z
+ testów przeprowadzonych 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Wysyłanie i oczekiwanie na odpowiedź
+\end_layout
+
+\begin_layout Standard
+Bardziej rozbudowanym testem, w porównaniu do przedstawionego w punkcie
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wysłanie pojed wiad"
+
+\end_inset
+
+, jest scenariusz 2.
+ Polega on na wysłaniu wiadomości i czekaniu na odpowiedzi od wszystkich
+ uczestników rozmowy lub wybranej podgrupy.
+ W drugim przypadku pozostałe klienty mają za zadanie jedynie bierne odbieranie
+ i przekazywanie komunikatów.
+ 
+\end_layout
+
+\begin_layout Standard
+Wykres 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Uśredniony-czas-przesłania"
+
+\end_inset
+
+ przedstawia wyniki 4 powtórzeń testu.
+ Wykres 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Uśredniony-czas-przesłania-1"
+
+\end_inset
+
+ prezentuje uśrednione wyniki wspomnianych testów.
+ Testy przeprowadzono na 2 komputerach K3 i K4 (w sieci domowej).
+ W testach brały udział 2 klienty — nadawca (wysyła wiadomość i czeka na
+ odpowiedź) oraz odbiorca (czeka na wiadomość i natychmiast na nią odpowiada).
+ Na osi poziomej zaznaczono liczbę wiadomości wysłanych przez nadawcę w
+ ramach testu, a na osi pionowej czas przesłania pojedynczego komunikatu
+ pomiędzy komputerami.
+ Pomiar czasu w scenariuszu 2 obejmuje przesłanie wszystkich wiadomości
+ w danej iteracji (wiadomość od nadawcy i wszystkie odpowiedzi), ale czas
+ przedstawiony na wykresie jest średnią czasów przesyłu wszystkich wiadomości
+ w danej iteracji — w tym wypadku średnią czasów przesłania 2 wiadomości.
+\end_layout
+
+\begin_layout Standard
+Zachowano domyślną liczbę wiadomości umieszczanych w torrencie kontrolnym
+ — 5.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/4 testy 30 wyslij i odpowiedz.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Czas przesłania wiadomości w sieci domowej
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Uśredniony-czas-przesłania"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/4 testy 30 wyslij i odpowiedz średnia.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Uśredniony czas przesłania wiadomości w sieci domowej
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Uśredniony-czas-przesłania-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Przede wszystkim należy zwrócić uwagę na nieregularne występowanie pogorszeń
+ wydajności (dłuższych czasów przesyłu wiadomości).
+ Zdarza się, że w danej iteracji w jednym teście czas jest znacznie gorszy
+ niż w przypadku pozostałych testów.
+ Co więcej, spadki wydajności nie wydają się być niezależne od zastosowanego
+ algorytmu zmniejszania liczby wiadomości.
+ Niemniej jednak, ten algorytm jest niezbędny, co zostanie pokazane w punkcie
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wpływ alg"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Czas przesłania pojedynczej wiadomości wyniósł minimalnie około 2 sekund
+ (czyli podobnie jak w przypadku punktu 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wysłanie pojed wiad"
+
+\end_inset
+
+), a maksymalnie sięga nawet 90 sekund.
+ 
+\end_layout
+
+\begin_layout Standard
+Nieregularność można po części wytłumaczyć relatywnie niską prędkością łącza
+ sieciowego.
+ W trakcie testów zaobserwowano błędy połączeń z trackerem lub DHT.
+ Zbadano zatem liczbę połączeń nawiązywanych przez klienty (a konkretnie
+ bibliotekę WebTorrent).
+ Wyniki przedstawione zostały w tabeli 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Statystyka połączeń
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Klienty wyłączone
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bezczynność
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2 torrenty
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10 torrentów
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Liczba połączeń
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+230
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7380
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% STUN
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Plain Layout
+bezpośrednio z pomiarów nie wynika korzyść z kompaktowania, ale jest to
+ konieczne, bobez tego byłby klops
+\end_layout
+
+\begin_layout Plain Layout
+w labie wiadomości zwykle szły tyle samo czasu w obie strony a w domu zdarza
+ się że w jedną szybko a odpowiedź wolno
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Wpływ algorytmu zmniejszającego liczbę torrentów
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Wpływ alg"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+W celu sprawdzenia, czy algorytm zmniejszający liczbę torrentów (opisany
+ w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Wysyłanie wiadomości"
+
+\end_inset
+
+) jest niezbędny i spełnia swoją rolę, wykonano następujące testy:
+\end_layout
+
+\begin_layout Itemize
+Zbadanie maksymalnej liczby torrentów, które jednocześnie może obsłużyć
+ klient.
+ Dokonano tego przy pomocy testu polegającego na wysyłaniu wiadomości i
+ odbieraniu odpowiedzi (scenariusz 2) z wyłączonym algorytmem zmniejszania
+ liczby torrentów — każda wiadomość stawała się nowym torrentem.
+ Zmieniano przy tym liczbę klientów uczestniczących w rozmowie (aktywnie
+ i biernie).
+\end_layout
+
+\begin_layout Itemize
+Zbadanie scenariusza 2 z włączonym algorytmem zmniejszania liczby torrentów.
+ 
+\end_layout
+
+\begin_layout Section
+Pobieranie listy wiadomości
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+Scenariusz 3
+\end_layout
+
+\begin_layout Itemize
+że brakuje list IH, żeby nie pobierać pojedynczych wiadomości i dowiadywać
+ się o poprzedniej dopiero jak się dostanie daną - tylko od razu zasysać
+ równolegle więcej, ale i tak kompaktowanie tu pomaga, bo nie pobiera się
+ po jednej tylko paczki
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Chapter
 Wnioski
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+niby działa (proof), ale słabo w porównaniu z rozwiązaniami centralnymi
+\end_layout
+
+\begin_layout Itemize
+protokół bardziej się
+\begin_inset space ~
+\end_inset
+
+przydaje dla dużych plików, bo inicjalizacja trwa długo, a później można
+ wykorzystać te same, zainicjowane łącza do przesyłania danych
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
