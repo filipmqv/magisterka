@@ -423,7 +423,7 @@ prywatności użytkowników.
 \begin_inset space ~
 \end_inset
 
-oferowanymi założeniami.
+oferowanymi założeniami oraz uczestniczyć w rozwoju aplikacji.
  Podobnie jak w
 \begin_inset space ~
 \end_inset
@@ -480,24 +480,33 @@ n
 \end_layout
 
 \begin_layout Standard
-Podobne rozwiązania: Wire, WhatsApp, Telegram, Allo
+Podobne rozwiązania: Wire, Telegram, Allo
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO osobno whatsapp - jego sposób na apkę webową, skoro można mieć tylko
- jednego klienta na konto i serwer zapomina wiadomości, które zostały dostarczon
-e do wszystkich to jak to jest zrobione - telefon przekazuje do przeglądarki
- (szyfrowanie jest tylko w telefonie i on pośredniczy w rozmowie jeśli ktoś
- ją prowadzi z aki webowej)
-\end_layout
+\begin_layout Section
+WhatsApp 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "whatsapp"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+WhatsApp jest aplikacją podobną do wspomnianego w poprzednim punkcie programu
+ Signal, ale jej kod źródłowy nie jest dostępny publicznie.
+ Inną, ważną cechą wyróżniającą WhatsApp jest oferowanie użytkownikom aplikacji
+ webowej.
+ Nie jest to jednak typowy, webowy klient sieci a jedynie webowy interfejs
+ do aplikacji zainstalowanej na telefonie.
+ Wysłana w kliencie webowym wiadomość najpierw zostaje przesłana bezpośrednio
+ do aplikacji w telefonie i dopiero wówczas przekazana dalej do właściwych
+ odbiorców.
+ Oznacza to, że telefon staje się pośrednikiem w wysyłaniu i odbieraniu
+ wiadomości pomiędzy klientem webowym i resztą systemu.
+ 
 \end_layout
 
 \begin_layout Section
@@ -809,22 +818,6 @@ przyszłości wady uda się zminimalizować, a
 
 zalety architektury blockchain okażą się kluczowe.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO tabelka porównawcza, serwer, szyfrowanie, platformy, łatwość prowadzenia
- rozmów (czy np trzeba wymienić się czymś wcześniej innym sposobem czy od
- razu można zacząć gadać (np bez konta), czy konto wymagane, jakie dane
- przekazujemy firmie, wiadomości grupowe?, 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Chapter
@@ -1294,7 +1287,7 @@ problem ostatniego fragmentu
 \end_inset
 
 ).
- Dodatkowo problematyczne może być wyszukanie metapliku .torrent lub magnet
+ Dodatkowo, problematyczne może być wyszukanie metapliku .torrent lub magnet
  linku odpowiadającego danemu torrentowi.
  
 \end_layout
@@ -1347,6 +1340,10 @@ ograniczenia względem BT, czego WT nie implementuje a co robi inaczej (np
 \begin_layout Itemize
 webrtc DODATKOWY względem BitTorrent serwer potrzebny signalling (w przypadku
  WebTorrent jest nim tracker)
+\end_layout
+
+\begin_layout Itemize
+więcej napisać o ICE
 \end_layout
 
 \begin_layout Itemize
@@ -2422,7 +2419,7 @@ Możliwy jest jednak następujący scenariusz:
 \end_layout
 
 \begin_layout Subsection
-Wysłanie wiadomości
+Wysłanie wiadomości i algorytm ZLT
 \end_layout
 
 \begin_layout Standard
@@ -2502,10 +2499,29 @@ W trakcie implementowania programu zaobserwowano, że wraz ze wzrostem liczby
  prowadzi do nadmiernego zużywania zasobów, a nawet do błędnego zakończenia
  programu.
  Z tego powodu zdecydowano o zaprojektowaniu i wdrożeniu algorytmu zmniejszające
-go liczbę jednocześnie udostępnianych torrentów.
+go liczbę jednocześnie udostępnianych torrentów (nazywany dalej 
+\begin_inset Flex Strong
+status open
+
+\begin_layout Plain Layout
+algorytmem ZLT
+\end_layout
+
+\end_inset
+
+ — Zmniejszającym Liczbę Torrentów).
  W ogólności polega on na okresowym zastępowaniu torrentów zawierających
- pojedynczą wiadomość (poziom 0) jednym torrentem (nazywanym dalej torrentem
- kontrolnym), który składa się z wielu wiadomości (poziom 1).
+ pojedynczą wiadomość (poziom 0) jednym torrentem (nazywanym dalej 
+\begin_inset Flex Strong
+status open
+
+\begin_layout Plain Layout
+torrentem kontrolnym
+\end_layout
+
+\end_inset
+
+), który składa się z wielu wiadomości (poziom 1).
  Algorytm wykonuje się rekurencyjnie — jeśli powstanie zbyt dużo torrentów
  kontrolnych na poziomie 1 to zostaną one połączone w jeden torrent kontrolny
  na poziomie 2, itd.
@@ -2554,6 +2570,7 @@ treść
 \begin_layout Enumerate
 Usuń z klienta sieci P2P torrenty o info hashach znajdujących się na listach
  z punktu 3.
+ Usunięcie wykonywane jest z opóźnieniem (domyślnie po 5 sekundach).
 \end_layout
 
 \begin_layout Enumerate
@@ -2567,7 +2584,8 @@ Rozpocznij udostępnianie pliku składającego się z wszystkich wiadomości
 
 \begin_layout Enumerate
 Jeśli stworzenie nowego torrenta kontrolnego spowodowało, że na jego poziomie
- znalazło się zbyt wiele torrentów, wykonaj algorytm dla tego poziomu.
+ znalazło się zbyt wiele torrentów, wykonaj algorytm dla tego poziomu (od
+ punktu 1).
 \end_layout
 
 \begin_layout Standard
@@ -2595,25 +2613,14 @@ Dla poprawnego działania programu kluczowe jest, by kolejna nowa wiadomość
 
 \begin_layout Standard
 Domyślnie algorytm umieszcza 5 wiadomości w torrencie kontrolnym.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Plain Layout
-wspomnieć że po 5 sekundach są usuwane torrenty które zostały zastąpione,
- ale może warto by ten czas wydłużyć, żeby klienty online w momencie nadania
- miały szansę pobrać te wiadomosci
-\end_layout
+ W teście przedstawionym w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:wpływ liczby wiad w zlt"
 
 \end_inset
 
-
+ zbadano działanie aplikacji, gdy ta liczba jest inna.
 \end_layout
 
 \begin_layout Subsection
@@ -3091,7 +3098,7 @@ Przechowywanie kluczy publicznych i prywatnych w bazie danych z dostępem
  Jeśli jednak założenie to zostanie złagodzone i oprócz wspomnianych osób
  dostęp do treści wiadomości będzie miał zaufany serwer, rozwiązanie mogłoby
  zostać wprowadzone.
- W tej sytuacji uzyskuje się skalę poufności podobną do aplikacji Messenger
+ W tej sytuacji uzyskuje się poziom poufności podobny do aplikacji Messenger
  (punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3137,6 +3144,16 @@ key "webCrypto API w3,webCrypto experimental "
 
 \begin_layout Section
 Dalszy rozwój
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Dalszy rozwój"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3233,22 +3250,15 @@ Zagwarantowanie dostarczenia wiadomości w sytuacji, gdy użytkownik uruchamia
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO w dht oraz w wiadomościach mogłyby być listy ostatnich IH (danego usera,
- ale też innych, które widział w momencie wysyłania), a nie tylko jeden
- ostatni (bo tak, to się
-\begin_inset space ~
-\end_inset
-
-nadpisuje i jak ktoś sie spóźni to nie otrzyma danego IH tylko już nowszy.
-\end_layout
-
-\end_inset
-
-
+Przechowywanie listy ostatnich wartości info hash w DHT (zamiast pojedynczej
+ wartości) oraz przesyłanie jej w strukturze wiadomości (również zamiast
+ pojedynczej wartości previousInfoHash).
+ Dzięki temu możliwe byłoby równoległe pobieranie wiadomości przez dołączających
+ klientów.
+ Ponadto, to rozwiązanie pozwala na zmniejszenie skali problemu nadpisywania
+ wartości w DHT — jeśli użytkownik wysyła wiadomości w szybkim tempie, to
+ możliwe jest nadpisanie wartości info hash w DHT, zanim ktokolwiek zdąży
+ ją odczytać.
 \end_layout
 
 \begin_layout Standard
@@ -3297,10 +3307,6 @@ ie w DHT dla offlineowych userów
 \end_layout
 
 \begin_layout Itemize
-zaobserwowano znaczne wykorzystanie łącza (blokowanie innych połączeń)
-\end_layout
-
-\begin_layout Itemize
 dalszy rozwój - przesyłanie plików
 \end_layout
 
@@ -3311,24 +3317,6 @@ dalszy rozwój - przesyłanie plików
 
 \begin_layout Chapter
 Wyniki testów
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-część testów kończy się błedem lub zawieszeniem (np brak pobierania dalszych
- wiadomości przez dłuższy czas)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3377,24 +3365,15 @@ name "sec:Kryteria"
 \end_layout
 
 \begin_layout Standard
-Wymienione poniżej parametry zwiększyły zróżnicowanie testów.
- Ich zmiana może pozytywnie lub negatywnie wpływać na wydajność aplikacji.
+Wymienione poniżej parametry umożliwiają symulację różnych sytuacji podczas
+ testów.
+ Zmiana ich wartości może pozytywnie lub negatywnie wpływać na wydajność
+ aplikacji.
  Pod uwagę wzięto następujące kryteria:
 \end_layout
 
 \begin_layout Enumerate
 rozmiar wiadomości,
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO jesli to nawet bardzo długi tekst to nie ma wpływu (no może ma na input),
- a jak to jest plik no to zależy od szybkości łącza i pewnie ten choke
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -3404,16 +3383,6 @@ liczba uruchomionych klientów (dostępnych użytkowników) oraz liczba klientó
 
 \begin_layout Enumerate
 liczba wiadomości w konwersacji,
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO to raczej nie wpływa o ile są dobrze skompaktowane
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
@@ -3421,39 +3390,14 @@ liczba wiadomości, która zostaje umieszczona w torrencie kontrolnym,
 \end_layout
 
 \begin_layout Enumerate
-sposób podłączenia klientów do sieci — klienty znajdują się w jednej sieci
- / w różnych sieciach oraz czy jest to sieć domowa / uczelniana,
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO poprawić ten punkt (zredagować)
-\end_layout
-
-\begin_layout Itemize
-w labie (jedna sieć) wszystkie wiadomości idą 10 sekund więc to zinterpolować
-\end_layout
-
-\end_inset
-
-
+sposób podłączenia klientów do sieci — czy klienty znajdują się w jednej
+ lub różnych podsieciach oraz czy jest to sieć domowa, czy laboratoryjna,
 \end_layout
 
 \begin_layout Enumerate
 zbadanie, czy uruchomienie w jednej sieci wielu klientów obsługujących różne
  konwersacje wpływa na wydajność.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-W powolnej sieci może wływać, bo to generalnie kosztowne - nie jest to kwestia
- różnych konwersacji tylko ogólnie liczba klientów
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -3541,105 +3485,11 @@ m
 
  wyśle kolejną wiadomość dopiero po otrzymaniu wszystkich odpowiedzi.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-w tym teście kompaktowanie nie ma zbyt dużego znaczenia (nie licząc oczywiście
- tego, że nie trzeba utrzymywać tylu torrentów ile wiadomości po dłuższym
- czasie), bo klient i tak czeka aż wszysycy dostaną wszystko)
-\end_layout
-
-\begin_layout Itemize
-brak kompaktowania - 70 torrentów zawiesza stronę, więc kompaktowanie jest
- potrzebne
-\end_layout
-
-\begin_layout Itemize
-scenariusz zakłada ze wszyscy piszą równo i w tym samym momencie im się
- zmniejsza liczba wiadomości a w życiu to dla różnych osób te momenty się
-\begin_inset space ~
-\end_inset
-
-rozjadą (jedni piszą więcej wiadomości, inni mniej) więc czas się raczej
- uśredni
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Enumerate
 Jeden klient dołącza do konwersacji.
  Zmierzono czas otrzymania pełnej listy wiadomości przez dołączającego klienta.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO -kilku klientów dołącza, a kilku jest dostępnych - większa kooperacja
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-test tylko lokalne linuxy (ręcznie mierzony czas)
-\end_layout
-
-\begin_layout Itemize
-test tylko vlaby (może jeden z nich być protractorem) - na vlabach w firefoxie
- klient nie przesyłał nic
-\end_layout
-
-\begin_layout Itemize
-więcej napisać o ICE
-\end_layout
-
-\begin_layout Itemize
-im niższa liczba wiadomości do skompaktowania tym częściej pobiera się te
- same dane, policzyć ile jest torrentów dla poszczególnej liczby wiadomości
- dla różnych liczb wiadomości do skomapktowania np dla 5: 1-1, 2-2, 3-3,
- 4-4, 5-1, 6-2, 7-3, 24-8, 25-1, 26-2 itd, dla 4: 1-1, 2-2, 3-3, 4-4, 
-\end_layout
-
-\begin_layout Itemize
-czas odebrania wiadomości waha się do powiedzmy max 2 minut?? co i tak jest
- połową tego co w blockchainie
-\end_layout
-
-\begin_layout Itemize
-opera vpn nie działa (ogólnie vpny)
-\end_layout
-
-\begin_layout Itemize
-wpływ na łącze w domu (ile komunikatów jest przesyłanych, że głównie stun,
- ile MB?, zrzut z wiresharka)
-\end_layout
-
-\begin_layout Itemize
-testy w labie - pozwoliły wykazać max liczbę torrentów na takich mocnych
- maszynach - użytkownicy zwykle maja o wiele słabsze kompy (tak jak w testach
- w sieci domowej)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -3797,7 +3647,7 @@ ych odbiorców.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3860,6 +3710,17 @@ Najniższy czas dostarczenia notowany jest w sieci domowej (K3 <> K4).
 Najdłużej wiadomość była przesyłana między komputerami K2 i K1 (K2 <> K1).
  Minimalny czas odebrania wiadomości wyniósł około 50 sekund, a średni był
  niewiele wyższy — ok 51 sekund.
+ Na bazie logów aplikacji zaobserwowano, że komunikaty charakterystyczne
+ dla protokołu BitTorrent (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:jak-komunikuja"
+
+\end_inset
+
+) pojawiają się dopiero po upłynięciu minimalnego czasu (50 sekund) — następuje
+ wtedy nawiązanie połączenia pomiędzy klientami.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3867,40 +3728,6 @@ Wyniki testu wskazują na jeszcze jedną zależność — przesłanie wiadomośc
  w sieci lokalnej (czy to laboratoryjnej, czy domowej) trwa krócej niż przesłani
 e pomiędzy komputerami znajdującymi się w różnych podsieciach.
  
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-inny wykres, jednak to wolniej idzie?, duże wahania, od prawie od razu do
- czekania bardzo długo
-\end_layout
-
-\begin_layout Itemize
-liczba klientów nie ma znaczenia bo czas nawiązania połączenia (czyli zanim
- zacznie się faktyczny algorytm bittorent) jest tak duży, że zanim ktoś
- dostanie wiadomość i będzie mógł zostać seedem to juz
-\begin_inset space ~
-\end_inset
-
-wszyscy otrzymają od oryginalnego nadawcy - to samo się tyczy scenraiusza
- 3 - mimo błędu, że nie ma pełnych list IH i trzeba po jednej wiadomości
- pobierać to czas się
-\begin_inset space ~
-\end_inset
-
-nie skraca, jest zawsze większy niż to utarte minimum
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -3918,7 +3745,12 @@ status open
 TODO o tym wspomnieć? Pytanie do Ani
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Itemize
+jesli to nawet bardzo długi tekst to nie ma wpływu (no może ma na input),
+ a jak to jest plik no to zależy od szybkości łącza i pewnie ten choke
+\end_layout
+
+\begin_layout Itemize
 W trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania
  plików (na przykład obrazów lub filmów).
  Ta funkcjonalność nie znalazła się w końcowej wersji systemu, jednak z
@@ -3959,7 +3791,7 @@ reference "fig:Uśredniony-czas-przesłania"
 
 \end_inset
 
- przedstawia wyniki 4 powtórzeń testu.
+ przedstawia wyniki 4 powtórzeń testu w sieci domowej.
  Wykres 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3976,8 +3808,8 @@ reference "fig:Uśredniony-czas-przesłania-1"
  pomiędzy komputerami.
  Pomiar czasu w scenariuszu 2 obejmuje przesłanie wszystkich wiadomości
  w danej iteracji (wiadomość od nadawcy i wszystkie odpowiedzi), ale czas
- przedstawiony na wykresie jest średnią czasów przesyłu wszystkich wiadomości
- w danej iteracji — w tym wypadku średnią czasów przesłania 2 wiadomości.
+ przedstawiony na wykresie jest średnią czasów przesyłu — w tym wypadku
+ średnią czasów przesłania 2 wiadomości.
 \end_layout
 
 \begin_layout Standard
@@ -3990,7 +3822,7 @@ Zachowano domyślną liczbę wiadomości umieszczanych w torrencie kontrolnym
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -4034,7 +3866,7 @@ name "fig:Uśredniony-czas-przesłania"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -4075,12 +3907,35 @@ name "fig:Uśredniony-czas-przesłania-1"
 \end_layout
 
 \begin_layout Standard
+Czas przesłania pojedynczej wiadomości wyniósł minimalnie około 2 sekund
+ (czyli podobnie jak w przypadku punktu 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wysłanie pojed wiad"
+
+\end_inset
+
+), a maksymalnie sięga nawet 90 sekund.
+\end_layout
+
+\begin_layout Standard
 Przede wszystkim należy zwrócić uwagę na nieregularne występowanie pogorszeń
- wydajności (dłuższych czasów przesyłu wiadomości).
+ wydajności (dłuższych czasów przesyłu wiadomości) — wykres 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Uśredniony-czas-przesłania"
+
+\end_inset
+
+.
  Zdarza się, że w danej iteracji w jednym teście czas jest znacznie gorszy
  niż w przypadku pozostałych testów.
- Co więcej, spadki wydajności nie wydają się być niezależne od zastosowanego
- algorytmu zmniejszania liczby wiadomości.
+ Co więcej, spadki wydajności wydają się być niezależne od zastosowanego
+ algorytmu zmniejszania liczby wiadomości — nie występują jedynie w momentach,
+ kiedy liczba torrentów jest najwyższa, czyli tuż przed uruchomieniem algorytmu
+ zmniejszającego ich liczbę.
+ Można również zaobserwować niespodziewane pogorszenie wydajności tuż po
+ zmniejszeniu liczby torrentów (na przykład dla 16 wiadomości).
  Niemniej jednak, ten algorytm jest niezbędny, co zostanie pokazane w punkcie
  
 \begin_inset CommandInset ref
@@ -4094,25 +3949,53 @@ reference "sec:Wpływ alg"
 \end_layout
 
 \begin_layout Standard
-Czas przesłania pojedynczej wiadomości wyniósł minimalnie około 2 sekund
- (czyli podobnie jak w przypadku punktu 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Wysłanie pojed wiad"
+Nieregularność można po części wytłumaczyć relatywnie niską prędkością łącza
+ sieciowego.
+ W trakcie testów zaobserwowano błędy połączeń z trackerem lub DHT — przekroczen
+ie maksymalnego czasu nawiązywania połączenia.
+ Zbadano zatem liczbę pakietów wysyłanych i odbieranych przez komputery
+ K3 i K4 w ciągu minuty w następujących sytuacjach: 
+\end_layout
 
-\end_inset
+\begin_layout Itemize
+Klienty wyłączone — punkt odniesienia dla dalszych badań,
+\end_layout
 
-), a maksymalnie sięga nawet 90 sekund.
- 
+\begin_layout Itemize
+Bezczynność — klienty są włączone, ale nie są przesyłane żadne torrenty,
+\end_layout
+
+\begin_layout Itemize
+Klienty przesyłają zmienną liczbę torrentów (od 1 do 20).
 \end_layout
 
 \begin_layout Standard
-Nieregularność można po części wytłumaczyć relatywnie niską prędkością łącza
- sieciowego.
- W trakcie testów zaobserwowano błędy połączeń z trackerem lub DHT.
- Zbadano zatem liczbę połączeń nawiązywanych przez klienty (a konkretnie
- bibliotekę WebTorrent).
- Wyniki przedstawione zostały w tabeli 
+Wyniki przedstawione zostały w tabeli 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Statystyka-połączeń"
+
+\end_inset
+
+ oraz na wykresie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Statystyka-połączeń"
+
+\end_inset
+
+.
+ Oprócz liczby połączeń w ciągu minuty (
+\begin_inset Quotes pld
+\end_inset
+
+Łącznie
+\begin_inset Quotes prd
+\end_inset
+
+), w tabeli przedstawiono procentowy i ilościowy udział pakietów protokołu
+ STUN.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4126,6 +4009,13 @@ status open
 
 \begin_layout Plain Layout
 Statystyka połączeń
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Statystyka-połączeń"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4135,8 +4025,12 @@ Statystyka połączeń
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="5">
+<lyxtabular version="3" rows="4" columns="9">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4156,7 +4050,8 @@ Statystyka połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
-Klienty wyłączone
+Kl.
+ wyłączone
 \end_layout
 
 \end_inset
@@ -4174,7 +4069,43 @@ Bezczynność
 \begin_inset Text
 
 \begin_layout Plain Layout
-2 torrenty
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
 \end_layout
 
 \end_inset
@@ -4183,7 +4114,7 @@ Bezczynność
 \begin_inset Text
 
 \begin_layout Plain Layout
-10 torrentów
+20
 \end_layout
 
 \end_inset
@@ -4194,7 +4125,7 @@ Bezczynność
 \begin_inset Text
 
 \begin_layout Plain Layout
-Liczba połączeń
+Łącznie
 \end_layout
 
 \end_inset
@@ -4212,7 +4143,7 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+300
 \end_layout
 
 \end_inset
@@ -4221,7 +4152,43 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
+1050
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1800
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3840
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7380
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11200
 \end_layout
 
 \end_inset
@@ -4230,7 +4197,7 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
-7380
+17000
 \end_layout
 
 \end_inset
@@ -4259,7 +4226,7 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0%
 \end_layout
 
 \end_inset
@@ -4268,7 +4235,43 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
+57%
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+70%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+76%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+83%
 \end_layout
 
 \end_inset
@@ -4277,7 +4280,7 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
-80%
+87%
 \end_layout
 
 \end_inset
@@ -4288,7 +4291,7 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+STUN
 \end_layout
 
 \end_inset
@@ -4297,7 +4300,7 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -4306,7 +4309,7 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -4315,7 +4318,43 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
+598
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1260
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2918
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5904
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9296
 \end_layout
 
 \end_inset
@@ -4324,7 +4363,7 @@ Liczba połączeń
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+14790
 \end_layout
 
 \end_inset
@@ -4343,6 +4382,60 @@ Liczba połączeń
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/torrenty pakiety.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Statystyka połączeń
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Statystyka-połączeń"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Jak wynika z przeprowadzonego doświadczenia, zdecydowaną większość wysłanych
+ i odebranych pakietów stanowią pakiety protokołu STUN, który odpowiedzialny
+ jest odszukiwanie adresów IP komputerów znajdujących się w sieciach stosujących
+ translację adresów.
+ Łączna liczba pakietów jest znacznie wyższa niż podczas próby kontrolnej
+ z wyłączonymi klientami lub z klientami w stanie bezczynności.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -4350,14 +4443,13 @@ status open
 TODO
 \end_layout
 
-\begin_layout Plain Layout
-bezpośrednio z pomiarów nie wynika korzyść z kompaktowania, ale jest to
- konieczne, bobez tego byłby klops
-\end_layout
-
-\begin_layout Plain Layout
-w labie wiadomości zwykle szły tyle samo czasu w obie strony a w domu zdarza
- się że w jedną szybko a odpowiedź wolno
+\begin_layout Itemize
+w 
+\series bold
+labie
+\series default
+ wiadomości zwykle szły tyle samo czasu w obie strony a w domu zdarza się
+ że w jedną szybko a odpowiedź wolno (dać wykresy z labu)
 \end_layout
 
 \end_inset
@@ -4366,7 +4458,7 @@ w labie wiadomości zwykle szły tyle samo czasu w obie strony a w domu zdarza
 \end_layout
 
 \begin_layout Section
-Wpływ algorytmu zmniejszającego liczbę torrentów
+Wpływ algorytmu ZLT na wydajność
 \end_layout
 
 \begin_layout Standard
@@ -4380,8 +4472,8 @@ name "sec:Wpływ alg"
 \end_layout
 
 \begin_layout Standard
-W celu sprawdzenia, czy algorytm zmniejszający liczbę torrentów (opisany
- w punkcie 
+W celu sprawdzenia, czy algorytm zmniejszający liczbę torrentów (algorytm
+ ZLT, opisany w punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Wysyłanie wiadomości"
@@ -4391,19 +4483,417 @@ reference "subsec:Wysyłanie wiadomości"
 ) jest niezbędny i spełnia swoją rolę, wykonano następujące testy:
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Zbadanie maksymalnej liczby torrentów, które jednocześnie może obsłużyć
  klient.
  Dokonano tego przy pomocy testu polegającego na wysyłaniu wiadomości i
- odbieraniu odpowiedzi (scenariusz 2) z wyłączonym algorytmem zmniejszania
- liczby torrentów — każda wiadomość stawała się nowym torrentem.
+ odbieraniu odpowiedzi (scenariusz 2) z wyłączonym algorytmem ZLT — każda
+ wiadomość stawała się nowym torrentem.
  Zmieniano przy tym liczbę klientów uczestniczących w rozmowie (aktywnie
  i biernie).
 \end_layout
 
-\begin_layout Itemize
-Zbadanie scenariusza 2 z włączonym algorytmem zmniejszania liczby torrentów.
+\begin_layout Enumerate
+Zbadanie scenariusza 2 z włączonym algorytmem ZLT.
  
+\end_layout
+
+\begin_layout Standard
+Testy przeprowadzono w laboratorium.
+ W pierwszym teście uczestniczyły jedynie komputery K1 ze względu na potrzebę
+ utrzymania spójnych parametrów maszyn.
+ Wynik tego testu zaprezentowano na wykresie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Zależność-czasu-przesyłu"
+
+\end_inset
+
+.
+ Na osi poziomej zaznaczono liczbę torrentów, którą w danym momencie obsługiwał
+ każdy klient, a na osi poziomej znajduje się średni czas przesyłu wiadomości
+ pomiędzy klientami.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/bez kompaktowania.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Zależność czasu przesyłu od liczby torrentów
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Zależność-czasu-przesyłu"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dla przypomnienia: minimalny czas wysłania pojedynczej wiadomości pomiędzy
+ komputerami K1 wynosi 10
+\begin_inset space ~
+\end_inset
+
+s (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wysłanie pojed wiad"
+
+\end_inset
+
+).
+ Zaobserwowano niewielki wzrost czasu przesyłu wiadomości wraz ze wzrostem
+ liczby torrentów aż do osiągnięcia liczby około 60-70 torrentów.
+ W tym momencie na wszystkich maszynach następowało zatrzymanie pracy aplikacji.
+ Oznacza to, że aplikacje mogą obsłużyć maksymalnie około 60-70 torrentów
+ i nie należy przekraczać tej wartości.
+ 
+\end_layout
+
+\begin_layout Standard
+W trakcie testu badano również wykorzystanie zasobów komputera.
+ Podczas normalnej pracy aplikacji zużycie pamięci RAM oscyluje w granicach
+ 200-400
+\begin_inset space ~
+\end_inset
+
+MB, a tuż przed błędnym zatrzymaniem pracy aplikacji zużycie wynosiło ponad
+ 600
+\begin_inset space ~
+\end_inset
+
+MB.
+ 
+\end_layout
+
+\begin_layout Standard
+Przeprowadzenie testu 1 potwierdziło słuszność decyzji o zaimplementowaniu
+ algorytmu ZLT.
+ Dodatkowym potwierdzeniem stały się wyniki drugiego testu.
+ Zostały one przedstawione na wykresie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Działanie-algorytmu-zmniejszając"
+
+\end_inset
+
+.
+ Na osi poziomej znajduje się liczba wiadomości wysłanych przez nadawcę,
+ a na pionowej — czas przesyłu.
+ Zachowano domyślną liczbę wiadomości umieszczanych w torrencie kontrolnym
+ — 5.
+ W drugim teście uczestniczyły komputery K1 oraz komputer K2, który był
+ nadawcą 
+\begin_inset Formula $U_{N}$
+\end_inset
+
+ w scenariuszu 2.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/kompaktowanie.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Działanie algorytmu ZLT
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Działanie-algorytmu-zmniejszając"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Minimalny czas przesyłu wiadomości zgadza się z wynikiem uzyskanym w teście
+ z punktu 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wysłanie pojed wiad"
+
+\end_inset
+
+ — 50 sekund.
+ Wyniki na powyższym wykresie zostały uśrednione — w testach brała udział
+ różna liczba odbiorców.
+ Można zaobserwować spadek wydajności w miarę zbliżania do momentu, w którym
+ algorytm zmniejsza liczbę torrentów, po czym następuje wzrost wydajności
+ (zmniejszenie czasu przesyłu).
+\end_layout
+
+\begin_layout Standard
+Należy dodać, że symulowana rozmowa nie odzwierciedla idealnie prawdziwej
+ sytuacji, w której użytkownicy mogą nie odpowiedzieć na jakąś wiadomość,
+ lub odpowiedzieć poprzez wysłanie większej liczby wiadomości.
+ W tej sytuacji algorytm ZLT może zmniejszać liczbę torrentów różnym użytkowniko
+m w różnych momentach i uzyskane czasy przesyłu wiadomości zostaną uśrednione.
+\end_layout
+
+\begin_layout Section
+Wpływ liczby wiadomości w algorytmie ZLT
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:wpływ liczby wiad w zlt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kolejnym kryterium, które wzięto pod uwagę podczas testów była liczba wiadomości
+, które algorytm ZLT umieszcza w torrencie kontrolnym (liczba ta będzie
+ dalej nazywana 
+\begin_inset Flex Strong
+status open
+
+\begin_layout Plain Layout
+zmienną X
+\end_layout
+
+\end_inset
+
+).
+ Algorytm okazuje się niezbędny, ponieważ nadmierna liczba torrentów, które
+ w danym momencie udostępnia klient, może spowodować jego błędne zatrzymanie.
+ 
+\end_layout
+
+\begin_layout Standard
+Im mniejsza wartość zmiennej X, tym częściej algorytm wykonuje zamianę wielu
+ torrentów na pojedynczy kontrolny.
+ Skrajnym przypadkiem jest umieszczanie każdej nowej wiadomości razem ze
+ wszystkimi poprzednimi w nowym torrencie i usunięcie poprzedniego torrenta.
+ W takiej sytuacji liczba torrentów utrzymywanych przez każdego klienta
+ byłaby równa liczbie uczestników rozmowy.
+ Jednakże, każda operacja zamiany wielu torrentów na pojedynczy wymaga pewnego
+ nakładu pracy, a w opisanym przypadku koszt osiągnąłby wartość maksymalną.
+ Dodatkowo, istnieje narzut komunikacyjny spowodowany przesyłaniem tych
+ samych wiadomości ponownie w połączonym torrencie.
+ 
+\end_layout
+
+\begin_layout Standard
+Im wyższa wartość zmiennej X, tym wyższa jest maksymalna liczba torrentów,
+ które klient będzie musiał utrzymywać z powodu rzadziej następującej zamiany.
+ 
+\end_layout
+
+\begin_layout Standard
+Wykresy 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Liczba-wysłanych-wiadomości"
+
+\end_inset
+
+ i 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Liczba-wykonań-algorytmu"
+
+\end_inset
+
+ przedstawiają zależności pewnych parametrów względem różnych wartości zmiennej
+ X.
+ Oba wykresy bazują na 100 powtórzeniach wysłania wiadomości (100 iteracji).
+ Pierwszy wykres przedstawia, ile faktycznie wiadomości wyśle klient — w
+ wynikach uwzględniono też powtórzone wiadomości, które zostały wysłane
+ wcześniej, a znalazły się ponownie w nowym torrencie kontrolnym.
+ Drugi wykres pokazuje: ile razy algorytm ZLT stworzył nowy torrent (
+\begin_inset Quotes pld
+\end_inset
+
+Wykonania
+\begin_inset Quotes prd
+\end_inset
+
+) oraz jaka jest maksymalna liczba torrentów zaobserwowana w trakcie 100
+ iteracji.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/liczba wyslanych wiad od X.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Liczba wysłanych wiadomości
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Liczba-wysłanych-wiadomości"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/wykonania i l torr od x.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Liczba wykonań algorytmu i maksymalna liczba torrentów
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Liczba-wykonań-algorytmu"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Z pierwszego wykresu wynika, że optymalna wartość zmiennej X wynosi 6 lub
+ 8 — dla tych wartości zmiennej X liczba wysłanych wiadomości jest najmniejsza.
+ Zbadano również, że wraz ze wzrostem liczby iteracji (więcej niż 100) optimum
+ na pierwszym wykresie przesuwa się w stronę wyższej wartości X.
+ Należy jednak pamiętać, że w teście 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wpływ alg"
+
+\end_inset
+
+ (a konkretnie próbie z wyłączonym algorytmem ZLT) wykazano, iż maksymalna
+ liczba torrentów, jakie może obsłużyć aplikacja wynosi około 60-70.
+ Konieczne jest zatem minimalizowanie liczby jednocześnie uruchomionych
+ torrentów.
+ 
+\end_layout
+
+\begin_layout Standard
+Dodatkowo, każdy użytkownik, który aktywnie udziela się w rozmowie, powoduje
+ wzrost liczby uruchomionych torrentów, które wszystkie klienty w konwersacji
+ muszą obsłużyć.
+ Przedstawione na wykresie wartości dotyczą pojedynczego użytkownika.
+ Gdyby, przykładowo, uczestników było dwóch, maksymalna liczba torrentów
+ podwaja się, w przypadku 3 uczestników — potraja, itd.
+ Można więc zauważyć, że przyjmując wartość zmiennej X równą 10, możliwe
+ jest przekroczenie 60 obsługiwanych torrentów przy 4 uczestnikach rozmowy.
 \end_layout
 
 \begin_layout Section
@@ -4411,27 +4901,148 @@ Pobieranie listy wiadomości
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+Ostatni test korzysta ze scenariusza 3.
+ Jego celem jest pomiar czasu potrzebnego na pobranie pełnej listy wiadomości
+ przez użytkownika dołączającego do trwającej rozmowy.
+ Istotnymi kryteriami w tym teście są: liczba wiadomości do pobrania oraz
+ zastosowana wartość zmiennej X w algorytmie ZLT.
+ Wyniki przeprowadzonych doświadczeń nie odbiegają od oczekiwań i rezultatów
+ poprzednich testów.
+ 
+\end_layout
+
+\begin_layout Standard
+Przede wszystkim, przy wyłączonym algorytmie ZLT konieczne byłoby pobieranie
+ każdej wiadomości z osobna, jedna po drugiej, dlatego całkowity czas pobrania
+ wynosiłby 
+\begin_inset Formula $n\cdotp V$
+\end_inset
+
+, gdzie 
+\begin_inset Formula $n$
+\end_inset
+
+ oznacza liczbę wiadomości do pobrania, a 
+\begin_inset Formula $V$
+\end_inset
+
+ — średni czas przesłania wiadomości w danym środowisku testowym.
+ Włączenie algorytmu pozwala na znaczne skrócenie całkowitego czasu.
+ 
+\end_layout
+
+\begin_layout Standard
+Czas ten można by jeszcze przyspieszyć, gdyby w aplikacji zaimplementowany
+ został mechanizm przechowywania list ostatnich wartości info hash (zamiast
+ pojedynczych wartości) w DHT oraz strukturze komunikatu (wspomniany w punkcie
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dalszy rozwój"
+
+\end_inset
+
+).
+ W takiej sytuacji część wiadomości mogłaby być pobierana równolegle.
+\end_layout
+
+\begin_layout Standard
+Bez wspomnianego mechanizmu, czasy pobierania wiadomości w sieci laboratoryjnej
+ pomiędzy komputerami K1 są dłuższe i zostały przedstawione na wykresie
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Pobieranie-listy-wiadomości"
+
+\end_inset
+
+.
+ Liczba komputerów biorących udział w teście miała marginalne znaczenie.
+ Każdy punkt oznacza czas pobrania danej liczby wiadomości w zależności
+ od wartości zmiennej X ustawionej w algorytmie ZLT.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-TODO
+\begin_inset Graphics
+	filename img/pobieranie listy.png
+	width 100line%
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-Scenariusz 3
-\end_layout
+\begin_layout Plain Layout
+\begin_inset Caption Standard
 
-\begin_layout Itemize
-że brakuje list IH, żeby nie pobierać pojedynczych wiadomości i dowiadywać
- się o poprzedniej dopiero jak się dostanie daną - tylko od razu zasysać
- równolegle więcej, ale i tak kompaktowanie tu pomaga, bo nie pobiera się
- po jednej tylko paczki
+\begin_layout Plain Layout
+Pobieranie listy wiadomości o różnej długości
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Pobieranie-listy-wiadomości"
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Można zaobserwować, że czas pobierania listy wiadomości jest tym dłuższy,
+ im więcej komunikatów zostało wysłanych od momentu utworzenia ostatniego
+ torrenta kontrolnego przez algorytm ZLT.
+ Ponadto, dla wyższych wartości zmiennej X istnieje możliwość większego
+ oddalenia się od wspomnianego torrenta.
+ Przykładowo, dla zmiennej X równej 9 prawdopodobieństwo, że konieczne będzie
+ pobranie więcej niż 3 wiadomości zanim pobrany zostanie torrent kontrolny
+ wynosi 63%, natomiast dla zmiennej X równej 3 — 0%.
+ Takie samo prawdopodobieństwo występuje na kolejnych poziomach algorytmu.
+ 
+\end_layout
+
+\begin_layout Section
+Wpływ jednoczesnych konwersacji na wydajność
+\end_layout
+
+\begin_layout Standard
+W sieci domowej prędkości pobierania i wysyłania danych są znacznie mniejsze
+ niż w sieci laboratoryjnej.
+ W celu sprawdzenia, czy większa liczba konwersacji wpływa na pogorszenie
+ wydajności, uruchomiono 4 klienty aplikacji na komputerach K3 i K4.
+ Zaobserwowano porównywalne pogorszenie wydajności aplikacji zarówno gdy
+ klienty prowadzą wspólną konwersację oraz gdy klienty prowadzą 2 konwersacje
+ parami.
+ Oznacza to, że w wolniejszych sieciach większy wpływ na wydajność ma liczba
+ włączonych klientów niż to, w jaki sposób są one połączone (kto rozmawia
+ z kim).
+ 
+\end_layout
+
+\begin_layout Standard
+W sieci laboratoryjnej test przeprowadzono na komputerach K1.
+ Nie zaobserwowano istotnej różnicy w czasie przesłania wiadomości w zależności
+ od tego, czy klienty prowadzą wspólną rozmowę, czy kilka osobnych.
+ 
 \end_layout
 
 \begin_layout Chapter
@@ -4522,6 +5133,16 @@ key "signal"
 \end_inset
 
 https://whispersystems.org/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "whatsapp"
+
+\end_inset
+
+https://www.whatsapp.com/ (dostęp 27.06.2017)
 \end_layout
 
 \begin_layout Bibliography
