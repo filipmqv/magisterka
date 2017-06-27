@@ -18,6 +18,9 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
   var lastInfoHashes = [];
   var myCurrentInfoHash = '';
   var myDhtId = '';
+  // set date 1 week ago
+  var dateThreshold = new Date();
+  dateThreshold.setDate(dateThreshold.getDate() - 7);
 
   function getMyCurrentInfoHash(userDhtId) {
     DhtFactory.get({dhtId: userDhtId}, function (data) {
@@ -27,10 +30,18 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
 
 /////////////////// init
 
+  function isOlderThanOneWeek(timestamp, OneWeekAgoDate) {
+    return timestamp < OneWeekAgoDate
+  }
+
   function seedByControlMessages(controlList, messagesList) {
     lodash.forEachRight(controlList, function (levelList) {
       if (levelList) {
         lodash.forEach(levelList, function (controlMessage) {
+          if (isOlderThanOneWeek(controlMessage.message.timestamp, dateThreshold)) {
+            // if message is older then 1 week then don't seed it
+            return;
+          }
           var hashes = controlMessage.message.content.infoHashes;
           var lvl = MessagesFactory.getLevelFromLength(hashes.length);
           var messages = MessagesFactory.getMessagesByInfoHash(messagesList, hashes);
@@ -49,6 +60,10 @@ services.factory('TorrentFactory', function($localForage, $timeout, $interval, D
 
   function seedList(list) {
     lodash.forEach(list, function (item) {
+      if (isOlderThanOneWeek(item.message.timestamp, dateThreshold)) {
+        // if message is older then 1 week then don't seed it
+        return;
+      }
       client.seed(createBuffer(item.message));
     });
   }
