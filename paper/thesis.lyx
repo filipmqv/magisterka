@@ -180,6 +180,173 @@ Wstęp
 \end_layout
 
 \begin_layout Standard
+Komunikatory zrewolucjonizowały sposób, w jaki ludzie wymieniają się informacjam
+i.
+ Pozwalają na niemalże natychmiastowe wysłanie dowolnej treści (tekstu,
+ zdjęcia, filmu) w formie wiadomości do grona odbiorców — najczęściej znajomych.
+ Zbiór wszystkich użytkowników korzystających z danego komunikatora tworzy
+ graf — za wierzchołki można uznać włączone aplikacje, a krawędziami są
+ wysyłane i odbierane komunikaty.
+ Przyjęcie takiej perspektywy pozwala na rozpatrzenie problemu dystrybucji
+ wiadomości jako tytułowe rozgłaszanie danych w grafach dużej, wręcz globalnej,
+ skali.
+ W rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:istniejace rozwiazania"
+
+\end_inset
+
+ przedstawiono kilka istniejących komunikatorów.
+ Wśród nich można wyróżnić dwie główne architektury — rozproszoną (komunikacja
+ bezpośrednia P2P) oraz scentralizowaną (z serwerem pośredniczącym).
+ Architektury te, w formie wspomnianego grafu, zostały zaprezentowane na
+ rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Architektura-rozproszona-(po"
+
+\end_inset
+
+.
+ Strzałki tego samego typu symbolizują konwersację pomiędzy konkretnymi
+ grupami użytkowników.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/rozproszone i centralne rozglaszanie.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Architektura rozproszona (po lewej) i scentralizowana (po prawej)
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Architektura-rozproszona-(po"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Każda z architektur ma swoje zalety oraz wady.
+ Przykładowo, pod pojęciem 
+\begin_inset Quotes pld
+\end_inset
+
+serwer
+\begin_inset Quotes prd
+\end_inset
+
+ na rysunku kryje się zwykle jedno lub wiele centrów przetwarzania danych,
+ których utrzymanie jest niezwykle kosztowne.
+ Firma, która ...częstą praktyką jest gromadzenie i analizowanie danych o użytkowni
+kach –> zyski (np reklamy), dzięki temu komunikator jest darmowy, obciążenie
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+BitTorrent, jeden z najpopularniejszych protokołów służących do dystrybucji
+ plików
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+WebTorrent
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+Celem pracy jest zaprojektowanie i implementacja ...
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -209,24 +376,28 @@ TODO
 \end_layout
 
 \begin_layout Itemize
-(sensowna motywacja (odciążenie serwerów ale też jaka motywacja dla userów?))
- 
+sensowna motywacja (odciążenie serwerów ale też jaka motywacja dla userów
+ końcowych? – brak serwerów to brak kosztów, a więc firma która by je utrzymywał
+a nie musi np gromadzić danych o użytkownikach i sprzedawać reklamodawcom
+ — prywatność, szyfrowane wiadomości)
 \end_layout
 
 \begin_layout Itemize
-próba sprawdzenia, czy można zastosować ten protokół w
+wspomnienie że BT istnieje i jest do innych celów z powodzeniem wykorzystywany
+ — próba sprawdzenia, czy można zastosować ten protokół w
 \begin_inset space ~
 \end_inset
 
-tym celu 
+tym celu (do wysyłąnia wiadomości)
+\end_layout
+
+\begin_layout Itemize
+wspomnienie o webtorrent, że to BT dla przeglądarek, a dużo komunikatorów
+ ma wersję dla przeglądarki
 \end_layout
 
 \begin_layout Itemize
 cel pracy 
-\end_layout
-
-\begin_layout Itemize
-motywacja 
 \end_layout
 
 \begin_layout Itemize
@@ -256,6 +427,16 @@ przeglądarce wzrośnie?, jakiś podproblem? czy to musi mieć naukowe (a nie
 
 \begin_layout Chapter
 Istniejące rozwiązania
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:istniejace rozwiazania"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3004,7 +3185,7 @@ którym użytkownik dodaje wiadomość jako kolejny plik do istniejącego torren
  wdrożenia takiej możliwości (w protokole BitTorrent 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "bep46-bt"
+key "bep39-bt,bep46-bt"
 
 \end_inset
 
@@ -3380,7 +3561,7 @@ wartością struktura wiadomości.
 
 \begin_layout Standard
 W trakcie implementowania programu zaobserwowano, że wraz ze wzrostem liczby
- wiadomości traktowanie jednej wiadomości jako jeden torrent bardzo szybko
+ wiadomości umieszczanie każdej z nich w osobnym torrencie bardzo szybko
  prowadzi do nadmiernego zużywania zasobów, a
 \begin_inset space ~
 \end_inset
@@ -3577,19 +3758,30 @@ reference "sec:DHT"
 \end_layout
 
 \begin_layout Standard
-Dla poprawnego działania programu kluczowe jest, by kolejna nowa wiadomość
- przeszła procedurę wysyłania dopiero po zakończeniu procedury wysyłania
- poprzedniej wiadomości.
+Dla poprawnego działania programu kluczowe jest, by procedura wysyłania
+ kolejnej wiadomości 
+\begin_inset Formula $m_{j}$
+\end_inset
+
+ rozpoczęła się dopiero po zakończeniu procedury dla poprzedniej wiadomości
+ 
+\begin_inset Formula $m_{i}$
+\end_inset
+
+.
  Wynika to z
 \begin_inset space ~
 \end_inset
 
-konieczności podania wartości poprzedniego info hasha w
-\begin_inset space ~
+konieczności podania wartości info hash wiadomości 
+\begin_inset Formula $m_{i}$
 \end_inset
 
-strukturze wiadomości.
- 
+ w strukturze wiadomości 
+\begin_inset Formula $m_{j}.$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3614,6 +3806,17 @@ reference "sec:wpływ liczby wiad w zlt"
 \end_inset
 
  zbadano działanie aplikacji, gdy ta liczba jest inna.
+\end_layout
+
+\begin_layout Standard
+Zaletą algorytmu ZLT jest znaczne zmniejszenie liczby jednocześnie udostępnianyc
+h torrentów, a to obniża zużycie zasobów.
+ Wadą natomiast jest powtórne wysyłanie wiadomości, które uczestnicy rozmowy
+ mogli już wcześniej odebrać — przykładowo, klient odebrał 4 kolejne wiadomości
+ będące pojedynczymi torrentami, a następnie pobrał torrent kontrolny zawierając
+y 5 wiadomości, spośród których 4 już posiada i jedną nową.
+ Oznacza to, że 80% przesłanych danych było zbędne.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -4895,72 +5098,46 @@ szybkim tempie, to możliwe jest nadpisanie wartości info hash w
 DHT, zanim ktokolwiek zdąży ją odczytać.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
+\begin_layout Itemize
+Modyfikacja protokołu BitTorrent pozwalająca na ponowne wykorzystanie istniejący
+ch swarmów, ponieważ konieczność dołączania do nowego swarmu dla każdej
+ wysłanej wiadomości powoduje duży narzut komunikacyjny wynikający z nawiązywani
+a połączenia pomiędzy peerami.
+ Z dużym prawdopodobieństwem w nowych swarmach znajdą się te same peery,
+ które uczestniczyły w udostępnianiu poprzednich wiadomości.
+ Alternatywnym sposobem rozwiązania tego problemu jest możliwość dodawania
+ nowych plików do istniejącego torrenta bez zmiany wartości info hash —
+ istnieją propozycje wprowadzenia takiej modyfikacji protokołu 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bep39-bt,bep46-bt"
 
-\begin_layout Plain Layout
-TODO
+\end_inset
+
+.
+ Klient dołącza wtedy do tylu swarmów, ilu jest uczestników rozmowy i nie
+ opuszcza ich aż do momentu, w którym użytkownik zdecyduje o wyłączeniu
+ aplikacji.
+ Każda wiadomość byłaby wtedy nowym plikiem w tym samym, istniejącym już
+ torrencie.
+ Zaletą wynikającą z omówionej modyfikacji jest znaczne zmniejszenie liczby
+ swarmów, w których klient musi się jednocześnie znajdować.
+ Dodatkowo, w drugim rozwiązaniu możliwe byłoby zrezygnowanie z algorytmu
+ ZLT oraz wyeliminowanie ponownego wysyłania tych samych wiadomości w torrentach
+ kontrolnych.
 \end_layout
 
 \begin_layout Itemize
-zmniejszenie liczby odwołań do DHT - na pewno nie po każdej wiadomości
-\end_layout
-
-\begin_layout Itemize
-infohash - kolizje?
-\end_layout
-
-\begin_layout Itemize
-reużywanie swarmów- w
-\begin_inset space ~
-\end_inset
-
-końcu każda wiadomość w
-\begin_inset space ~
-\end_inset
-
-konwersacji ma tych samych użytkowników - optymalizacja
-\end_layout
-
-\begin_layout Itemize
-częste usuwanie zbędnych torrentów - strata zasobów, lepszy byłby sposób
- z
-\begin_inset space ~
-\end_inset
-
-nadpisywaniem i
-\begin_inset space ~
-\end_inset
-
-reużywaniem infohashy, jeśli byłby mechanizm kontroli nowych plików w
-\begin_inset space ~
-\end_inset
-
-torrencie - nie wyrzucanie starego torrenta i
-\begin_inset space ~
-\end_inset
-
-pobieranie tego samego, tylko doklejanie do tego co już zostało pobrane
- nowej treści
-\end_layout
-
-\begin_layout Itemize
-jednak lepsze by było bezpośrednie wysyłanie wiadomości przez webrtc + zostawian
-ie w
-\begin_inset space ~
-\end_inset
-
-DHT dla offlineowych userów
-\end_layout
-
-\begin_layout Itemize
-dalszy rozwój - przesyłanie plików
-\end_layout
+Możliwość wysyłania plików (zdjęć, filmów).
+ Komunikatory wymienione w rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:istniejace rozwiazania"
 
 \end_inset
 
-
+ posiadają taką funkcjonalność.
+ 
 \end_layout
 
 \begin_layout Chapter
@@ -7595,6 +7772,16 @@ key "python-eve"
 \end_inset
 
 http://python-eve.org/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bep39-bt"
+
+\end_inset
+
+http://www.bittorrent.org/beps/bep_0039.html (dostęp 28.06.2017)
 \end_layout
 
 \begin_layout Bibliography
