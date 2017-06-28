@@ -179,6 +179,81 @@ mainmatter
 Wstęp
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO całą praca
+\end_layout
+
+\begin_layout Itemize
+twarde spacje po jednoliterowych słowach
+\end_layout
+
+\begin_layout Itemize
+zredagowanie całości
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+(sensowna motywacja (odciążenie serwerów ale też jaka motywacja dla userów?))
+ 
+\end_layout
+
+\begin_layout Itemize
+próba sprawdzenia, czy można zastosować ten protokół w
+\begin_inset space ~
+\end_inset
+
+tym celu 
+\end_layout
+
+\begin_layout Itemize
+cel pracy 
+\end_layout
+
+\begin_layout Itemize
+motywacja 
+\end_layout
+
+\begin_layout Itemize
+dopieszczone, precyzyjne, nie za duże, nie za małe, to będzie najczęściej
+ czytane 
+\end_layout
+
+\begin_layout Itemize
+wystarczająco "naukowe" podejście? co właściwie ma być przedmiotem mgr -
+ program, rozproszenie, użycie webtorrenta, krypto?, bezpieczeństwo, prywatność?
+, proof of conept z
+\begin_inset space ~
+\end_inset
+
+założeniem, że bezpieczenstwo krypto w
+\begin_inset space ~
+\end_inset
+
+przeglądarce wzrośnie?, jakiś podproblem? czy to musi mieć naukowe (a nie
+ komercyjne) podłoże? 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Istniejące rozwiązania
 \end_layout
@@ -273,9 +348,17 @@ serwer
 
 wielu maszyn, którą firma musi utrzymywać.
  Wadą tego komunikatora jest brak domyślnego wsparcia szyfrowania wiadomości
- — opcję można włączyć tylko w aplikacji mobilnej dla poszczególnych konwersacji
-, jednak nie każdy użytkownik jest tej opcji świadomy.
- Szyfrowanie w aplikacji webowej nie jest dostępne 
+ — opcję można włączyć tylko w
+\begin_inset space ~
+\end_inset
+
+aplikacji mobilnej dla poszczególnych konwersacji, jednak nie każdy użytkownik
+ jest tej opcji świadomy.
+ Szyfrowanie w
+\begin_inset space ~
+\end_inset
+
+aplikacji webowej nie jest dostępne 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "messenger-encryption"
@@ -284,12 +367,26 @@ key "messenger-encryption"
 
 .
  Kod źródłowy aplikacji nie został udostępniony (nie jest to open-source),
- co oznacza, że za wprowadzanie zmian i dodawanie nowych funkcji odpowiedzialny
- jest tylko wydawca — społeczność użytkowników nie ma możliwości ingerowania
- w funkcjonalność.
- Jest to wada w sytuacji, gdy nowa wersja oprogramowania zawiera niechciane
- przez użytkowników dodatki (zbędne lub na przykład szpiegujące), a nie
- zawiera takich, które są przez nich wyczekiwane.
+ co oznacza, że za wprowadzanie zmian i
+\begin_inset space ~
+\end_inset
+
+dodawanie nowych funkcji odpowiedzialny jest tylko wydawca — społeczność
+ użytkowników nie ma możliwości ingerowania w
+\begin_inset space ~
+\end_inset
+
+funkcjonalność.
+ Jest to wada w
+\begin_inset space ~
+\end_inset
+
+sytuacji, gdy nowa wersja oprogramowania zawiera niechciane przez użytkowników
+ dodatki (zbędne lub na przykład szpiegujące), a
+\begin_inset space ~
+\end_inset
+
+nie zawiera takich, które są przez nich wyczekiwane.
 \end_layout
 
 \begin_layout Section
@@ -318,8 +415,15 @@ Bleep jest komunikatorem zaprojektowanym przez firmę rozwijającą protokół
  BitTorrent.
  Do dyspozycji użytkowników oddano aplikację mobilną oraz aplikację desktopową
  (brak aplikacji webowej).
- Podobnie jak w przypadku Messengera z poprzedniego punktu, nie jest to
- oprogramowanie open-source.
+ Podobnie jak w
+\begin_inset space ~
+\end_inset
+
+przypadku Messengera z
+\begin_inset space ~
+\end_inset
+
+poprzedniego punktu, nie jest to oprogramowanie open-source.
  Bleep oferuje rozmowy dla dwóch osób, a
 \begin_inset space ~
 \end_inset
@@ -415,15 +519,30 @@ prywatności użytkowników.
  zakłada obecność centralnego serwera, wiadomości przechowywane na nim nie
  mogą zostać odczytane przez osoby trzecie.
  Jednakże, ten typ architektury posiada znaczącą wadę — jeśli serwer stanie
- się niedostępny (na przykład z powodu jego awarii lub braku łączności z
- nim — awarii łącza komunikacyjnego) to niemożliwe jest prowadzenie rozmów
- (dotyczy to każdej aplikacji z centralnym serwerem).
+ się niedostępny (na przykład z
+\begin_inset space ~
+\end_inset
+
+powodu jego awarii lub braku łączności z
+\begin_inset space ~
+\end_inset
+
+nim — awarii łącza komunikacyjnego) to niemożliwe jest prowadzenie rozmów
+ (dotyczy to każdej aplikacji z
+\begin_inset space ~
+\end_inset
+
+centralnym serwerem).
  Kod źródłowy jest dostępny publicznie co oznacza, że każdy może sprawdzić
  zgodność implementacji z
 \begin_inset space ~
 \end_inset
 
-oferowanymi założeniami oraz uczestniczyć w rozwoju aplikacji.
+oferowanymi założeniami oraz uczestniczyć w
+\begin_inset space ~
+\end_inset
+
+rozwoju aplikacji.
  Podobnie jak w
 \begin_inset space ~
 \end_inset
@@ -495,17 +614,46 @@ key "whatsapp"
 \end_layout
 
 \begin_layout Standard
-WhatsApp jest aplikacją podobną do wspomnianego w poprzednim punkcie programu
- Signal, ale jej kod źródłowy nie jest dostępny publicznie.
+WhatsApp jest aplikacją podobną do wspomnianego w
+\begin_inset space ~
+\end_inset
+
+poprzednim punkcie programu Signal, ale jej kod źródłowy nie jest dostępny
+ publicznie.
  Inną, ważną cechą wyróżniającą WhatsApp jest oferowanie użytkownikom aplikacji
  webowej.
- Nie jest to jednak typowy, webowy klient sieci a jedynie webowy interfejs
- do aplikacji zainstalowanej na telefonie.
- Wysłana w kliencie webowym wiadomość najpierw zostaje przesłana bezpośrednio
- do aplikacji w telefonie i dopiero wówczas przekazana dalej do właściwych
- odbiorców.
- Oznacza to, że telefon staje się pośrednikiem w wysyłaniu i odbieraniu
- wiadomości pomiędzy klientem webowym i resztą systemu.
+ Nie jest to jednak typowy, webowy klient sieci a
+\begin_inset space ~
+\end_inset
+
+jedynie webowy interfejs do aplikacji zainstalowanej na telefonie.
+ Wysłana w
+\begin_inset space ~
+\end_inset
+
+kliencie webowym wiadomość najpierw zostaje przesłana bezpośrednio do aplikacji
+ w
+\begin_inset space ~
+\end_inset
+
+telefonie i
+\begin_inset space ~
+\end_inset
+
+dopiero wówczas przekazana dalej do właściwych odbiorców.
+ Oznacza to, że telefon staje się pośrednikiem w
+\begin_inset space ~
+\end_inset
+
+wysyłaniu i
+\begin_inset space ~
+\end_inset
+
+odbieraniu wiadomości pomiędzy klientem webowym i
+\begin_inset space ~
+\end_inset
+
+resztą systemu.
  
 \end_layout
 
@@ -536,18 +684,30 @@ Darkwire to aplikacja open-source oferująca komunikator grupowy z
 \end_inset
 
 dostępem poprzez stronę internetową (aplikacja webowa).
- W przeciwieństwie do większości rozwiązań użytkownik nie musi tworzyć konta
+ W
+\begin_inset space ~
+\end_inset
+
+przeciwieństwie do większości rozwiązań użytkownik nie musi tworzyć konta
  by skorzystać z
 \begin_inset space ~
 \end_inset
 
 programu.
- W celu skomunikowania się z
+ W
+\begin_inset space ~
+\end_inset
+
+celu skomunikowania się z
 \begin_inset space ~
 \end_inset
 
 użytkownikami należy wymienić między nimi identyfikator konwersacji (link
- do konkretnego pokoju) korzystając z innego sposobu komunikacji (np.
+ do konkretnego pokoju) korzystając z
+\begin_inset space ~
+\end_inset
+
+innego sposobu komunikacji (np.
  poprzez e-mail, SMS czy osobiście).
  Takie rozwiązanie zakłada, że identyfikator nie zostanie odgadnięty przez
  osoby trzecie — w
@@ -560,8 +720,12 @@ przeciwnym przypadku będą one mogły odczytać wysyłane wiadomości.
 \end_inset
 
 przekazywaniu wiadomości.
- Z racji faktu, że aplikacja ma otwarte źródła, każdy może uruchomić swój
- własny serwer.
+ Z
+\begin_inset space ~
+\end_inset
+
+racji faktu, że aplikacja ma otwarte źródła, każdy może uruchomić swój własny
+ serwer.
  Komunikaty są szyfrowane na urządzeniu (w
 \begin_inset space ~
 \end_inset
@@ -764,8 +928,11 @@ key "bitmessage-main"
 \begin_layout Standard
 Przytoczone aplikacje realizują pomysły na komunikatory bazujące na mechanizmie
  podobnym do transakcji kryptowalutowych.
- Wysłanie wiadomości wymaga umieszczenia wiadomości w bloku, obliczenia
- funkcji skrótu z
+ Wysłanie wiadomości wymaga umieszczenia wiadomości w
+\begin_inset space ~
+\end_inset
+
+bloku, obliczenia funkcji skrótu z
 \begin_inset space ~
 \end_inset
 
@@ -803,11 +970,28 @@ czasie rzeczywistym).
 innej architekturze niż dotychczas zaprezentowane (centralny serwer lub
  P2P).
  Przykładowymi zaletami architektury blockchain są: brak centralnego serwera
- lub centrów danych, nad którymi kontrolę ma jedna firma decydująca o sposobie
- ich działania lub ich wyłączeniu, skalowalność oraz brak możliwości ingerencji
- w zapisane dane — wraz z upływem czasu maleje prawdopodobieństwo, że treść
- wiadomości zapisana w blockchainie ulegnie zmianie (wynika to wprost z
- własności tej technologii).
+ lub centrów danych, nad którymi kontrolę ma jedna firma decydująca o
+\begin_inset space ~
+\end_inset
+
+sposobie ich działania lub ich wyłączeniu, skalowalność oraz brak możliwości
+ ingerencji w
+\begin_inset space ~
+\end_inset
+
+zapisane dane — wraz z
+\begin_inset space ~
+\end_inset
+
+upływem czasu maleje prawdopodobieństwo, że treść wiadomości zapisana w
+\begin_inset space ~
+\end_inset
+
+blockchainie ulegnie zmianie (wynika to wprost z
+\begin_inset space ~
+\end_inset
+
+własności tej technologii).
  Być może w
 \begin_inset space ~
 \end_inset
@@ -825,16 +1009,31 @@ Koncepcja
 \end_layout
 
 \begin_layout Standard
-W niniejszym rozdziale opisano technologie i protokoły wykorzystane do opracowan
-ia koncepcji i implementacji rozproszonego komunikatora grupowego.
- Konkretnie, są to: protokół BitTorrent przedstawiony w punkcie 
+W niniejszym rozdziale opisano technologie i
+\begin_inset space ~
+\end_inset
+
+protokoły wykorzystane do opracowania koncepcji i
+\begin_inset space ~
+\end_inset
+
+implementacji rozproszonego komunikatora grupowego.
+ Konkretnie, są to: protokół BitTorrent przedstawiony w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:bittorent"
 
 \end_inset
 
- oraz jego implementacja w języku JavaScript — WebTorrent — punkt 
+ oraz jego implementacja w
+\begin_inset space ~
+\end_inset
+
+języku JavaScript — WebTorrent — punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:webtorrent"
@@ -867,29 +1066,44 @@ name "sec:bittorent"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO co ja wykorzystuję z tego?
-\end_layout
-
+BitTorrent to protokół komunikacyjny pozwalający na wymianę i
+\begin_inset space ~
 \end_inset
 
+dystrybucję plików przez Internet.
+ Jego główną zaletą jest podział plików na części i
+\begin_inset space ~
+\end_inset
 
-\end_layout
+możliwość pobierania tych części od użytkowników, którzy w
+\begin_inset space ~
+\end_inset
 
-\begin_layout Standard
-BitTorrent to protokół komunikacyjny pozwalający na wymianę i dystrybucję
- plików przez Internet.
- Jego główną zaletą jest podział plików na części i możliwość pobierania
- tych części od użytkowników, którzy w danym momencie również uczestniczą
- w procesie udostępniania.
+danym momencie również uczestniczą w
+\begin_inset space ~
+\end_inset
+
+procesie udostępniania.
  Pozwala to na znaczne odciążenie serwera.
- W szczególności możliwe jest nawet wyłączenie serwera, a plik pozostanie
- dostępny do pobrania, jeśli tylko wszystkie jego fragmenty zostały przed
- wyłączeniem rozesłane do zainteresowanych komputerów (wystarczy, że jedna
- maszyna posiada daną część i podzieli się nią z pozostałymi).
+ W
+\begin_inset space ~
+\end_inset
+
+szczególności możliwe jest nawet wyłączenie serwera, a
+\begin_inset space ~
+\end_inset
+
+plik pozostanie dostępny do pobrania, jeśli tylko wszystkie jego fragmenty
+ zostały przed wyłączeniem rozesłane do zainteresowanych komputerów — wystarczy,
+ że jedna maszyna posiada daną część i
+\begin_inset space ~
+\end_inset
+
+podzieli się nią z
+\begin_inset space ~
+\end_inset
+
+pozostałymi.
  
 \end_layout
 
@@ -898,8 +1112,15 @@ Podstawowe pojęcia
 \end_layout
 
 \begin_layout Standard
-Poniżej znajduje się lista najważniejszych pojęć związanych z protokołem
- wraz z krótkim wyjaśnieniem ich znaczenia:
+Poniżej znajduje się lista najważniejszych pojęć związanych z
+\begin_inset space ~
+\end_inset
+
+protokołem wraz z
+\begin_inset space ~
+\end_inset
+
+krótkim wyjaśnieniem ich znaczenia:
 \end_layout
 
 \begin_layout Itemize
@@ -907,22 +1128,37 @@ torrent — plik lub zbiór plików udostępnionych do pobrania.
 \end_layout
 
 \begin_layout Itemize
-metaplik .torrent (.torrent metafile) — dodatkowy plik z metadanymi dotyczącymi
- udostępnionych plików.
+metaplik .torrent (.torrent metafile) — dodatkowy plik z
+\begin_inset space ~
+\end_inset
+
+metadanymi dotyczącymi udostępnionych plików.
  Zawiera między innymi:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-nazwy i rozmiary plików, 
+nazwy i
+\begin_inset space ~
+\end_inset
+
+rozmiary plików, 
 \end_layout
 
 \begin_layout Itemize
-liczbę i rozmiar fragmentów, na jakie zostały podzielone pliki, 
+liczbę i
+\begin_inset space ~
+\end_inset
+
+rozmiar fragmentów, na jakie zostały podzielone pliki, 
 \end_layout
 
 \begin_layout Itemize
-listę skrótów SHA-1 fragmentów w celu weryfikacji poprawności,
+listę skrótów SHA-1 fragmentów w
+\begin_inset space ~
+\end_inset
+
+celu weryfikacji poprawności,
 \end_layout
 
 \begin_layout Itemize
@@ -932,7 +1168,15 @@ adresy URL trackerów.
 \end_deeper
 \begin_layout Itemize
 piece, block — podczas przygotowywania torrenta pliki dzielone są na fragmenty
- (piece), a każdy taki fragment składa się z bloków (block).
+ (piece), a
+\begin_inset space ~
+\end_inset
+
+każdy taki fragment składa się z
+\begin_inset space ~
+\end_inset
+
+bloków (block).
  Blok jest najmniejszą jednostką, którą można przesłać przez sieć między
  użytkownikami.
  Aby udostępniać fragment użytkownik musi posiadać wszystkie jego bloki.
@@ -941,7 +1185,11 @@ piece, block — podczas przygotowywania torrenta pliki dzielone są na fragment
 
 \begin_layout Itemize
 info hash — 160-bitowa wartość będąca wynikiem funkcji skrótu SHA-1, której
- podawana jest część metapliku .torrent (nazwy plików i lista skrótów fragmentów).
+ podawana jest część metapliku .torrent (nazwy plików i
+\begin_inset space ~
+\end_inset
+
+lista skrótów fragmentów).
  Info hash pozwala jednoznacznie zidentyfikować dany torrent.
  
 \end_layout
@@ -955,11 +1203,19 @@ tracker — serwer, którego zadaniem jest przechowywanie adresów IP użytkowni
 
 \begin_layout Itemize
 klient (client) — program uruchomiony na komputerze użytkownika, który pozwala
- na pobieranie plików z wykorzystaniem protokołu BitTorrent.
+ na pobieranie plików z
+\begin_inset space ~
+\end_inset
+
+wykorzystaniem protokołu BitTorrent.
 \end_layout
 
 \begin_layout Itemize
-peer — węzeł (komputer, klient) pobierający i wysyłający fragmenty torrenta.
+peer — węzeł (komputer, klient) pobierający i
+\begin_inset space ~
+\end_inset
+
+wysyłający fragmenty torrenta.
  Zazwyczaj nie posiada jeszcze wszystkich fragmentów.
 \end_layout
 
@@ -973,18 +1229,40 @@ swarm — grupa peerów pobierających dany torrent.
 \end_layout
 
 \begin_layout Itemize
-peer-to-peer (P2P) — sieć złożona z komputerów, które komunikują się ze
- sobą np.
- w celu wymiany plików.
+peer-to-peer (P2P) — sieć złożona z
+\begin_inset space ~
+\end_inset
+
+komputerów, które komunikują się ze sobą np.
+ w
+\begin_inset space ~
+\end_inset
+
+celu wymiany plików.
  Peery tworzą sieć P2P.
 \end_layout
 
 \begin_layout Itemize
 Distributed Hash Table (DHT) — rozproszona tablica mieszająca — sieć składająca
- się z węzłów, które umożliwiają zapisywanie i odczytywanie rekordów w formie
- klucz-wartość.
+ się z
+\begin_inset space ~
+\end_inset
+
+węzłów, które umożliwiają zapisywanie i
+\begin_inset space ~
+\end_inset
+
+odczytywanie rekordów w
+\begin_inset space ~
+\end_inset
+
+formie klucz-wartość.
  Węzły dzielą między sobą zbiór wszystkich kluczy.
- W kontekście protokołu BitTorrent, DHT może zastąpić rolę trackera.
+ W
+\begin_inset space ~
+\end_inset
+
+kontekście protokołu BitTorrent, DHT może zastąpić rolę trackera.
 \end_layout
 
 \begin_layout Itemize
@@ -1019,11 +1297,23 @@ go dany torrent.
 \end_layout
 
 \begin_layout Enumerate
-Uzyskanie listy trackerów z metapliku lub magnet linka.
+Uzyskanie listy trackerów z
+\begin_inset space ~
+\end_inset
+
+metapliku lub magnet linka.
 \end_layout
 
 \begin_layout Enumerate
-Pobranie z trackera listy peerów uczestniczących w udostępnianiu torrenta.
+Pobranie z
+\begin_inset space ~
+\end_inset
+
+trackera listy peerów uczestniczących w
+\begin_inset space ~
+\end_inset
+
+udostępnianiu torrenta.
 \end_layout
 
 \begin_layout Enumerate
@@ -1058,12 +1348,22 @@ Rozpocząć udostępnianie torrenta.
 \end_layout
 
 \begin_layout Enumerate
-Umieścić metaplik .torrent w miejscu, z którego zainteresowani będą mogli
- go pobrać (np.
+Umieścić metaplik .torrent w
+\begin_inset space ~
+\end_inset
+
+miejscu, z
+\begin_inset space ~
+\end_inset
+
+którego zainteresowani będą mogli go pobrać (np.
  na zewnętrznym serwerze).
- Alternatywnie można rozpowszechnić magnet link lub sam info hash — w ostatniej
- sytuacji osoba zainteresowana pobraniem torrenta musi znać listę trackerów,
- które koordynują pobieranie.
+ Alternatywnie można rozpowszechnić magnet link lub sam info hash — w
+\begin_inset space ~
+\end_inset
+
+ostatniej sytuacji osoba zainteresowana pobraniem torrenta musi znać listę
+ trackerów, które koordynują pobieranie.
  
 \end_layout
 
@@ -1099,12 +1399,27 @@ keep-alive — wiadomość podtrzymująca otwarte połączenie,
 \end_layout
 
 \begin_layout Itemize
-port — informuje o zmianie portu, 
+port — informuje o
+\begin_inset space ~
+\end_inset
+
+zmianie portu, 
 \end_layout
 
 \begin_layout Itemize
 choke, unchoke, interested, not interested — 4 wiadomości informujące o
- zmianie stanu peera (związane z algorytmem z punktu 
+\begin_inset space ~
+\end_inset
+
+zmianie stanu peera (związane z
+\begin_inset space ~
+\end_inset
+
+algorytmem z
+\begin_inset space ~
+\end_inset
+
+punktu 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:choking-alg"
@@ -1115,7 +1430,11 @@ reference "subsec:choking-alg"
 \end_layout
 
 \begin_layout Itemize
-have — wiadomość informująca o tym, że peer otrzymał nowy fragment, 
+have — wiadomość informująca o
+\begin_inset space ~
+\end_inset
+
+tym, że peer otrzymał nowy fragment, 
 \end_layout
 
 \begin_layout Itemize
@@ -1149,9 +1468,25 @@ name "subsec:choking-alg"
 W idealnej sytuacji wymiana plików za pośrednictwem protokołu BitTorrent
  jest sprawiedliwa, to znaczy każdy peer może pobierać pliki, ale jednocześnie
  powinien udostępniać posiadane fragmenty innym.
- By zapobiec sytuacji, w której peer blokuje wysyłanie posiadanych fragmentów,
- wprowadzono odpowiedni algorytm.
- Wykorzystuje on 4 typy wiadomości spośród wspomnianych w punkcie 
+ By zapobiec sytuacji, w
+\begin_inset space ~
+\end_inset
+
+której peer blokuje wysyłanie posiadanych fragmentów, wprowadzono algorytm
+ 
+\begin_inset Quotes pld
+\end_inset
+
+choking algorithm
+\begin_inset Quotes prd
+\end_inset
+
+.
+ Wykorzystuje on 4 typy wiadomości spośród wspomnianych w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:jak-komunikuja"
@@ -1159,12 +1494,27 @@ reference "subsec:jak-komunikuja"
 \end_inset
 
 .
- i polega na tym, że dany klient pozwala (unchoke) na pobieranie fragmentów
- od siebie tylko tym peerom, które posiadają i udostępnią klientowi swoje
- fragmenty.
- Pobieranie wymaga zatem kooperacji i wymiany interesujących, brakujących
- fragmentów.
+ i
+\begin_inset space ~
+\end_inset
+
+polega na tym, że dany klient pozwala (unchoke) na pobieranie fragmentów
+ od siebie tylko tym peerom, które posiadają i
+\begin_inset space ~
+\end_inset
+
+udostępnią klientowi swoje fragmenty.
+ Pobieranie wymaga zatem kooperacji i
+\begin_inset space ~
+\end_inset
+
+wymiany interesujących, brakujących fragmentów.
  Bez tej wymiany połączenie zostaje przerwane (choke).
+ Peer okresowo próbuje nawiązać współpracę z
+\begin_inset space ~
+\end_inset
+
+nowymi peerami.
  
 \end_layout
 
@@ -1173,66 +1523,90 @@ Serwery potrzebne do działania protokołu
 \end_layout
 
 \begin_layout Standard
-Protokół z założenia powinien być w pełni rozproszony i nie polegać na żadnych
- publicznych serwerach — jedynie na bezpośredniej komunikacji użytkowników
- końcowych (P2P).
+Protokół z
+\begin_inset space ~
+\end_inset
+
+założenia powinien być w
+\begin_inset space ~
+\end_inset
+
+pełni rozproszony i
+\begin_inset space ~
+\end_inset
+
+nie polegać na żadnych publicznych serwerach — jedynie na bezpośredniej
+ komunikacji użytkowników końcowych (P2P).
  Niestety kilka usług serwerowych jest wciąż aktywnie wykorzystywanych do
  prawidłowego działania sieci:
 \end_layout
 
 \begin_layout Itemize
-serwer hostujący metapliki .torrent lub magnet linki pozwalający na wyszukiwanie
- interesujących plików po nazwie, tagach, innych właściwościach, oferujący
- statystyki torrenta, komentarze itp.
- — może zostać zastąpiony wyszukiwarką torrentów wbudowaną w klienta, który
- wysyła zapytanie do podłączonych peerów, one przekazują je dalej, aż do
- momentu otrzymania odpowiedzi,
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO kademlia - wspomnieć że pozwala na wyszukiwanie zawartości w sieciach
- P2P bez potrzeby centralnego serwera, to jest oparte na DHT
-\end_layout
-
+Serwer hostujący metapliki .torrent lub magnet linki pozwalający na wyszukiwanie
+ interesujących plików po nazwie, tagach, innych właściwościach oraz oferujący
+ na przykład statystyki torrenta czy komentarze.
+ Może zostać zastąpiony wyszukiwarką torrentów wbudowaną w
+\begin_inset space ~
 \end_inset
 
+klienta, który wysyła zapytanie do podłączonych peerów, a
+\begin_inset space ~
+\end_inset
 
-\end_layout
+one przekazują je dalej, aż do momentu otrzymania odpowiedzi.
+ Przykładowym protokołem umożliwiającym wyszukiwanie zawartości w
+\begin_inset space ~
+\end_inset
 
-\begin_layout Itemize
-tracker — istnieją jednak rozwiązania umożliwiające śledzenie swarmu bez
- użycia zewnętrznego serwera np.
- DHT, PEX (Peer Exchange),
-\end_layout
-
-\begin_layout Itemize
-serwery pośredniczące w nawiązaniu połączenia dwóch klientów ukrytych w
- prywatnych sieciach IP (wykorzystujących translację adresów sieciowych).
+sieciach P2P jest Kademlia.
+ Protokół ten wykorzystuje rozproszoną tablicę mieszającą (DHT) — nie wymaga
+ centralnego serwera.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO NAT - doczytać i może coś jeszcze dopisać
 \end_layout
 
+\begin_layout Itemize
+Tracker.
+ Istnieją jednak rozwiązania umożliwiające śledzenie swarmu bez użycia zewnętrzn
+ego serwera np.
+ DHT, PEX (Peer Exchange).
+\end_layout
+
+\begin_layout Itemize
+Serwery pośredniczące w
+\begin_inset space ~
 \end_inset
 
+nawiązaniu połączenia dwóch klientów ukrytych w
+\begin_inset space ~
+\end_inset
 
+prywatnych sieciach IP (wykorzystujących translację adresów sieciowych).
+ 
 \end_layout
 
 \begin_layout Subsection
-Zalety i wady protokołu
+Zalety i
+\begin_inset space ~
+\end_inset
+
+wady protokołu
 \end_layout
 
 \begin_layout Standard
 Wśród zalet protokołu znajduje się przede wszystkim wspomniane na początku
  zmniejszone obciążenie serwera.
  Prędkość pobierania może osiągnąć wyższą wartość niż limit transferu wychodzące
-go z serwera — ograniczeniem jest jedynie dostępność pliku wśród peerów
- oraz limit transferu przychodzącego do danego klienta.
- Rozesłanie pliku o rozmiarze 
+go z
+\begin_inset space ~
+\end_inset
+
+serwera — ograniczeniem jest jedynie dostępność pliku wśród peerów oraz
+ limit transferu przychodzącego do danego klienta.
+ Rozesłanie pliku o
+\begin_inset space ~
+\end_inset
+
+rozmiarze 
 \begin_inset Flex Emph
 status open
 
@@ -1252,33 +1626,68 @@ n
 
 \end_inset
 
- odbiorców bez użycia protokołu wymagałoby transferu danych o rozmiarze
- 
+ odbiorców bez użycia protokołu wymagałoby transferu danych o
+\begin_inset space ~
+\end_inset
+
+rozmiarze 
 \begin_inset Formula $m\cdotp n$
 \end_inset
 
- z węzła udostępniającego, natomiast z użyciem protokołu ilość danych wysłanych
- przez nadawcę mieści się w przedziale 
+ z
+\begin_inset space ~
+\end_inset
+
+węzła udostępniającego, natomiast z
+\begin_inset space ~
+\end_inset
+
+użyciem protokołu ilość danych wysłanych przez nadawcę mieści się w
+\begin_inset space ~
+\end_inset
+
+przedziale 
 \begin_inset Formula $\left\langle m;m\cdotp n\right\rangle $
 \end_inset
 
 .
  Kolejną zaletą jest możliwość pobierania pliku nawet, jeśli oryginalny
  nadawca (twórca torrenta) jest niedostępny (zakładając oczywiście, że w
- swarmie rozesłane zostały najpierw wszystkie fragmenty pliku) — cecha ta
+\begin_inset space ~
+\end_inset
+
+swarmie rozesłane zostały najpierw wszystkie fragmenty pliku) — cecha ta
  okaże się przydatna podczas implementacji komunikatora grupowego.
  
 \end_layout
 
 \begin_layout Standard
 Do wad protokołu należy zaliczyć zwiększone obciążenie oraz narzut komunikacyjny
- po stronie klienta — konieczność koordynacji pobierania i udostępniania,
- wysyłanie i odbieranie wiadomości kontrolnych.
+ po stronie klienta — konieczność koordynacji pobierania i
+\begin_inset space ~
+\end_inset
+
+udostępniania, wysyłanie i
+\begin_inset space ~
+\end_inset
+
+odbieranie wiadomości kontrolnych.
  Wadą może być sam fakt, że klient zobowiązany jest do udostępniania pobieranego
  pliku.
- Jedną z ważniejszych kwestii, o jakie należy zadbać jest również dostępność
- pliku — klient nie pobierze całego torrenta jeśli nie znajdzie w sieci
- wszystkich jego fragmentów (tak zwany 
+ Jedną z
+\begin_inset space ~
+\end_inset
+
+ważniejszych kwestii, o
+\begin_inset space ~
+\end_inset
+
+jakie należy zadbać jest również dostępność pliku — klient nie pobierze
+ całego torrenta jeśli nie znajdzie w
+\begin_inset space ~
+\end_inset
+
+sieci wszystkich jego fragmentów (tak zwany 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1314,84 +1723,129 @@ name "sec:webtorrent"
 \end_layout
 
 \begin_layout Standard
-WebTorrent to biblioteka napisana w języku JavaScript, implementująca protokół
- BitTorrent.
- Dzięki zastosowaniu tego języka możliwe jest użycie protokołu w skrypcie
- wykonywanym w przeglądarce po wejściu na stronę internetową.
- Biblioteki można również użyć jako moduł w programie dla platformy Node.js.
- Funkcjonalność oferowana w obu przypadkach jest niemal identyczna (poza
- kilkoma sytuacjami wynikającymi z ograniczeń danej platformy).
+WebTorrent to biblioteka napisana w
+\begin_inset space ~
+\end_inset
+
+języku JavaScript, implementująca protokół BitTorrent.
+ Dzięki zastosowaniu tego języka możliwe jest użycie protokołu w
+\begin_inset space ~
+\end_inset
+
+skrypcie wykonywanym w
+\begin_inset space ~
+\end_inset
+
+przeglądarce po wejściu na stronę internetową.
+ Bibliotekę można również wykorzystać jako moduł w
+\begin_inset space ~
+\end_inset
+
+programie dla platformy Node.js.
+ Funkcjonalność oferowana w
+\begin_inset space ~
+\end_inset
+
+obu przypadkach jest niemal identyczna (poza kilkoma wyjątkami wynikającymi
+ z
+\begin_inset space ~
+\end_inset
+
+ograniczeń danej platformy).
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+Główną różnicą pomiędzy wersjami biblioteki WebTorrent i
+\begin_inset space ~
+\end_inset
 
-\begin_layout Plain Layout
-TODO 
-\end_layout
+protokołem BitTorrent jest wykorzystany protokół komunikacyjny.
+ BitTorrent do komunikacji pomiędzy klientami wykorzystuje połączeniowy
+ protokół TCP lub bezpołączeniowy µTP (Micro Transport Protocol), który
+ bazuje na UDP.
+ W
+\begin_inset space ~
+\end_inset
 
-\begin_layout Itemize
-ograniczenia względem BT, czego WT nie implementuje a co robi inaczej (np
- UDP->WebRTC)
-\end_layout
+przypadku biblioteki WebTorrent, klient serwerowy (Node.js) również wykorzystuje
+ wspomniane protokoły, ale klient webowy już nie — w
+\begin_inset space ~
+\end_inset
 
-\begin_layout Itemize
-webrtc DODATKOWY względem BitTorrent serwer potrzebny signalling (w przypadku
- WebTorrent jest nim tracker)
-\end_layout
-
-\begin_layout Itemize
-więcej napisać o ICE
-\end_layout
-
-\begin_layout Itemize
-stun, ICE, NAT traversal, 90% wszystkich połączeń to STUN (screen z wiresharka),
- ogromne liczby - to idzie w tysiące połączeń na minutę
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-https://github.com/webtorrent/webtorrent/issues/145
-\end_layout
-
-\begin_layout Itemize
-https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/
-\end_layout
-
-\begin_layout Itemize
-https://www.html5rocks.com/en/tutorials/webrtc/basics/#toc-signaling — signaling
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-ICE to protokół do przechodzenia przez firewalle
-\end_layout
-
-\begin_layout Itemize
-A STUN server is used to get an external network address.
+tym przypadku do komunikacji pomiędzy przeglądarkami użyto protokołu WebRTC.
  
 \end_layout
 
-\begin_layout Itemize
-TURN servers are used to relay traffic if direct (peer to peer) connection
- fails.
-\end_layout
+\begin_layout Standard
+WebRTC (Web Real-Time Communication) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "webrtc"
 
-\end_deeper
-\begin_layout Itemize
-webrtc w webworkers niedostępne - https://github.com/w3c/webrtc-pc/issues/230
-\end_layout
-
-\begin_layout Itemize
-webrtc wymaga też signalling server
-\end_layout
-
-\end_deeper
 \end_inset
 
+ jest zbiorem protokołów komunikacyjnych i
+\begin_inset space ~
+\end_inset
 
+interfejsów programistycznych (API), pozwalającym na komunikację w
+\begin_inset space ~
+\end_inset
+
+czasie rzeczywistym pomiędzy przeglądarkami dzięki wykorzystaniu połączeń
+ P2P.
+ WebRTC wymaga serwera pośredniczącego (signalling server) do nawiązania
+ połączenia między przeglądarkami.
+ Po poprawnym rozpoczęciu połączenia dane przesyłane są już bezpośrednio
+ między użytkownikami.
+ W
+\begin_inset space ~
+\end_inset
+
+przypadku biblioteki WebTorrent rolę signalling server pełnią trackery.
+\end_layout
+
+\begin_layout Standard
+Komputery użytkowników rzadko posiadają publiczne adresy IP — zazwyczaj
+ router stosujący translację adresów (NAT — Network Address Translation)
+ przydziela im prywatny adres IP w
+\begin_inset space ~
+\end_inset
+
+danej podsieci.
+ Często też użytkownicy korzystają z
+\begin_inset space ~
+\end_inset
+
+zapory sieciowej (firewall), co dodatkowo utrudnia nawiązanie bezpośredniego
+ połączenia.
+ W
+\begin_inset space ~
+\end_inset
+
+tych sytuacjach konieczne jest użycie techniki ICE (Interactive Connectivity
+ Establishment).
+ Polega ona na znalezieniu optymalnego sposobu nawiązania połączenia — w
+\begin_inset space ~
+\end_inset
+
+pierwszej kolejności używając wprost adresów IP danych maszyn.
+ W
+\begin_inset space ~
+\end_inset
+
+przypadku niepowodzenia wykorzystywane są serwery STUN (Session Traversal
+ Utilities for NAT) do przekazania faktycznego (publicznego) adresu IP danego
+ komputera.
+ Gdy i
+\begin_inset space ~
+\end_inset
+
+ta metoda zawiedzie, możliwe jest użycie serwera TURN (Traversal Using Relays
+ around NAT), który funkcjonuje jako pośrednik pomiędzy komputerami.
+ Ostatniej metody nie można jednak nazwać komunikacją P2P.
+ 
 \end_layout
 
 \begin_layout Chapter
@@ -1400,10 +1854,18 @@ Architektura
 
 \begin_layout Standard
 System komunikatora grupowego będący przedmiotem niniejszej pracy magisterskiej
- został oparty częściowo o architekturę klient-serwer, jednakże rola serwera
- została maksymalnie ograniczona, a częściowo o architekturę rozproszoną
- peer-to-peer (przy użyciu protokołu BitTorrent).
- W pierwszym typie architektury można wyróżnić 3 warstwy logiczne (3-layer
+ wykorzystuje częściowo architekturę klient-serwer, jednakże rola serwera
+ została maksymalnie ograniczona, a
+\begin_inset space ~
+\end_inset
+
+częściowo architekturę rozproszoną peer-to-peer (przy użyciu protokołu BitTorren
+t).
+ W
+\begin_inset space ~
+\end_inset
+
+pierwszym typie architektury można wyróżnić 3 warstwy logiczne (3-layer
  architecture) — klienty, serwer oraz baza danych.
  Rysunek 
 \begin_inset CommandInset ref
@@ -1457,8 +1919,11 @@ name "fig:Architektura-komunikatora"
 
 \begin_layout Standard
 Klient jest aplikacją webową typu Single Page Application.
- Oznacza to, że cały kod źródłowy oraz niezbędne widoki pobierane są z serwera
- (
+ Oznacza to, że cały kod źródłowy oraz niezbędne widoki pobierane są z
+\begin_inset space ~
+\end_inset
+
+serwera (
 \begin_inset Quotes pld
 \end_inset
 
@@ -1479,43 +1944,97 @@ reference "fig:Architektura-komunikatora"
 
 \begin_layout Standard
 Oprócz wspomnianego serwera aplikacji umożliwiającego pobranie plików HTML,
- CSS oraz JS do działania programu niezbędny jest drugi serwer o architekturze
- REST.
- Umożliwia on rejestrację i autoryzację użytkowników oraz jest odpowiedzialny
- za tworzenie konwersacji i przydzielanie do nich odpowiednich użytkowników.
+ CSS oraz JS do działania programu niezbędny jest drugi serwer o
+\begin_inset space ~
+\end_inset
+
+architekturze REST.
+ Umożliwia on rejestrację i
+\begin_inset space ~
+\end_inset
+
+autoryzację użytkowników oraz jest odpowiedzialny za tworzenie konwersacji
+ i
+\begin_inset space ~
+\end_inset
+
+przydzielanie do nich odpowiednich użytkowników.
 \end_layout
 
 \begin_layout Standard
-Serwer REST komunikuje się z trzecią warstwą — bazą danych.
+Serwer REST komunikuje się z
+\begin_inset space ~
+\end_inset
+
+trzecią warstwą — bazą danych.
  Baza danych typu dokumentowego (NoSQL) przechowuje niezbędne minimum informacji
- o użytkowniku, dzięki którym możliwe jest prowadzenie rozmów.
+ o
+\begin_inset space ~
+\end_inset
+
+użytkowniku, dzięki którym możliwe jest prowadzenie rozmów.
  
 \end_layout
 
 \begin_layout Standard
-Kolejnym modułem jest wbudowana w klienta biblioteka WebTorrent do obsługi
- protokołu BitTorrent.
+Kolejnym modułem jest wbudowana w
+\begin_inset space ~
+\end_inset
+
+klienta biblioteka WebTorrent do obsługi protokołu BitTorrent.
  Pozwala ona na bezpośrednią komunikację pomiędzy klientami.
  Wykorzystywana jest do przekazywania wiadomości.
  
 \end_layout
 
 \begin_layout Standard
-Z specyfikacji biblioteki i protokołu wynika między innymi konieczność utrzymywa
-nia dodatkowych serwerów — trackerów.
+Z specyfikacji biblioteki i
+\begin_inset space ~
+\end_inset
+
+protokołu wynika między innymi konieczność utrzymywania dodatkowych serwerów
+ — trackerów.
  Ze względu na fakt, że biblioteka jest oprogramowaniem open-source, istnieje
  możliwość samodzielnego uruchomienia tego typu serwera, jednak na potrzeby
- testów nie było to konieczne — istnieją w sieci publiczne trackery, z których
- można skorzystać.
+ testów nie było to konieczne — istnieją w
+\begin_inset space ~
+\end_inset
+
+sieci publiczne trackery, z
+\begin_inset space ~
+\end_inset
+
+których można skorzystać.
 \end_layout
 
 \begin_layout Standard
 Przedostatnim modułem koniecznym do prawidłowego działania komunikatora
  jest rozproszona tablica mieszająca (DHT) utrzymywana przez klienty, a
- używana do zapisywania i odczytywania info hasha najnowszej wysyłanej wiadomośc
-i.
- Klient w momencie rozpoczęcia udostępniania wiadomości zapisuje jej info
- hash w DHT, a odbiorcy mogą go odczytać i rozpocząć pobieranie komunikatu.
+\begin_inset space ~
+\end_inset
+
+używana do zapisywania i
+\begin_inset space ~
+\end_inset
+
+odczytywania info hasha najnowszej wysyłanej wiadomości.
+ Klient w
+\begin_inset space ~
+\end_inset
+
+momencie rozpoczęcia udostępniania wiadomości zapisuje jej info hash w
+\begin_inset space ~
+\end_inset
+
+DHT, a
+\begin_inset space ~
+\end_inset
+
+odbiorcy mogą go odczytać i
+\begin_inset space ~
+\end_inset
+
+rozpocząć pobieranie komunikatu.
  
 \end_layout
 
@@ -1523,41 +2042,116 @@ i.
 Ostatnim elementem są publiczne serwery STUN (Session Traversal Utilities
  for NAT).
  Dzięki nim możliwe jest skomunikowanie ze sobą dwóch klientów znajdujących
- się w sieciach, których router stosuje translację adresów sieciowych.
- Takie serwery również istnieją w sieci więc ich implementacja i uruchomienie
- nie było konieczne.
- Za łączenie się z nimi odpowiedzialna jest biblioteka WebTorrent.
+ się w
+\begin_inset space ~
+\end_inset
+
+sieciach, których router stosuje translację adresów sieciowych.
+ Takie serwery również istnieją w
+\begin_inset space ~
+\end_inset
+
+sieci więc ich implementacja i
+\begin_inset space ~
+\end_inset
+
+uruchomienie nie było konieczne.
+ Za łączenie się z
+\begin_inset space ~
+\end_inset
+
+nimi odpowiedzialna jest biblioteka WebTorrent.
 \end_layout
 
 \begin_layout Section
-Serwer REST i Baza Danych
+Serwer REST i
+\begin_inset space ~
+\end_inset
+
+Baza Danych
 \end_layout
 
 \begin_layout Standard
-Serwer został napisany w języku Python z użyciem biblioteki Eve 
+Serwer został napisany w
+\begin_inset space ~
+\end_inset
+
+języku Python z
+\begin_inset space ~
+\end_inset
+
+użyciem biblioteki Eve 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "python-eve"
 
 \end_inset
 
-, która w łatwy sposób pozwala uruchomić serwer REST oferujący podstawowe
- operacje CRUD (Create, Read, Update, Delete) na obiektach.
- Biblioteka automatycznie generuje dla obiektów ścieżki dostępu REST z odpowiedn
-imi metodami HTTP oraz zapisuje zmiany dokonywane na obiektach w podłączonej
- bazie danych.
- Wybór tej biblioteki wynika z faktu, że serwer REST w projekcie pełni niewielką
- rolę — wraz z bazą danych przechowuje jedynie te dane, które nie powinny
- zostać utracone, a mogłyby, gdyby były zapisane jedynie w przeglądarce
- użytkownika — wtedy użytkownik straciłby dostęp do swojego konta i informacji
- o przynależności do konwersacji.
+, która w
+\begin_inset space ~
+\end_inset
+
+łatwy sposób pozwala uruchomić serwer REST oferujący podstawowe operacje
+ CRUD (Create, Read, Update, Delete) na obiektach.
+ Biblioteka automatycznie generuje dla obiektów ścieżki dostępu REST z
+\begin_inset space ~
+\end_inset
+
+odpowiednimi metodami HTTP oraz zapisuje zmiany dokonywane na obiektach
+ w
+\begin_inset space ~
+\end_inset
+
+podłączonej bazie danych.
+ Wybór tej biblioteki wynika z
+\begin_inset space ~
+\end_inset
+
+faktu, że serwer REST w
+\begin_inset space ~
+\end_inset
+
+projekcie pełni niewielką rolę — wraz z
+\begin_inset space ~
+\end_inset
+
+bazą danych przechowuje jedynie te dane, które nie powinny zostać utracone,
+ a
+\begin_inset space ~
+\end_inset
+
+mogłyby, gdyby były zapisane jedynie w
+\begin_inset space ~
+\end_inset
+
+przeglądarce użytkownika — wtedy użytkownik straciłby dostęp do swojego
+ konta i
+\begin_inset space ~
+\end_inset
+
+informacji o
+\begin_inset space ~
+\end_inset
+
+przynależności do konwersacji.
  
 \end_layout
 
 \begin_layout Standard
-Serwer przechowuje dane w nierelacyjnej (dokumentowej) bazie danych MongoDB.
- Struktura dokumentów w bazie odzwierciedla bezpośrednio schemat zaprojektowany
- w serwerze.
+Serwer przechowuje dane w
+\begin_inset space ~
+\end_inset
+
+nierelacyjnej (dokumentowej) bazie danych MongoDB.
+ Struktura dokumentów w
+\begin_inset space ~
+\end_inset
+
+bazie odzwierciedla bezpośrednio schemat zaprojektowany w
+\begin_inset space ~
+\end_inset
+
+serwerze.
  
 \end_layout
 
@@ -1570,7 +2164,11 @@ użytkownik
 \begin_inset Quotes prd
 \end_inset
 
- i 
+ i
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Quotes pld
 \end_inset
 
@@ -1578,12 +2176,20 @@ konwersacja
 \begin_inset Quotes prd
 \end_inset
 
- — ich atrybuty i metody REST.
+ — ich atrybuty i
+\begin_inset space ~
+\end_inset
+
+metody REST.
  
 \end_layout
 
 \begin_layout Subsection
-Użytkownicy i logowanie
+Użytkownicy i
+\begin_inset space ~
+\end_inset
+
+logowanie
 \end_layout
 
 \begin_layout Standard
@@ -1613,15 +2219,30 @@ salt.
 
 \begin_layout Standard
 W trakcie rejestracji serwer automatycznie uzupełnia pole salt, które wraz
- z przesłanym hasłem zostaje zapisane jako wynik funkcji skrótu kryptograficzneg
-o BCrypt.
- Zapewnia to wyższy poziom bezpieczeństwa niż przechowywanie hasła w takiej
- postaci, w jakiej zostało ono przesłane przez użytkownika.
+ z
+\begin_inset space ~
+\end_inset
+
+przesłanym hasłem zostaje zapisane jako wynik funkcji skrótu kryptograficznego
+ BCrypt.
+ Zapewnia to wyższy poziom bezpieczeństwa niż przechowywanie hasła w
+\begin_inset space ~
+\end_inset
+
+takiej postaci, w
+\begin_inset space ~
+\end_inset
+
+jakiej zostało ono przesłane przez użytkownika.
  Niezalogowany użytkownik ma dostęp jedynie do metody POST na kolekcji users
  (rejestracja nowego użytkownika) oraz metody login (POST) — zalogowanie
  się do systemu.
  Dopiero po zalogowaniu możliwe jest odczytanie szczegółów swojego profilu
- lub profilu innej osoby (metodą GET z podaniem odpowiedniego id).
+ lub profilu innej osoby (metodą GET z
+\begin_inset space ~
+\end_inset
+
+podaniem odpowiedniego id).
  
 \end_layout
 
@@ -1667,7 +2288,11 @@ user_id (id użytkownika),
 
 \begin_layout Itemize
 user_dht_id (klucz, pod którym użytkownik umieszcza info hash najnowszej
- wiadomości dla danej konwersacji w DHT).
+ wiadomości dla danej konwersacji w
+\begin_inset space ~
+\end_inset
+
+DHT).
 \end_layout
 
 \begin_layout Standard
@@ -1676,54 +2301,49 @@ user_dht_id (klucz, pod którym użytkownik umieszcza info hash najnowszej
 \end_layout
 
 \begin_layout Itemize
-stworzenie i automatyczne dołączenie do nowej konwersacji lub dołączenie
- do już istniejącej konwersacji (metoda POST), 
+stworzenie i
+\begin_inset space ~
+\end_inset
+
+automatyczne dołączenie do nowej konwersacji lub dołączenie do już istniejącej
+ konwersacji (metoda POST), 
 \end_layout
 
 \begin_layout Itemize
-pobranie informacji o użytkownikach, którzy uczestniczą w tej samej konwersacji
- co użytkownik, np.
+pobranie informacji o
+\begin_inset space ~
+\end_inset
+
+użytkownikach, którzy uczestniczą w
+\begin_inset space ~
+\end_inset
+
+tej samej konwersacji co użytkownik, np.
  ich user_dht_id (metoda GET),
 \end_layout
 
 \begin_layout Itemize
-wypisanie się z konwersacji (metoda DELETE).
+wypisanie się z
+\begin_inset space ~
+\end_inset
+
+konwersacji (metoda DELETE).
 \end_layout
 
 \begin_layout Section
-Klient i biblioteka WebTorrent
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-// TODO
-\end_layout
-
-\begin_layout Itemize
-inne implementacyjne ciekawostki (zajrzeć do kodu)
-\end_layout
-
-\begin_layout Itemize
-założenia - dostarczanie offline (może to być serwer imitujący użytkownika
- przyjaciel, jak w Tox), brak ograniczenia na liczbę użytkowników w ramach
- jednej konwersacji, czy konwersacje nie wpływają na siebie?
-\end_layout
-
-\begin_layout Itemize
-planktos - pobieranie strony jako torrent (odciążenie serwera aplikacji)
-\end_layout
-
+Klient i
+\begin_inset space ~
 \end_inset
 
-
+biblioteka WebTorrent
 \end_layout
 
 \begin_layout Standard
-Zaimplementowany w ramach projektu klient jest aplikacją webową typu Single
- Page Application.
+Zaimplementowany w
+\begin_inset space ~
+\end_inset
+
+ramach projektu klient jest aplikacją webową typu Single Page Application.
  Do jej przygotowania wykorzystano framework AngularJS.
  Integralną częścią programu jest moduł do obsługi protokołu BitTorrent
  — biblioteka WebTorrent.
@@ -1781,7 +2401,11 @@ name "fig:Wygląd-aplikacji-klienta"
 \begin_layout Standard
 Program klienta pozwala użytkownikowi na zalogowanie się do systemu komunikatora.
  Następnie użytkownik może dołączyć do konwersacji podając jej nazwę (conversati
-on_id z punktu 
+on_id z
+\begin_inset space ~
+\end_inset
+
+punktu 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Konwersacje"
@@ -1789,13 +2413,42 @@ reference "subsec:Konwersacje"
 \end_inset
 
 ) lub utworzyć nową konwersację.
- Głównym celem programu jest prowadzenie rozmowy z innymi użytkownikami,
- którzy są zapisani do tej samej konwersacji — użytkownicy wysyłają i odbierają
- wiadomości.
- Kluczową cechą komunikatora jest sposób, w jaki instancje programu wymieniają
- się wiadomościami — nowo utworzona wiadomość wraz z pewnymi metadanymi
- jest traktowana jako plik i upubliczniana w sieci P2P w sposób opisany
- w punkcie 
+ Głównym celem programu jest prowadzenie rozmowy z
+\begin_inset space ~
+\end_inset
+
+innymi użytkownikami, którzy są zapisani do tej samej konwersacji — użytkownicy
+ wysyłają i
+\begin_inset space ~
+\end_inset
+
+odbierają wiadomości.
+ Kluczową cechą komunikatora jest sposób, w
+\begin_inset space ~
+\end_inset
+
+jaki instancje programu wymieniają się wiadomościami — nowo utworzona wiadomość
+ wraz z
+\begin_inset space ~
+\end_inset
+
+pewnymi metadanymi jest traktowana jako plik i
+\begin_inset space ~
+\end_inset
+
+upubliczniana w
+\begin_inset space ~
+\end_inset
+
+sieci P2P w
+\begin_inset space ~
+\end_inset
+
+sposób opisany w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Scenariusz utworzenia torrenta"
@@ -1803,7 +2456,11 @@ reference "subsec:Scenariusz utworzenia torrenta"
 \end_inset
 
 .
- Odbiór wiadomości przebiega według scenariusza opisanego w punkcie 
+ Odbiór wiadomości przebiega według scenariusza opisanego w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Scenariusz pobrania torrenta"
@@ -1811,7 +2468,11 @@ reference "subsec:Scenariusz pobrania torrenta"
 \end_inset
 
 .
- W kolejnych punktach przybliżone zostaną szczegóły działania programu.
+ W
+\begin_inset space ~
+\end_inset
+
+kolejnych punktach przybliżone zostaną szczegóły działania programu.
 \end_layout
 
 \begin_layout Subsection
@@ -1839,9 +2500,24 @@ Sign in
 
  powoduje wysłanie ich do serwera REST, na którym przechodzą one weryfikację,
  czy dany użytkownik istnieje oraz czy podał prawidłowe hasło.
- W przypadku pomyślnego uwierzytelnienia, serwer odsyła szczegóły konta
- użytkownika i dane niezbędne do autoryzacji, a klient zapisuje je w pamięci
- przeglądarki (local storage).
+ W
+\begin_inset space ~
+\end_inset
+
+przypadku pomyślnego uwierzytelnienia, serwer odsyła szczegóły konta użytkownika
+ i
+\begin_inset space ~
+\end_inset
+
+dane niezbędne do autoryzacji, a
+\begin_inset space ~
+\end_inset
+
+klient zapisuje je w
+\begin_inset space ~
+\end_inset
+
+pamięci przeglądarki (local storage).
  
 \end_layout
 
@@ -1903,29 +2579,72 @@ reference "fig:Wygląd-aplikacji-klienta"
 \end_inset
 
 ).
- Po wyświetleniu tego widoku następuje pobranie z serwera REST niezbędnych
- informacji o konwersacji (jeśli użytkownik już w jakiejś uczestniczy),
- uruchomienie modułu torrent (wykorzystującego bibliotekę WebTorrent, odpowiedzi
-alnego za wymianę wiadomości) oraz modułu, którego zadaniem jest przechowywanie
- posiadanych wiadomości i kontakt z bazą danych wbudowaną w przeglądarkę.
+ Po wyświetleniu tego widoku następuje pobranie z
+\begin_inset space ~
+\end_inset
+
+serwera REST niezbędnych informacji o
+\begin_inset space ~
+\end_inset
+
+konwersacji (jeśli użytkownik już w
+\begin_inset space ~
+\end_inset
+
+jakiejś uczestniczy), uruchomienie modułu torrent (wykorzystującego bibliotekę
+ WebTorrent, odpowiedzialnego za wymianę wiadomości) oraz modułu, którego
+ zadaniem jest przechowywanie posiadanych wiadomości i
+\begin_inset space ~
+\end_inset
+
+kontakt z
+\begin_inset space ~
+\end_inset
+
+bazą danych wbudowaną w
+\begin_inset space ~
+\end_inset
+
+przeglądarkę.
  Szczegółowo ten proces został omówiony poniżej.
 \end_layout
 
 \begin_layout Standard
-Jeśli użytkownik był zapisany do konwersacji to klient pobiera z serwera
- REST szczegółowe informacje o tej konwersacji (atrybuty przedstawione w
- punkcie 
+Jeśli użytkownik był zapisany do konwersacji to klient pobiera z
+\begin_inset space ~
+\end_inset
+
+serwera REST szczegółowe informacje o
+\begin_inset space ~
+\end_inset
+
+tej konwersacji (atrybuty przedstawione w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Konwersacje"
 
 \end_inset
 
-) oraz dane o innych uczestnikach tej konwersacji — między innymi ich identyfika
-tor user_dht_id, który jest niezbędny w procesie odbierania wiadomości.
- Jeżeli użytkownik nie uczestniczył jeszcze w żadnej konwersacji to wyświetlone
- zostaje pole umożliwiające podanie jej nazwy (conversation_id) — rysunek
- 
+) oraz dane o
+\begin_inset space ~
+\end_inset
+
+innych uczestnikach tej konwersacji — między innymi ich identyfikator user_dht_i
+d, który jest niezbędny w
+\begin_inset space ~
+\end_inset
+
+procesie odbierania wiadomości.
+ Jeżeli użytkownik nie uczestniczył jeszcze w
+\begin_inset space ~
+\end_inset
+
+żadnej konwersacji to wyświetlone zostaje pole umożliwiające podanie jej
+ nazwy (conversation_id) — rysunek 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Dołączanie-do-konwersacji"
@@ -1933,7 +2652,11 @@ reference "fig:Dołączanie-do-konwersacji"
 \end_inset
 
 .
- Szczegóły dołączania do konwersacji opisano w punkcie 
+ Szczegóły dołączania do konwersacji opisano w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:utw-dolacz-do-konwersacji"
@@ -1946,8 +2669,15 @@ reference "subsec:utw-dolacz-do-konwersacji"
 \begin_layout Standard
 Kolejnym krokiem jest uruchomienie modułu odpowiedzialnego za przechowywanie
  wiadomości (nazywany dalej modułem wiadomości).
- Moduł korzysta z bazy danych typu klucz-wartość znajdującej się w przeglądarce
- (IndexedDB) do 
+ Moduł korzysta z
+\begin_inset space ~
+\end_inset
+
+bazy danych typu klucz-wartość znajdującej się w
+\begin_inset space ~
+\end_inset
+
+przeglądarce (IndexedDB) do 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1955,7 +2685,11 @@ trwałego
 \begin_inset Quotes prd
 \end_inset
 
- zapisywania wysłanych i odebranych wiadomości.
+ zapisywania wysłanych i
+\begin_inset space ~
+\end_inset
+
+odebranych wiadomości.
  Słowo 
 \begin_inset Quotes pld
 \end_inset
@@ -1964,20 +2698,40 @@ trwałego
 \begin_inset Quotes prd
 \end_inset
 
- jest ujęte w cudzysłów, ponieważ użytkownik może w każdej chwili usunąć
- dane.
- Jedynym sposobem, by je w takiej sytuacji odzyskać jest pobranie ich od
- innego użytkownika.
+ jest ujęte w
+\begin_inset space ~
+\end_inset
+
+cudzysłów, ponieważ użytkownik może w
+\begin_inset space ~
+\end_inset
+
+każdej chwili usunąć dane.
+ Jedynym sposobem, by je w
+\begin_inset space ~
+\end_inset
+
+takiej sytuacji odzyskać jest pobranie ich od innego użytkownika.
  Podczas inicjalizacji moduł wczytuje do pamięci podręcznej wszystkie wiadomości
- znajdujące się w bazie danych — dzięki temu będą one dostępne dla modułu
- torrent.
+ znajdujące się w
+\begin_inset space ~
+\end_inset
+
+bazie danych — dzięki temu będą one dostępne dla modułu torrent.
 \end_layout
 
 \begin_layout Standard
 Ostatni etap przygotowania aplikacji do pełnego działania wymaga uruchomienia
  modułu torrent obsługującego komunikację poprzez protokół BitTorrent.
- W ramach inicjalizacji moduł włącza klienta sieci torrent i rozpoczyna
- ponowne udostępnianie posiadanych wiadomości.
+ W
+\begin_inset space ~
+\end_inset
+
+ramach inicjalizacji moduł włącza klienta sieci torrent i
+\begin_inset space ~
+\end_inset
+
+rozpoczyna ponowne udostępnianie posiadanych wiadomości.
 \end_layout
 
 \begin_layout Subsection
@@ -1995,27 +2749,11 @@ name "subsec:utw-dolacz-do-konwersacji"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO 
-\end_layout
-
-\begin_layout Itemize
-jaką strukturę tworzą peery (w jednej konwersacji, między konwersacjami)
- - to chyba zależy od biblioteki kogo z kim połączy, peery mogą tworzyć
- od łańcucha, przez ring po graf pełny
-\end_layout
-
+W celu prowadzenia rozmowy z
+\begin_inset space ~
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-W celu prowadzenia rozmowy z użytkownikami konieczne jest dołączenie do
- wspólnej konwersacji.
+użytkownikami konieczne jest dołączenie do wspólnej konwersacji.
  Rysunek 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2025,86 +2763,11 @@ reference "fig:Dołączanie-do-konwersacji"
 
  pokazuje formularz umożliwiający utworzenie nowej rozmowy lub podanie nazwy
  istniejącej.
- Użytkownik może rozpocząć nową konwersację i poczekać, aż inni do niej
- dołączą lub samemu dołączyć do już istniejącej.
- 
-\end_layout
-
-\begin_layout Standard
-W pierwszym przypadku użytkownik wybiera opcję 
-\begin_inset Quotes pld
+ Użytkownik może rozpocząć nową konwersację i
+\begin_inset space ~
 \end_inset
 
-Create new
-\begin_inset Quotes prd
-\end_inset
-
-.
- Aplikacja wysyła do serwera REST żądanie stworzenia konwersacji o losowej
- nazwie.
- Serwer automatycznie dołącza użytkownika do nowej konwersacji i odpowiada
- odsyłając nazwę konwersacji (conversation_id).
- Użytkownik zobaczy tę nazwę w polu 
-\begin_inset Quotes pld
-\end_inset
-
-conversation ID
-\begin_inset Quotes prd
-\end_inset
-
-.
- Zadaniem użytkownika jest teraz rozesłanie nazwy konwersacji do osób, z
- którymi chce prowadzić rozmowę.
- Może to zrobić, podobnie jak w przypadku komunikatora Darkwire (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Darkwire"
-
-\end_inset
-
-), na przykład za pośrednictwem email, SMS lub przekazać osobiście.
-\end_layout
-
-\begin_layout Standard
-Drugi przypadek zakłada, że użytkownik otrzymał od kogoś nazwę konwersacji
- — wpisuje ją w pole 
-\begin_inset Quotes pld
-\end_inset
-
-conversation ID
-\begin_inset Quotes prd
-\end_inset
-
- i zatwierdza przyciskiem 
-\begin_inset Quotes pld
-\end_inset
-
-Join
-\begin_inset Quotes prd
-\end_inset
-
-.
- Klient wysyła do serwera REST żądanie, a serwer zapisuje w bazie danych
- fakt dołączenia użytkownika do konwersacji.
- Serwer w odpowiedzi informuje klienta o pomyślnym zakończeniu procedury.
- 
-\end_layout
-
-\begin_layout Standard
-Dodatkowym założeniem, które należy spełnić w obu przypadkach przed dołączeniem
- do konwersacji jest posiadanie przez użytkownika unikalnego user_dht_id
- (atrybut z punktu 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Konwersacje"
-
-\end_inset
-
-).
- Jest to klucz w DHT, pod którym użytkownik umieszcza informację o najnowszej
- wysłanej przez siebie wiadomości (jej info hash).
- Wartość user_dht_id powinna być unikalna.
- Należy ją przesłać razem z żądaniem opisanym w powyższych przypadkach.
+poczekać, aż inni do niej dołączą lub samemu dołączyć do już istniejącej.
  
 \end_layout
 
@@ -2148,6 +2811,146 @@ name "fig:Dołączanie-do-konwersacji"
 
 \end_layout
 
+\begin_layout Standard
+W pierwszym przypadku użytkownik wybiera opcję 
+\begin_inset Quotes pld
+\end_inset
+
+Create new
+\begin_inset Quotes prd
+\end_inset
+
+.
+ Aplikacja wysyła do serwera REST żądanie stworzenia konwersacji o
+\begin_inset space ~
+\end_inset
+
+losowej nazwie.
+ Serwer automatycznie dołącza użytkownika do nowej konwersacji i
+\begin_inset space ~
+\end_inset
+
+odpowiada odsyłając nazwę konwersacji (conversation_id).
+ Użytkownik zobaczy tę nazwę w
+\begin_inset space ~
+\end_inset
+
+polu 
+\begin_inset Quotes pld
+\end_inset
+
+conversation ID
+\begin_inset Quotes prd
+\end_inset
+
+.
+ Zadaniem użytkownika jest teraz rozesłanie nazwy konwersacji do osób, z
+\begin_inset space ~
+\end_inset
+
+którymi chce prowadzić rozmowę.
+ Może to zrobić, podobnie jak w
+\begin_inset space ~
+\end_inset
+
+przypadku komunikatora Darkwire (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Darkwire"
+
+\end_inset
+
+), na przykład za pośrednictwem email, SMS lub przekazać osobiście.
+\end_layout
+
+\begin_layout Standard
+Drugi przypadek zakłada, że użytkownik otrzymał od kogoś nazwę konwersacji
+ — wpisuje ją w
+\begin_inset space ~
+\end_inset
+
+pole 
+\begin_inset Quotes pld
+\end_inset
+
+conversation ID
+\begin_inset Quotes prd
+\end_inset
+
+ i
+\begin_inset space ~
+\end_inset
+
+zatwierdza przyciskiem 
+\begin_inset Quotes pld
+\end_inset
+
+Join
+\begin_inset Quotes prd
+\end_inset
+
+.
+ Klient wysyła do serwera REST żądanie, a
+\begin_inset space ~
+\end_inset
+
+serwer zapisuje w
+\begin_inset space ~
+\end_inset
+
+bazie danych fakt dołączenia użytkownika do konwersacji.
+ Serwer w
+\begin_inset space ~
+\end_inset
+
+odpowiedzi informuje klienta o
+\begin_inset space ~
+\end_inset
+
+pomyślnym zakończeniu procedury.
+ 
+\end_layout
+
+\begin_layout Standard
+Dodatkowym założeniem, które należy spełnić w
+\begin_inset space ~
+\end_inset
+
+obu przypadkach przed dołączeniem do konwersacji jest posiadanie przez użytkowni
+ka unikalnego user_dht_id (atrybut z
+\begin_inset space ~
+\end_inset
+
+punktu 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Konwersacje"
+
+\end_inset
+
+).
+ Jest to klucz w
+\begin_inset space ~
+\end_inset
+
+DHT, pod którym użytkownik umieszcza informację o
+\begin_inset space ~
+\end_inset
+
+najnowszej wysłanej przez siebie wiadomości (jej info hash).
+ Wartość user_dht_id powinna być unikalna.
+ Należy ją przesłać razem z
+\begin_inset space ~
+\end_inset
+
+żądaniem opisanym w
+\begin_inset space ~
+\end_inset
+
+powyższych przypadkach.
+ 
+\end_layout
+
 \begin_layout Subsection
 Struktura komunikatu
 \end_layout
@@ -2187,21 +2990,29 @@ previousInfoHash (wartość info hash poprzedniej wiadomości).
 \end_layout
 
 \begin_layout Standard
-Z własności protokołu BitTorrent wynika, że torrenty są niemodyfikowalne
- (immutable) — zawartość plików lub ich liczba nie może ulec zmianie bez
- zmiany wartości info hash.
+Z własności protokołu BitTorrent wynika, że torrenty są niezmienne (immutable)
+ — zawartość plików lub ich liczba nie może ulec zmianie bez zmiany wartości
+ info hash.
  Konieczne zatem było przyjęcie założenia, że każda nowa wiadomość wysłana
  przez użytkownika staje się nowym torrentem.
- Scenariusz, w którym użytkownik dodaje wiadomość jako kolejny plik do istniejąc
-ego torrenta jest na chwilę obecną niemożliwy do zrealizowania, chociaż
- istnieją próby wdrożenia takiej możliwości (w protokole BitTorrent 
+ Scenariusz, w
+\begin_inset space ~
+\end_inset
+
+którym użytkownik dodaje wiadomość jako kolejny plik do istniejącego torrenta
+ jest na chwilę obecną niemożliwy do zrealizowania, chociaż istnieją próby
+ wdrożenia takiej możliwości (w protokole BitTorrent 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bep46-bt"
 
 \end_inset
 
- oraz w bibliotece WebTorrent 
+ oraz w
+\begin_inset space ~
+\end_inset
+
+bibliotece WebTorrent 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bep46-wt"
@@ -2209,43 +3020,53 @@ key "bep46-wt"
 \end_inset
 
 ).
- Niemniej jednak zdecydowano o zachowaniu przyjętego założenia.
+ Niemniej jednak, zdecydowano o
+\begin_inset space ~
+\end_inset
+
+zachowaniu przyjętego założenia.
  
 \end_layout
 
 \begin_layout Standard
 Zastosowanie znaczników czasowych pozwala na zdefiniowanie kolejności wiadomości
- — ich odbiorcy będą w stanie posortować odbierane komunikaty zgodnie z
- porządkiem FIFO.
- Znaczniki dodatkowo gwarantują globalne uporządkowanie wiadomości (total
- order) — jeśli wszyscy użytkownicy w ramach konwersacji odbiorą wszystkie
- wiadomości (każdy będzie posiadał identyczny zbiór), to zobaczą je w takiej
- samej kolejności.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Plain Layout
-czy na pewno jest total order lub fifo jeśli wyswietlimy najpierw nowszą
- wiadomośc, a potem starszą? (brak czekania na odebranie pprzednich wiadomości)
-\end_layout
-
+ — ich odbiorcy będą w
+\begin_inset space ~
 \end_inset
 
+stanie posortować odbierane komunikaty zgodnie z
+\begin_inset space ~
+\end_inset
 
+porządkiem FIFO.
+ Znaczniki dodatkowo gwarantują globalne uporządkowanie wiadomości (total
+ order) — jeśli wszyscy użytkownicy uczestniczący w
+\begin_inset space ~
+\end_inset
+
+jednej konwersacji odbiorą wszystkie wiadomości (każdy będzie posiadał identyczn
+y zbiór), to zobaczą je w
+\begin_inset space ~
+\end_inset
+
+takiej samej kolejności.
+ W trakcie implementowania projektu zdecydowano, że każda odebrana wiadomość
+ będzie natychmiast wyświetlana — aplikacja nie czeka na pobranie starszych
+ wiadomości wysłanych przez danego nadawcę.
+ Narusza to co prawda oba wspomniane założenia, ale jedynie tymczasowo,
+ do momentu pobrania wszystkich wcześniejszych wiadomości.
+ Od tej chwili założenia pozostają spełnione.
+ 
 \end_layout
 
 \begin_layout Standard
 Użycie znaczników nie gwarantuje jednak przyczynowego uporządkowania (causal
  order), ponieważ zegary na maszynach użytkowników nie są zsynchronizowane.
- W większości przypadków 
+ W
+\begin_inset space ~
+\end_inset
+
+większości przypadków 
 \begin_inset Flex Emph
 status open
 
@@ -2274,7 +3095,11 @@ Niewielka
 \begin_inset Formula $U_{N}$
 \end_inset
 
- (użytkownik-nadawca) i 
+ (użytkownik-nadawca) i
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $U_{O}$
 \end_inset
 
@@ -2297,8 +3122,11 @@ Niewielka
 \begin_inset Formula $U_{N}$
 \end_inset
 
- (ustawienia czasu nadania w polu timestamp) do momentu odebrania wiadomości
- 
+ (ustawienia czasu nadania w
+\begin_inset space ~
+\end_inset
+
+polu timestamp) do momentu odebrania wiadomości 
 \begin_inset Formula $m$
 \end_inset
 
@@ -2310,15 +3138,22 @@ Niewielka
 \begin_inset Formula $m$
 \end_inset
 
- u odbiorcy), 
+ u
+\begin_inset space ~
+\end_inset
+
+odbiorcy), 
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $t_{0}$
 \end_inset
 
- to czas potrzebny na napisanie i nadanie odpowiedzi zależnej przyczynowo
- od wiadomości 
+ to czas potrzebny na napisanie i
+\begin_inset space ~
+\end_inset
+
+nadanie odpowiedzi zależnej przyczynowo od wiadomości 
 \begin_inset Formula $m$
 \end_inset
 
@@ -2326,7 +3161,11 @@ Niewielka
 \begin_inset Formula $U_{O}$
 \end_inset
 
-, przy czym w ogólności może on wynosić 0 (zero).
+, przy czym w
+\begin_inset space ~
+\end_inset
+
+ogólności może on wynosić 0 (zero).
 \end_layout
 
 \begin_layout Standard
@@ -2352,13 +3191,28 @@ Możliwy jest jednak następujący scenariusz:
 \begin_inset Formula $T_{N}$
 \end_inset
 
- i 
+ i
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $T_{O}$
 \end_inset
 
- to stan zegara maszyny nadawcy/odbiorcy w danym momencie, a nierówność
- oznacza, że gdyby porównać w tym samym momencie zegary obu maszyn, to zegar
- maszyny nadawcy będzie wskazywał wyższą wartość.
+ to stan zegara maszyny nadawcy/odbiorcy w
+\begin_inset space ~
+\end_inset
+
+danym momencie, a
+\begin_inset space ~
+\end_inset
+
+nierówność oznacza, że gdyby porównać w
+\begin_inset space ~
+\end_inset
+
+tym samym momencie zegary obu maszyn, to zegar maszyny nadawcy będzie wskazywał
+ wyższą wartość.
 \end_layout
 
 \begin_layout Enumerate
@@ -2380,7 +3234,11 @@ Możliwy jest jednak następujący scenariusz:
 \begin_inset Formula $m$
 \end_inset
 
- i od razu na nią odpowiada (
+ i
+\begin_inset space ~
+\end_inset
+
+od razu na nią odpowiada (
 \begin_inset Formula $t_{0}=0$
 \end_inset
 
@@ -2389,11 +3247,19 @@ Możliwy jest jednak następujący scenariusz:
 \end_inset
 
 .
- Timestamp ustawiony w odpowiedzi 
+ Timestamp ustawiony w
+\begin_inset space ~
+\end_inset
+
+odpowiedzi 
 \begin_inset Formula $n$
 \end_inset
 
- będzie miał niższą wartość niż timestamp otrzymany w wiadomości 
+ będzie miał niższą wartość niż timestamp otrzymany w
+\begin_inset space ~
+\end_inset
+
+wiadomości 
 \begin_inset Formula $m$
 \end_inset
 
@@ -2402,7 +3268,11 @@ Możliwy jest jednak następujący scenariusz:
 \begin_inset Formula $U_{N}$
 \end_inset
 
- jak i 
+ jak i
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $U_{O}$
 \end_inset
 
@@ -2419,7 +3289,11 @@ Możliwy jest jednak następujący scenariusz:
 \end_layout
 
 \begin_layout Subsection
-Wysłanie wiadomości i algorytm ZLT
+Wysłanie wiadomości i
+\begin_inset space ~
+\end_inset
+
+algorytm ZLT
 \end_layout
 
 \begin_layout Standard
@@ -2433,26 +3307,11 @@ name "subsec:Wysyłanie wiadomości"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO 
-\end_layout
-
-\begin_layout Itemize
-scenariusz z przekazywaniem offline (nadawca niedostępny, przekazuje inna
- osoba w konwersacji lub serwer pośrednik) ktoś musi być dostępny żeby nam
- przekazać starsze komunikaty
-\end_layout
-
+Aby wysłać wiadomość użytkownik podaje jej treść w
+\begin_inset space ~
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Aby wysłać wiadomość użytkownik podaje jej treść w polu 
+polu 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2460,7 +3319,11 @@ Type message
 \begin_inset Quotes prd
 \end_inset
 
- i zatwierdza przyciskiem 
+ i
+\begin_inset space ~
+\end_inset
+
+zatwierdza przyciskiem 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2470,7 +3333,11 @@ Send
 
 .
  Dalsze czynności wykonuje moduł torrent.
- Najpierw tworzy strukturę wiadomości (szerzej opisaną w punkcie 
+ Najpierw tworzy strukturę wiadomości (szerzej opisaną w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Struktura komunikatu"
@@ -2478,8 +3345,19 @@ reference "subsec:Struktura komunikatu"
 \end_inset
 
 ).
- Następnie rozpoczyna udostępnianie komunikatu w sieci P2P zgodnie z opisem
- z punktu 
+ Następnie rozpoczyna udostępnianie komunikatu w
+\begin_inset space ~
+\end_inset
+
+sieci P2P zgodnie z
+\begin_inset space ~
+\end_inset
+
+opisem z
+\begin_inset space ~
+\end_inset
+
+punktu 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Scenariusz utworzenia torrenta"
@@ -2488,18 +3366,40 @@ reference "subsec:Scenariusz utworzenia torrenta"
 
  (jest to zadanie biblioteki WebTorrent).
  Kolejnym krokiem jest zapamiętanie info hasha udostępnionej wiadomości.
- Klient zapisuje komunikat za pośrednictwem modułu wiadomości w bazie danych
- IndexedDB — kluczem jest info hash, a wartością struktura wiadomości.
+ Klient zapisuje komunikat za pośrednictwem modułu wiadomości w
+\begin_inset space ~
+\end_inset
+
+bazie danych IndexedDB — kluczem jest info hash, a
+\begin_inset space ~
+\end_inset
+
+wartością struktura wiadomości.
  
 \end_layout
 
 \begin_layout Standard
 W trakcie implementowania programu zaobserwowano, że wraz ze wzrostem liczby
  wiadomości traktowanie jednej wiadomości jako jeden torrent bardzo szybko
- prowadzi do nadmiernego zużywania zasobów, a nawet do błędnego zakończenia
- programu.
- Z tego powodu zdecydowano o zaprojektowaniu i wdrożeniu algorytmu zmniejszające
-go liczbę jednocześnie udostępnianych torrentów (nazywany dalej 
+ prowadzi do nadmiernego zużywania zasobów, a
+\begin_inset space ~
+\end_inset
+
+nawet do błędnego zakończenia programu.
+ Z
+\begin_inset space ~
+\end_inset
+
+tego powodu zdecydowano o
+\begin_inset space ~
+\end_inset
+
+zaprojektowaniu i
+\begin_inset space ~
+\end_inset
+
+wdrożeniu algorytmu zmniejszającego liczbę jednocześnie udostępnianych torrentów
+ (nazywany dalej 
 \begin_inset Flex Strong
 status open
 
@@ -2510,8 +3410,8 @@ algorytmem ZLT
 \end_inset
 
  — Zmniejszającym Liczbę Torrentów).
- W ogólności polega on na okresowym zastępowaniu torrentów zawierających
- pojedynczą wiadomość (poziom 0) jednym torrentem (nazywanym dalej 
+ Polega on na okresowym zastępowaniu torrentów zawierających pojedynczą
+ wiadomość (poziom 0) jednym torrentem (nazywanym dalej 
 \begin_inset Flex Strong
 status open
 
@@ -2521,10 +3421,17 @@ torrentem kontrolnym
 
 \end_inset
 
-), który składa się z wielu wiadomości (poziom 1).
+), który składa się z
+\begin_inset space ~
+\end_inset
+
+wielu wiadomości (poziom 1).
  Algorytm wykonuje się rekurencyjnie — jeśli powstanie zbyt dużo torrentów
- kontrolnych na poziomie 1 to zostaną one połączone w jeden torrent kontrolny
- na poziomie 2, itd.
+ kontrolnych na poziomie 1 to zostaną one połączone w
+\begin_inset space ~
+\end_inset
+
+jeden torrent kontrolny na poziomie 2, itd.
  Algorytm uruchamiany jest jako kolejny krok po zleceniu zapisu do bazy
  danych.
  Został opisany szczegółowo poniżej:
@@ -2532,18 +3439,33 @@ torrentem kontrolnym
 
 \begin_layout Enumerate
 Jeżeli na danym poziomie znajduje się zbyt dużo wiadomości (więcej niż zadany
- próg) to rozpocznij procedurę zamieniania wielu torrentów w jeden torrent
- kontrolny.
- W przeciwnym przypadku zakończ algorytm.
+ próg) to rozpocznij procedurę zamieniania wielu torrentów w
+\begin_inset space ~
+\end_inset
+
+jeden torrent kontrolny.
+ W
+\begin_inset space ~
+\end_inset
+
+przeciwnym przypadku zakończ algorytm.
 \end_layout
 
 \begin_layout Enumerate
-Stwórz listę wiadomości, które znajdą się w nowym torrencie kontrolnym.
+Stwórz listę wiadomości, które znajdą się w
+\begin_inset space ~
+\end_inset
+
+nowym torrencie kontrolnym.
 \end_layout
 
 \begin_layout Enumerate
 Stwórz listę info hashy, które posiadają wiadomości znajdujące się na liście
- w punkcie 2.
+ w
+\begin_inset space ~
+\end_inset
+
+punkcie 2.
  Dodatkowo, jeśli torrent kontrolny będzie zastępował inne torrenty kontrolne,
  stwórz listę info hashy zastępowanych torrentów kontrolnych.
 \end_layout
@@ -2556,7 +3478,11 @@ reference "subsec:Struktura komunikatu"
 
 \end_inset
 
-), w polu 
+), w
+\begin_inset space ~
+\end_inset
+
+polu 
 \begin_inset Quotes pld
 \end_inset
 
@@ -2564,21 +3490,61 @@ treść
 \begin_inset Quotes prd
 \end_inset
 
- umieść listy z punktu 3.
+ umieść listy z
+\begin_inset space ~
+\end_inset
+
+punktu 3.
 \end_layout
 
 \begin_layout Enumerate
-Usuń z klienta sieci P2P torrenty o info hashach znajdujących się na listach
- z punktu 3.
- Usunięcie wykonywane jest z opóźnieniem (domyślnie po 5 sekundach).
+Usuń z
+\begin_inset space ~
+\end_inset
+
+klienta sieci P2P torrenty o
+\begin_inset space ~
+\end_inset
+
+info hashach znajdujących się na listach z
+\begin_inset space ~
+\end_inset
+
+punktu 3.
+ Usunięcie wykonywane jest z
+\begin_inset space ~
+\end_inset
+
+opóźnieniem (domyślnie po 5 sekundach).
 \end_layout
 
 \begin_layout Enumerate
-Rozpocznij udostępnianie pliku składającego się z wszystkich wiadomości
- z punktu 2 oraz wiadomości z punktu 4 — procedura identyczna jak wysyłanie
- zwykłej wiadomości.
- W bazie danych zapisywana jest wiadomość z punktu 4 oraz usuwane z niej
- są te zastąpione.
+Rozpocznij udostępnianie pliku składającego się z
+\begin_inset space ~
+\end_inset
+
+wszystkich wiadomości z
+\begin_inset space ~
+\end_inset
+
+punktu 2 oraz wiadomości z
+\begin_inset space ~
+\end_inset
+
+punktu 4 — procedura identyczna jak wysyłanie zwykłej wiadomości.
+ W
+\begin_inset space ~
+\end_inset
+
+bazie danych zapisywana jest wiadomość z
+\begin_inset space ~
+\end_inset
+
+punktu 4 oraz usuwane z
+\begin_inset space ~
+\end_inset
+
+niej są te zastąpione.
  
 \end_layout
 
@@ -2590,8 +3556,16 @@ Jeśli stworzenie nowego torrenta kontrolnego spowodowało, że na jego poziomie
 
 \begin_layout Standard
 Po zakończeniu algorytmu należy wykonać ostatni krok, którym jest umieszczenie
- wartości najnowszego info hasha w DHT pod kluczem user_dht_id.
- Działanie DHT zostało szczegółowo opisane w punkcie 
+ wartości najnowszego info hasha w
+\begin_inset space ~
+\end_inset
+
+DHT pod kluczem user_dht_id.
+ Działanie DHT zostało szczegółowo opisane w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:DHT"
@@ -2606,14 +3580,33 @@ reference "sec:DHT"
 Dla poprawnego działania programu kluczowe jest, by kolejna nowa wiadomość
  przeszła procedurę wysyłania dopiero po zakończeniu procedury wysyłania
  poprzedniej wiadomości.
- Wynika to z konieczności podania wartości poprzedniego info hasha w strukturze
- wiadomości.
+ Wynika to z
+\begin_inset space ~
+\end_inset
+
+konieczności podania wartości poprzedniego info hasha w
+\begin_inset space ~
+\end_inset
+
+strukturze wiadomości.
  
 \end_layout
 
 \begin_layout Standard
-Domyślnie algorytm umieszcza 5 wiadomości w torrencie kontrolnym.
- W teście przedstawionym w punkcie 
+Domyślnie algorytm umieszcza 5 wiadomości w
+\begin_inset space ~
+\end_inset
+
+torrencie kontrolnym.
+ W
+\begin_inset space ~
+\end_inset
+
+teście przedstawionym w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:wpływ liczby wiad w zlt"
@@ -2639,14 +3632,35 @@ name "subsec:Odebranie_wiadomości"
 
 \begin_layout Standard
 Procedura odebrania wiadomości rozpoczyna się okresowym sprawdzeniem najnowszej
- wartości info hash w DHT dla kluczy user_dht_id poszczególnych uczestników
- rozmowy.
- Moduł torrent sprawdza, czy torrenty o tych info hashach znajdują się na
- liście pobieranych torrentów lub czy zostały już pobrane i znajdują się
- na liście wiadomości w module wiadomości.
- Jeśli żaden z powyższych warunków nie jest spełniony, wtedy na podstawie
- wartości info hash tworzony jest magnet link i rozpoczyna się procedura
- pobrania torrenta (punkt 
+ wartości info hash w
+\begin_inset space ~
+\end_inset
+
+DHT dla kluczy user_dht_id poszczególnych uczestników rozmowy.
+ Moduł torrent sprawdza, czy torrenty o
+\begin_inset space ~
+\end_inset
+
+tych info hashach znajdują się na liście pobieranych torrentów lub czy zostały
+ już pobrane i
+\begin_inset space ~
+\end_inset
+
+znajdują się na liście wiadomości w
+\begin_inset space ~
+\end_inset
+
+module wiadomości.
+ Jeśli żaden z
+\begin_inset space ~
+\end_inset
+
+powyższych warunków nie jest spełniony, wtedy na podstawie wartości info
+ hash tworzony jest magnet link i
+\begin_inset space ~
+\end_inset
+
+rozpoczyna się procedura pobrania torrenta (punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Scenariusz pobrania torrenta"
@@ -2654,11 +3668,22 @@ reference "subsec:Scenariusz pobrania torrenta"
 \end_inset
 
 ).
- Biblioteka WebTorrent pozwala na zarządzanie plikami w trakcie ich pobierania
- — możliwe jest odczytanie zawartości wiadomości pobranych w całości, podczas
- gdy pozostałe pliki są dalej przesyłane.
+ Biblioteka WebTorrent pozwala na zarządzanie plikami w
+\begin_inset space ~
+\end_inset
+
+trakcie ich pobierania — możliwe jest odczytanie zawartości wiadomości pobranych
+ w
+\begin_inset space ~
+\end_inset
+
+całości, podczas gdy pozostałe pliki są dalej przesyłane.
  Odczytana wiadomość zostaje zapisana za pośrednictwem modułu wiadomości
- w bazie danych oraz na liście wiadomości do wyświetlenia użytkownikowi.
+ w
+\begin_inset space ~
+\end_inset
+
+bazie danych IndexedDB oraz na liście wiadomości do wyświetlenia użytkownikowi.
  Oprócz tego moduł torrent sprawdza, czy poprzednia wiadomość wysłana przez
  nadawcę znajduje się na liście wiadomości lub liście pobieranych torrentów.
  Jeśli nie — moduł rozpoczyna procedurę pobierania tej wiadomości.
@@ -2666,11 +3691,164 @@ reference "subsec:Scenariusz pobrania torrenta"
 
 \begin_layout Standard
 W sytuacji, gdy pobierany torrent był torrentem kontrolnym, moduł torrent
- usuwa z klienta sieci P2P torrenty, które torrent kontrolny zastępuje.
- Moduł zapisuje również w bazie danych brakujące wiadomości, o ile istnieje
- taka konieczność.
- Podobnie jak w przypadku zwykłego torrenta, jeśli brakuje poprzedniej wiadomośc
-i, moduł zacznie jej pobieranie.
+ usuwa z
+\begin_inset space ~
+\end_inset
+
+klienta sieci P2P torrenty, które dany torrent kontrolny zastępuje.
+ Moduł zapisuje również w
+\begin_inset space ~
+\end_inset
+
+bazie danych brakujące wiadomości, o
+\begin_inset space ~
+\end_inset
+
+ile istnieje taka konieczność.
+ Podobnie jak w
+\begin_inset space ~
+\end_inset
+
+przypadku zwykłego torrenta, jeśli brakuje poprzedniej wiadomości, moduł
+ zacznie jej pobieranie.
+ 
+\end_layout
+
+\begin_layout Standard
+Koncepcja wysyłania i odbierania wiadomości wykorzystująca protokół BitTorrent
+ umożliwia odebranie wiadomości nawet w sytuacji, gdy jej nadawca nie jest
+ dostępny.
+ Warunkiem koniecznym jest oczywiście dostępność innego uczestnika rozmowy,
+ który zdążył tę wiadomość pobrać, lub obecność wielu użytkowników, z których
+ każdy posiada fragmenty wiadomości (pieces).
+ W drugim przypadku niezbędne jest założenie, że każdy fragment (piece)
+ torrenta został pobrany przez co najmniej jednego użytkownika.
+\end_layout
+
+\begin_layout Subsection
+Udostępnianie starych torrentów
+\end_layout
+
+\begin_layout Standard
+W celu zmniejszenia liczby torrentów, które klient w
+\begin_inset space ~
+\end_inset
+
+danej chwili pobiera i
+\begin_inset space ~
+\end_inset
+
+wysyła, zdecydowano o
+\begin_inset space ~
+\end_inset
+
+wprowadzeniu mechanizmu ograniczającego udostępnianie starych wiadomości.
+ Przyjęto założenie, że każdy uczestnik rozmowy będzie pobierał wszystkie
+ nowe wiadomości minimum raz w
+\begin_inset space ~
+\end_inset
+
+tygodniu.
+ Podczas inicjalizacji modułu torrent każdy klient rozpoczyna ponowne udostępnia
+nie jedynie tych wiadomości i
+\begin_inset space ~
+\end_inset
+
+torrentów kontrolnych, których data wysłania jest młodsza niż 1 tydzień.
+ Możliwy jest przypadek, w
+\begin_inset space ~
+\end_inset
+
+którym udostępniany torrent kontrolny zawiera wiadomości starsze niż 1 tydzień
+ — przyjęto, iż jest to sytuacja zgodna z
+\begin_inset space ~
+\end_inset
+
+oczekiwaniami.
+ Wiadomości te i
+\begin_inset space ~
+\end_inset
+
+tak przestaną być udostępniane maksymalnie w
+\begin_inset space ~
+\end_inset
+
+ciągu tygodnia ze względu na przedawnienie torrenta kontrolnego, który je
+ zawiera.
+\end_layout
+
+\begin_layout Standard
+Wadą tego rozwiązania jest brak możliwości przeczytania wiadomości starszych
+ niż 1 tydzień przez osoby, które dopiero dołączyły do rozmowy.
+ Zdecydowano, że nie jest to poważny błąd, a
+\begin_inset space ~
+\end_inset
+
+wręcz zaleta w
+\begin_inset space ~
+\end_inset
+
+sytuacji, gdy konwersacja zawiera dużą liczbę wiadomości.
+ Dołączający klient zmuszony byłby do pobrania całej historii konwersacji,
+ co może być operacją kosztowną komunikacyjnie.
+\end_layout
+
+\begin_layout Subsection
+Zbiór sąsiadów
+\end_layout
+
+\begin_layout Standard
+W
+\begin_inset space ~
+\end_inset
+
+ramach pojedynczej konwersacji klienty wysyłają i
+\begin_inset space ~
+\end_inset
+
+odbierają wiadomości.
+ Każda wiadomość zostaje umieszczona w
+\begin_inset space ~
+\end_inset
+
+osobnym torrencie, a
+\begin_inset space ~
+\end_inset
+
+te mogą zostać połączone w
+\begin_inset space ~
+\end_inset
+
+nowy torrent kontrolny przez algorytm ZLT.
+ Wszelka wymiana danych pomiędzy klientami odbywa się zatem w
+\begin_inset space ~
+\end_inset
+
+swarmach, dla każdego torrenta z
+\begin_inset space ~
+\end_inset
+
+osobna.
+ Struktura (np.
+ łańcuch, pierścień czy graf pełny) jaką utworzą peery w
+\begin_inset space ~
+\end_inset
+
+swarmie zależy od postępu algorytmu wymiany danych.
+ Możliwe jest ręczne zarządzanie listą peerów, z którymi dany klient posiada
+ nawiązane połączenia, jednak w ramach systemu komunikatora nie zdecydowano
+ się na ten krok — rolę zarządcy wystarczająco dobrze spełniają algorytmy
+ wbudowane w protokół BitTorrent.
+ W trakcie działania aplikacji i tworzenia przez użytkowników nowych wiadomości,
+ klienty dynamicznie dołączają do powstających swarmów oraz odłączają się
+ od tych, które przestały funkcjonować, gdyż dany torrent został zastąpiony
+ przez nowy (kontrolny).
+ 
+\end_layout
+
+\begin_layout Standard
+Konwersacje są odseparowane od siebie, co oznacza, że klienty nie nawiązują
+ połączeń z peerami znajdującymi się w swarmach należących do innej rozmowy.
  
 \end_layout
 
@@ -2690,28 +3868,65 @@ name "sec:DHT"
 
 \begin_layout Standard
 Moduł DHT czyli rozproszona tablica mieszająca jest systemem składającym
- się z wielu węzłów pozwalającym na przechowywanie informacji.
+ się z
+\begin_inset space ~
+\end_inset
+
+wielu węzłów pozwalającym na przechowywanie informacji.
  Węzłem staje się każdy klient systemu komunikatora.
- Węzły dzielą między sobą pewien zbiór kluczy i posiadają możliwość komunikowani
-a się z innymi węzłami i przesyłania im posiadanych informacji.
+ Węzły dzielą między sobą pewien zbiór kluczy i
+\begin_inset space ~
+\end_inset
+
+posiadają możliwość komunikowania się z
+\begin_inset space ~
+\end_inset
+
+innymi węzłami i
+\begin_inset space ~
+\end_inset
+
+przesyłania im posiadanych informacji.
  Zadaniem węzła jest przechowywanie informacji dotyczących przypisanego
  mu podzbioru kluczy.
- Każda informacja zapisywana w DHT posiada etykietę (w przypadku systemu
- komunikatora jest nią user_dht_id), która następnie zamieniana jest na
- klucz przez funkcję haszującą.
- Informacją w systemie komunikatora jest info hash najnowszej wysłanej przez
- klienta wiadomości.
+ Każda informacja zapisywana w
+\begin_inset space ~
+\end_inset
+
+DHT posiada etykietę (w przypadku systemu komunikatora jest nią user_dht_id),
+ która następnie zamieniana jest na klucz przez funkcję haszującą.
+ Informacją w
+\begin_inset space ~
+\end_inset
+
+systemie komunikatora jest info hash najnowszej wysłanej przez klienta wiadomośc
+i.
  
 \end_layout
 
 \begin_layout Standard
 Przed przystąpieniem do pracy nad projektem zakładano, że biblioteka WebTorrent
- jest wyposażona w mechanizm opisany powyżej.
+ jest wyposażona w
+\begin_inset space ~
+\end_inset
+
+mechanizm opisany powyżej.
  Jest to częściowo prawda — wersja biblioteki dla programów na platformę
  Node.js posiada taką możliwość.
- Niestety brakuje jej w wersji dla przeglądarek.
- Powody dla braku wsparcia DHT w bibliotece WebTorrent w przeglądarce są
- następujące:
+ Niestety brakuje jej w
+\begin_inset space ~
+\end_inset
+
+wersji dla przeglądarek.
+ Powody dla braku wsparcia DHT w
+\begin_inset space ~
+\end_inset
+
+bibliotece WebTorrent w
+\begin_inset space ~
+\end_inset
+
+przeglądarce są następujące:
 \end_layout
 
 \begin_layout Itemize
@@ -2726,22 +3941,57 @@ ia zasobów przeglądarki.
 \begin_layout Itemize
 Jednym ze sposobów zaimplementowania DHT dla biblioteki WebTorrent jest
  zaadaptowanie algorytmu Kademlia działającego już dla protokołu BitTorrent.
- Wymaga on jednak zapamiętywania listy węzłów, z którymi dany węzeł nawiązał
- dotychczas połączenie, a to oznacza, że połączenia WebRTC muszą pozostać
- otwarte (nie można ich zakończyć).
- Jest to o wiele bardziej kosztowne w przypadku WebRTC niż w oryginalnej
- implementacji, która korzysta z bezpołączeniowego protokołu komunikacji
- UDP.
+ Wymaga on jednak zapamiętywania listy węzłów, z
+\begin_inset space ~
+\end_inset
+
+którymi dany węzeł nawiązał dotychczas połączenie, a
+\begin_inset space ~
+\end_inset
+
+to oznacza, że połączenia WebRTC muszą pozostać otwarte (nie można ich zakończyć
+).
+ Jest to o
+\begin_inset space ~
+\end_inset
+
+wiele bardziej kosztowne w
+\begin_inset space ~
+\end_inset
+
+przypadku WebRTC niż w
+\begin_inset space ~
+\end_inset
+
+oryginalnej implementacji, która korzysta z
+\begin_inset space ~
+\end_inset
+
+bezpołączeniowego protokołu komunikacji UDP.
 \end_layout
 
 \begin_layout Itemize
 Kolejnym, bardzo istotnym problemem jest brak wsparcia protokołu WebRTC
  dla dedykowanych wątków roboczych (WebWorker, ServiceWorker, itp.).
- Bez tego wsparcia kod pozwalający na obsługę DHT musi być wykonywany w
- głównym wątku danej strony internetowej, a to może doprowadzić nawet do
- całkowitego zablokowania interfejsu.
- W chwili obecnej trwają próby wprowadzenia wsparcia protokołu dla wątków
- roboczych — być może w przyszłości ten problem zostanie rozwiązany.
+ Bez tego wsparcia kod obsługujący DHT musi być wykonywany w
+\begin_inset space ~
+\end_inset
+
+głównym wątku danej strony internetowej, a
+\begin_inset space ~
+\end_inset
+
+to może doprowadzić nawet do całkowitego zablokowania interfejsu.
+ W
+\begin_inset space ~
+\end_inset
+
+chwili obecnej trwają próby wprowadzenia wsparcia protokołu dla wątków roboczych
+ — być może w
+\begin_inset space ~
+\end_inset
+
+przyszłości ten problem zostanie rozwiązany.
  
 \end_layout
 
@@ -2764,28 +4014,53 @@ key "kadtools"
 \end_inset
 
 .
- Jednakże w trakcie wstępnych testów okazało się, że żadna biblioteka nie
- zapewnia satysfakcjonujących rezultatów — informacje były przesyłane zbyt
- długo lub w ogóle nie docierały do niektórych węzłów.
+ Jednakże w
+\begin_inset space ~
+\end_inset
+
+trakcie wstępnych testów okazało się, że żadna biblioteka nie zapewnia satysfakc
+jonujących rezultatów — informacje były przesyłane zbyt długo lub w
+\begin_inset space ~
+\end_inset
+
+ogóle nie docierały do niektórych węzłów.
  
 \end_layout
 
 \begin_layout Standard
-Ze względu na brak zaimplementowanego mechanizmu DHT w bibliotece WebTorrent
- oraz niesatysfakcjonujące alternatywy zdecydowano o zastąpieniu tego mechanizmu
- atrapą (mock).
+Ze względu na brak zaimplementowanego mechanizmu DHT w
+\begin_inset space ~
+\end_inset
+
+bibliotece WebTorrent oraz niesatysfakcjonujące alternatywy zdecydowano
+ o
+\begin_inset space ~
+\end_inset
+
+zastąpieniu tego mechanizmu atrapą (mock).
  Funkcjonalność tego rozwiązania pozostaje niezmienna — każdy klient ma
  możliwość zapisania najnowszej wartości info hash pod określonym kluczem
  (user_dht_id) oraz odczytania tej informacji.
  Zmianie uległ sposób przechowywania informacji — zadanie to nie należy
- już do sieci powiązanych ze sobą klientów, a stało się jednym z zadań serwera
- REST.
+ już do sieci powiązanych ze sobą klientów, a
+\begin_inset space ~
+\end_inset
+
+stało się jednym z
+\begin_inset space ~
+\end_inset
+
+zadań serwera REST.
  Serwer udostępnia ścieżkę REST /dht, która umożliwia następujące akcje:
 \end_layout
 
 \begin_layout Itemize
-metoda HTTP GET z parametrem user_dht_id pozwala na pobranie wartości przechowyw
-anej dla klucza user_dht_id,
+metoda HTTP GET z
+\begin_inset space ~
+\end_inset
+
+parametrem user_dht_id pozwala na pobranie wartości przechowywanej dla klucza
+ user_dht_id,
 \end_layout
 
 \begin_layout Itemize
@@ -2807,7 +4082,11 @@ name "sec:Bezpieczeństwo, krypto, JS"
 \end_layout
 
 \begin_layout Standard
-Mobilne i dektopowe klienty aplikacji Bleep (punkt 
+Mobilne i
+\begin_inset space ~
+\end_inset
+
+dektopowe klienty aplikacji Bleep (punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:bleep"
@@ -2830,32 +4109,73 @@ reference "sec:Darkwire"
 \end_inset
 
 ) również.
- W ramach niniejszej pracy magisterskiej zbadano sposób implementacji tego
- mechanizmu w przytoczonych aplikacjach oraz podjęto próbę zaprojektowania
- go dla systemu komunikatora.
+ W
+\begin_inset space ~
+\end_inset
+
+ramach niniejszej pracy magisterskiej zbadano sposób implementacji tego
+ mechanizmu w
+\begin_inset space ~
+\end_inset
+
+przytoczonych aplikacjach oraz podjęto próbę zaprojektowania go dla systemu
+ komunikatora.
  
 \end_layout
 
 \begin_layout Standard
-Poufność wiadomości w systemie komunikatora jest konieczna, ponieważ każdy
- użytkownik systemu (ale też osoba spoza niego) ma możliwość pobrania i
- odczytania treści wiadomości przesyłanych jako torrenty.
- Gdyby wiadomość była zaszyfrowana, posiadanie jej w takiej formie nie powoduje
- negatywnych skutków.
+Poufność wiadomości w
+\begin_inset space ~
+\end_inset
+
+systemie komunikatora jest konieczna, ponieważ każdy użytkownik systemu
+ (ale też osoba spoza niego) ma możliwość pobrania i
+\begin_inset space ~
+\end_inset
+
+odczytania treści wiadomości przesyłanych jako torrenty.
+ Gdyby wiadomość była zaszyfrowana, posiadanie jej w
+\begin_inset space ~
+\end_inset
+
+takiej formie nie powoduje negatywnych skutków.
  Głównym problemem do rozwiązania jest przechowywanie kluczy pozwalających
- na odczytanie zaszyfrowanych wiadomości i podpisywanie wysyłanych treści.
- Problem przechowywania dotyczy zarówno zarządzania kluczami w trakcie pracy
- aplikacji jak i po jej zamknięciu — zapisanie kluczy w pamięci trwałej.
+ na odczytanie zaszyfrowanych wiadomości i
+\begin_inset space ~
+\end_inset
+
+podpisywanie wysyłanych treści.
+ Problem przechowywania dotyczy zarówno zarządzania kluczami w
+\begin_inset space ~
+\end_inset
+
+trakcie pracy aplikacji jak i
+\begin_inset space ~
+\end_inset
+
+po jej zamknięciu — zapisanie kluczy w
+\begin_inset space ~
+\end_inset
+
+pamięci trwałej.
  Klucz prywatny nie powinien być wysyłany poza urządzenie, na którym został
  wygenerowany.
  
 \end_layout
 
 \begin_layout Standard
-Ostatecznie zrezygnowano z wdrożenia szyfrowania wiadomości, choć technicznie
- jest to osiągalne, ponieważ mechanizm ten posiadałby istotne wady mogące
- powodować brak gwarancji poufności przesyłanych danych.
- Podsumowanie badań opisano w poniższych punktach.
+Ostatecznie zrezygnowano z
+\begin_inset space ~
+\end_inset
+
+wdrożenia szyfrowania wiadomości, choć technicznie jest to osiągalne, ponieważ
+ mechanizm ten posiadałby istotne wady mogące powodować brak gwarancji poufności
+ przesyłanych danych.
+ Podsumowanie badań opisano w
+\begin_inset space ~
+\end_inset
+
+poniższych punktach.
 \end_layout
 
 \begin_layout Subsection
@@ -2863,13 +4183,27 @@ Darkwire
 \end_layout
 
 \begin_layout Standard
-Aplikacja webowa Darkwire automatycznie szyfruje wiadomości w przeglądarce
- użytkownika przed wysłaniem ich do serwera.
- Serwer przesyła wiadomość do odbiorców.
- Po dotarciu do nich, treść jest odszyfrowywana.
- W programie zastosowano kryptografię klucza publicznego do stworzenia klucza
+Aplikacja webowa Darkwire automatycznie szyfruje wiadomości w
+\begin_inset space ~
+\end_inset
+
+przeglądarce użytkownika przed wysłaniem ich do serwera.
+ Serwer przesyła wiadomości do odbiorców, a
+\begin_inset space ~
+\end_inset
+
+po dotarciu do nich, treść jest odszyfrowywana.
+ W
+\begin_inset space ~
+\end_inset
+
+programie zastosowano kryptografię klucza publicznego do stworzenia klucza
  symetrycznego danej wiadomości.
- Aplikacja korzysta z web cryptography API 
+ Aplikacja korzysta z
+\begin_inset space ~
+\end_inset
+
+web cryptography API 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "web cryptography api"
@@ -2881,8 +4215,11 @@ key "web cryptography api"
 \end_layout
 
 \begin_layout Standard
-Scenariusz uruchomienia programu i przesłania zaszyfrowanej wiadomości jest
- następujący 
+Scenariusz uruchomienia programu i
+\begin_inset space ~
+\end_inset
+
+przesłania zaszyfrowanej wiadomości jest następujący 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "darkwire szyfrowanie how it works"
@@ -2894,7 +4231,11 @@ key "darkwire szyfrowanie how it works"
 
 \begin_layout Enumerate
 Podczas uruchomienia, program tworzy nową rozmowę (chat room) oraz parę
- kluczy (publiczny i prywatny).
+ kluczy (publiczny i
+\begin_inset space ~
+\end_inset
+
+prywatny).
  
 \end_layout
 
@@ -2912,57 +4253,126 @@ W celu wysłania wiadomości program najpierw generuje 3 nowe klucze: symetryczn
 \end_layout
 
 \begin_layout Enumerate
-Treść wiadomości zostaje zaszyfrowana przy pomocy klucza sesji i wektora
- inicjującego.
+Treść wiadomości zostaje zaszyfrowana przy pomocy klucza sesji i
+\begin_inset space ~
+\end_inset
+
+wektora inicjującego.
  Oprócz tego tworzona jest sygnatura wiadomości przy użyciu klucza podpisującego.
  
 \end_layout
 
 \begin_layout Enumerate
-Klucz sesji i klucz podpisujący zostają zaszyfrowane kluczami publicznymi
- odbiorców, dla każdego z osobna — ta technika pozwala na uniknięcie szyfrowania
- całej treści wiadomości osobno dla wszystkich odbiorców.
+Klucz sesji i
+\begin_inset space ~
+\end_inset
+
+klucz podpisujący zostają zaszyfrowane kluczami publicznymi odbiorców, dla
+ każdego z
+\begin_inset space ~
+\end_inset
+
+osobna — ta technika pozwala na uniknięcie szyfrowania całej treści wiadomości
+ osobno dla wszystkich odbiorców.
  
 \end_layout
 
 \begin_layout Enumerate
 Ostatnim krokiem przed wysłaniem wiadomości jest przygotowanie paczki danych
- do wysłania — składa się ona z zaszyfrowanej wiadomości, wektora inicjującego,
- sygnatury wiadomości, zaszyfrowanego klucza sesji oraz zaszyfrowanego klucza
- podpisującego.
+ do wysłania — składa się ona z
+\begin_inset space ~
+\end_inset
+
+zaszyfrowanej wiadomości, wektora inicjującego, sygnatury wiadomości, zaszyfrowa
+nego klucza sesji oraz zaszyfrowanego klucza podpisującego.
  
 \end_layout
 
 \begin_layout Enumerate
 Odbiorca, po otrzymaniu takiej paczki danych, odszyfrowuje swoim kluczem
- prywatnym klucze sesji i podpisujący.
- Używając odszyfrowanego klucza sesji i wektora inicjującego odbiorca odszyfrowu
-je treść wiadomości i może zweryfikować sygnaturę wiadomości odszyfrowanym
- kluczem podpisującym.
+ prywatnym klucze sesji i
+\begin_inset space ~
+\end_inset
+
+podpisujący.
+ Używając odszyfrowanego klucza sesji i
+\begin_inset space ~
+\end_inset
+
+wektora inicjującego odbiorca odszyfrowuje treść wiadomości i
+\begin_inset space ~
+\end_inset
+
+może zweryfikować sygnaturę wiadomości odszyfrowanym kluczem podpisującym.
  
 \end_layout
 
 \begin_layout Standard
-Przedstawiony scenariusz gwarantuje poufność wiadomości i autentyczność
- odbiorcy podczas normalnej pracy aplikacji.
+Przedstawiony scenariusz gwarantuje poufność wiadomości i
+\begin_inset space ~
+\end_inset
+
+autentyczność odbiorcy podczas normalnej pracy aplikacji.
  Istnieją jednak wektory ataku pozwalające na zdobycie kluczy prywatnych
- i w konsekwencji na odczytanie przesłanych wiadomości czy przejęcie kontroli
- nad kontem użytkownika i podszywanie się pod nadawcę.
- Głównym problemem z punktu widzenia bezpieczeństwa jest przechowywanie
- klucza prywatnego jako wartość zmiennej w skrypcie JavaScript (lub w niezabezpi
-eczony sposób w local storage czy IndexedDB).
+ i
+\begin_inset space ~
+\end_inset
+
+w
+\begin_inset space ~
+\end_inset
+
+konsekwencji na odczytanie przesłanych wiadomości czy przejęcie kontroli
+ nad kontem użytkownika i
+\begin_inset space ~
+\end_inset
+
+podszywanie się pod nadawcę.
+ Głównym problemem z
+\begin_inset space ~
+\end_inset
+
+punktu widzenia bezpieczeństwa jest przechowywanie klucza prywatnego jako
+ wartość zmiennej w
+\begin_inset space ~
+\end_inset
+
+skrypcie JavaScript (lub w
+\begin_inset space ~
+\end_inset
+
+niezabezpieczony sposób w
+\begin_inset space ~
+\end_inset
+
+local storage czy IndexedDB).
  Wykorzystując choćby atak XSS (Cross-site scripting), czyli uruchomienie
- własnego skryptu osadzonego w treści atakowanej strony, można pozyskać
- wrażliwe dane.
- Zmiany w kodzie strony może dokonać nie tylko cracker, ale również twórca
- oprogramowania z własnej woli lub zmuszony przez trzecią stronę (np.
+ własnego skryptu osadzonego w
+\begin_inset space ~
+\end_inset
+
+treści atakowanej strony, można pozyskać wrażliwe dane.
+ Zmiany w
+\begin_inset space ~
+\end_inset
+
+kodzie strony może dokonać nie tylko cracker, ale również twórca oprogramowania
+ z
+\begin_inset space ~
+\end_inset
+
+własnej woli lub zmuszony przez trzecią stronę (np.
  agencję rządową).
  
 \end_layout
 
 \begin_layout Standard
 Użycie powyższej metody do przechowywania wrażliwych danych może prowadzić
- do ich kradzieży i ujawnienia treści wiadomości.
+ do ich kradzieży i
+\begin_inset space ~
+\end_inset
+
+ujawnienia treści wiadomości.
  Jako usprawiedliwienie można podać przykład Messengera (punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2970,46 +4380,91 @@ reference "sec:messenger"
 
 \end_inset
 
-), który nie stosuje w ogóle szyfrowania wiadomości — jedynym zabezpieczeniem
- jest przesyłanie ich do serwera szyfrowanymi kanałami.
- W bazie danych są one zapisywane w takiej samej formie, w jakiej zostały
- wprowadzone przez użytkownika.
+), który nie stosuje w
+\begin_inset space ~
+\end_inset
+
+ogóle szyfrowania wiadomości — jedynym zabezpieczeniem jest przesyłanie
+ ich do serwera szyfrowanymi kanałami.
+ W
+\begin_inset space ~
+\end_inset
+
+bazie danych są one zapisywane w
+\begin_inset space ~
+\end_inset
+
+takiej samej formie, w
+\begin_inset space ~
+\end_inset
+
+jakiej zostały wprowadzone przez użytkownika.
  Zdobycie dostępu do bazy danych przez osoby niepowołane spowoduje ujawnienie
  treści wiadomości.
  Niemniej jednak, taki wektor ataku wydaje się być mniej prawdopodobny —
- bazy danych są zazwyczaj lepiej zabezpieczone niż komputery użytkowników
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO jakieś źródło czy potwierdzenie? Bardziej formalnie?
-\end_layout
-
-\end_inset
-
-
+ bazy danych są zazwyczaj lepiej zabezpieczone niż komputery użytkowników.
 \end_layout
 
 \begin_layout Standard
-W aplikacjach webowych istnieje jeszcze inna możliwość przesyłania i przechowywa
-nia poufnych informacji (np.
- tokenów uwierzytelniających), a mianowicie ciasteczka (cookies).
- Te małe fragmenty tekstu są wysyłane przez serwer do klienta w nagłówku
- HTTP, a przeglądarka odsyła je wraz z kolejnymi żądaniami.
- W celu zabezpieczenia tych informacji stosuje się szyfrowany protokół (np.
+W aplikacjach webowych istnieje jeszcze inna możliwość przesyłania i
+\begin_inset space ~
+\end_inset
+
+przechowywania poufnych informacji (np.
+ tokenów uwierzytelniających), a
+\begin_inset space ~
+\end_inset
+
+mianowicie ciasteczka (cookies).
+ Te małe fragmenty tekstu są wysyłane przez serwer do klienta w
+\begin_inset space ~
+\end_inset
+
+nagłówku HTTP, a
+\begin_inset space ~
+\end_inset
+
+przeglądarka odsyła je wraz z
+\begin_inset space ~
+\end_inset
+
+kolejnymi żądaniami.
+ W
+\begin_inset space ~
+\end_inset
+
+celu zabezpieczenia tych informacji stosuje się szyfrowany protokół (np.
  HTTPS) oraz ustawia niezbędne flagi (jak choćby httpOnly, secure, domain,
  path itd.).
  Ustawienie pierwszej flagi skutkuje brakiem dostępu do zawartości ciasteczka
- z poziomu kodu JavaScript.
- Niestety w systemie komunikatora ten sposób przechowywania poufnych informacji
- nie może być wykorzystany, gdyż większość operacji wykonywanych jest z
- poziomu skryptu, a komunikaty przesyłane są innymi protokołami niż HTTP.
+ z
+\begin_inset space ~
+\end_inset
+
+poziomu kodu JavaScript.
+ Niestety w
+\begin_inset space ~
+\end_inset
+
+systemie komunikatora ten sposób przechowywania poufnych informacji nie
+ może być wykorzystany, gdyż większość operacji wykonywanych jest z
+\begin_inset space ~
+\end_inset
+
+poziomu skryptu, a
+\begin_inset space ~
+\end_inset
+
+komunikaty przesyłane są innymi protokołami niż HTTP.
  
 \end_layout
 
 \begin_layout Subsection
-Bleep i Signal
+Bleep i
+\begin_inset space ~
+\end_inset
+
+Signal
 \end_layout
 
 \begin_layout Standard
@@ -3020,15 +4475,25 @@ Natywne aplikacje mobilne mają nad aplikacjami webowymi istotną przewagę
  nie mają dostępu do tych obszarów.
  Ta możliwość pozwala na znacznie bezpieczniejsze przechowywanie poufnych
  danych.
- Wszelkie operacje związane z szyfrowaniem odbywają się na urządzeniach
- użytkowników.
+ Wszelkie operacje związane z
+\begin_inset space ~
+\end_inset
+
+szyfrowaniem odbywają się na urządzeniach użytkowników.
 \end_layout
 
 \begin_layout Standard
 Oprócz tego, twórcy przytoczonych aplikacji zastosowali znacznie bardziej
- rozbudowany mechanizm przesyłania wiadomości niż w przypadku aplikacji
- Darkwire.
- W aplikacji Signal wprowadzono choćby 
+ rozbudowany mechanizm przesyłania wiadomości niż w
+\begin_inset space ~
+\end_inset
+
+przypadku aplikacji Darkwire.
+ W
+\begin_inset space ~
+\end_inset
+
+aplikacji Signal wprowadzono choćby 
 \begin_inset Quotes pld
 \end_inset
 
@@ -3046,7 +4511,11 @@ key "signal double ratchet"
  — algorytm gwarantujący własność utajnienia przekazywania (forward secrecy).
  Każda wiadomość jest szyfrowana innym kluczem.
  Ponadto, nawet jeśli cracker uzyskałby dostęp do pojedynczej wiadomości
- i jej metadanych, nie może na ich podstawie obliczyć wartości poprzednich
+ i
+\begin_inset space ~
+\end_inset
+
+jej metadanych, nie może na ich podstawie obliczyć wartości poprzednich
  ani przyszłych kluczy.
  Podobny mechanizm oferuje aplikacja Bleep 
 \begin_inset CommandInset citation
@@ -3061,9 +4530,20 @@ key "bleep forward secrecy"
 
 \begin_layout Standard
 Twórcy aplikacji Bleep umożliwiają użytkownikom wysyłanie wiadomości pod
- nieobecność odbiorcy — zapisywana jest ona wtedy w DHT.
- Węzłami w DHT są aplikacje użytkowników, więc dane przechowywane w DHT
- również muszą być zaszyfrowane 
+ nieobecność odbiorcy — zapisywana jest ona wtedy w
+\begin_inset space ~
+\end_inset
+
+DHT.
+ Węzłami w
+\begin_inset space ~
+\end_inset
+
+DHT są aplikacje użytkowników, więc dane przechowywane w
+\begin_inset space ~
+\end_inset
+
+DHT również muszą być zaszyfrowane 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bleep forward secrecy offline"
@@ -3071,34 +4551,74 @@ key "bleep forward secrecy offline"
 \end_inset
 
 .
- Algorytm jest podobny do przedstawionego powyżej z niewielką zmianą — nowy
- klucz generowany jest nie dla każdej wiadomości, a dla paczki wiadomości
- nadanych podczas nieobecności odbiorcy.
- Gdy odbiorca staje się dostępny, odczytuje wiadomości i generuje nowy klucz.
+ Algorytm jest podobny do przedstawionego powyżej z
+\begin_inset space ~
+\end_inset
+
+niewielką zmianą — nowy klucz generowany jest nie dla każdej wiadomości,
+ a
+\begin_inset space ~
+\end_inset
+
+dla paczki wiadomości nadanych podczas nieobecności odbiorcy.
+ Gdy odbiorca staje się dostępny, odczytuje wiadomości i
+\begin_inset space ~
+\end_inset
+
+generuje nowy klucz.
  
 \end_layout
 
 \begin_layout Subsection
-Inne pomysły i wnioski
+Inne pomysły i
+\begin_inset space ~
+\end_inset
+
+wnioski
 \end_layout
 
 \begin_layout Standard
-Badanie rozwiązań wdrożonych w powyższych aplikacjach doprowadziło do powstania
- innych koncepcji rozwoju systemu komunikatora prowadzących do zabezpieczenia
- konwersacji między użytkownikami.
+Badanie rozwiązań wdrożonych w
+\begin_inset space ~
+\end_inset
+
+powyższych aplikacjach doprowadziło do powstania innych koncepcji rozwoju
+ systemu komunikatora prowadzących do zabezpieczenia konwersacji między
+ użytkownikami.
  Przedstawione zostały poniżej.
 \end_layout
 
 \begin_layout Itemize
-Przechowywanie kluczy publicznych i prywatnych w bazie danych z dostępem
- poprzez serwer REST.
+Przechowywanie kluczy publicznych i
+\begin_inset space ~
+\end_inset
+
+prywatnych w
+\begin_inset space ~
+\end_inset
+
+bazie danych z
+\begin_inset space ~
+\end_inset
+
+dostępem poprzez serwer REST.
  Klucze mogą być generowane przez serwer lub przez klienta.
  Rozwiązanie nie jest poprawne jeśli zakłada się, że nikt poza nadawcą i
- odbiorcami nie ma prawa odczytać treści wiadomości.
- Jeśli jednak założenie to zostanie złagodzone i oprócz wspomnianych osób
- dostęp do treści wiadomości będzie miał zaufany serwer, rozwiązanie mogłoby
- zostać wprowadzone.
- W tej sytuacji uzyskuje się poziom poufności podobny do aplikacji Messenger
+\begin_inset space ~
+\end_inset
+
+odbiorcami nie ma prawa odczytać treści wiadomości.
+ Jeśli jednak założenie to zostanie złagodzone i
+\begin_inset space ~
+\end_inset
+
+oprócz wspomnianych osób dostęp do treści wiadomości będzie miał zaufany
+ serwer, rozwiązanie mogłoby zostać wprowadzone.
+ W
+\begin_inset space ~
+\end_inset
+
+tej sytuacji uzyskuje się poziom poufności podobny do aplikacji Messenger
  (punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3106,19 +4626,47 @@ reference "sec:messenger"
 
 \end_inset
 
-), w przypadku której wiadomości również mogą być odczytane z bazy danych.
+), w
+\begin_inset space ~
+\end_inset
+
+przypadku której wiadomości również mogą być odczytane z
+\begin_inset space ~
+\end_inset
+
+bazy danych.
  
 \end_layout
 
 \begin_layout Itemize
 Rozwinięciem poprzedniego rozwiązania byłoby wygenerowanie pary kluczy po
- stronie klienta oraz dodatkowe zabezpieczenie ich w taki sposób, by jedynie
- użytkownik miał możliwość ich odczytania po podaniu hasła dostępu.
- Następnie, bezpieczne dane są wysyłane do serwera i tam przechowywane.
+ stronie klienta oraz dodatkowe zabezpieczenie ich w
+\begin_inset space ~
+\end_inset
+
+taki sposób, by jedynie użytkownik miał możliwość ich odczytania po podaniu
+ hasła dostępu.
+ Następnie, bezpieczne dane są wysyłane do serwera i
+\begin_inset space ~
+\end_inset
+
+tam przechowywane.
  Na żądanie klienta, na przykład podczas uruchamiania aplikacji, dane są
- pobierane, użytkownik podaje hasło i uzyskuje dostęp do poufnych informacji.
- Niestety, oba rozwiązania są w dalszym ciągu podatne na kradzież danych
- — odszyfrowane klucze są przetwarzane przez skrypt i mogą zostać przechwycone.
+ pobierane, użytkownik podaje hasło i
+\begin_inset space ~
+\end_inset
+
+uzyskuje dostęp do poufnych informacji.
+ Niestety, oba rozwiązania są w
+\begin_inset space ~
+\end_inset
+
+dalszym ciągu podatne na kradzież danych — odszyfrowane klucze są przetwarzane
+ przez skrypt i
+\begin_inset space ~
+\end_inset
+
+mogą zostać przechwycone.
 \end_layout
 
 \begin_layout Itemize
@@ -3132,12 +4680,37 @@ key "webCrypto API w3,webCrypto experimental "
 
 .
  Konieczne jest jednak założenie, że nie będzie istniała możliwość odczytania
- czy importu kluczy prywatnych z poziomu kodu JavaScript.
+ czy importu kluczy prywatnych z
+\begin_inset space ~
+\end_inset
+
+poziomu kodu JavaScript.
  Wszelkie operacje na poufnych danych (generowanie kluczy, szyfrowanie i
- odszyfrowywanie danych) powinny być wykonywane przez algorytmy zaimplementowane
- bezpośrednio w przeglądarce — dzięki temu unika się przechowywania kluczy
- prywatnych w zmiennych i ich przetwarzania przez kod JavaScript, a to z
- kolei uniemożliwia ich kradzież.
+\begin_inset space ~
+\end_inset
+
+odszyfrowywanie danych) powinny być wykonywane przez algorytmy zaimplementowane
+ bezpośrednio w
+\begin_inset space ~
+\end_inset
+
+przeglądarce — dzięki temu unika się przechowywania kluczy prywatnych w
+\begin_inset space ~
+\end_inset
+
+zmiennych i
+\begin_inset space ~
+\end_inset
+
+ich przetwarzania przez kod JavaScript, a
+\begin_inset space ~
+\end_inset
+
+to z
+\begin_inset space ~
+\end_inset
+
+kolei uniemożliwia ich kradzież.
  Algorytmy dostępne byłyby przez API.
  
 \end_layout
@@ -3163,15 +4736,29 @@ Poniżej opisano pokrótce kilka idei rozwijających system komunikatora.
 \begin_layout Itemize
 Zaimplementowanie relacji znajomości pomiędzy użytkownikami.
  Dzięki temu osoba tworząca konwersację będzie mogła od razu dopisać do
- niej uczestników wybierając ich z listy swoich znajomych.
- Kwestią do rozstrzygnięcia pozostaje w tej sytuacji wybranie, kto ma przypisać
- uczestnikom wartość user_dht_id (osoba tworząca konwersację czy każdy jej
- członek z osobna).
+ niej uczestników wybierając ich z
+\begin_inset space ~
+\end_inset
+
+listy swoich znajomych.
+ Kwestią do rozstrzygnięcia pozostaje w
+\begin_inset space ~
+\end_inset
+
+tej sytuacji wybranie, kto ma przypisać uczestnikom wartość user_dht_id
+ (osoba tworząca konwersację czy każdy jej członek z
+\begin_inset space ~
+\end_inset
+
+osobna).
 \end_layout
 
 \begin_layout Itemize
-Zagwarantowanie spójności przyczynowej wiadomości i wyświetlanie komunikatów
- dopiero, gdy pobrane zostały wszystkie poprzednie.
+Zagwarantowanie spójności przyczynowej wiadomości i
+\begin_inset space ~
+\end_inset
+
+wyświetlanie komunikatów dopiero, gdy pobrane zostały wszystkie poprzednie.
  Obie własności spowodują bardziej realistyczne wrażenie prowadzenia rozmowy.
  Jeśli użytkownik wysłał wiadomość 
 \begin_inset Flex Emph
@@ -3183,18 +4770,23 @@ b
 
 \end_inset
 
- w odpowiedzi na otrzymaną wiadomość 
-\begin_inset Flex Emph
-status open
-
-\begin_layout Plain Layout
-a
-\end_layout
-
+ w
+\begin_inset space ~
 \end_inset
 
- to pojawią się one w oknie rozmowy w odpowiedniej kolejności — najpierw
- 
+odpowiedzi na otrzymaną wiadomość a
+\begin_inset space ~
+\end_inset
+
+to pojawią się one w
+\begin_inset space ~
+\end_inset
+
+oknie rozmowy w
+\begin_inset space ~
+\end_inset
+
+odpowiedniej kolejności — najpierw 
 \begin_inset Flex Emph
 status open
 
@@ -3216,12 +4808,20 @@ b
 
 .
  Jest to możliwe do osiągnięcia, jeśli wiadomości będą zawierały zegar wektorowy
- z wartościami ostatnio odebranych wiadomości.
+ z
+\begin_inset space ~
+\end_inset
+
+wartościami ostatnio odebranych wiadomości.
 \end_layout
 
 \begin_layout Itemize
 Szyfrowanie wiadomości.
- Sposoby implementacji oraz ich znane wady opisano w punkcie 
+ Sposoby implementacji oraz ich znane wady opisano w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Bezpieczeństwo, krypto, JS"
@@ -3236,29 +4836,63 @@ reference "sec:Bezpieczeństwo, krypto, JS"
 \end_layout
 
 \begin_layout Itemize
-Zagwarantowanie dostarczenia wiadomości w sytuacji, gdy użytkownik uruchamia
- aplikację i żaden z uczestników konwersacji nie jest dostępny.
+Zagwarantowanie dostarczenia wiadomości w
+\begin_inset space ~
+\end_inset
+
+sytuacji, gdy użytkownik uruchamia aplikację i
+\begin_inset space ~
+\end_inset
+
+żaden z
+\begin_inset space ~
+\end_inset
+
+uczestników konwersacji nie jest dostępny.
  Problem ten może zostać rozwiązany na przykład poprzez dodanie serwera
  do konwersacji jako uczestnika.
- Serwer ten wykonywałby taki sam kod programu co inni klienci, z jednym
- wyjątkiem — nie miałby możliwości odszyfrowywania wiadomości ani nadawania
- własnych komunikatów.
+ Serwer ten wykonywałby taki sam kod programu co inni klienci, z
+\begin_inset space ~
+\end_inset
+
+jednym wyjątkiem — nie miałby możliwości odszyfrowywania wiadomości ani
+ nadawania własnych komunikatów.
  Alternatywnym sposobem rozwiązania problemu byłoby powierzenie przekazywania
  wiadomości programom należącym do znajomych użytkowników.
- Oni również nie mieliby możliwości odczytania i modyfikacji treści wiadomości.
+ Oni również nie mieliby możliwości odczytania i
+\begin_inset space ~
+\end_inset
+
+modyfikacji treści wiadomości.
  
 \end_layout
 
 \begin_layout Itemize
-Przechowywanie listy ostatnich wartości info hash w DHT (zamiast pojedynczej
- wartości) oraz przesyłanie jej w strukturze wiadomości (również zamiast
- pojedynczej wartości previousInfoHash).
+Przechowywanie listy ostatnich wartości info hash w
+\begin_inset space ~
+\end_inset
+
+DHT (zamiast pojedynczej wartości) oraz przesyłanie jej w
+\begin_inset space ~
+\end_inset
+
+strukturze wiadomości (również zamiast pojedynczej wartości previousInfoHash).
  Dzięki temu możliwe byłoby równoległe pobieranie wiadomości przez dołączających
  klientów.
  Ponadto, to rozwiązanie pozwala na zmniejszenie skali problemu nadpisywania
- wartości w DHT — jeśli użytkownik wysyła wiadomości w szybkim tempie, to
- możliwe jest nadpisanie wartości info hash w DHT, zanim ktokolwiek zdąży
- ją odczytać.
+ wartości w
+\begin_inset space ~
+\end_inset
+
+DHT — jeśli użytkownik wysyła wiadomości w
+\begin_inset space ~
+\end_inset
+
+szybkim tempie, to możliwe jest nadpisanie wartości info hash w
+\begin_inset space ~
+\end_inset
+
+DHT, zanim ktokolwiek zdąży ją odczytać.
 \end_layout
 
 \begin_layout Standard
@@ -3274,36 +4908,50 @@ zmniejszenie liczby odwołań do DHT - na pewno nie po każdej wiadomości
 \end_layout
 
 \begin_layout Itemize
-twarde spacje po jednoliterowych słowach
-\end_layout
-
-\begin_layout Itemize
-zredagowanie rozdziału
-\end_layout
-
-\begin_layout Itemize
-inne todosy
-\end_layout
-
-\begin_layout Itemize
 infohash - kolizje?
 \end_layout
 
 \begin_layout Itemize
-reużywanie swarmów- w końcu każda wiadomość w konwersacji ma tych samych
- użytkowników - optymalizacja
+reużywanie swarmów- w
+\begin_inset space ~
+\end_inset
+
+końcu każda wiadomość w
+\begin_inset space ~
+\end_inset
+
+konwersacji ma tych samych użytkowników - optymalizacja
 \end_layout
 
 \begin_layout Itemize
 częste usuwanie zbędnych torrentów - strata zasobów, lepszy byłby sposób
- z nadpisywaniem i reużywaniem infohashy, jeśli byłby mechanizm kontroli
- nowych plików w torrencie - nie wyrzucanie starego torrenta i pobieranie
- tego samego, tylko doklejanie do tego co już zostało pobrane nowej treści
+ z
+\begin_inset space ~
+\end_inset
+
+nadpisywaniem i
+\begin_inset space ~
+\end_inset
+
+reużywaniem infohashy, jeśli byłby mechanizm kontroli nowych plików w
+\begin_inset space ~
+\end_inset
+
+torrencie - nie wyrzucanie starego torrenta i
+\begin_inset space ~
+\end_inset
+
+pobieranie tego samego, tylko doklejanie do tego co już zostało pobrane
+ nowej treści
 \end_layout
 
 \begin_layout Itemize
 jednak lepsze by było bezpośrednie wysyłanie wiadomości przez webrtc + zostawian
-ie w DHT dla offlineowych userów
+ie w
+\begin_inset space ~
+\end_inset
+
+DHT dla offlineowych userów
 \end_layout
 
 \begin_layout Itemize
@@ -3322,23 +4970,42 @@ Wyniki testów
 \begin_layout Standard
 Po zakończeniu prac nad systemem komunikatora przeprowadzono serię testów
  mających na celu zbadanie wydajności aplikacji.
- W punkcie 
+ W
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Kryteria"
 
 \end_inset
 
- przedstawiono parametry, w przypadku których zmiana wartości mogłaby wpłynąć
- na wydajność aplikacji.
- W punkcie 
+ przedstawiono parametry, w
+\begin_inset space ~
+\end_inset
+
+przypadku których zmiana wartości mogłaby wpłynąć na wydajność aplikacji.
+ W
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Scenariusze testowe"
 
 \end_inset
 
- przybliżono scenariusze testowe, a w punkcie 
+ przybliżono scenariusze testowe, a
+\begin_inset space ~
+\end_inset
+
+w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:specyfikacja"
@@ -3346,8 +5013,16 @@ reference "sec:specyfikacja"
 \end_inset
 
  opisano specyfikację maszyn testowych.
- W dalszej części znajdują się szczegółowe opisy poszczególnych testów oraz
- wnioski, które z nich wynikają.
+ W
+\begin_inset space ~
+\end_inset
+
+dalszej części znajdują się szczegółowe opisy poszczególnych testów oraz
+ wnioski, które z
+\begin_inset space ~
+\end_inset
+
+nich wynikają.
 \end_layout
 
 \begin_layout Section
@@ -3382,21 +5057,35 @@ liczba uruchomionych klientów (dostępnych użytkowników) oraz liczba klientó
 \end_layout
 
 \begin_layout Enumerate
-liczba wiadomości w konwersacji,
+liczba wiadomości w
+\begin_inset space ~
+\end_inset
+
+konwersacji,
 \end_layout
 
 \begin_layout Enumerate
-liczba wiadomości, która zostaje umieszczona w torrencie kontrolnym,
+liczba wiadomości, która zostaje umieszczona w
+\begin_inset space ~
+\end_inset
+
+torrencie kontrolnym,
 \end_layout
 
 \begin_layout Enumerate
-sposób podłączenia klientów do sieci — czy klienty znajdują się w jednej
- lub różnych podsieciach oraz czy jest to sieć domowa, czy laboratoryjna,
+sposób podłączenia klientów do sieci — czy klienty znajdują się w
+\begin_inset space ~
+\end_inset
+
+jednej lub różnych podsieciach oraz czy jest to sieć domowa, czy laboratoryjna,
 \end_layout
 
 \begin_layout Enumerate
-zbadanie, czy uruchomienie w jednej sieci wielu klientów obsługujących różne
- konwersacje wpływa na wydajność.
+zbadanie, czy uruchomienie w
+\begin_inset space ~
+\end_inset
+
+jednej sieci wielu klientów obsługujących różne konwersacje wpływa na wydajność.
  
 \end_layout
 
@@ -3439,7 +5128,11 @@ m
 
 \end_inset
 
- i czeka na odpowiedzi od wszystkich odbiorców.
+ i
+\begin_inset space ~
+\end_inset
+
+czeka na odpowiedzi od wszystkich odbiorców.
  Odpowiedzi są wysyłane natychmiast po otrzymaniu wiadomości 
 \begin_inset Flex Emph
 status open
@@ -3466,19 +5159,41 @@ m
 \end_inset
 
 .
- Scenariusz ma symulować naturalną rozmowę, w której uczestnicy odpowiadają
- na otrzymaną wiadomość dopiero, gdy ją otrzymają.
- Pomiar czasu zaczyna się w momencie wysłania wiadomości przez nadawcę 
+ Scenariusz ma symulować naturalną rozmowę, w
+\begin_inset space ~
+\end_inset
+
+której uczestnicy odpowiadają na otrzymaną wiadomość dopiero, gdy ją otrzymają.
+ Pomiar czasu zaczyna się w
+\begin_inset space ~
+\end_inset
+
+momencie wysłania wiadomości przez nadawcę 
 \begin_inset Formula $U_{N}$
 \end_inset
 
-, a kończy się w momencie otrzymania przez nadawcę 
+, a
+\begin_inset space ~
+\end_inset
+
+kończy się w
+\begin_inset space ~
+\end_inset
+
+momencie otrzymania przez nadawcę 
 \begin_inset Formula $U_{N}$
 \end_inset
 
- odpowiedzi od danego odbiorcy (dla każdego odbiorcy z osobna).
- Czas przesłania wiadomości w jedną stronę jest (uśredniając) połową uzyskanego
- wyniku.
+ odpowiedzi od danego odbiorcy (dla każdego odbiorcy z
+\begin_inset space ~
+\end_inset
+
+osobna).
+ Czas przesłania wiadomości w
+\begin_inset space ~
+\end_inset
+
+jedną stronę jest (uśredniając) połową uzyskanego wyniku.
  Nadawca 
 \begin_inset Formula $U_{N}$
 \end_inset
@@ -3493,7 +5208,11 @@ Jeden klient dołącza do konwersacji.
 \end_layout
 
 \begin_layout Section
-Specyfikacja komputerów i środowiska testowe
+Specyfikacja komputerów i
+\begin_inset space ~
+\end_inset
+
+środowiska testowe
 \end_layout
 
 \begin_layout Standard
@@ -3507,22 +5226,65 @@ name "sec:specyfikacja"
 \end_layout
 
 \begin_layout Standard
-Część testów przeprowadzono w laboratorium wyposażonym w komputery stacjonarne
- posiadające adresy IP w tej samej podsieci — komputer tego typu będzie
- dalej oznaczony jako K1.
- Dodatkowo, w powyższych testach wykorzystano komputer podłączony do odrębnej
- podsieci (nazwany dalej K2).
+Część testów przeprowadzono w
+\begin_inset space ~
+\end_inset
+
+laboratorium wyposażonym w
+\begin_inset space ~
+\end_inset
+
+komputery stacjonarne posiadające adresy IP w
+\begin_inset space ~
+\end_inset
+
+tej samej podsieci — komputer tego typu będzie dalej oznaczony jako K1.
+ Dodatkowo, w
+\begin_inset space ~
+\end_inset
+
+powyższych testach wykorzystano komputer podłączony do odrębnej podsieci
+ (nazwany dalej K2).
  Druga część testów została przeprowadzona na komputerach podłączonych do
- jednej sieci domowej — w tych testach wykorzystano komputer K3 oraz komputer
- K4.
- Podział testów na części przeprowadzane w różnych środowiskach pozwolił
- na zwiększenie różnorodności konfiguracji oraz zaobserwowanie zjawisk,
- które występują w jednym z środowisk, a nie zachodzą w drugim — szczegóły
- zostały opisane w dalszej części rozdziału.
+ jednej sieci domowej — w
+\begin_inset space ~
+\end_inset
+
+tych testach wykorzystano komputer K3 oraz komputer K4.
+ Podział testów na części przeprowadzane w
+\begin_inset space ~
+\end_inset
+
+różnych środowiskach pozwolił na zwiększenie różnorodności konfiguracji
+ oraz zaobserwowanie zjawisk, które występują w
+\begin_inset space ~
+\end_inset
+
+jednym z
+\begin_inset space ~
+\end_inset
+
+środowisk, a
+\begin_inset space ~
+\end_inset
+
+nie zachodzą w
+\begin_inset space ~
+\end_inset
+
+drugim — szczegóły zostały opisane w
+\begin_inset space ~
+\end_inset
+
+dalszej części rozdziału.
 \end_layout
 
 \begin_layout Standard
-Specyfikacja komputerów K1 w laboratorium jest następująca:
+Specyfikacja komputerów K1 w
+\begin_inset space ~
+\end_inset
+
+laboratorium jest następująca:
 \end_layout
 
 \begin_layout Itemize
@@ -3542,8 +5304,19 @@ przeglądarka Google Chrome (wersja 56),
 \end_layout
 
 \begin_layout Itemize
-prędkość łącza w laboratorium: pobieranie 400 Mbps, wysyłanie 200 Mbps (komputer
-y w laboratorium posiadają adresy IP w tej samej podsieci).
+prędkość łącza w
+\begin_inset space ~
+\end_inset
+
+laboratorium: pobieranie 400 Mbps, wysyłanie 200 Mbps (komputery w
+\begin_inset space ~
+\end_inset
+
+laboratorium posiadają adresy IP w
+\begin_inset space ~
+\end_inset
+
+tej samej podsieci).
  
 \end_layout
 
@@ -3566,15 +5339,26 @@ system operacyjny Linux (Ubuntu 16.04),
 \begin_layout Itemize
 przeglądarka Google Chrome (wersja 59) + przeglądarka Opera (wersja 45)
  (symulowanie 2 klientów na jednej maszynie, jeśli testy odbywały się w
- sieci domowej)
+\begin_inset space ~
+\end_inset
+
+sieci domowej)
 \end_layout
 
 \begin_layout Itemize
-prędkość łącza w laboratorium (K2): pobieranie 400 Mbps, wysyłanie 200 Mbps,
+prędkość łącza w
+\begin_inset space ~
+\end_inset
+
+laboratorium (K2): pobieranie 400 Mbps, wysyłanie 200 Mbps,
 \end_layout
 
 \begin_layout Itemize
-prędkość łącza w sieci domowej (K3): pobieranie 6 Mbps, wysyłanie 1 Mbps.
+prędkość łącza w
+\begin_inset space ~
+\end_inset
+
+sieci domowej (K3): pobieranie 6 Mbps, wysyłanie 1 Mbps.
 \end_layout
 
 \begin_layout Standard
@@ -3599,7 +5383,11 @@ przeglądarka Google Chrome (wersja 59) + przeglądarka Opera (wersja 45)
 \end_layout
 
 \begin_layout Itemize
-prędkość łącza w sieci domowej: pobieranie 6 Mbps, wysyłanie 1 Mbps.
+prędkość łącza w
+\begin_inset space ~
+\end_inset
+
+sieci domowej: pobieranie 6 Mbps, wysyłanie 1 Mbps.
 \end_layout
 
 \begin_layout Section
@@ -3619,15 +5407,41 @@ name "sec:Wysłanie pojed wiad"
 \begin_layout Standard
 Celem testu było sprawdzenie czasu przesłania pojedynczej wiadomości od
  nadawcy do odbiorcy (scenariusz 1).
- Wynik stanowi punkt odniesienia dla kolejnych testów, w których wysyłana
- jest większa liczba wiadomości w różnych konfiguracjach testowanych kryteriów.
+ Wynik stanowi punkt odniesienia dla kolejnych testów, w
+\begin_inset space ~
+\end_inset
+
+których wysyłana jest większa liczba wiadomości w
+\begin_inset space ~
+\end_inset
+
+różnych konfiguracjach testowanych kryteriów.
  
 \end_layout
 
 \begin_layout Standard
-Pomiar czasu rozpoczynał się w momencie nadania wiadomości, a kończył dla
- każdego odbiorcy z osobna w momencie odebrania przez niego wiadomości.
- W ramach pojedynczego testu pomiar został uśredniony.
+Pomiar czasu rozpoczynał się w
+\begin_inset space ~
+\end_inset
+
+momencie nadania wiadomości, a
+\begin_inset space ~
+\end_inset
+
+kończył dla każdego odbiorcy z
+\begin_inset space ~
+\end_inset
+
+osobna w
+\begin_inset space ~
+\end_inset
+
+momencie odebrania przez niego wiadomości.
+ W
+\begin_inset space ~
+\end_inset
+
+ramach pojedynczego testu pomiar został uśredniony.
  Otrzymane czasy zostały zaprezentowane na wykresie 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3636,8 +5450,19 @@ reference "fig:Czas-odebrania-pojedynczej"
 \end_inset
 
 .
- Na osi poziomej oznaczono liczbę klientów uruchomionych w trakcie testu
- — jeden z nich jest nadawcą, a pozostali odbiorcami.
+ Na osi poziomej oznaczono liczbę klientów uruchomionych w
+\begin_inset space ~
+\end_inset
+
+trakcie testu — jeden z
+\begin_inset space ~
+\end_inset
+
+nich jest nadawcą, a
+\begin_inset space ~
+\end_inset
+
+pozostali odbiorcami.
  Na osi pionowej znajduje się średni czas odebrania wiadomości przez poszczególn
 ych odbiorców.
  
@@ -3663,7 +5488,15 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Czas odebrania pojedynczej wiadomości w zależności o liczby klientów
+Czas odebrania pojedynczej wiadomości w
+\begin_inset space ~
+\end_inset
+
+zależności o
+\begin_inset space ~
+\end_inset
+
+liczby klientów
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Czas-odebrania-pojedynczej"
@@ -3684,17 +5517,33 @@ name "fig:Czas-odebrania-pojedynczej"
 \end_layout
 
 \begin_layout Standard
-Najniższy czas dostarczenia notowany jest w sieci domowej (K3 <> K4).
- Na komputerach K3 i K4 były uruchomione 1 lub 2 klienty (w osobnych oknach
- przeglądarki) — stąd możliwość przetestowania od 2 do 4 klientów.
+Najniższy czas dostarczenia notowany jest w
+\begin_inset space ~
+\end_inset
+
+sieci domowej (K3 <> K4).
+ Na komputerach K3 i
+\begin_inset space ~
+\end_inset
+
+K4 były uruchomione 1 lub 2 klienty (w osobnych oknach przeglądarki) — stąd
+ możliwość przetestowania od 2 do 4 klientów.
  Średni czas wynosi od około 2 sekund dla 2 klientów do 7 sekund dla 4 klientów,
  jednakże szczegółowe pomiary wykazały znaczne odchyły od średniej — minimalny
  czas wyniósł ok.
  0,5 sekundy, podczas gdy maksymalny mógł wynieść nawet 30 sekund.
  Na czas przesyłu ma wpływ między innymi częstotliwość sprawdzania wartości
- info hash w DHT — domyślnie są to 2 sekundy.
+ info hash w
+\begin_inset space ~
+\end_inset
+
+DHT — domyślnie są to 2 sekundy.
  Jeśli odbiorca sprawdzi wartość tuż przed ustawieniem nowej wartości przez
- nadawcę to dowie się o nowej wiadomości dopiero przy kolejnym sprawdzeniu.
+ nadawcę to dowie się o
+\begin_inset space ~
+\end_inset
+
+nowej wiadomości dopiero przy kolejnym sprawdzeniu.
  
 \end_layout
 
@@ -3707,9 +5556,16 @@ Najniższy czas dostarczenia notowany jest w sieci domowej (K3 <> K4).
 \end_layout
 
 \begin_layout Standard
-Najdłużej wiadomość była przesyłana między komputerami K2 i K1 (K2 <> K1).
- Minimalny czas odebrania wiadomości wyniósł około 50 sekund, a średni był
- niewiele wyższy — ok 51 sekund.
+Najdłużej wiadomość była przesyłana między komputerami K2 i
+\begin_inset space ~
+\end_inset
+
+K1 (K2 <> K1).
+ Minimalny czas odebrania wiadomości wyniósł około 50 sekund, a
+\begin_inset space ~
+\end_inset
+
+średni był niewiele wyższy — ok 51 sekund.
  Na bazie logów aplikacji zaobserwowano, że komunikaty charakterystyczne
  dla protokołu BitTorrent (punkt 
 \begin_inset CommandInset ref
@@ -3725,8 +5581,16 @@ reference "subsec:jak-komunikuja"
 
 \begin_layout Standard
 Wyniki testu wskazują na jeszcze jedną zależność — przesłanie wiadomości
- w sieci lokalnej (czy to laboratoryjnej, czy domowej) trwa krócej niż przesłani
-e pomiędzy komputerami znajdującymi się w różnych podsieciach.
+ w
+\begin_inset space ~
+\end_inset
+
+sieci lokalnej (czy to laboratoryjnej, czy domowej) trwa krócej niż przesłanie
+ pomiędzy komputerami znajdującymi się w
+\begin_inset space ~
+\end_inset
+
+różnych podsieciach.
  
 \end_layout
 
@@ -3735,26 +5599,48 @@ Wpływ rozmiaru wiadomości
 \end_layout
 
 \begin_layout Standard
-Nie zaobserwowano istotnego wzrostu czasu przesyłania wiadomości w zależności
- od długości tekstu będącego treścią komunikatu.
+Nie zaobserwowano istotnego wzrostu czasu przesyłania wiadomości w
+\begin_inset space ~
+\end_inset
+
+zależności od długości tekstu będącego treścią komunikatu.
  
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-TODO o tym wspomnieć? Pytanie do Ani
+TODO o
+\begin_inset space ~
+\end_inset
+
+tym wspomnieć? Pytanie do Ani
 \end_layout
 
 \begin_layout Itemize
 jesli to nawet bardzo długi tekst to nie ma wpływu (no może ma na input),
- a jak to jest plik no to zależy od szybkości łącza i pewnie ten choke
+ a
+\begin_inset space ~
+\end_inset
+
+jak to jest plik no to zależy od szybkości łącza i
+\begin_inset space ~
+\end_inset
+
+pewnie ten choke
 \end_layout
 
 \begin_layout Itemize
 W trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania
  plików (na przykład obrazów lub filmów).
- Ta funkcjonalność nie znalazła się w końcowej wersji systemu, jednak z
- testów przeprowadzonych 
+ Ta funkcjonalność nie znalazła się w
+\begin_inset space ~
+\end_inset
+
+końcowej wersji systemu, jednak z
+\begin_inset space ~
+\end_inset
+
+testów przeprowadzonych 
 \end_layout
 
 \end_inset
@@ -3763,12 +5649,23 @@ W trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania
 \end_layout
 
 \begin_layout Section
-Wysyłanie i oczekiwanie na odpowiedź
+Wysyłanie i
+\begin_inset space ~
+\end_inset
+
+oczekiwanie na odpowiedź
 \end_layout
 
 \begin_layout Standard
-Bardziej rozbudowanym testem, w porównaniu do przedstawionego w punkcie
- 
+Bardziej rozbudowanym testem, w
+\begin_inset space ~
+\end_inset
+
+porównaniu do przedstawionego w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Wysłanie pojed wiad"
@@ -3776,10 +5673,21 @@ reference "sec:Wysłanie pojed wiad"
 \end_inset
 
 , jest scenariusz 2.
- Polega on na wysłaniu wiadomości i czekaniu na odpowiedzi od wszystkich
- uczestników rozmowy lub wybranej podgrupy.
- W drugim przypadku pozostałe klienty mają za zadanie jedynie bierne odbieranie
- i przekazywanie komunikatów.
+ Polega on na wysłaniu wiadomości i
+\begin_inset space ~
+\end_inset
+
+czekaniu na odpowiedzi od wszystkich uczestników rozmowy lub wybranej podgrupy.
+ W
+\begin_inset space ~
+\end_inset
+
+drugim przypadku pozostałe klienty mają za zadanie jedynie bierne odbieranie
+ i
+\begin_inset space ~
+\end_inset
+
+przekazywanie komunikatów.
  
 \end_layout
 
@@ -3791,7 +5699,11 @@ reference "fig:Uśredniony-czas-przesłania"
 
 \end_inset
 
- przedstawia wyniki 4 powtórzeń testu w sieci domowej.
+ przedstawia wyniki 4 powtórzeń testu w
+\begin_inset space ~
+\end_inset
+
+sieci domowej.
  Wykres 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3800,21 +5712,59 @@ reference "fig:Uśredniony-czas-przesłania-1"
 \end_inset
 
  prezentuje uśrednione wyniki wspomnianych testów.
- Testy przeprowadzono na 2 komputerach K3 i K4 (w sieci domowej).
- W testach brały udział 2 klienty — nadawca (wysyła wiadomość i czeka na
- odpowiedź) oraz odbiorca (czeka na wiadomość i natychmiast na nią odpowiada).
+ Testy przeprowadzono na 2 komputerach K3 i
+\begin_inset space ~
+\end_inset
+
+K4 (w sieci domowej).
+ W
+\begin_inset space ~
+\end_inset
+
+testach brały udział 2 klienty — nadawca (wysyła wiadomość i
+\begin_inset space ~
+\end_inset
+
+czeka na odpowiedź) oraz odbiorca (czeka na wiadomość i
+\begin_inset space ~
+\end_inset
+
+natychmiast na nią odpowiada).
  Na osi poziomej zaznaczono liczbę wiadomości wysłanych przez nadawcę w
- ramach testu, a na osi pionowej czas przesłania pojedynczego komunikatu
- pomiędzy komputerami.
- Pomiar czasu w scenariuszu 2 obejmuje przesłanie wszystkich wiadomości
- w danej iteracji (wiadomość od nadawcy i wszystkie odpowiedzi), ale czas
- przedstawiony na wykresie jest średnią czasów przesyłu — w tym wypadku
- średnią czasów przesłania 2 wiadomości.
+\begin_inset space ~
+\end_inset
+
+ramach testu, a
+\begin_inset space ~
+\end_inset
+
+na osi pionowej czas przesłania pojedynczego komunikatu pomiędzy komputerami.
+ Pomiar czasu w
+\begin_inset space ~
+\end_inset
+
+scenariuszu 2 obejmuje przesłanie wszystkich wiadomości w
+\begin_inset space ~
+\end_inset
+
+danej iteracji (wiadomość od nadawcy i
+\begin_inset space ~
+\end_inset
+
+wszystkie odpowiedzi), ale czas przedstawiony na wykresie jest średnią czasów
+ przesyłu — w
+\begin_inset space ~
+\end_inset
+
+tym wypadku średnią czasów przesłania 2 wiadomości.
 \end_layout
 
 \begin_layout Standard
-Zachowano domyślną liczbę wiadomości umieszczanych w torrencie kontrolnym
- — 5.
+Zachowano domyślną liczbę wiadomości umieszczanych w
+\begin_inset space ~
+\end_inset
+
+torrencie kontrolnym — 5.
  
 \end_layout
 
@@ -3822,7 +5772,7 @@ Zachowano domyślną liczbę wiadomości umieszczanych w torrencie kontrolnym
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3838,7 +5788,11 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Czas przesłania wiadomości w sieci domowej
+Czas przesłania wiadomości w
+\begin_inset space ~
+\end_inset
+
+sieci domowej
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Uśredniony-czas-przesłania"
@@ -3866,7 +5820,7 @@ name "fig:Uśredniony-czas-przesłania"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -3882,7 +5836,11 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Uśredniony czas przesłania wiadomości w sieci domowej
+Uśredniony czas przesłania wiadomości w
+\begin_inset space ~
+\end_inset
+
+sieci domowej
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Uśredniony-czas-przesłania-1"
@@ -3908,14 +5866,22 @@ name "fig:Uśredniony-czas-przesłania-1"
 
 \begin_layout Standard
 Czas przesłania pojedynczej wiadomości wyniósł minimalnie około 2 sekund
- (czyli podobnie jak w przypadku punktu 
+ (czyli podobnie jak w
+\begin_inset space ~
+\end_inset
+
+przypadku punktu 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Wysłanie pojed wiad"
 
 \end_inset
 
-), a maksymalnie sięga nawet 90 sekund.
+), a
+\begin_inset space ~
+\end_inset
+
+maksymalnie sięga nawet 90 sekund.
 \end_layout
 
 \begin_layout Standard
@@ -3928,16 +5894,33 @@ reference "fig:Uśredniony-czas-przesłania"
 \end_inset
 
 .
- Zdarza się, że w danej iteracji w jednym teście czas jest znacznie gorszy
- niż w przypadku pozostałych testów.
+ Zdarza się, że w
+\begin_inset space ~
+\end_inset
+
+danej iteracji w
+\begin_inset space ~
+\end_inset
+
+jednym teście czas jest znacznie gorszy niż w
+\begin_inset space ~
+\end_inset
+
+przypadku pozostałych testów.
  Co więcej, spadki wydajności wydają się być niezależne od zastosowanego
- algorytmu zmniejszania liczby wiadomości — nie występują jedynie w momentach,
- kiedy liczba torrentów jest najwyższa, czyli tuż przed uruchomieniem algorytmu
- zmniejszającego ich liczbę.
+ algorytmu zmniejszania liczby wiadomości — nie występują jedynie w
+\begin_inset space ~
+\end_inset
+
+momentach, kiedy liczba torrentów jest najwyższa, czyli tuż przed uruchomieniem
+ algorytmu zmniejszającego ich liczbę.
  Można również zaobserwować niespodziewane pogorszenie wydajności tuż po
  zmniejszeniu liczby torrentów (na przykład dla 16 wiadomości).
- Niemniej jednak, ten algorytm jest niezbędny, co zostanie pokazane w punkcie
- 
+ Niemniej jednak, ten algorytm jest niezbędny, co zostanie pokazane w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Wpływ alg"
@@ -3951,10 +5934,32 @@ reference "sec:Wpływ alg"
 \begin_layout Standard
 Nieregularność można po części wytłumaczyć relatywnie niską prędkością łącza
  sieciowego.
- W trakcie testów zaobserwowano błędy połączeń z trackerem lub DHT — przekroczen
-ie maksymalnego czasu nawiązywania połączenia.
- Zbadano zatem liczbę pakietów wysyłanych i odbieranych przez komputery
- K3 i K4 w ciągu minuty w następujących sytuacjach: 
+ W
+\begin_inset space ~
+\end_inset
+
+trakcie testów zaobserwowano błędy połączeń z
+\begin_inset space ~
+\end_inset
+
+trackerem lub DHT — przekroczenie maksymalnego czasu nawiązywania połączenia.
+ Zbadano zatem liczbę pakietów wysyłanych i
+\begin_inset space ~
+\end_inset
+
+odbieranych przez komputery K3 i
+\begin_inset space ~
+\end_inset
+
+K4 w
+\begin_inset space ~
+\end_inset
+
+ciągu minuty w
+\begin_inset space ~
+\end_inset
+
+następujących sytuacjach: 
 \end_layout
 
 \begin_layout Itemize
@@ -3970,7 +5975,11 @@ Klienty przesyłają zmienną liczbę torrentów (od 1 do 20).
 \end_layout
 
 \begin_layout Standard
-Wyniki przedstawione zostały w tabeli 
+Wyniki przedstawione zostały w
+\begin_inset space ~
+\end_inset
+
+tabeli 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Statystyka-połączeń"
@@ -3985,7 +5994,11 @@ reference "fig:Statystyka-połączeń"
 \end_inset
 
 .
- Oprócz liczby połączeń w ciągu minuty (
+ Oprócz liczby połączeń w
+\begin_inset space ~
+\end_inset
+
+ciągu minuty (
 \begin_inset Quotes pld
 \end_inset
 
@@ -3993,8 +6006,15 @@ reference "fig:Statystyka-połączeń"
 \begin_inset Quotes prd
 \end_inset
 
-), w tabeli przedstawiono procentowy i ilościowy udział pakietów protokołu
- STUN.
+), w
+\begin_inset space ~
+\end_inset
+
+tabeli przedstawiono procentowy i
+\begin_inset space ~
+\end_inset
+
+ilościowy udział pakietów protokołu STUN.
  
 \end_layout
 
@@ -4426,35 +6446,55 @@ name "fig:Statystyka-połączeń"
 \end_layout
 
 \begin_layout Standard
-Jak wynika z przeprowadzonego doświadczenia, zdecydowaną większość wysłanych
- i odebranych pakietów stanowią pakiety protokołu STUN, który odpowiedzialny
- jest odszukiwanie adresów IP komputerów znajdujących się w sieciach stosujących
- translację adresów.
+Jak wynika z
+\begin_inset space ~
+\end_inset
+
+przeprowadzonego doświadczenia, zdecydowaną większość wysłanych i
+\begin_inset space ~
+\end_inset
+
+odebranych pakietów stanowią pakiety protokołu STUN, który odpowiedzialny
+ jest odszukiwanie adresów IP komputerów znajdujących się w
+\begin_inset space ~
+\end_inset
+
+sieciach stosujących translację adresów.
  Łączna liczba pakietów jest znacznie wyższa niż podczas próby kontrolnej
- z wyłączonymi klientami lub z klientami w stanie bezczynności.
+ z
+\begin_inset space ~
+\end_inset
+
+wyłączonymi klientami lub z
+\begin_inset space ~
+\end_inset
+
+klientami w
+\begin_inset space ~
+\end_inset
+
+stanie bezczynności.
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+W sieci laboratoryjnej, pomiędzy komputerami K1, czas przesyłu wiadomości
+ był bardziej stabilny.
+ Dla 2-4 klientów czas przesłania wiadomości pozostawał stabilny (nieco
+ ponad 50 sekund) niezależnie od liczby wysłanych wiadomości.
+ Dla większej liczby klientów zaobserwowano spadki wydajności.
+ Ta kwestia została poruszona w
+\begin_inset space ~
+\end_inset
 
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-w 
-\series bold
-labie
-\series default
- wiadomości zwykle szły tyle samo czasu w obie strony a w domu zdarza się
- że w jedną szybko a odpowiedź wolno (dać wykresy z labu)
-\end_layout
+kolejnym punkcie (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Wpływ alg"
 
 \end_inset
 
-
+).
 \end_layout
 
 \begin_layout Section
@@ -4473,34 +6513,67 @@ name "sec:Wpływ alg"
 
 \begin_layout Standard
 W celu sprawdzenia, czy algorytm zmniejszający liczbę torrentów (algorytm
- ZLT, opisany w punkcie 
+ ZLT, opisany w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Wysyłanie wiadomości"
 
 \end_inset
 
-) jest niezbędny i spełnia swoją rolę, wykonano następujące testy:
+) jest niezbędny i
+\begin_inset space ~
+\end_inset
+
+spełnia swoją rolę, wykonano następujące testy:
 \end_layout
 
 \begin_layout Enumerate
 Zbadanie maksymalnej liczby torrentów, które jednocześnie może obsłużyć
  klient.
  Dokonano tego przy pomocy testu polegającego na wysyłaniu wiadomości i
- odbieraniu odpowiedzi (scenariusz 2) z wyłączonym algorytmem ZLT — każda
- wiadomość stawała się nowym torrentem.
- Zmieniano przy tym liczbę klientów uczestniczących w rozmowie (aktywnie
- i biernie).
+\begin_inset space ~
+\end_inset
+
+odbieraniu odpowiedzi (scenariusz 2) z
+\begin_inset space ~
+\end_inset
+
+wyłączonym algorytmem ZLT — każda wiadomość stawała się nowym torrentem.
+ Zmieniano przy tym liczbę klientów uczestniczących w
+\begin_inset space ~
+\end_inset
+
+rozmowie (aktywnie i
+\begin_inset space ~
+\end_inset
+
+biernie).
 \end_layout
 
 \begin_layout Enumerate
-Zbadanie scenariusza 2 z włączonym algorytmem ZLT.
+Zbadanie scenariusza 2 z
+\begin_inset space ~
+\end_inset
+
+włączonym algorytmem ZLT.
  
 \end_layout
 
 \begin_layout Standard
-Testy przeprowadzono w laboratorium.
- W pierwszym teście uczestniczyły jedynie komputery K1 ze względu na potrzebę
+Testy przeprowadzono w
+\begin_inset space ~
+\end_inset
+
+laboratorium.
+ W
+\begin_inset space ~
+\end_inset
+
+pierwszym teście uczestniczyły jedynie komputery K1 ze względu na potrzebę
  utrzymania spójnych parametrów maszyn.
  Wynik tego testu zaprezentowano na wykresie 
 \begin_inset CommandInset ref
@@ -4510,9 +6583,15 @@ reference "fig:Zależność-czasu-przesyłu"
 \end_inset
 
 .
- Na osi poziomej zaznaczono liczbę torrentów, którą w danym momencie obsługiwał
- każdy klient, a na osi poziomej znajduje się średni czas przesyłu wiadomości
- pomiędzy klientami.
+ Na osi poziomej zaznaczono liczbę torrentów, którą w
+\begin_inset space ~
+\end_inset
+
+danym momencie obsługiwał każdy klient, a
+\begin_inset space ~
+\end_inset
+
+na osi poziomej znajduje się średni czas przesyłu wiadomości pomiędzy klientami.
  
 \end_layout
 
@@ -4520,7 +6599,7 @@ reference "fig:Zależność-czasu-przesyłu"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -4576,21 +6655,35 @@ reference "sec:Wysłanie pojed wiad"
 ).
  Zaobserwowano niewielki wzrost czasu przesyłu wiadomości wraz ze wzrostem
  liczby torrentów aż do osiągnięcia liczby około 60-70 torrentów.
- W tym momencie na wszystkich maszynach następowało zatrzymanie pracy aplikacji.
+ W
+\begin_inset space ~
+\end_inset
+
+tym momencie na wszystkich maszynach następowało zatrzymanie pracy aplikacji.
  Oznacza to, że aplikacje mogą obsłużyć maksymalnie około 60-70 torrentów
- i nie należy przekraczać tej wartości.
+ i
+\begin_inset space ~
+\end_inset
+
+nie należy przekraczać tej wartości.
  
 \end_layout
 
 \begin_layout Standard
 W trakcie testu badano również wykorzystanie zasobów komputera.
- Podczas normalnej pracy aplikacji zużycie pamięci RAM oscyluje w granicach
- 200-400
+ Podczas normalnej pracy aplikacji zużycie pamięci RAM oscyluje w
 \begin_inset space ~
 \end_inset
 
-MB, a tuż przed błędnym zatrzymaniem pracy aplikacji zużycie wynosiło ponad
- 600
+granicach 200-400
+\begin_inset space ~
+\end_inset
+
+MB, a
+\begin_inset space ~
+\end_inset
+
+tuż przed błędnym zatrzymaniem pracy aplikacji zużycie wynosiło ponad 600
 \begin_inset space ~
 \end_inset
 
@@ -4599,8 +6692,11 @@ MB.
 \end_layout
 
 \begin_layout Standard
-Przeprowadzenie testu 1 potwierdziło słuszność decyzji o zaimplementowaniu
- algorytmu ZLT.
+Przeprowadzenie testu 1 potwierdziło słuszność decyzji o
+\begin_inset space ~
+\end_inset
+
+zaimplementowaniu algorytmu ZLT.
  Dodatkowym potwierdzeniem stały się wyniki drugiego testu.
  Zostały one przedstawione na wykresie 
 \begin_inset CommandInset ref
@@ -4611,22 +6707,37 @@ reference "fig:Działanie-algorytmu-zmniejszając"
 
 .
  Na osi poziomej znajduje się liczba wiadomości wysłanych przez nadawcę,
- a na pionowej — czas przesyłu.
- Zachowano domyślną liczbę wiadomości umieszczanych w torrencie kontrolnym
- — 5.
- W drugim teście uczestniczyły komputery K1 oraz komputer K2, który był
- nadawcą 
+ a
+\begin_inset space ~
+\end_inset
+
+na pionowej — czas przesyłu.
+ Zachowano domyślną liczbę wiadomości umieszczanych w
+\begin_inset space ~
+\end_inset
+
+torrencie kontrolnym — 5.
+ W
+\begin_inset space ~
+\end_inset
+
+drugim teście uczestniczyły komputery K1 oraz komputer K2, który był nadawcą
+ 
 \begin_inset Formula $U_{N}$
 \end_inset
 
- w scenariuszu 2.
+ w
+\begin_inset space ~
+\end_inset
+
+scenariuszu 2.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -4667,8 +6778,19 @@ name "fig:Działanie-algorytmu-zmniejszając"
 \end_layout
 
 \begin_layout Standard
-Minimalny czas przesyłu wiadomości zgadza się z wynikiem uzyskanym w teście
- z punktu 
+Minimalny czas przesyłu wiadomości zgadza się z
+\begin_inset space ~
+\end_inset
+
+wynikiem uzyskanym w
+\begin_inset space ~
+\end_inset
+
+teście z
+\begin_inset space ~
+\end_inset
+
+punktu 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Wysłanie pojed wiad"
@@ -4676,23 +6798,53 @@ reference "sec:Wysłanie pojed wiad"
 \end_inset
 
  — 50 sekund.
- Wyniki na powyższym wykresie zostały uśrednione — w testach brała udział
- różna liczba odbiorców.
- Można zaobserwować spadek wydajności w miarę zbliżania do momentu, w którym
- algorytm zmniejsza liczbę torrentów, po czym następuje wzrost wydajności
+ Wyniki na powyższym wykresie zostały uśrednione — w
+\begin_inset space ~
+\end_inset
+
+testach brała udział różna liczba odbiorców.
+ Można zaobserwować spadek wydajności w
+\begin_inset space ~
+\end_inset
+
+miarę zbliżania do momentu, w
+\begin_inset space ~
+\end_inset
+
+którym algorytm zmniejsza liczbę torrentów, po czym następuje wzrost wydajności
  (zmniejszenie czasu przesyłu).
 \end_layout
 
 \begin_layout Standard
 Należy dodać, że symulowana rozmowa nie odzwierciedla idealnie prawdziwej
- sytuacji, w której użytkownicy mogą nie odpowiedzieć na jakąś wiadomość,
- lub odpowiedzieć poprzez wysłanie większej liczby wiadomości.
- W tej sytuacji algorytm ZLT może zmniejszać liczbę torrentów różnym użytkowniko
-m w różnych momentach i uzyskane czasy przesyłu wiadomości zostaną uśrednione.
+ sytuacji, w
+\begin_inset space ~
+\end_inset
+
+której użytkownicy mogą nie odpowiedzieć na jakąś wiadomość, lub odpowiedzieć
+ poprzez wysłanie większej liczby wiadomości.
+ W
+\begin_inset space ~
+\end_inset
+
+tej sytuacji algorytm ZLT może zmniejszać liczbę torrentów różnym użytkownikom
+ w
+\begin_inset space ~
+\end_inset
+
+różnych momentach i
+\begin_inset space ~
+\end_inset
+
+uzyskane czasy przesyłu wiadomości zostaną uśrednione.
 \end_layout
 
 \begin_layout Section
-Wpływ liczby wiadomości w algorytmie ZLT
+Wpływ liczby wiadomości w
+\begin_inset space ~
+\end_inset
+
+algorytmie ZLT
 \end_layout
 
 \begin_layout Standard
@@ -4707,8 +6859,11 @@ name "sec:wpływ liczby wiad w zlt"
 
 \begin_layout Standard
 Kolejnym kryterium, które wzięto pod uwagę podczas testów była liczba wiadomości
-, które algorytm ZLT umieszcza w torrencie kontrolnym (liczba ta będzie
- dalej nazywana 
+, które algorytm ZLT umieszcza w
+\begin_inset space ~
+\end_inset
+
+torrencie kontrolnym (liczba ta będzie dalej nazywana 
 \begin_inset Flex Strong
 status open
 
@@ -4720,7 +6875,11 @@ zmienną X
 
 ).
  Algorytm okazuje się niezbędny, ponieważ nadmierna liczba torrentów, które
- w danym momencie udostępnia klient, może spowodować jego błędne zatrzymanie.
+ w
+\begin_inset space ~
+\end_inset
+
+danym momencie udostępnia klient, może spowodować jego błędne zatrzymanie.
  
 \end_layout
 
@@ -4728,19 +6887,47 @@ zmienną X
 Im mniejsza wartość zmiennej X, tym częściej algorytm wykonuje zamianę wielu
  torrentów na pojedynczy kontrolny.
  Skrajnym przypadkiem jest umieszczanie każdej nowej wiadomości razem ze
- wszystkimi poprzednimi w nowym torrencie i usunięcie poprzedniego torrenta.
- W takiej sytuacji liczba torrentów utrzymywanych przez każdego klienta
- byłaby równa liczbie uczestników rozmowy.
+ wszystkimi poprzednimi w
+\begin_inset space ~
+\end_inset
+
+nowym torrencie i
+\begin_inset space ~
+\end_inset
+
+usunięcie poprzedniego torrenta.
+ W
+\begin_inset space ~
+\end_inset
+
+takiej sytuacji liczba torrentów utrzymywanych przez każdego klienta byłaby
+ równa liczbie uczestników rozmowy.
  Jednakże, każda operacja zamiany wielu torrentów na pojedynczy wymaga pewnego
- nakładu pracy, a w opisanym przypadku koszt osiągnąłby wartość maksymalną.
+ nakładu pracy, a
+\begin_inset space ~
+\end_inset
+
+w
+\begin_inset space ~
+\end_inset
+
+opisanym przypadku koszt osiągnąłby wartość maksymalną.
  Dodatkowo, istnieje narzut komunikacyjny spowodowany przesyłaniem tych
- samych wiadomości ponownie w połączonym torrencie.
+ samych wiadomości ponownie w
+\begin_inset space ~
+\end_inset
+
+połączonym torrencie.
  
 \end_layout
 
 \begin_layout Standard
 Im wyższa wartość zmiennej X, tym wyższa jest maksymalna liczba torrentów,
- które klient będzie musiał utrzymywać z powodu rzadziej następującej zamiany.
+ które klient będzie musiał utrzymywać z
+\begin_inset space ~
+\end_inset
+
+powodu rzadziej następującej zamiany.
  
 \end_layout
 
@@ -4752,7 +6939,11 @@ reference "fig:Liczba-wysłanych-wiadomości"
 
 \end_inset
 
- i 
+ i
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Liczba-wykonań-algorytmu"
@@ -4763,8 +6954,19 @@ reference "fig:Liczba-wykonań-algorytmu"
  X.
  Oba wykresy bazują na 100 powtórzeniach wysłania wiadomości (100 iteracji).
  Pierwszy wykres przedstawia, ile faktycznie wiadomości wyśle klient — w
- wynikach uwzględniono też powtórzone wiadomości, które zostały wysłane
- wcześniej, a znalazły się ponownie w nowym torrencie kontrolnym.
+\begin_inset space ~
+\end_inset
+
+wynikach uwzględniono też powtórzone wiadomości, które zostały wysłane wcześniej
+, a
+\begin_inset space ~
+\end_inset
+
+znalazły się ponownie w
+\begin_inset space ~
+\end_inset
+
+nowym torrencie kontrolnym.
  Drugi wykres pokazuje: ile razy algorytm ZLT stworzył nowy torrent (
 \begin_inset Quotes pld
 \end_inset
@@ -4773,8 +6975,11 @@ Wykonania
 \begin_inset Quotes prd
 \end_inset
 
-) oraz jaka jest maksymalna liczba torrentów zaobserwowana w trakcie 100
- iteracji.
+) oraz jaka jest maksymalna liczba torrentów zaobserwowana w
+\begin_inset space ~
+\end_inset
+
+trakcie 100 iteracji.
  
 \end_layout
 
@@ -4842,7 +7047,11 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Liczba wykonań algorytmu i maksymalna liczba torrentów
+Liczba wykonań algorytmu i
+\begin_inset space ~
+\end_inset
+
+maksymalna liczba torrentów
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Liczba-wykonań-algorytmu"
@@ -4870,28 +7079,51 @@ name "fig:Liczba-wykonań-algorytmu"
 Z pierwszego wykresu wynika, że optymalna wartość zmiennej X wynosi 6 lub
  8 — dla tych wartości zmiennej X liczba wysłanych wiadomości jest najmniejsza.
  Zbadano również, że wraz ze wzrostem liczby iteracji (więcej niż 100) optimum
- na pierwszym wykresie przesuwa się w stronę wyższej wartości X.
- Należy jednak pamiętać, że w teście 
+ na pierwszym wykresie przesuwa się w
+\begin_inset space ~
+\end_inset
+
+stronę wyższej wartości X.
+ Należy jednak pamiętać, że w
+\begin_inset space ~
+\end_inset
+
+teście 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Wpływ alg"
 
 \end_inset
 
- (a konkretnie próbie z wyłączonym algorytmem ZLT) wykazano, iż maksymalna
- liczba torrentów, jakie może obsłużyć aplikacja wynosi około 60-70.
+ (a konkretnie próbie z
+\begin_inset space ~
+\end_inset
+
+wyłączonym algorytmem ZLT) wykazano, iż maksymalna liczba torrentów, jakie
+ może obsłużyć aplikacja wynosi około 60-70.
  Konieczne jest zatem minimalizowanie liczby jednocześnie uruchomionych
  torrentów.
  
 \end_layout
 
 \begin_layout Standard
-Dodatkowo, każdy użytkownik, który aktywnie udziela się w rozmowie, powoduje
- wzrost liczby uruchomionych torrentów, które wszystkie klienty w konwersacji
- muszą obsłużyć.
+Dodatkowo, każdy użytkownik, który aktywnie udziela się w
+\begin_inset space ~
+\end_inset
+
+rozmowie, powoduje wzrost liczby uruchomionych torrentów, które wszystkie
+ klienty w
+\begin_inset space ~
+\end_inset
+
+konwersacji muszą obsłużyć.
  Przedstawione na wykresie wartości dotyczą pojedynczego użytkownika.
  Gdyby, przykładowo, uczestników było dwóch, maksymalna liczba torrentów
- podwaja się, w przypadku 3 uczestników — potraja, itd.
+ podwaja się, w
+\begin_inset space ~
+\end_inset
+
+przypadku 3 uczestników — potraja, itd.
  Można więc zauważyć, że przyjmując wartość zmiennej X równą 10, możliwe
  jest przekroczenie 60 obsługiwanych torrentów przy 4 uczestnikach rozmowy.
 \end_layout
@@ -4904,17 +7136,31 @@ Pobieranie listy wiadomości
 Ostatni test korzysta ze scenariusza 3.
  Jego celem jest pomiar czasu potrzebnego na pobranie pełnej listy wiadomości
  przez użytkownika dołączającego do trwającej rozmowy.
- Istotnymi kryteriami w tym teście są: liczba wiadomości do pobrania oraz
- zastosowana wartość zmiennej X w algorytmie ZLT.
- Wyniki przeprowadzonych doświadczeń nie odbiegają od oczekiwań i rezultatów
- poprzednich testów.
+ Istotnymi kryteriami w
+\begin_inset space ~
+\end_inset
+
+tym teście są: liczba wiadomości do pobrania oraz zastosowana wartość zmiennej
+ X w
+\begin_inset space ~
+\end_inset
+
+algorytmie ZLT.
+ Wyniki przeprowadzonych doświadczeń nie odbiegają od oczekiwań i
+\begin_inset space ~
+\end_inset
+
+rezultatów poprzednich testów.
  
 \end_layout
 
 \begin_layout Standard
 Przede wszystkim, przy wyłączonym algorytmie ZLT konieczne byłoby pobieranie
- każdej wiadomości z osobna, jedna po drugiej, dlatego całkowity czas pobrania
- wynosiłby 
+ każdej wiadomości z
+\begin_inset space ~
+\end_inset
+
+osobna, jedna po drugiej, dlatego całkowity czas pobrania wynosiłby 
 \begin_inset Formula $n\cdotp V$
 \end_inset
 
@@ -4922,20 +7168,38 @@ Przede wszystkim, przy wyłączonym algorytmie ZLT konieczne byłoby pobieranie
 \begin_inset Formula $n$
 \end_inset
 
- oznacza liczbę wiadomości do pobrania, a 
+ oznacza liczbę wiadomości do pobrania, a
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Formula $V$
 \end_inset
 
- — średni czas przesłania wiadomości w danym środowisku testowym.
+ — średni czas przesłania wiadomości w
+\begin_inset space ~
+\end_inset
+
+danym środowisku testowym.
  Włączenie algorytmu pozwala na znaczne skrócenie całkowitego czasu.
  
 \end_layout
 
 \begin_layout Standard
-Czas ten można by jeszcze przyspieszyć, gdyby w aplikacji zaimplementowany
- został mechanizm przechowywania list ostatnich wartości info hash (zamiast
- pojedynczych wartości) w DHT oraz strukturze komunikatu (wspomniany w punkcie
- 
+Czas ten można by jeszcze przyspieszyć, gdyby w
+\begin_inset space ~
+\end_inset
+
+aplikacji zaimplementowany został mechanizm przechowywania list ostatnich
+ wartości info hash (zamiast pojedynczych wartości) w
+\begin_inset space ~
+\end_inset
+
+DHT oraz strukturze komunikatu (wspomniany w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Dalszy rozwój"
@@ -4943,13 +7207,23 @@ reference "sec:Dalszy rozwój"
 \end_inset
 
 ).
- W takiej sytuacji część wiadomości mogłaby być pobierana równolegle.
+ W
+\begin_inset space ~
+\end_inset
+
+takiej sytuacji część wiadomości mogłaby być pobierana równolegle.
 \end_layout
 
 \begin_layout Standard
-Bez wspomnianego mechanizmu, czasy pobierania wiadomości w sieci laboratoryjnej
- pomiędzy komputerami K1 są dłuższe i zostały przedstawione na wykresie
- 
+Bez wspomnianego mechanizmu, czasy pobierania wiadomości w
+\begin_inset space ~
+\end_inset
+
+sieci laboratoryjnej pomiędzy komputerami K1 są dłuższe i
+\begin_inset space ~
+\end_inset
+
+zostały przedstawione na wykresie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Pobieranie-listy-wiadomości"
@@ -4957,9 +7231,20 @@ reference "fig:Pobieranie-listy-wiadomości"
 \end_inset
 
 .
- Liczba komputerów biorących udział w teście miała marginalne znaczenie.
- Każdy punkt oznacza czas pobrania danej liczby wiadomości w zależności
- od wartości zmiennej X ustawionej w algorytmie ZLT.
+ Liczba komputerów biorących udział w
+\begin_inset space ~
+\end_inset
+
+teście miała marginalne znaczenie.
+ Każdy punkt oznacza czas pobrania danej liczby wiadomości w
+\begin_inset space ~
+\end_inset
+
+zależności od wartości zmiennej X ustawionej w
+\begin_inset space ~
+\end_inset
+
+algorytmie ZLT.
  
 \end_layout
 
@@ -4983,7 +7268,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Pobieranie listy wiadomości o różnej długości
+Pobieranie listy wiadomości o
+\begin_inset space ~
+\end_inset
+
+różnej długości
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Pobieranie-listy-wiadomości"
@@ -5025,23 +7314,56 @@ Wpływ jednoczesnych konwersacji na wydajność
 \end_layout
 
 \begin_layout Standard
-W sieci domowej prędkości pobierania i wysyłania danych są znacznie mniejsze
- niż w sieci laboratoryjnej.
- W celu sprawdzenia, czy większa liczba konwersacji wpływa na pogorszenie
- wydajności, uruchomiono 4 klienty aplikacji na komputerach K3 i K4.
+W sieci domowej prędkości pobierania i
+\begin_inset space ~
+\end_inset
+
+wysyłania danych są znacznie mniejsze niż w
+\begin_inset space ~
+\end_inset
+
+sieci laboratoryjnej.
+ W
+\begin_inset space ~
+\end_inset
+
+celu sprawdzenia, czy większa liczba konwersacji wpływa na pogorszenie wydajnośc
+i, uruchomiono 4 klienty aplikacji na komputerach K3 i
+\begin_inset space ~
+\end_inset
+
+K4.
  Zaobserwowano porównywalne pogorszenie wydajności aplikacji zarówno gdy
  klienty prowadzą wspólną konwersację oraz gdy klienty prowadzą 2 konwersacje
  parami.
- Oznacza to, że w wolniejszych sieciach większy wpływ na wydajność ma liczba
- włączonych klientów niż to, w jaki sposób są one połączone (kto rozmawia
- z kim).
+ Oznacza to, że w
+\begin_inset space ~
+\end_inset
+
+wolniejszych sieciach większy wpływ na wydajność ma liczba włączonych klientów
+ niż to, w
+\begin_inset space ~
+\end_inset
+
+jaki sposób są one połączone (kto rozmawia z
+\begin_inset space ~
+\end_inset
+
+kim).
  
 \end_layout
 
 \begin_layout Standard
 W sieci laboratoryjnej test przeprowadzono na komputerach K1.
- Nie zaobserwowano istotnej różnicy w czasie przesłania wiadomości w zależności
- od tego, czy klienty prowadzą wspólną rozmowę, czy kilka osobnych.
+ Nie zaobserwowano istotnej różnicy w
+\begin_inset space ~
+\end_inset
+
+czasie przesłania wiadomości w
+\begin_inset space ~
+\end_inset
+
+zależności od tego, czy klienty prowadzą wspólną rozmowę, czy kilka osobnych.
  
 \end_layout
 
@@ -5058,7 +7380,15 @@ TODO
 \end_layout
 
 \begin_layout Itemize
-niby działa (proof), ale słabo w porównaniu z rozwiązaniami centralnymi
+niby działa (proof), ale słabo czasowo w
+\begin_inset space ~
+\end_inset
+
+porównaniu z
+\begin_inset space ~
+\end_inset
+
+rozwiązaniami centralnymi
 \end_layout
 
 \begin_layout Itemize
@@ -5066,8 +7396,12 @@ protokół bardziej się
 \begin_inset space ~
 \end_inset
 
-przydaje dla dużych plików, bo inicjalizacja trwa długo, a później można
- wykorzystać te same, zainicjowane łącza do przesyłania danych
+przydaje dla dużych plików, bo inicjalizacja trwa długo, a
+\begin_inset space ~
+\end_inset
+
+później można wykorzystać te same, zainicjowane łącza do przesyłania danych.
+ częste dołączanie i odłączanie się od swarmów nie jest korzystne
 \end_layout
 
 \end_inset
@@ -5241,6 +7575,16 @@ key "webtorrent"
 \end_inset
 
 https://webtorrent.io/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "webrtc"
+
+\end_inset
+
+https://webrtc.org/ (dostęp 27.06.2017)
 \end_layout
 
 \begin_layout Bibliography
