@@ -199,7 +199,17 @@ reference "chap:istniejace rozwiazania"
 
  przedstawiono kilka istniejących komunikatorów.
  Wśród nich można wyróżnić dwie główne architektury — rozproszoną (komunikacja
- bezpośrednia P2P) oraz scentralizowaną (z serwerem pośredniczącym).
+ bezpośrednia P2P
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+peer to peer
+\end_layout
+
+\end_inset
+
+) oraz scentralizowaną (z serwerem pośredniczącym).
  Architektury te, w formie wspomnianego grafu, zostały zaprezentowane na
  rysunku 
 \begin_inset CommandInset ref
@@ -209,8 +219,8 @@ reference "fig:Architektura-rozproszona-(po"
 \end_inset
 
 .
- Strzałki tego samego typu symbolizują konwersację pomiędzy konkretnymi
- grupami użytkowników.
+ Strzałki tego samego typu symbolizują rozmowy pomiędzy konkretnymi użytkownikam
+i lub konwersacje grupowe.
 \end_layout
 
 \begin_layout Standard
@@ -254,8 +264,7 @@ name "fig:Architektura-rozproszona-(po"
 \end_layout
 
 \begin_layout Standard
-Każda z architektur ma swoje zalety oraz wady.
- Przykładowo, pod pojęciem 
+Pod pojęciem 
 \begin_inset Quotes pld
 \end_inset
 
@@ -264,85 +273,94 @@ serwer
 \end_inset
 
  na rysunku kryje się zwykle jedno lub wiele centrów przetwarzania danych,
- których utrzymanie jest niezwykle kosztowne.
- Firma, która ...częstą praktyką jest gromadzenie i analizowanie danych o użytkowni
-kach –> zyski (np reklamy), dzięki temu komunikator jest darmowy, obciążenie
+ których utrzymanie jest niezwykle kosztowne ze względu na duże obciążenie
+ systemu.
+ Częstą praktyką firm jest gromadzenie i analizowanie danych o użytkownikach,
+ aby na tej podstawie generować spersonalizowane reklamy i osiągać zyski.
+ Dzięki temu komunikator jest darmowy dla użytkowników, choć 
+\begin_inset Quotes pld
+\end_inset
+
+płacą
+\begin_inset Quotes prd
+\end_inset
+
+ oni za korzystanie swoją prywatnością.
+ Wyeliminowanie kosztów (serwerów pośredniczących) pozwoliłoby na zrezygnowanie
+ z tej praktyki.
+ W tym celu możliwe jest zastosowanie architektury rozproszonej.
 \end_layout
 
 \begin_layout Standard
-.
+BitTorrent jest jednym z najpopularniejszych protokołów służących do dystrybucji
+ plików w sieci P2P.
+ Automatycznie dzieli udostępniane pliki na części i umożliwia ich pobieranie
+ z wielu źródeł, na przykład od innych użytkowników.
+ Pozwala to na równomierne rozłożenie obciążenia pomiędzy komputery biorące
+ udział w udostępnianiu plików oraz umożliwia dalsze pobieranie nawet gdy
+ pierwotny nadawca pliku jest niedostępny.
+ W niniejszej pracy protokół został użyty do przekazywania wiadomości.
 \end_layout
 
 \begin_layout Standard
-.
+WebTorrent to biblioteka implementująca protokół BitTorrent.
+ Została napisana w języku JavaScript, dzięki czemu możliwe jest użycie
+ jej w aplikacji webowej — pozwala na wymianę plików pomiędzy przeglądarkami.
+ 
 \end_layout
 
 \begin_layout Standard
-.
+Celem pracy jest zaprojektowanie i implementacja systemu komunikatora grupowego
+ w formie aplikacji webowej.
+ Jednocześnie, założeniem jest jak największe wykorzystanie modelu komunikacji
+ P2P w projekcie, aby minimalizować rolę serwerów w systemie.
+ Dzięki temu komunikator powinien generować jak najmniejsze koszty.
+ Do obsługi bezpośredniej komunikacji pomiędzy klientami, a konkretnie do
+ przesyłania wiadomości, wykorzystano wspomnianą bibliotekę WebTorrent.
+ W dalszej kolejności zbadano możliwości poprawy bezpieczeństwa przetwarzanych
+ danych oraz zwiększenia prywatności użytkowników poprzez wprowadzenie szyfrowan
+ia wiadomości.
+ 
 \end_layout
 
 \begin_layout Standard
-.
-\end_layout
+W kolejnych rozdziałach podsumowano wyniki pracy wykonanej w celu wdrożenia
+ opisanego systemu.
+ Rozdział 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:istniejace rozwiazania"
 
-\begin_layout Standard
-BitTorrent, jeden z najpopularniejszych protokołów służących do dystrybucji
- plików
-\end_layout
+\end_inset
 
-\begin_layout Standard
-.
-\end_layout
+ opisuje istniejące obecnie na rynku komunikatory.
+ W rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Koncepcja"
 
-\begin_layout Standard
-.
-\end_layout
+\end_inset
 
-\begin_layout Standard
-.
-\end_layout
+ zawarto teoretyczne podstawy działania protokołu BitTorrent, niezbędne
+ do opracowania koncepcji jego wykorzystania w kontekście komunikatora.
+ Rozdział 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Architektura"
 
-\begin_layout Standard
-WebTorrent
-\end_layout
+\end_inset
 
-\begin_layout Standard
-.
-\end_layout
+ zawiera informacje dotyczące projektu systemu — opis architektury i sposób
+ działania poszczególnych modułów.
+ Znalazły się w nim również wnioski z badań dotyczących szyfrowania wiadomości.
+ Na koniec przeprowadzono i udokumentowano testy wydajnościowe aplikacji
+ — wyniki znajdują się w rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Wyniki testów"
 
-\begin_layout Standard
-.
-\end_layout
+\end_inset
 
-\begin_layout Standard
-.
-\end_layout
-
-\begin_layout Standard
-.
-\end_layout
-
-\begin_layout Standard
-Celem pracy jest zaprojektowanie i implementacja ...
-\end_layout
-
-\begin_layout Standard
-.
-\end_layout
-
-\begin_layout Standard
-.
-\end_layout
-
-\begin_layout Standard
-.
-\end_layout
-
-\begin_layout Standard
-.
-\end_layout
-
-\begin_layout Standard
 .
 \end_layout
 
@@ -1190,6 +1208,16 @@ Koncepcja
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Koncepcja"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 W niniejszym rozdziale opisano technologie i
 \begin_inset space ~
 \end_inset
@@ -2031,6 +2059,16 @@ ta metoda zawiedzie, możliwe jest użycie serwera TURN (Traversal Using Relays
 
 \begin_layout Chapter
 Architektura
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Architektura"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4271,7 +4309,7 @@ metoda POST pozwala na zapisanie wartości dla klucza user_dht_id.
 \end_layout
 
 \begin_layout Section
-Bezpieczeństwo, kryptografia, JavaScript
+Bezpieczeństwo i kryptografia w języku JavaScript
 \end_layout
 
 \begin_layout Standard
@@ -5142,6 +5180,16 @@ reference "chap:istniejace rozwiazania"
 
 \begin_layout Chapter
 Wyniki testów
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Wyniki testów"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
