@@ -385,64 +385,6 @@ zredagowanie całości
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-sensowna motywacja (odciążenie serwerów ale też jaka motywacja dla userów
- końcowych? – brak serwerów to brak kosztów, a więc firma która by je utrzymywał
-a nie musi np gromadzić danych o użytkownikach i sprzedawać reklamodawcom
- — prywatność, szyfrowane wiadomości)
-\end_layout
-
-\begin_layout Itemize
-wspomnienie że BT istnieje i jest do innych celów z powodzeniem wykorzystywany
- — próba sprawdzenia, czy można zastosować ten protokół w
-\begin_inset space ~
-\end_inset
-
-tym celu (do wysyłąnia wiadomości)
-\end_layout
-
-\begin_layout Itemize
-wspomnienie o webtorrent, że to BT dla przeglądarek, a dużo komunikatorów
- ma wersję dla przeglądarki
-\end_layout
-
-\begin_layout Itemize
-cel pracy 
-\end_layout
-
-\begin_layout Itemize
-dopieszczone, precyzyjne, nie za duże, nie za małe, to będzie najczęściej
- czytane 
-\end_layout
-
-\begin_layout Itemize
-wystarczająco "naukowe" podejście? co właściwie ma być przedmiotem mgr -
- program, rozproszenie, użycie webtorrenta, krypto?, bezpieczeństwo, prywatność?
-, proof of conept z
-\begin_inset space ~
-\end_inset
-
-założeniem, że bezpieczenstwo krypto w
-\begin_inset space ~
-\end_inset
-
-przeglądarce wzrośnie?, jakiś podproblem? czy to musi mieć naukowe (a nie
- komercyjne) podłoże? 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
 Istniejące rozwiązania
 \end_layout
@@ -3734,7 +3676,11 @@ punktu 3.
 \begin_inset space ~
 \end_inset
 
-opóźnieniem (domyślnie po 5 sekundach).
+opóźnieniem (domyślnie po 5
+\begin_inset space ~
+\end_inset
+
+sekundach).
 \end_layout
 
 \begin_layout Enumerate
@@ -3968,6 +3914,16 @@ Koncepcja wysyłania i odbierania wiadomości wykorzystująca protokół BitTorr
 
 \begin_layout Subsection
 Udostępnianie starych torrentów
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Udostępnianie starych torr"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4885,9 +4841,9 @@ Rozwinięciem poprzedniego rozwiązania byłoby wygenerowanie pary kluczy po
 \begin_inset space ~
 \end_inset
 
-taki sposób, by jedynie użytkownik miał możliwość ich odczytania po podaniu
+taki sposób, by jedynie użytkownik miał możliwość odczytania ich po podaniu
  hasła dostępu.
- Następnie, bezpieczne dane są wysyłane do serwera i
+ Następnie zaszyfrowane dane są wysyłane do serwera i
 \begin_inset space ~
 \end_inset
 
@@ -4897,7 +4853,7 @@ tam przechowywane.
 \begin_inset space ~
 \end_inset
 
-uzyskuje dostęp do poufnych informacji.
+uzyskuje lokalnie dostęp do poufnych informacji.
  Niestety, oba rozwiązania są w
 \begin_inset space ~
 \end_inset
@@ -4974,7 +4930,11 @@ name "sec:Dalszy rozwój"
 Poniżej opisano pokrótce kilka idei rozwijających system komunikatora.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsection
+Relacja znajomości
+\end_layout
+
+\begin_layout Standard
 Zaimplementowanie relacji znajomości pomiędzy użytkownikami.
  Dzięki temu osoba tworząca konwersację będzie mogła od razu dopisać do
  niej uczestników wybierając ich z
@@ -4994,7 +4954,11 @@ tej sytuacji wybranie, kto ma przypisać uczestnikom wartość user_dht_id
 osobna).
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsection
+Spójność przyczynowa
+\end_layout
+
+\begin_layout Standard
 Zagwarantowanie spójności przyczynowej wiadomości i
 \begin_inset space ~
 \end_inset
@@ -5056,9 +5020,12 @@ b
 wartościami ostatnio odebranych wiadomości.
 \end_layout
 
-\begin_layout Itemize
-Szyfrowanie wiadomości.
- Sposoby implementacji oraz ich znane wady opisano w
+\begin_layout Subsection
+Szyfrowanie wiadomości
+\end_layout
+
+\begin_layout Standard
+Sposoby implementacji oraz ich znane wady opisano w
 \begin_inset space ~
 \end_inset
 
@@ -5076,7 +5043,11 @@ reference "sec:Bezpieczeństwo, krypto, JS"
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsection
+Dostarczanie wiadomości
+\end_layout
+
+\begin_layout Standard
 Zagwarantowanie dostarczenia wiadomości w
 \begin_inset space ~
 \end_inset
@@ -5090,14 +5061,10 @@ sytuacji, gdy użytkownik uruchamia aplikację i
 \end_inset
 
 uczestników konwersacji nie jest dostępny.
- Problem ten może zostać rozwiązany na przykład poprzez dodanie serwera
- do konwersacji jako uczestnika.
- Serwer ten wykonywałby taki sam kod programu co inni klienci, z
-\begin_inset space ~
-\end_inset
-
-jednym wyjątkiem — nie miałby możliwości odszyfrowywania wiadomości ani
- nadawania własnych komunikatów.
+ Problem ten może zostać rozwiązany na przykład poprzez dodanie do konwersacji
+ serwera jako uczestnika.
+ Serwer ten wykonywałby taki sam kod programu jak inni klienci, ale nie
+ miałby możliwości odszyfrowywania wiadomości ani nadawania własnych komunikatów.
  Alternatywnym sposobem rozwiązania problemu byłoby powierzenie przekazywania
  wiadomości programom należącym do znajomych użytkowników.
  Oni również nie mieliby możliwości odczytania i
@@ -5108,7 +5075,21 @@ modyfikacji treści wiadomości.
  
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsection
+Lista info hashy zamiast pojedynczych wartości
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:lista IH zamiast pojedynczych wartości"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Przechowywanie listy ostatnich wartości info hash w
 \begin_inset space ~
 \end_inset
@@ -5136,7 +5117,21 @@ szybkim tempie, to możliwe jest nadpisanie wartości info hash w
 DHT, zanim ktokolwiek zdąży ją odczytać.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsection
+Zmiana zawartości torrenta bez zmiany info hasha
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:zmiana zawartości bez zmiany IH"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Modyfikacja protokołu BitTorrent pozwalająca na ponowne wykorzystanie istniejący
 ch swarmów, ponieważ konieczność dołączania do nowego swarmu dla każdej
  wysłanej wiadomości powoduje duży narzut komunikacyjny wynikający z nawiązywani
@@ -5165,9 +5160,12 @@ key "bep39-bt,bep46-bt"
  kontrolnych.
 \end_layout
 
-\begin_layout Itemize
-Możliwość wysyłania plików (zdjęć, filmów).
- Komunikatory wymienione w rozdziale 
+\begin_layout Subsection
+Wysyłanie plików (zdjęć, filmów)
+\end_layout
+
+\begin_layout Standard
+Komunikatory wymienione w rozdziale 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:istniejace rozwiazania"
@@ -5753,16 +5751,35 @@ sieci domowej (K3 <> K4).
 
 K4 były uruchomione 1 lub 2 klienty (w osobnych oknach przeglądarki) — stąd
  możliwość przetestowania od 2 do 4 klientów.
- Średni czas wynosi od około 2 sekund dla 2 klientów do 7 sekund dla 4 klientów,
- jednakże szczegółowe pomiary wykazały znaczne odchyły od średniej — minimalny
- czas wyniósł ok.
- 0,5 sekundy, podczas gdy maksymalny mógł wynieść nawet 30 sekund.
+ Średni czas wynosi od około 2
+\begin_inset space ~
+\end_inset
+
+sekund dla 2 klientów do 7
+\begin_inset space ~
+\end_inset
+
+sekund dla 4 klientów, jednakże szczegółowe pomiary wykazały znaczne odchyły
+ od średniej — minimalny czas wyniósł ok.
+ 0,5
+\begin_inset space ~
+\end_inset
+
+sekundy, podczas gdy maksymalny mógł wynieść nawet 30
+\begin_inset space ~
+\end_inset
+
+sekund.
  Na czas przesyłu ma wpływ między innymi częstotliwość sprawdzania wartości
  info hash w
 \begin_inset space ~
 \end_inset
 
-DHT — domyślnie są to 2 sekundy.
+DHT — domyślnie są to 2
+\begin_inset space ~
+\end_inset
+
+sekundy.
  Jeśli odbiorca sprawdzi wartość tuż przed ustawieniem nowej wartości przez
  nadawcę to dowie się o
 \begin_inset space ~
@@ -5773,8 +5790,11 @@ nowej wiadomości dopiero przy kolejnym sprawdzeniu.
 \end_layout
 
 \begin_layout Standard
-Średnio 10-11 sekund trwa przesyłanie wiadomości pomiędzy komputerami K1
- (K1 <> K1).
+Średnio 10-11
+\begin_inset space ~
+\end_inset
+
+sekund trwa przesyłanie wiadomości pomiędzy komputerami K1 (K1 <> K1).
  Czas nie ulega zmianie, gdy wiadomość odbierana jest przez większą liczbę
  klientów.
  
@@ -5786,11 +5806,19 @@ Najdłużej wiadomość była przesyłana między komputerami K2 i
 \end_inset
 
 K1 (K2 <> K1).
- Minimalny czas odebrania wiadomości wyniósł około 50 sekund, a
+ Minimalny czas odebrania wiadomości wyniósł około 50
 \begin_inset space ~
 \end_inset
 
-średni był niewiele wyższy — ok 51 sekund.
+sekund, a
+\begin_inset space ~
+\end_inset
+
+średni był niewiele wyższy — około 51
+\begin_inset space ~
+\end_inset
+
+sekund.
  Na bazie logów aplikacji zaobserwowano, że komunikaty charakterystyczne
  dla protokołu BitTorrent (punkt 
 \begin_inset CommandInset ref
@@ -5799,8 +5827,11 @@ reference "subsec:jak-komunikuja"
 
 \end_inset
 
-) pojawiają się dopiero po upłynięciu minimalnego czasu (50 sekund) — następuje
- wtedy nawiązanie połączenia pomiędzy klientami.
+) pojawiają się dopiero po upłynięciu minimalnego czasu (50
+\begin_inset space ~
+\end_inset
+
+sekund) — następuje wtedy nawiązanie połączenia pomiędzy klientami.
  
 \end_layout
 
@@ -6090,8 +6121,11 @@ name "fig:Uśredniony-czas-przesłania-1"
 \end_layout
 
 \begin_layout Standard
-Czas przesłania pojedynczej wiadomości wyniósł minimalnie około 2 sekund
- (czyli podobnie jak w
+Czas przesłania pojedynczej wiadomości wyniósł minimalnie około 2
+\begin_inset space ~
+\end_inset
+
+sekund (czyli podobnie jak w
 \begin_inset space ~
 \end_inset
 
@@ -6106,7 +6140,11 @@ reference "sec:Wysłanie pojed wiad"
 \begin_inset space ~
 \end_inset
 
-maksymalnie sięga nawet 90 sekund.
+maksymalnie sięga nawet 90
+\begin_inset space ~
+\end_inset
+
+sekund.
 \end_layout
 
 \begin_layout Standard
@@ -6706,7 +6744,11 @@ stanie bezczynności.
 W sieci laboratoryjnej, pomiędzy komputerami K1, czas przesyłu wiadomości
  był bardziej stabilny.
  Dla 2-4 klientów czas przesłania wiadomości pozostawał stabilny (nieco
- ponad 50 sekund) niezależnie od liczby wysłanych wiadomości.
+ ponad 50
+\begin_inset space ~
+\end_inset
+
+sekund) niezależnie od liczby wysłanych wiadomości.
  Dla większej liczby klientów zaobserwowano spadki wydajności.
  Ta kwestia została poruszona w
 \begin_inset space ~
@@ -7022,7 +7064,11 @@ reference "sec:Wysłanie pojed wiad"
 
 \end_inset
 
- — 50 sekund.
+ — 50
+\begin_inset space ~
+\end_inset
+
+sekund.
  Wyniki na powyższym wykresie zostały uśrednione — w
 \begin_inset space ~
 \end_inset
@@ -7427,7 +7473,7 @@ DHT oraz strukturze komunikatu (wspomniany w
 punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Dalszy rozwój"
+reference "subsec:lista IH zamiast pojedynczych wartości"
 
 \end_inset
 
@@ -7592,46 +7638,129 @@ zależności od tego, czy klienty prowadzą wspólną rozmowę, czy kilka osobny
  
 \end_layout
 
+\begin_layout Section
+Podsumowanie
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Podsumowanie testów"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Z wyników testów oraz doświadczeń z innymi aplikacjami wykorzystującymi
+ protokół BitTorrent można wywnioskować, że protokół znacznie lepiej sprawdza
+ się w przypadku, gdy klient pobiera lub udostępnia niewielką liczbę torrentów.
+ Jednakże, pojedynczy torrent może i powinien zawierać możliwie dużo plików
+ o jak największym rozmiarze — wtedy jednorazowe, dość kosztowne komunikacyjnie
+ dołączenie do swarmu pozwala na pobranie dużej ilości danych.
+ Należy więc minimalizować liczbę jednocześnie pobieranych torrentów, a
+ maksymalizować rozmiar lub liczbę plików pobieranych w ramach każdego z
+ nich.
+ 
+\end_layout
+
 \begin_layout Chapter
 Wnioski
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+Podsumowując dotychczasowe rozważania i wyniki testów należy przede wszystkim
+ zwrócić uwagę na fakt, że zakładany sposób funkcjonowania systemu okazał
+ się możliwy do osiągnięcia w praktyce po drobnych modyfikacjach.
+ Komunikator umożliwia użytkownikom prowadzenie rozmów, a wiadomości są
+ przekazywane wprost pomiędzy klientami, bez pośrednictwa serwerów.
+ Wprowadzono również algorytm ZLT (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Wysyłanie wiadomości"
 
-\begin_layout Plain Layout
-TODO
+\end_inset
+
+) oraz usuwanie torrentów starszych niż tydzień (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Udostępnianie starych torr"
+
+\end_inset
+
+) — funkcje mające na celu poprawę wydajności aplikacji.
+ 
 \end_layout
 
-\begin_layout Itemize
-niby działa (proof), ale słabo czasowo w
+\begin_layout Standard
+Niestety, testy wykazały, że czasy przesyłu wiadomości należałoby w dalszym
+ ciągu znacząco poprawić.
+ W rozwiązaniach scentralizowanych oraz w ramach ogólnej idei komunikatora
+ dąży się do osiągnięcia czasu przesłania komunikatu bliskiego czasowi rzeczywis
+temu.
+ W przypadku komunikatora będącego przedmiotem niniejszej pracy, czas przesłania
+ komunikatu w najbardziej sprzyjających warunkach wyniósł około 0,5
 \begin_inset space ~
 \end_inset
 
-porównaniu z
-\begin_inset space ~
+sekundy, ale notowano też przypadki wielokrotnie dłuższego oczekiwania na
+ dostarczenie.
+ W punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Dalszy rozwój"
+
 \end_inset
 
-rozwiązaniami centralnymi
+ zaproponowano rozwiązania mogące pozytywnie wpłynąć na wydajność systemu,
+ a których z różnych względów nie umieszczono w projekcie.
+ Zrezygnowano chociażby z wdrożenia szyfrowania wiadomości, a powody szerzej
+ opisano w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Bezpieczeństwo, krypto, JS"
+
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Itemize
-protokół bardziej się
-\begin_inset space ~
+\begin_layout Standard
+Wykorzystanie protokołu BitTorrent umożliwiło skupienie się na implementacji
+ kluczowych funkcji systemu, logiki aplikacji.
+ Skomunikowanie klientów ze sobą było zadaniem protokołu.
+ Dzięki temu rozwój aplikacji był znacznie szybszy, w porównaniu do sytuacji,
+ w której należałoby zadbać również o ten aspekt.
+ Jednakże, w ramach przyszłego rozwoju aplikacji, należałoby wprowadzić
+ pewne zmiany w protokole — mowa o nich w punktach 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:zmiana zawartości bez zmiany IH"
+
 \end_inset
 
-przydaje dla dużych plików, bo inicjalizacja trwa długo, a
-\begin_inset space ~
+ oraz 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Podsumowanie testów"
+
 \end_inset
 
-później można wykorzystać te same, zainicjowane łącza do przesyłania danych.
- częste dołączanie i odłączanie się od swarmów nie jest korzystne
+.
+ 
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+Niniejsza praca magisterska może być traktowana jako źródło cennych informacji
+ związanych z protokołem BitTorrent oraz implementacją systemu rozproszonego
+ komunikatora internetowego.
+ W szczególności, może posłużyć do ponownego przemyślenia pewnych kwestii
+ i wdrożenia kolejnej wersji komunikatora pozbawionego poznanych dotychczas
+ wad.
+ Autor pracy ma nadzieję, że zalety architektury rozproszonej pozwolą na
+ ostateczne opracowanie komunikatora mogącego realnie konkurować z istniejącymi,
+ scentralizowanymi produktami.
 \end_layout
 
 \begin_layout Standard
