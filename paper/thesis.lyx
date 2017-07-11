@@ -2567,6 +2567,16 @@ logowanie
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:uzytkownicy i logowanie"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Encja user posiada następujące atrybuty: 
 \end_layout
 
@@ -5228,9 +5238,16 @@ reference "subsec:AngularJS"
 \end_inset
 
 .
- W powyższym punkcie przedstawiono również system budujący Grunt, menedżer
- pakietów Bower i generator szkieletu projektu Yeoman, które są zwykle wykorzyst
-ywane wraz z frameworkiem.
+ W punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:grunt bower yo"
+
+\end_inset
+
+ przedstawiono system budujący Grunt, menedżer pakietów Bower i generator
+ szkieletu projektu Yeoman, które są zwykle wykorzystywane wraz z frameworkiem
+ AngularJS.
  Oprócz standardowych funkcji dostępnych we wspomnianym frameworku oraz
  w języku JavaScript, skorzystano z funkcji znajdujących się w bibliotece
  Lodash (pkt.
@@ -5317,7 +5334,7 @@ reference "subsec:heroku"
 \end_layout
 
 \begin_layout Subsection
-AngularJS 
+AngularJS
 \end_layout
 
 \begin_layout Standard
@@ -5338,16 +5355,95 @@ key "angularjs"
 
 \end_inset
 
- to projekt rozwijany głównie przez firmę Google.
+ to projekt na licencji MIT, rozwijany głównie przez firmę Google.
  Framework ten umożliwia tworzenie i rozwój aplikacji internetowych typu
  Single Page Application.
  Znacznym ułatwieniem podczas projektowania i testowania aplikacji jest
- zastosowanie wzorca MVC (Model-View-Controller).
+ zastosowanie w AngularJS wzorca projektowego MVC (Model-View-Controller).
+ Pozwala on między innymi na rozdzielenie warstw modelu (danych), widoku
+ (prezentacji) i kontrolera (logiki), co z kolei przyczynia się do zwiększenia
+ uporządkowania projektu.
  
 \end_layout
 
 \begin_layout Standard
-MVC, bower, grunt system budowania, yeoman
+Ponadto, użycie wzorca projektowego wstrzykiwania zależności (dependency
+ injection) daje możliwość zastosowania po stronie klienta serwisów typowych
+ dla aplikacji serwerowych.
+ Jest to istotna cecha, ponieważ system komunikatora w znacznym stopniu
+ polega na współpracy klientów (komunikacja P2P).
+ Rola serwera powinna być w projekcie jak najmniejsza.
+\end_layout
+
+\begin_layout Standard
+Jedną z najważniejszych funkcji AngularJS, redukującą ilość napisanego kodu,
+ jest mechanizm dwukierunkowego wiązania danych (two-way data binding).
+ Umożliwia on dynamiczną zmianę widoku na skutek modyfikacji danych w modelu.
+ Wszelkie operacje na modelu przeprowadzane są w kontrolerze.
+ Ponadto, zmiany widoku również mogą wpływać na model — dlatego wiązanie
+ nazwane jest dwukierunkowym.
+ 
+\end_layout
+
+\begin_layout Subsection
+Grunt, Bower, Yeoman
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:grunt bower yo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Grunt 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "grunt"
+
+\end_inset
+
+ jest narzędziem automatyzującym powtarzalne czynności w trakcie projektowania
+ aplikacji webowej.
+ Narzędzie pozwala między innymi na przygotowanie ostatecznej wersji projektu,
+ gotowej do wdrożenia na serwerze.
+ 
+\end_layout
+
+\begin_layout Standard
+Kolejnym przydatnym narzędziem jest Bower 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bower"
+
+\end_inset
+
+.
+ Jest to menedżer umożliwiający definiowanie, jakie pakiety (biblioteki,
+ moduły itp.) zostaną użyte w roboczej i docelowej wersji projektu.
+ Bower automatycznie wyszukuje i instaluje określoną lub najnowszą wersję
+ każdego uwzględnionego pakietu oraz sprawdza zależności między pakietami.
+\end_layout
+
+\begin_layout Standard
+Yeoman 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "yeoman"
+
+\end_inset
+
+ to generator szkieletu projektu.
+ Jest on używany jednorazowo na początku pracy i pozwala na stworzenie pierwszej
+ wersji działającego systemu — podstawowej struktury katalogów projektu
+ oraz niezbędnych plików.
+ Dzięki temu programista może skupić się, w kolejnych krokach, jedynie na
+ istotnych i unikalnych funkcjach systemu.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -5372,7 +5468,16 @@ key "lodash"
 
 \end_inset
 
-
+ jest biblioteką udostępnioną na licencji MIT i dostarczającą programiście
+ metody rozszerzające język JavaScript.
+ Zastosowanie biblioteki w projekcie pozwala na przyspieszenie implementacji
+ systemu poprzez skorzystanie z gotowych fragmentów kodu.
+ Do dyspozycji są między innymi metody operujące na ciągach znaków, tablicach,
+ obiektach i kolekcjach obiektów.
+ W ramach biblioteki dostępne są również bardziej wydajne zamienniki funkcji
+ obecnych w standardzie języka JavaScript — ich użycie pozwala na przyspieszenie
+ działania projektowanej aplikacji.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -5390,7 +5495,40 @@ name "subsec:node"
 \end_layout
 
 \begin_layout Standard
-npm
+Środowisko uruchomieniowe Node.js 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "node"
+
+\end_inset
+
+ służy do tworzenia skalowalnych aplikacji internetowych w języku JavaScript.
+ W szczególności, umożliwia zaprojektowanie serwerów WWW.
+ W niniejszym projekcie serwer Node.js (wraz z modułem Express 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "express"
+
+\end_inset
+
+) posłużył do udostępniania gotowego programu klienckiego — umożliwia przeglądar
+kom pobranie aplikacji komunikatora.
+ 
+\end_layout
+
+\begin_layout Standard
+Framework oraz moduły, które można użyć wraz z nim, są projektami open-source.
+\end_layout
+
+\begin_layout Standard
+Npm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "npm"
+
+\end_inset
+
+ jest domyślnym menedżerem pakietów dla platformy Node.js.
 \end_layout
 
 \begin_layout Subsection
@@ -5407,18 +5545,53 @@ name "subsec:py eve"
 
 \end_layout
 
-\begin_layout Subsection
-MongoDB
-\end_layout
-
 \begin_layout Standard
+Do implementacji serwera REST w systemie komunikatora wykorzystano framework
+ Python Eve 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "mongo"
+key "eve"
 
 \end_inset
 
+.
+ Do głównych zalet tego narzędzia należy zaliczyć jego prostotę oraz przyjęcie
+ pewnych konwencji — dzięki temu programista definiuje tylko niezbędne,
+ unikalne dla danego programu elementy.
+ W szczególności, rolą projektanta jest sprecyzowanie klas — określenie
+ ich nazw i atrybutów.
+ W przypadku systemu komunikatora są to klasy użytkownika (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:uzytkownicy i logowanie"
 
+\end_inset
+
+) i konwersacji (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Konwersacje"
+
+\end_inset
+
+).
+ Dodatkowo, należy zdefiniować zależności pomiędzy klasami, ograniczenia
+ integralnościowe dla poszczególnych atrybutów oraz podstawową konfigurację
+ połączenia z bazą danych.
+ Wiele zadań, które powtarzają się w projektach typowych serwerów REST,
+ jest zapewnionych automatycznie przez framework — są to przykładowo: walidacja
+ danych, przygotowanie ścieżek dostępu do obiektów poprzez protokół HTTP
+ czy obsługa bazy danych.
+ Wybór tej technologii wynika z faktu, iż serwer w systemie komunikatora
+ pełni jedynie rolę typowego pośrednika aplikacji klienckich z bazą danych
+ i nie wykonuje niestandardowych obliczeń (nietypowych dla serwera REST).
+ Możliwości oferowane przez framework Python Eve okazały się wystarczające.
+ System polega w większości na współpracy aplikacji klienckich.
+ 
+\end_layout
+
+\begin_layout Subsection
+MongoDB
 \end_layout
 
 \begin_layout Standard
@@ -5432,7 +5605,36 @@ name "subsec:mongo"
 \end_layout
 
 \begin_layout Standard
-mongolab
+MongoDB 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mongo"
+
+\end_inset
+
+ jest systemem do zarządzania nierelacyjną bazą danych.
+ Zastosowanie tej bazy danych w systemie komunikatora wynika wprost z faktu
+ użycia frameworka Python Eve, który jest domyślnie przystosowany do współpracy
+ z bazą danych MongoDB.
+ Dane przechowywane są w niej w formie dokumentów JSON.
+ Baza danych charakteryzuje się wysoką wydajnością i skalowalnością.
+ Ponadto, jest to oprogramowanie open-source.
+ 
+\end_layout
+
+\begin_layout Standard
+W celu uruchomienia publicznie dostępnej bazy danych skorzystano z mLab
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mlab"
+
+\end_inset
+
+.
+ Jest to chmurowa platforma udostępniająca bazę danych jako serwis (DaaS,
+ Database as a Service).
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -5447,6 +5649,25 @@ name "subsec:protractor"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Zalecanym frameworkiem testującym dla aplikacji napisanych przy użyciu AngularJS
+ jest Protractor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "protractor"
+
+\end_inset
+
+.
+ Pozwala on na zdefiniowanie scenariuszy testowych oraz automatycznie przeprowad
+zenie zaplanowanych testów.
+ Możliwe jest również ustalanie parametrów testowych oraz warunków, w jakich
+ poszczególne testy należy uznać za zakończone pomyślnie.
+ Zastosowanie tej technologii umożliwiło zbadanie wydajności systemu komunikator
+a w powtarzalny sposób.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -5471,10 +5692,16 @@ key "heroku"
 
 \end_inset
 
- to platforma chmurowa.
- Działa ona w modelu PaaS (Platform as a Service).
+ to platforma chmurowa, działająca w modelu PaaS (Platform as a Service).
  Serwer REST oraz serwer aplikacji zostały umieszczone w wirtualnych środowiskac
-h oferowanych przez usługę.
+h oferowanych przez tę usługę.
+ Dzięki temu obie aplikacje są dostępne publicznie — posiadają publiczny
+ adres IP oraz domenę internetową.
+ Aplikacja kliencka może komunikować się z serwerem REST.
+ Platforma Heroku umożliwia między innymi zarządzanie aplikacjami, wyłączanie
+ ich, modyfikację ustawień oraz automatycznie buduje i uruchamia nową wersję
+ oprogramowania po zaktualizowaniu jej kodu źródłowego w publicznym repozytorium
+ kodu.
  
 \end_layout
 
@@ -5787,7 +6014,11 @@ reference "chap:istniejace rozwiazania"
 
 \end_inset
 
- posiadają taką funkcjonalność.
+ posiadają możliwość wysyłania różnych plików jako załączniki lub jako osobne
+ wiadomości.
+ Ponadto, częstą praktyką w popularnych komunikatorach jest umieszczanie
+ w aplikacji wbudowanych obrazów wyrażających określone emocje, które użytkownik
+ może przeszukiwać i wysyłać.
  
 \end_layout
 
@@ -9038,21 +9269,21 @@ https://angularjs.org/
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "bower"
-
-\end_inset
-
-https://bower.io/
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
 key "grunt"
 
 \end_inset
 
 https://gruntjs.com/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bower"
+
+\end_inset
+
+https://bower.io/
 \end_layout
 
 \begin_layout Bibliography
