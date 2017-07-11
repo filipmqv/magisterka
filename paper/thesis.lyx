@@ -191,6 +191,10 @@ TODO
 rysunek do innego rozdziału
 \end_layout
 
+\begin_layout Itemize
+literatura do pojęć np P2P, komunikator itp; w miarę jak najświeższa
+\end_layout
+
 \end_inset
 
 
@@ -518,24 +522,6 @@ Istniejące rozwiązania
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-cytowania przenieść do tekstu + dodać cytowania do artykułów a nie tylko
- do stron głównych
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:istniejace rozwiazania"
@@ -571,13 +557,6 @@ naciskiem na cechy wyróżniające je spośród konkurencyjnych aplikacji.
 
 \begin_layout Section
 Facebook Messenger 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "messenger"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -595,7 +574,14 @@ Jest to jeden z
 \begin_inset space ~
 \end_inset
 
-najpopularniejszych obecnie komunikatorów.
+najpopularniejszych obecnie komunikatorów 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "messenger"
+
+\end_inset
+
+.
  Oferuje zarówno rozmowy dla 2 osób jak i
 \begin_inset space ~
 \end_inset
@@ -608,33 +594,26 @@ grupowe.
 plików oraz dostarczanie wiadomości pod nieobecność nadawcy.
  Dostępny jest na najszerszej gamie platform — jako aplikacja webowa, mobilna
  oraz desktopowa, czym wyróżnia się na tle konkurencji.
- Architektonicznie Messenger polega na 
-\begin_inset Quotes pld
-\end_inset
-
-centralnym serwerze
-\begin_inset Quotes prd
-\end_inset
-
- przekazującym wiadomości.
- Cudzysłów wynika z
+ Architektura systemu Facebook Messenger składa się z aplikacji klienckich
+ oraz centralnych serwerów pośredniczących w przekazywaniu wiadomości.
+ Z
 \begin_inset space ~
 \end_inset
 
-faktu, że pod pojęciem 
-\begin_inset Quotes pld
+komunikatora korzysta 1,2 miliarda użytkowników na całym świecie 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "messenger uzytkownicy"
+
 \end_inset
 
-serwer
-\begin_inset Quotes prd
-\end_inset
+.
+ Tak wysoka popularność sprawia, że konieczne jest utrzymanie wielu współpracują
+cych serwerów znajdujących się w centrach przetwarzania danych.
+\end_layout
 
- kryje się ogromna infrastruktura złożona z
-\begin_inset space ~
-\end_inset
-
-wielu maszyn, którą firma musi utrzymywać.
- Wadą tego komunikatora jest brak domyślnego wsparcia szyfrowania wiadomości
+\begin_layout Standard
+Wadą tego komunikatora jest brak domyślnego wsparcia szyfrowania wiadomości
  — opcję można włączyć tylko w
 \begin_inset space ~
 \end_inset
@@ -678,13 +657,6 @@ nie zawiera takich, które są przez nich wyczekiwane.
 
 \begin_layout Section
 Bleep 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "bleep"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -698,8 +670,14 @@ name "sec:bleep"
 \end_layout
 
 \begin_layout Standard
-Bleep jest komunikatorem zaprojektowanym przez firmę rozwijającą protokół
- BitTorrent.
+Bleep 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bleep,bleep how it works"
+
+\end_inset
+
+ jest komunikatorem zaprojektowanym przez firmę rozwijającą protokół BitTorrent.
  Do dyspozycji użytkowników oddano aplikację mobilną oraz aplikację desktopową
  (brak aplikacji webowej).
  Podobnie jak w
@@ -773,13 +751,6 @@ koncie użytkownika oraz klucze szyfrujące pozostają lokalnie na urządzeniu.
 
 \begin_layout Section
 Signal 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "signal"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -793,8 +764,14 @@ name "sec:signal"
 \end_layout
 
 \begin_layout Standard
-Twórcy aplikacji Signal skupili się przede wszystkim na bezpieczeństwie
- i
+Twórcy aplikacji Signal 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "signal,signal artykuł,signal double ratchet"
+
+\end_inset
+
+ skupili się przede wszystkim na bezpieczeństwie i
 \begin_inset space ~
 \end_inset
 
@@ -886,20 +863,21 @@ n
 Podobne rozwiązania: Wire 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "wire"
+key "wire,wire privacy rep,wire security rep"
 
 \end_inset
 
-, Telegram, Allo
-\end_layout
+, Telegram 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "telegram,telegram protokół"
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
+\end_inset
 
-\begin_layout Plain Layout
-TODO cytowania do powyzszych
-\end_layout
+, Allo 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "allo"
 
 \end_inset
 
@@ -908,17 +886,17 @@ TODO cytowania do powyzszych
 
 \begin_layout Section
 WhatsApp 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "whatsapp"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-WhatsApp jest aplikacją podobną do wspomnianego w
+WhatsApp 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "whatsapp,whatsapp whitepaper"
+
+\end_inset
+
+ jest aplikacją podobną do wspomnianego w
 \begin_inset space ~
 \end_inset
 
@@ -963,13 +941,6 @@ resztą systemu.
 
 \begin_layout Section
 Darkwire 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "darkwire"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -983,7 +954,14 @@ name "sec:Darkwire"
 \end_layout
 
 \begin_layout Standard
-Darkwire to aplikacja open-source oferująca komunikator grupowy z
+Darkwire 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "darkwire,darkwire git"
+
+\end_inset
+
+ to aplikacja open-source oferująca komunikator grupowy z
 \begin_inset space ~
 \end_inset
 
@@ -1051,17 +1029,17 @@ danej chwili).
 
 \begin_layout Section
 Friends 
+\end_layout
+
+\begin_layout Standard
+Ten niszowy projekt 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "friends"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Ten niszowy projekt open-source oferuje aplikację desktopową i
+ open-source oferuje aplikację desktopową i
 \begin_inset space ~
 \end_inset
 
@@ -1168,17 +1146,17 @@ tej chwili niedostępny.
 
 \begin_layout Section
 Tox 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "tox"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-Tox jest z
+Tox 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tox,tox faq"
+
+\end_inset
+
+ jest z
 \begin_inset space ~
 \end_inset
 
@@ -1233,6 +1211,10 @@ celów rozwoju protokołu.
 
 \begin_layout Section
 ZeroChat, ZeroMail, BitMessage 
+\end_layout
+
+\begin_layout Standard
+Przytoczone aplikacje 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "zeronet"
@@ -1246,12 +1228,8 @@ key "bitmessage-main"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Przytoczone aplikacje realizują pomysły na komunikatory bazujące na mechanizmie
- podobnym do transakcji kryptowalutowych.
+ realizują pomysły na komunikatory bazujące na mechanizmie podobnym do transakcj
+i kryptowalutowych.
  Wysłanie wiadomości wymaga umieszczenia wiadomości w
 \begin_inset space ~
 \end_inset
@@ -2225,6 +2203,23 @@ Architektura
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Plain Layout
+własności, co oferuje (czy to nie jest już w koncepcji po poprawkach?)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Architektura"
@@ -2263,7 +2258,7 @@ reference "fig:Architektura-komunikatora"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -5168,7 +5163,7 @@ Ostatnim, póki co koncepcyjnym, pomysłem jest zastosowanie Web Cryptography
  API 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "webCrypto API w3,webCrypto experimental "
+key "webCrypto API w3,webCrypto-experimental "
 
 \end_inset
 
@@ -5214,20 +5209,273 @@ Wykorzystane technologie
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
+Podczas pracy nad projektem systemu komunikatora użyto wielu technologii,
+ zwykle standardowych i popularnych dla danej platformy.
+ Język programowania wykorzystany do implementacji serwera REST to język
+ Python.
+ Aplikacja kliencka powstała w języku JavaScript.
+ 
 \end_layout
 
-\begin_layout Plain Layout
-opisać angularJS i wymienić bardziej szczegółowo pozostałe technologie
+\begin_layout Standard
+Klient jest aplikacją webową typu Single Page Application.
+ Do zaimplementowania tego typu programu wykorzystano framework AngularJS,
+ który został opisany w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:AngularJS"
+
+\end_inset
+
+.
+ W powyższym punkcie przedstawiono również system budujący Grunt, menedżer
+ pakietów Bower i generator szkieletu projektu Yeoman, które są zwykle wykorzyst
+ywane wraz z frameworkiem.
+ Oprócz standardowych funkcji dostępnych we wspomnianym frameworku oraz
+ w języku JavaScript, skorzystano z funkcji znajdujących się w bibliotece
+ Lodash (pkt.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:lodash"
+
+\end_inset
+
+).
+ W celu udostępnienia zbudowanego projektu przez serwer aplikacji, zastosowano
+ platformę Node.js oraz framework Express (pkt.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:node"
+
+\end_inset
+
+).
 \end_layout
+
+\begin_layout Standard
+Serwer REST został napisany przy wykorzystaniu frameworka Python Eve (pkt.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:py eve"
+
+\end_inset
+
+).
+ Do wymiany informacji pomiędzy serwerem REST a aplikacjami klienckimi wykorzyst
+ano format danych JSON (JavaScript Object Notation).
+ Serwer zapisuje dane w bazie danych MongoDB (pkt.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:mongo"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+W celu przeprowadzenia testów wydajności systemu komunikatora skorzystano
+ z frameworka testującego Protractor (pkt.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:protractor"
+
+\end_inset
+
+).
+ Jego zastosowanie jest rekomendowane dla aplikacji webowych wykorzystujących
+ AngularJS.
+ Zbadanie danych wysyłanych i odbieranych przez maszyny testowe umożliwił
+ analizator protokołów sieciowych Wireshark 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wireshark"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Wdrożenie systemu komunikatora było możliwe dzięki zastosowaniu platformy
+ chmurowej Heroku (pkt.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:heroku"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+AngularJS 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:AngularJS"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+AngularJS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "angularjs"
+
+\end_inset
+
+ to projekt rozwijany głównie przez firmę Google.
+ Framework ten umożliwia tworzenie i rozwój aplikacji internetowych typu
+ Single Page Application.
+ Znacznym ułatwieniem podczas projektowania i testowania aplikacji jest
+ zastosowanie wzorca MVC (Model-View-Controller).
+ 
+\end_layout
+
+\begin_layout Standard
+MVC, bower, grunt system budowania, yeoman
+\end_layout
+
+\begin_layout Subsection
+Lodash
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:lodash"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lodash 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lodash"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Node.js, Express
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:node"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+npm
+\end_layout
+
+\begin_layout Subsection
+Python Eve
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:py eve"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+MongoDB
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mongo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:mongo"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+mongolab
+\end_layout
+
+\begin_layout Subsection
+Protractor
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:protractor"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Heroku 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:heroku"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Heroku 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "heroku"
+
+\end_inset
+
+ to platforma chmurowa.
+ Działa ona w modelu PaaS (Platform as a Service).
+ Serwer REST oraz serwer aplikacji zostały umieszczone w wirtualnych środowiskac
+h oferowanych przez usługę.
+ 
 \end_layout
 
 \begin_layout Section
@@ -8324,6 +8572,16 @@ https://pl-pl.messenger.com/ (dostęp 09.06.2017)
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "messenger uzytkownicy"
+
+\end_inset
+
+https://messenger.fb.com/?ref=platform (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "messenger-encryption"
 
 \end_inset
@@ -8345,11 +8603,41 @@ http://www.bleep.pm/ (dostęp 09.06.2017)
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "bleep how it works"
+
+\end_inset
+
+http://blog.bittorrent.com/2014/07/30/building-an-engine-for-decentralized-communi
+cations/ (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "signal"
 
 \end_inset
 
 https://whispersystems.org/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "signal artykuł"
+
+\end_inset
+
+Katriel Cohn-Gordon, Cas Cremers, Luke Garratt i inni, 
+\begin_inset Quotes pld
+\end_inset
+
+A Formal Security Analysis of the Signal Messaging Protocol
+\begin_inset Quotes prd
+\end_inset
+
+, University of Oxford, 2016, https://eprint.iacr.org/2016/1013.pdf (dostęp
+ 11.07.2017) 
 \end_layout
 
 \begin_layout Bibliography
@@ -8365,6 +8653,74 @@ https://wire.com/en/ (dostęp 11.07.2017)
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "wire privacy rep"
+
+\end_inset
+
+
+\begin_inset Quotes pld
+\end_inset
+
+Wire Privacy Whitepaper
+\begin_inset Quotes prd
+\end_inset
+
+, Wire Swiss GmbH, 2017, https://wire.com/resource/Wire%20Privacy%20Whitepaper/do
+wnload/ (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "wire security rep"
+
+\end_inset
+
+
+\begin_inset Quotes pld
+\end_inset
+
+Wire Security Whitepaper
+\begin_inset Quotes prd
+\end_inset
+
+, Wire Swiss GmbH, 2017, https://wire.com/resource/Wire%20Security%20Whitepaper/d
+ownload/ (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "telegram"
+
+\end_inset
+
+https://telegram.org/ (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "telegram protokół"
+
+\end_inset
+
+https://core.telegram.org/mtproto (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "allo"
+
+\end_inset
+
+https://allo.google.com/ (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "whatsapp"
 
 \end_inset
@@ -8375,11 +8731,40 @@ https://www.whatsapp.com/ (dostęp 27.06.2017)
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "whatsapp whitepaper"
+
+\end_inset
+
+
+\begin_inset Quotes pld
+\end_inset
+
+WhatsApp Encryption Overview, Technical white paper
+\begin_inset Quotes prd
+\end_inset
+
+, WhatsApp, 2017, https://www.whatsapp.com/security/WhatsApp-Security-Whitepaper.pd
+f (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "darkwire"
 
 \end_inset
 
 https://darkwire.io/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "darkwire git"
+
+\end_inset
+
+https://github.com/seripap/darkwire.io (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -8399,8 +8784,7 @@ key "merkle"
 
 \end_inset
 
-Becker, Georg.
- 
+Becker, Georg, 
 \begin_inset Quotes pld
 \end_inset
 
@@ -8417,6 +8801,16 @@ key "tox"
 \end_inset
 
 https://tox.chat/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "tox faq"
+
+\end_inset
+
+https://tox.chat/faq.html#techfaq (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -8614,11 +9008,151 @@ https://www.w3.org/TR/WebCryptoAPI/ (dostęp 09.06.2017)
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "webCrypto experimental "
+key "webCrypto-experimental "
 
 \end_inset
 
 https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "wireshark"
+
+\end_inset
+
+https://www.wireshark.org/ (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "angularjs"
+
+\end_inset
+
+https://angularjs.org/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bower"
+
+\end_inset
+
+https://bower.io/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "grunt"
+
+\end_inset
+
+https://gruntjs.com/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "yeoman"
+
+\end_inset
+
+http://yeoman.io/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "lodash"
+
+\end_inset
+
+https://lodash.com/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "node"
+
+\end_inset
+
+https://nodejs.org/en/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "express"
+
+\end_inset
+
+https://expressjs.com/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "npm"
+
+\end_inset
+
+https://www.npmjs.com/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "eve"
+
+\end_inset
+
+http://python-eve.org/index.html
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "mongo"
+
+\end_inset
+
+https://www.mongodb.com/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "mlab"
+
+\end_inset
+
+https://mlab.com/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "protractor"
+
+\end_inset
+
+http://www.protractortest.org/
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "heroku"
+
+\end_inset
+
+https://www.heroku.com/ (dostęp 11.07.2017)
 \end_layout
 
 \end_body
