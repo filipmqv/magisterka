@@ -6557,9 +6557,10 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename img/1 wiadomość.png
-	width 100line%
+	width 80line%
 
 \end_inset
 
@@ -6887,12 +6888,13 @@ torrencie kontrolnym — 5.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename img/4 testy 30 wyslij i odpowiedz.png
-	width 100line%
+	width 80line%
 
 \end_inset
 
@@ -6935,12 +6937,13 @@ name "fig:Uśredniony-czas-przesłania"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename img/4 testy 30 wyslij i odpowiedz średnia.png
-	width 100line%
+	width 80line%
 
 \end_inset
 
@@ -7527,12 +7530,13 @@ STUN
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename img/torrenty pakiety.png
-	width 100line%
+	width 80line%
 
 \end_inset
 
@@ -7725,12 +7729,13 @@ na osi poziomej znajduje się średni czas przesyłu wiadomości pomiędzy klien
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename img/bez kompaktowania.png
-	width 100line%
+	width 80line%
 
 \end_inset
 
@@ -7842,9 +7847,10 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename img/kompaktowanie.png
-	width 100line%
+	width 80line%
 
 \end_inset
 
@@ -8127,9 +8133,10 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename img/liczba wyslanych wiad od X.png
-	width 100line%
+	width 80line%
 
 \end_inset
 
@@ -8171,6 +8178,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+\align center
 \begin_inset Graphics
 	filename img/wykonania i l torr od x.png
 	width 100line%
