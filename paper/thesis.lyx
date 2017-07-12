@@ -259,64 +259,37 @@ TODO wycięte w tym miejscu
 \end_layout
 
 \begin_layout Standard
-W
-\begin_inset space ~
-\end_inset
-
-rozdziale 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:istniejace rozwiazania"
-
-\end_inset
-
- przedstawiono 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-kilka [[co motywowało wybór tych kilku konkretnych]]
+TODO !!!!! 
 \end_layout
-
-\end_inset
-
- istniejących komunikatorów.
- 
-\begin_inset Note Note
-status open
 
 \begin_layout Plain Layout
-TODO zmienić bo zbyt duży skrót myślowy (wśród komunikatorów?): Wśród nich
- można wyróżnić
+poniżej jest wspomniane o architekturach, ale to było w kontekście obrazka;
+ teraz jest usunięte - jak to wpływa na dalszą część?
 \end_layout
-
-\end_inset
-
- dwie główne architektury — rozproszoną (komunikacja bezpośrednia P2P
-\begin_inset Foot
-status open
 
 \begin_layout Plain Layout
-peer to peer
+!
+\end_layout
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\begin_layout Plain Layout
+!
+\end_layout
+
+\begin_layout Plain Layout
+!
 \end_layout
 
 \end_inset
 
-) oraz scentralizowaną (z serwerem pośredniczącym).
- Architektury te, w
-\begin_inset space ~
-\end_inset
 
-formie wspomnianego grafu, zostały zaprezentowane na rysunku 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Architektura-rozproszona-(po"
-
-\end_inset
-
-.
- Strzałki tego samego typu symbolizują rozmowy pomiędzy konkretnymi użytkownikam
-i lub konwersacje grupowe.
 \end_layout
 
 \begin_layout Standard
@@ -360,7 +333,14 @@ płacą
 \begin_inset Quotes prd
 \end_inset
 
- oni za korzystanie swoją prywatnością.
+ oni za korzystanie swoją prywatnością 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "fb-personalizowane reklamy"
+
+\end_inset
+
+.
  Wyeliminowanie kosztów (serwerów pośredniczących) pozwoliłoby na zrezygnowanie
  z
 \begin_inset space ~
@@ -1352,27 +1332,6 @@ Podsumowanie i porównanie aplikacji
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Plain Layout
-wymienić cechy i które komunikatory je spełniają a które nie, tabelka?
-\end_layout
-
-\begin_layout Plain Layout
-brak komunikatora który spełnia wszystkie cechy
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 W tabeli 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1390,7 +1349,15 @@ docelowo
 \end_inset
 
  oznacza, że dana cecha jest w planach twórców aplikacji, ale obecnie jest
- niedostępna.
+ niedostępna, a 
+\begin_inset Quotes pld
+\end_inset
+
+częściowo
+\begin_inset Quotes prd
+\end_inset
+
+ — wsparcie tylko przez niektóre aplikacje wykorzystujące dany protokół.
  Architektura 
 \begin_inset Quotes pld
 \end_inset
@@ -1411,6 +1378,58 @@ key "bitmessage-pdf"
 \end_inset
 
 .
+ W wierszu 
+\begin_inset Quotes pld
+\end_inset
+
+platforma
+\begin_inset Quotes prd
+\end_inset
+
+ zastosowano następujące skróty: 
+\begin_inset Quotes pld
+\end_inset
+
+PC
+\begin_inset Quotes prd
+\end_inset
+
+ — aplikacja desktopowa, 
+\begin_inset Quotes pld
+\end_inset
+
+web
+\begin_inset Quotes prd
+\end_inset
+
+ — aplikacja webowa, 
+\begin_inset Quotes pld
+\end_inset
+
+mob
+\begin_inset Quotes prd
+\end_inset
+
+ — aplikacja mobilna.
+ Gwiazdki oznaczają, że dany komunikator posiada niestandardowe rozwiązanie
+ lub dana cecha jest spełniona z pewnym zastrzeżeniem.
+ Przykładowo, skorzystanie z aplikacji desktopowej lub webowej komunikatora
+ WhatsApp jest możliwe tylko, gdy uruchomiona jest aplikacja mobilna, a
+ komunikator Darkwire oferuje szyfrowanie wiadomości z pewnym zastrzeżeniem,
+ o którym mowa w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:darkwire-bezpieczenstwo"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Wśród wymienionych aplikacji brakuje takiej, która posiadałaby wszystkie
+ pozytywne cechy oraz była pozbawiona wszystkich wad.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1860,7 +1879,7 @@ PC
 \begin_inset Text
 
 \begin_layout Plain Layout
-PC, mob
+PC
 \end_layout
 
 \end_inset
@@ -2893,6 +2912,10 @@ dlaczego apka webowa skoro są inne
 
 \end_layout
 
+\begin_layout Standard
+a
+\end_layout
+
 \begin_layout Section
 BitTorrent 
 \end_layout
@@ -3035,14 +3058,13 @@ bloków (block).
 \end_layout
 
 \begin_layout Itemize
-info hash — 160-bitowa wartość będąca wynikiem funkcji skrótu SHA-1, której
- podawana jest część metapliku .torrent (nazwy plików i
+info hash — pozwala jednoznacznie zidentyfikować dany torrent.
+ Jest to wynik funkcji skrótu SHA-1, której podawana jest jako argument
+ część metapliku .torrent (nazwy plików i
 \begin_inset space ~
 \end_inset
 
-lista skrótów fragmentów).
- Info hash pozwala jednoznacznie zidentyfikować dany torrent.
- 
+lista skrótów fragmentów)
 \end_layout
 
 \begin_layout Itemize
@@ -3761,6 +3783,71 @@ grafach dużej, wręcz globalnej, skali.
  
 \end_layout
 
+\begin_layout Plain Layout
+W
+\begin_inset space ~
+\end_inset
+
+rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:istniejace rozwiazania"
+
+\end_inset
+
+ przedstawiono 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+kilka [[co motywowało wybór tych kilku konkretnych]]
+\end_layout
+
+\end_inset
+
+ istniejących komunikatorów.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO zmienić bo zbyt duży skrót myślowy (wśród komunikatorów?): Wśród nich
+ można wyróżnić
+\end_layout
+
+\end_inset
+
+ dwie główne architektury — rozproszoną (komunikacja bezpośrednia P2P
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+peer to peer
+\end_layout
+
+\end_inset
+
+) oraz scentralizowaną (z serwerem pośredniczącym).
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Architektury te, w
+\begin_inset space ~
+\end_inset
+
+formie wspomnianego grafu, zostały zaprezentowane na rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Architektura-rozproszona-(po"
+
+\end_inset
+
+.
+ Strzałki tego samego typu symbolizują rozmowy pomiędzy konkretnymi użytkownikam
+i lub konwersacje grupowe.
+\end_layout
+
 \end_inset
 
 
@@ -3849,7 +3936,7 @@ reference "fig:Architektura-komunikatora"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -6274,6 +6361,16 @@ poniższych punktach.
 
 \begin_layout Subsection
 Darkwire
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:darkwire-bezpieczenstwo"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -10396,6 +10493,16 @@ Uses and Gratifications of Social Media: A Comparison of Facebook and Instant
 \end_inset
 
 , Bulletin of Science Technology & Society, 2010, strony 350-352
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "fb-personalizowane reklamy"
+
+\end_inset
+
+https://www.facebook.com/help/568137493302217
 \end_layout
 
 \begin_layout Bibliography
