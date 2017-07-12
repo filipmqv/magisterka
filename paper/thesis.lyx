@@ -188,7 +188,12 @@ TODO
 \end_layout
 
 \begin_layout Itemize
-literatura do pojęć np P2P, komunikator itp; w miarę jak najświeższa
+powiązanie społecznościowego systemu dużej skali z komunikatorem grupowym
+\end_layout
+
+\begin_layout Itemize
+literatura do pojęć np P2P, komunikator [IM 1] – dodać instant messaging
+ , w IM 1 jest opisane jak to działą itp; w miarę jak najświeższa
 \end_layout
 
 \begin_layout Itemize
@@ -219,7 +224,14 @@ centra przetwarzania - kosztowne –> praktyka firm = gromadzenie i analiza
 \end_layout
 
 \begin_layout Standard
-Komunikatory zrewolucjonizowały sposób, w
+Komunikatory 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "IM 1,IM 2,IM 3"
+
+\end_inset
+
+ zrewolucjonizowały sposób, w
 \begin_inset space ~
 \end_inset
 
@@ -1355,33 +1367,6 @@ Koncepcja
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-W trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania
- plików (na przykład obrazów lub filmów).
- Ta funkcjonalność nie znalazła się w
-\begin_inset space ~
-\end_inset
-
-końcowej wersji systemu, jednak z
-\begin_inset space ~
-\end_inset
-
-testów przeprowadzonych 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Koncepcja"
@@ -1401,25 +1386,394 @@ protokoły wykorzystane do opracowania koncepcji i
 \end_inset
 
 implementacji rozproszonego komunikatora grupowego.
- Konkretnie, są to: protokół BitTorrent przedstawiony w
-\begin_inset space ~
+ Na początku (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Idea"
+
 \end_inset
 
-punkcie 
+) znajduje się opis idei komunikatora — sprecyzowano, czym jest komunikator
+ oraz jakie powinien spełniać wymagania i założenia.
+ Następnie, w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Model"
+
+\end_inset
+
+, przedstawiono model systemu.
+ W rozdziale scharakteryzowano również najważniejsze cechy protokołu BitTorrent
+ (punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:bittorent"
 
 \end_inset
 
- oraz jego implementacja w
+) oraz opisano jego implementację w
 \begin_inset space ~
 \end_inset
 
-języku JavaScript — WebTorrent — punkt 
+języku JavaScript — bibliotekę WebTorrent — punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:webtorrent"
+
+\end_inset
+
+.
+ Wspomniano także, jaką rolę w systemie pełni wyżej wymieniony protokół
+ oraz jakie istotne zmiany względem specyfikacji protokołu wprowadzono w
+ bibliotece.
+ 
+\end_layout
+
+\begin_layout Section
+Idea
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Idea"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+architektury używane i jaką wybrałem; jak w każdej z architektur zachodzi
+ przesył komunikatu
+\end_layout
+
+\begin_layout Itemize
+dostarczanie do wszystkich odbiorców (a nie tylko podzbioru)
+\end_layout
+
+\begin_layout Itemize
+przesył plików i że zrezygnowano na potrzeby testów ( )
+\end_layout
+
+\begin_layout Itemize
+dlaczego apka webowa skoro są inne
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Głównym zadaniem komunikatora internetowego (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+instant messenger
+\end_layout
+
+\end_inset
+
+) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "IM 1,IM 2,IM 3"
+
+\end_inset
+
+ jest umożliwienie użytkownikom wysyłania wiadomości do innych użytkowników,
+ którzy również korzystają z tego samego komunikatora (inaczej: usługi,
+ systemu, programu).
+ Osoby rozmawiające ze sobą za pośrednictwem komunikatora są zwykle znajomymi,
+ choć nie jest to regułą.
+ W celu korzystania z danego systemu użytkownik często musi dokonać rejestracji
+ — zakłada konto (profil), które będzie go jednoznacznie identyfikowało
+ w danym systemie.
+ Istnieją również komunikatory, które nie nakładają na użytkownika takiego
+ obowiązku.
+ Komunikator zwykle dostępny jest na różnych platformach — jako program
+ desktopowy, aplikacja mobilna lub webowa.
+ Dzięki temu, w odróżnieniu od wiadomości SMS, użytkownicy mogą komunikować
+ się korzystając z różnych urządzeń — przykładowo wiadomość wysłana za pośrednic
+twem aplikacji mobilnej może zostać odczytana przez odbiorcę na komputerze
+ stacjonarnym.
+ 
+\end_layout
+
+\begin_layout Standard
+W poniższych punktach opisano własności, które powinien posiadać komunikator.
+\end_layout
+
+\begin_layout Subsection
+Konto użytkownika
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:konto uzytkownika"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Należy zagwarantować unikalność każdego użytkownika w skali całego systemu.
+ Musi istnieć możliwość jednoznacznego zidentyfikowania osoby.
+ W tym celu można przyjąć założenie, że unikalnym identyfikatorem użytkownika
+ jest jego numer telefonu lub adres email, który należy podać podczas rejestracj
+i konta.
+ Zakłada się istnienie centralnego zarządcy nadzorującego proces rejestracji
+ kont i uniemożliwiającego założenie więcej niż jednego konta dla danego
+ identyfikatora.
+ 
+\end_layout
+
+\begin_layout Subsection
+Treść wiadomości
+\end_layout
+
+\begin_layout Standard
+Użytkownik ma możliwość podania treści wiadomości w postaci ciągu znaków.
+ Jest to podstawowy sposób definiowania komunikatu.
+ Rozszerzeniem byłoby przesyłanie w treści wiadomości plików — zdjęć, filmów,
+ plików audio bądź dowolnego innego typu.
+ W trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania
+ plików.
+ Ta funkcjonalność nie znalazła się jednak w
+\begin_inset space ~
+\end_inset
+
+końcowej wersji systemu z powodu ograniczeń technologicznych.
+ Nie jest to jednak niezbędna opcja — możliwe było przeprowadzenie testów
+ aplikacji omówionych w rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Wyniki testów"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Zdefiniowanie odbiorcy lub odbiorców
+\end_layout
+
+\begin_layout Standard
+Użytkownik ma możliwość zaadresowania wiadomości do konkretnego odbiorcy
+ — musi mieć gwarancję, że wiadomość będzie mogła zostać odczytana tylko
+ przez zdefiniowanego adresata i nikogo poza nim.
+ Jeśli w jednej rozmowie uczestniczy więcej niż 2 uczestników to taki komunikato
+r określa się mianem komunikatora grupowego, a gwarancja możliwości odczytania
+ wiadomości rozszerza się na wszystkich uczestników rozmowy i nikogo poza
+ nimi.
+ Ponadto, użytkownik powinien mieć pewność, że odbiorca jest tym, za kogo
+ się podaje — brak możliwości podszycia się pod odbiorcę.
+\end_layout
+
+\begin_layout Standard
+Jeśli system komunikatora nakłada na użytkowników obowiązek posiadania konta
+ to zazwyczaj istnieje również możliwość definiowania relacji znajomości
+ pomiędzy kontami — użytkownik jest 
+\begin_inset Quotes pld
+\end_inset
+
+znajomym
+\begin_inset Quotes prd
+\end_inset
+
+ innego użytkownika.
+ Operacja zawarcia znajomości jest jednokrotna — zakłada się, że raz zawarta
+ znajomość trwa aż do momentu jej anulowania i dopiero wówczas może zostać
+ zawarta ponownie.
+ Dodatkowo przyjmuje się, że użytkownicy rzadko wykonują operację anulowania
+ znajomości — przykładowo, nie dochodzi do sytuacji, w której użytkownik
+ anuluje znajomość każdorazowo po wysłaniu wiadomości.
+ Przy spełnieniu powyższych założeń, nadawca wiadomości wybiera odbiorcę
+ lub odbiorców z listy swoich znajomych.
+ Jednocześnie, nadawca ma gwarancję, że ponowne wybranie tego samego znajomego
+ jako odbiorcy spowoduje dostarczenie wiadomości do tej samej osoby.
+\end_layout
+
+\begin_layout Standard
+W opisanym powyżej systemie konieczne jest zdefiniowanie operacji wyszukiwania
+ kont użytkowników w celu zawarcia znajomości.
+ W punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:konto uzytkownika"
+
+\end_inset
+
+ przyjęto założenie, że każde konto posiada unikalny identyfikator, zatem
+ możliwe staje się znalezienie konkretnego użytkownika.
+ Podobny mechanizm można zastosować jeśli system nie umożliwia zawierania
+ znajomości — w tej sytuacji nadawca wybiera konto odbiorcy z listy wszystkich
+ kont dostępnych w systemie.
+ 
+\end_layout
+
+\begin_layout Standard
+Inne podejście definiowania odbiorców można zastosować w systemie pozbawionym
+ kont użytkowników.
+ Nadawca najpierw tworzy lub uzyskuje unikalny identyfikator rozmowy (np.
+ link prowadzący do konwersacji), a następnie musi przekazać go odbiorcom
+ korzystając z innego sposobu komunikacji — przykład opisany w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Darkwire"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ostatecznie zdecydowano, że w systemie komunikatora będącego przedmiotem
+ niniejszej pracy każdy użytkownik będzie posiadał unikalne konto, ale nie
+ wprowadzono relacji znajomości.
+ Ponadto, nadawca uzyskuje identyfikator konwersacji i definiuje odbiorców
+ wiadomości w sposób opisany w poprzednim akapicie.
+ Jest to rozwiązanie prostsze implementacyjnie.
+ Dodatkowo, celem pracy jest minimalizowanie roli serwera pośredniczącego,
+ a operacje zawierania znajomości i wyszukiwania kont użytkowników spowodowałyby
+ jego dodatkowe obciążenie.
+ Nie są to operacje istotne z punktu widzenia testów z rozdziału 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Wyniki testów"
+
+\end_inset
+
+, zatem można było z nich zrezygnować.
+\end_layout
+
+\begin_layout Subsection
+Dostarczenie wiadomości do wszystkich odbiorców
+\end_layout
+
+\begin_layout Standard
+Istnieje gwarancja dostarczenia wiadomości do wszystkich odbiorców w ramach
+ pojedynczej konwersacji.
+ Nie może zaistnieć sytuacja, w której część uczestników rozmowy nie otrzyma
+ nadanej wiadomości.
+\end_layout
+
+\begin_layout Subsection
+Odebranie wiadomości
+\end_layout
+
+\begin_layout Standard
+Użytkownik ma gwarancję odebrania wszystkich wiadomości, których jest adresatem.
+ Dostępność odbiorcy oznacza, że program komunikatora na jego urządzeniu
+ jest włączony i znajduje się w stanie gotowości do odbioru komunikatów.
+ Jeśli odbiorca jest dostępny w momencie nadania wiadomości, to zostaje
+ ona dostarczona do niego jak najszybciej (więcej o szybkości transmisji
+ w kolejnym punkcie).
+ Jeśli odbiorca nie jest dostępny w tym momencie, to wiadomość zostaje dostarczo
+na do niego w późniejszym czasie — kiedy będzie ponownie dostępny (w momencie
+ ponownego uruchomienia komunikatora na urządzeniu).
+\end_layout
+
+\begin_layout Subsection
+Czas przesyłania wiadomości
+\end_layout
+
+\begin_layout Standard
+Komunikator (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+instant messenger
+\end_layout
+
+\end_inset
+
+) z definicji powinien umożliwiać przesłanie wiadomości od nadawcy do odbiorcy
+ w jak najkrótszym czasie (niemalże natychmiast).
+ System powinien cechować się zatem wysoką wydajnością.
+ Ostateczna efektywność zastosowanego rozwiązania zostanie zbadana w ramach
+ testów wydajnościowych.
+ Ich przebieg i wyniki przedstawiono w rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Wyniki testów"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Dostarczanie wiadomości pod nieobecność nadawcy
+\end_layout
+
+\begin_layout Standard
+Kolejnym założeniem, które musi spełniać system komunikatora jest możliwość
+ dostarczenia wiadomości do odbiorcy w momencie, gdy jej nadawca nie jest
+ dostępny.
+ W przeciwnym przypadku (czyli w sytuacji, w której wiadomość może zostać
+ dostarczona tylko gdy nadawca i odbiorca są jednocześnie dostępni) możliwe
+ byłoby naruszenie warunku żywotności (postępu) dla konwersacji.
+ Oznaczałoby to, że nadana wiadomość mogłaby nigdy nie dotrzeć do odbiorcy
+ (nawet, jeśli okresowo nadawca i odbiorca stawaliby się dostępni).
+ Rozwiązanie tego problemu dla systemu komunikatora projektowanego w ramach
+ niniejszej pracy zostało zaproponowane w punktach 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Odebranie_wiadomości"
+
+\end_inset
+
+ i 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:dostarczanie wiadomości offline propozycja"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Liczba użytkowników systemu
+\end_layout
+
+\begin_layout Standard
+Docelowo system komunikatora powinien umożliwiać prowadzenie rozmów nieograniczo
+nej liczbie użytkowników.
+ Każda osoba powinna mieć możliwość skomunikowania się z dowolną inną osobą
+ na świecie.
+ Zaprojektowanie takiego społecznościowego systemu dużej skali jest ogromnym
+ wyzwaniem inżynieryjnym.
+ Według źródeł, z aplikacji Facebook Messenger korzysta miesięcznie 1,2
+ miliarda użytkowników 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "messenger uzytkownicy"
+
+\end_inset
+
+.
+ Dla porównania, liczba użytkowników email wynosi około 3,7 miliarda 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "email-liczba"
 
 \end_inset
 
@@ -1428,14 +1782,43 @@ reference "sec:webtorrent"
 \end_layout
 
 \begin_layout Section
-BitTorrent 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "bittorrent"
+Model
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Model"
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+mamy węzły, które mają równe role i komunikują się ze sobą w jakim celu?
+\end_layout
+
+\begin_layout Itemize
+co za mnie robi BT (np przy dołączaniu do swarma żeby pobrać wiadomość)
+ — ZBIÓR SĄSIADÓW z doka
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+BitTorrent 
 \end_layout
 
 \begin_layout Standard
@@ -1449,7 +1832,14 @@ name "sec:bittorent"
 \end_layout
 
 \begin_layout Standard
-BitTorrent to protokół komunikacyjny pozwalający na wymianę i
+BitTorrent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bittorrent"
+
+\end_inset
+
+ to protokół komunikacyjny pozwalający na wymianę i
 \begin_inset space ~
 \end_inset
 
@@ -1651,20 +2041,27 @@ kontekście protokołu BitTorrent, DHT może zastąpić rolę trackera.
 \end_layout
 
 \begin_layout Itemize
-magnet link — link pozwalający na uzyskanie metadanych torrenta bez konieczności
- pobierania metapliku .torrent.
- Link powinien zawierać przynajmniej info hash torrenta oraz listę trackerów.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO literatura o magnet link; wytłumaczyć dodatkowo jak to działa?
-\end_layout
+magnet link 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "magnet link,magnet uri scheme"
 
 \end_inset
 
-
+ — link pozwalający na uzyskanie metadanych torrenta bez konieczności pobierania
+ metapliku .torrent.
+ Link powinien zawierać przynajmniej info hash torrenta oraz listę trackerów.
+ W ogólności magnet link umożliwia identyfikację plików na podstawie ich
+ zawartości (bazując na wyniku funkcji skrótu tejże zawartości), a nie ich
+ lokalizacji, jak ma to miejsce w przypadku zwykłych linków (odnoszących
+ się do pliku znajdującego się w konkretnym katalogu na konkretnej maszynie).
+ Oprócz wspomnianych już parametrów (wynik funkcji skrótu, lista trackerów),
+ magnet link może zawierać szereg innych atrybutów.
+ Przykładowo są to: nazwa i rozmiar pliku, słowa kluczowe umożliwiające
+ bardziej szczegółowe opisanie zawartości pliku czy zapasowy, standardowy
+ link pozwalający pobrać plik ze zwykłego serwera w przypadku, gdy pobranie
+ go z sieci P2P okaże się niemożliwe.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -5959,6 +6356,16 @@ Dostarczanie wiadomości
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:dostarczanie wiadomości offline propozycja"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Zagwarantowanie dostarczenia wiadomości w
 \begin_inset space ~
 \end_inset
@@ -8861,6 +9268,63 @@ backmatter
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "IM 1"
+
+\end_inset
+
+Rebecca E.
+ Grinter, Leysia Palen, 
+\begin_inset Quotes pld
+\end_inset
+
+Instant Messaging in Teen Life
+\begin_inset Quotes prd
+\end_inset
+
+, University of Colorado, 2002, strony 21-22
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "IM 2"
+
+\end_inset
+
+Jure Leskovec, Eric Horvitz, 
+\begin_inset Quotes pld
+\end_inset
+
+Planetary-Scale Views on a Large Instant-Messaging Network
+\begin_inset Quotes prd
+\end_inset
+
+, Microsoft Research, 2008, strony 1-2
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "IM 3"
+
+\end_inset
+
+Anabel Quan-Haase, Alyson L.
+ Young, 
+\begin_inset Quotes pld
+\end_inset
+
+Uses and Gratifications of Social Media: A Comparison of Facebook and Instant
+ Messaging
+\begin_inset Quotes prd
+\end_inset
+
+, Bulletin of Science Technology & Society, 2010, strony 350-352
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "messenger"
 
 \end_inset
@@ -9146,11 +9610,50 @@ https://bitmessage.org/bitmessage.pdf (dostęp 09.06.2017)
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "email-liczba"
+
+\end_inset
+
+
+\begin_inset Quotes pld
+\end_inset
+
+Email Statistics Report, 2017-2021
+\begin_inset Quotes prd
+\end_inset
+
+, THE RADICATI GROUP, INC., http://www.radicati.com/wp/wp-content/uploads/2017/01/E
+mail-Statistics-Report-2017-2021-Executive-Summary.pdf (dostęp 12.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "bittorrent"
 
 \end_inset
 
 http://www.bittorrent.org/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "magnet link"
+
+\end_inset
+
+http://bittorrent.org/beps/bep_0009.html (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "magnet uri scheme"
+
+\end_inset
+
+http://magnet-uri.sourceforge.net/ (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
