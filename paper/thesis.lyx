@@ -188,11 +188,29 @@ TODO
 \end_layout
 
 \begin_layout Itemize
-rysunek do innego rozdziału
+literatura do pojęć np P2P, komunikator itp; w miarę jak najświeższa
 \end_layout
 
 \begin_layout Itemize
-literatura do pojęć np P2P, komunikator itp; w miarę jak najświeższa
+arch rozproszona - są różne, klient-serwer czy DSM to też rozproszone; doprecyzo
+wać
+\end_layout
+
+\begin_layout Itemize
+P2P=sieć=system=architektura, bo później jest wspomniane 
+\begin_inset Quotes pld
+\end_inset
+
+sieć P2P
+\begin_inset Quotes prd
+\end_inset
+
+ i nie wiadomo że to się do tego samego odnosi
+\end_layout
+
+\begin_layout Itemize
+centra przetwarzania - kosztowne –> praktyka firm = gromadzenie i analiza
+ danych –> spersonal reklamy –> darmowy komunikator
 \end_layout
 
 \end_inset
@@ -212,27 +230,24 @@ jaki ludzie wymieniają się informacjami.
 \end_inset
 
 formie wiadomości do grona odbiorców — najczęściej znajomych.
- Zbiór wszystkich użytkowników korzystających z
-\begin_inset space ~
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO wycięte w tym miejscu
+\end_layout
+
 \end_inset
 
-danego komunikatora tworzy graf — za wierzchołki można uznać włączone aplikacje,
- a
-\begin_inset space ~
-\end_inset
 
-krawędziami są wysyłane i
-\begin_inset space ~
-\end_inset
+\end_layout
 
-odbierane komunikaty.
- Przyjęcie takiej perspektywy pozwala na rozpatrzenie problemu dystrybucji
- wiadomości jako tytułowe rozgłaszanie danych w
-\begin_inset space ~
-\end_inset
-
-grafach dużej, wręcz globalnej, skali.
- W
+\begin_layout Standard
+W
 \begin_inset space ~
 \end_inset
 
@@ -243,9 +258,29 @@ reference "chap:istniejace rozwiazania"
 
 \end_inset
 
- przedstawiono kilka istniejących komunikatorów.
- Wśród nich można wyróżnić dwie główne architektury — rozproszoną (komunikacja
- bezpośrednia P2P
+ przedstawiono 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+kilka [[co motywowało wybór tych kilku konkretnych]]
+\end_layout
+
+\end_inset
+
+ istniejących komunikatorów.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO zmienić bo zbyt duży skrót myślowy (wśród komunikatorów?): Wśród nich
+ można wyróżnić
+\end_layout
+
+\end_inset
+
+ dwie główne architektury — rozproszoną (komunikacja bezpośrednia P2P
 \begin_inset Foot
 status open
 
@@ -273,50 +308,10 @@ i lub konwersacje grupowe.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/rozproszone i centralne rozglaszanie.png
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Architektura rozproszona (po lewej) i
-\begin_inset space ~
-\end_inset
-
-scentralizowana (po prawej)
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Architektura-rozproszona-(po"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Pod pojęciem 
 \begin_inset Quotes pld
 \end_inset
@@ -325,9 +320,13 @@ serwer
 \begin_inset Quotes prd
 \end_inset
 
- na rysunku kryje się zwykle jedno lub wiele centrów przetwarzania danych,
- których utrzymanie jest niezwykle kosztowne ze względu na duże obciążenie
- systemu.
+ na rysunku {{nie ma już rysunku}}
+\end_layout
+
+\end_inset
+
+ kryje się zwykle jedno lub wiele centrów przetwarzania danych, których
+ utrzymanie jest niezwykle kosztowne ze względu na duże obciążenie systemu.
  Częstą praktyką firm jest gromadzenie i
 \begin_inset space ~
 \end_inset
@@ -355,12 +354,22 @@ płacą
 \begin_inset space ~
 \end_inset
 
-tej praktyki.
+tej 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+praktyki {{jakiej praktyki?}}
+\end_layout
+
+\end_inset
+
+.
  W
 \begin_inset space ~
 \end_inset
 
-tym celu możliwe jest zastosowanie architektury rozproszonej.
+tym celu możliwe jest zastosowanie architektury rozproszonej P2P.
 \end_layout
 
 \begin_layout Standard
@@ -372,7 +381,17 @@ najpopularniejszych protokołów służących do dystrybucji plików w
 \begin_inset space ~
 \end_inset
 
-sieci P2P.
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+sieci
+\end_layout
+
+\end_inset
+
+ P2P.
  Automatycznie dzieli udostępniane pliki na części i
 \begin_inset space ~
 \end_inset
@@ -1336,6 +1355,33 @@ Koncepcja
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Itemize
+W trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania
+ plików (na przykład obrazów lub filmów).
+ Ta funkcjonalność nie znalazła się w
+\begin_inset space ~
+\end_inset
+
+końcowej wersji systemu, jednak z
+\begin_inset space ~
+\end_inset
+
+testów przeprowadzonych 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Koncepcja"
@@ -2210,8 +2256,80 @@ status open
 TODO
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Itemize
 własności, co oferuje (czy to nie jest już w koncepcji po poprawkach?)
+\end_layout
+
+\begin_layout Itemize
+poniższy rysunek mniejszy i jak go tu wykorzystać?
+\end_layout
+
+\begin_layout Plain Layout
+ze wstępu: Zbiór wszystkich użytkowników korzystających z
+\begin_inset space ~
+\end_inset
+
+danego komunikatora tworzy graf — za wierzchołki można uznać włączone aplikacje,
+ a
+\begin_inset space ~
+\end_inset
+
+krawędziami są wysyłane i
+\begin_inset space ~
+\end_inset
+
+odbierane komunikaty.
+ Przyjęcie takiej perspektywy pozwala na rozpatrzenie problemu dystrybucji
+ wiadomości jako tytułowe rozgłaszanie danych w
+\begin_inset space ~
+\end_inset
+
+grafach dużej, wręcz globalnej, skali.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/rozproszone i centralne rozglaszanie.png
+	width 100line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Architektura rozproszona (po lewej) i
+\begin_inset space ~
+\end_inset
+
+scentralizowana (po prawej)
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Architektura-rozproszona-(po"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6027,23 +6145,6 @@ Wyniki testów
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Plain Layout
-zmniejszyć rozmiar wykresów
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Wyniki testów"
@@ -6721,47 +6822,6 @@ Nie zaobserwowano istotnego wzrostu czasu przesyłania wiadomości w
 
 zależności od długości tekstu będącego treścią komunikatu.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO o
-\begin_inset space ~
-\end_inset
-
-tym wspomnieć? Pytanie do Ani
-\end_layout
-
-\begin_layout Itemize
-jesli to nawet bardzo długi tekst to nie ma wpływu (no może ma na input),
- a
-\begin_inset space ~
-\end_inset
-
-jak to jest plik no to zależy od szybkości łącza i
-\begin_inset space ~
-\end_inset
-
-pewnie ten choke
-\end_layout
-
-\begin_layout Itemize
-W trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania
- plików (na przykład obrazów lub filmów).
- Ta funkcjonalność nie znalazła się w
-\begin_inset space ~
-\end_inset
-
-końcowej wersji systemu, jednak z
-\begin_inset space ~
-\end_inset
-
-testów przeprowadzonych 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -8397,7 +8457,7 @@ algorytmie ZLT.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -9271,7 +9331,7 @@ key "angularjs"
 
 \end_inset
 
-https://angularjs.org/
+https://angularjs.org/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9281,7 +9341,7 @@ key "grunt"
 
 \end_inset
 
-https://gruntjs.com/
+https://gruntjs.com/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9291,7 +9351,7 @@ key "bower"
 
 \end_inset
 
-https://bower.io/
+https://bower.io/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9301,7 +9361,7 @@ key "yeoman"
 
 \end_inset
 
-http://yeoman.io/
+http://yeoman.io/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9311,7 +9371,7 @@ key "lodash"
 
 \end_inset
 
-https://lodash.com/
+https://lodash.com/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9321,7 +9381,7 @@ key "node"
 
 \end_inset
 
-https://nodejs.org/en/
+https://nodejs.org/en/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9331,7 +9391,7 @@ key "express"
 
 \end_inset
 
-https://expressjs.com/
+https://expressjs.com/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9341,7 +9401,7 @@ key "npm"
 
 \end_inset
 
-https://www.npmjs.com/
+https://www.npmjs.com/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9351,7 +9411,7 @@ key "eve"
 
 \end_inset
 
-http://python-eve.org/index.html
+http://python-eve.org/index.html (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9361,7 +9421,7 @@ key "mongo"
 
 \end_inset
 
-https://www.mongodb.com/
+https://www.mongodb.com/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9371,7 +9431,7 @@ key "mlab"
 
 \end_inset
 
-https://mlab.com/
+https://mlab.com/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -9381,7 +9441,7 @@ key "protractor"
 
 \end_inset
 
-http://www.protractortest.org/
+http://www.protractortest.org/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
