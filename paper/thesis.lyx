@@ -43,7 +43,7 @@ dcs
 \index_command default
 \float_placement tbph
 \paperfontsize 12
-\spacing onehalf
+\spacing other 1.15
 \use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
@@ -216,6 +216,19 @@ sieć P2P
 \begin_layout Itemize
 centra przetwarzania - kosztowne –> praktyka firm = gromadzenie i analiza
  danych –> spersonal reklamy –> darmowy komunikator
+\end_layout
+
+\begin_layout Itemize
+zachować motywację, żeby o niej już później nie wspominać (koszty, zbieranie
+ i anal danych).
+ Motywacją jest wykorzystanie BT, choć jest on jeszcze niewystarczający
+ w kontekście komunikatora (użycie go wprost).
+ awaryjnosc serwera w centralnej (zielone zaznaczenia na kartce)
+\end_layout
+
+\begin_layout Itemize
+w rozdziale 2 są przedstawione komunikatory i co motywowało wybór tych konkretny
+ch
 \end_layout
 
 \end_inset
@@ -422,16 +435,17 @@ aplikacji webowej — pozwala na wymianę plików pomiędzy przeglądarkami.
 \end_layout
 
 \begin_layout Standard
-Celem pracy jest zaprojektowanie i
-\begin_inset space ~
-\end_inset
-
-implementacja systemu komunikatora grupowego w
+Celem pracy jest zaprojektowanie systemu komunikatora grupowego w
 \begin_inset space ~
 \end_inset
 
 formie aplikacji webowej.
- Jednocześnie, założeniem jest jak największe wykorzystanie modelu komunikacji
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Jednocześnie, założeniem jest jak największe wykorzystanie modelu komunikacji
  P2P w
 \begin_inset space ~
 \end_inset
@@ -441,6 +455,10 @@ projekcie, aby minimalizować rolę serwerów w
 \end_inset
 
 systemie.
+\end_layout
+
+\end_inset
+
  Dzięki temu komunikator powinien generować jak najmniejsze koszty.
  Do obsługi bezpośredniej komunikacji pomiędzy klientami, a
 \begin_inset space ~
@@ -1070,7 +1088,7 @@ punktów przyszłego rozwoju.
 
 sytuacji gdy połączenie internetowe jest niedostępne.
  Aplikacja wykorzystuje algorytm plotkowania (gossiping) oraz replikuje
- wiadomości przy użyciu drzewa skrótów (hash tree, Merkle DAG, DAG - Directed
+ wiadomości przy użyciu drzewa skrótów (hash tree, Merkle DAG, DAG — Directed
  Acyclic Graph 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2768,14 +2786,99 @@ Użytkownik ma gwarancję odebrania wszystkich wiadomości, których jest adresa
  jest włączony i znajduje się w stanie gotowości do odbioru komunikatów.
  Jeśli odbiorca jest dostępny w momencie nadania wiadomości, to zostaje
  ona dostarczona do niego jak najszybciej (więcej o szybkości transmisji
- w kolejnym punkcie).
+ w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:czas przesyłania wiadomości"
+
+\end_inset
+
+).
  Jeśli odbiorca nie jest dostępny w tym momencie, to wiadomość zostaje dostarczo
 na do niego w późniejszym czasie — kiedy będzie ponownie dostępny (w momencie
  ponownego uruchomienia komunikatora na urządzeniu).
 \end_layout
 
 \begin_layout Subsection
+Kolejność dostarczania wiadomości
+\end_layout
+
+\begin_layout Standard
+Kolejną istotną kwestią jest kolejność, w jakiej wiadomości docierają do
+ odbiorcy (lub odbiorców, jeśli mowa o rozmowie grupowej).
+ Komunikator powinien spełniać następujące założenia:
+\end_layout
+
+\begin_layout Itemize
+kolejność FIFO — wiadomości wysłane przez pojedynczego nadawcę w danej kolejnośc
+i powinny być odebrane w takiej samej kolejności przez pojedynczego odbiorcę.
+\end_layout
+
+\begin_layout Itemize
+globalne uporządkowanie wiadomości (total order) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tanenbaum causal order"
+
+\end_inset
+
+ — wiadomości wysyłane przez wielu nadawców w rozmowie grupowej powinny
+ być odbierane przez wszystkich odbiorców w takim samym porządku.
+ Innymi słowy — każdy uczestnik powinien widzieć identyczną kolejność wszystkich
+ wiadomości wymienionych w ramach pojedynczej rozmowy.
+ 
+\end_layout
+
+\begin_layout Itemize
+przyczynowe uporządkowanie wiadomości (causal order) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tanenbaum causal order"
+
+\end_inset
+
+ — wiadomości zależne przyczynowo są odbierane w odpowiedniej kolejności.
+ Przykładowo, użytkownik A wysyła wiadomość 
+\begin_inset Formula $m_{A}$
+\end_inset
+
+, użytkownik B otrzymuje ją i odpowiada na nią wiadomością 
+\begin_inset Formula $m_{B}$
+\end_inset
+
+.
+ Niedopuszczalną sytuacją jest odebranie przez trzeciego użytkownika C najpierw
+ wiadomości 
+\begin_inset Formula $m_{B}$
+\end_inset
+
+, a następnie wiadomości 
+\begin_inset Formula $m_{A}$
+\end_inset
+
+, ponieważ 
+\begin_inset Formula $m_{B}$
+\end_inset
+
+ jest wiadomością przyczynowo zależną od 
+\begin_inset Formula $m_{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
 Czas przesyłania wiadomości
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:czas przesyłania wiadomości"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2890,17 +2993,8 @@ TODO
 \end_layout
 
 \begin_layout Itemize
-mamy węzły, które mają równe role i komunikują się ze sobą w jakim celu?
-\end_layout
-
-\begin_layout Itemize
 co za mnie robi BT (np przy dołączaniu do swarma żeby pobrać wiadomość)
  — ZBIÓR SĄSIADÓW z doka
-\end_layout
-
-\begin_layout Itemize
-architektury używane i jaką wybrałem; jak w każdej z architektur zachodzi
- przesył komunikatu
 \end_layout
 
 \begin_layout Itemize
@@ -2913,7 +3007,133 @@ dlaczego apka webowa skoro są inne
 \end_layout
 
 \begin_layout Standard
-a
+W rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:istniejace rozwiazania"
+
+\end_inset
+
+ przedstawiono przykłady istniejących komunikatorów.
+ Ich implementacje bazują na dwóch typach architektur.
+ Pierwszym rozwiązaniem jest architektura typu klient-serwer z centralnym
+ serwerem pośredniczącym w przekazywaniu wiadomości.
+ W tym podejściu aplikacja zainstalowana na urządzeniu użytkownika wysyła
+ wiadomości do serwera, a zadaniem serwera jest dostarczenie ich do odpowiednich
+ odbiorców.
+ Drugie rozwiązanie jest pozbawione takiego serwera, a komunikaty przesyłane
+ są bezpośrednio pomiędzy urządzeniami użytkowników (w sieci P2P) — w tym
+ przypadku zastosowano mniej lub bardziej wyrafinowane podejścia, dzięki
+ czemu komunikatory w różnym stopniu spełniają wymagania, o których mowa
+ w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Idea"
+
+\end_inset
+
+.
+ Architektury te, w
+\begin_inset space ~
+\end_inset
+
+formie grafu, zostały zaprezentowane na rysunku 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Architektura-rozproszona-(po"
+
+\end_inset
+
+.
+ Wierzchołkami są włączone aplikacje komunikatora, a
+\begin_inset space ~
+\end_inset
+
+krawędziami są wysyłane i
+\begin_inset space ~
+\end_inset
+
+odbierane wiadomości.
+ Strzałki tego samego typu symbolizują rozmowy pomiędzy konkretnymi użytkownikam
+i lub konwersacje grupowe.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/rozproszone i centralne rozglaszanie.png
+	width 70line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Architektura P2P (po lewej) i
+\begin_inset space ~
+\end_inset
+
+klient-serwer (po prawej)
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Architektura-rozproszona-(po"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+W niniejszej pracy do przesyłania wiadomości wykorzystano architekturę P2P.
+ Urządzenie każdego użytkownika systemu z włączoną aplikacją komunikatora
+ jest węzłem.
+ Wszystkie węzły mają równe role — oznacza to, że żaden z nich nie jest
+ wyróżniony.
+ Węzły komunikują się ze sobą w celu wymiany komunikatów.
+ Każdy węzeł musi stworzyć i utrzymywać zbiór sąsiednich węzłów, z którymi
+ się komunikuje.
+ Zbiór sąsiadów jest dynamicznie modyfikowany na skutek dołączania nowych
+ węzłów do systemu lub ich odłączanie się.
+ Wspomniane w tym akapicie zadania węzła są kompetencjami protokołu BitTorrent,
+ o którym mowa w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:bittorent"
+
+\end_inset
+
+.
+ Celem pracy jest użycie tego protokołu oraz zbadanie jego przydatności
+ i wydajności w systemie komunikatora.
+ 
+\end_layout
+
+\begin_layout Standard
+Kolejną decyzją projektową jest wybór platformy, dla której wdrożona zostanie
+ aplikacja kliencka.
+ Istniejące rozwiązania oferują aplikacje desktopowe, mobilne i webowe.
+ 
 \end_layout
 
 \begin_layout Section
@@ -3744,160 +3964,6 @@ Architektura
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-własności, co oferuje (czy to nie jest już w koncepcji po poprawkach?)
-\end_layout
-
-\begin_layout Itemize
-poniższy rysunek mniejszy i jak go tu wykorzystać?
-\end_layout
-
-\begin_layout Plain Layout
-ze wstępu: Zbiór wszystkich użytkowników korzystających z
-\begin_inset space ~
-\end_inset
-
-danego komunikatora tworzy graf — za wierzchołki można uznać włączone aplikacje,
- a
-\begin_inset space ~
-\end_inset
-
-krawędziami są wysyłane i
-\begin_inset space ~
-\end_inset
-
-odbierane komunikaty.
- Przyjęcie takiej perspektywy pozwala na rozpatrzenie problemu dystrybucji
- wiadomości jako tytułowe rozgłaszanie danych w
-\begin_inset space ~
-\end_inset
-
-grafach dużej, wręcz globalnej, skali.
- 
-\end_layout
-
-\begin_layout Plain Layout
-W
-\begin_inset space ~
-\end_inset
-
-rozdziale 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:istniejace rozwiazania"
-
-\end_inset
-
- przedstawiono 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-kilka [[co motywowało wybór tych kilku konkretnych]]
-\end_layout
-
-\end_inset
-
- istniejących komunikatorów.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO zmienić bo zbyt duży skrót myślowy (wśród komunikatorów?): Wśród nich
- można wyróżnić
-\end_layout
-
-\end_inset
-
- dwie główne architektury — rozproszoną (komunikacja bezpośrednia P2P
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-peer to peer
-\end_layout
-
-\end_inset
-
-) oraz scentralizowaną (z serwerem pośredniczącym).
- 
-\end_layout
-
-\begin_layout Plain Layout
-Architektury te, w
-\begin_inset space ~
-\end_inset
-
-formie wspomnianego grafu, zostały zaprezentowane na rysunku 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Architektura-rozproszona-(po"
-
-\end_inset
-
-.
- Strzałki tego samego typu symbolizują rozmowy pomiędzy konkretnymi użytkownikam
-i lub konwersacje grupowe.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename img/rozproszone i centralne rozglaszanie.png
-	width 100line%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Architektura rozproszona (po lewej) i
-\begin_inset space ~
-\end_inset
-
-scentralizowana (po prawej)
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Architektura-rozproszona-(po"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:Architektura"
@@ -3936,7 +4002,7 @@ reference "fig:Architektura-komunikatora"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -4194,7 +4260,14 @@ Serwer przechowuje dane w
 \begin_inset space ~
 \end_inset
 
-nierelacyjnej (dokumentowej) bazie danych MongoDB.
+nierelacyjnej (dokumentowej) bazie danych MongoDB 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "mongo"
+
+\end_inset
+
+.
  Struktura dokumentów w
 \begin_inset space ~
 \end_inset
@@ -4406,7 +4479,14 @@ Zaimplementowany w
 \end_inset
 
 ramach projektu klient jest aplikacją webową typu Single Page Application.
- Do jej przygotowania wykorzystano framework AngularJS.
+ Do jej przygotowania wykorzystano framework AngularJS 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "angularjs"
+
+\end_inset
+
+.
  Integralną częścią programu jest moduł do obsługi protokołu BitTorrent
  — biblioteka WebTorrent.
  Wygląd komunikatora przedstawiony został na rysunku 
@@ -7238,7 +7318,7 @@ Do implementacji serwera REST w systemie komunikatora wykorzystano framework
  Python Eve 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "eve"
+key "python-eve"
 
 \end_inset
 
@@ -10801,6 +10881,25 @@ Bitmessage: A Peer-to-Peer Message Authentication and Delivery System
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "tanenbaum causal order"
+
+\end_inset
+
+Tanenbaum A.
+ S., 
+\begin_inset Quotes pld
+\end_inset
+
+Distributed Systems Principles and Paradigms
+\begin_inset Quotes prd
+\end_inset
+
+, Prentice Hall, 2007, strony 244-251
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "email-liczba"
 
 \end_inset
@@ -11096,16 +11195,6 @@ key "npm"
 \end_inset
 
 https://www.npmjs.com/ (dostęp 11.07.2017)
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "eve"
-
-\end_inset
-
-http://python-eve.org/index.html (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
