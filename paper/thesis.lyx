@@ -180,64 +180,18 @@ Wstęp
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+Komunikatory internetowe (ang.
+ 
+\begin_inset Flex Emph
 status open
 
 \begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-powiązanie społecznościowego systemu dużej skali z komunikatorem grupowym
-\end_layout
-
-\begin_layout Itemize
-literatura do pojęć np P2P, komunikator [IM 1] – dodać instant messaging
- , w IM 1 jest opisane jak to działą itp; w miarę jak najświeższa
-\end_layout
-
-\begin_layout Itemize
-arch rozproszona - są różne, klient-serwer czy DSM to też rozproszone; doprecyzo
-wać
-\end_layout
-
-\begin_layout Itemize
-P2P=sieć=system=architektura, bo później jest wspomniane 
-\begin_inset Quotes pld
-\end_inset
-
-sieć P2P
-\begin_inset Quotes prd
-\end_inset
-
- i nie wiadomo że to się do tego samego odnosi
-\end_layout
-
-\begin_layout Itemize
-centra przetwarzania - kosztowne –> praktyka firm = gromadzenie i analiza
- danych –> spersonal reklamy –> darmowy komunikator
-\end_layout
-
-\begin_layout Itemize
-zachować motywację, żeby o niej już później nie wspominać (koszty, zbieranie
- i anal danych).
- Motywacją jest wykorzystanie BT, choć jest on jeszcze niewystarczający
- w kontekście komunikatora (użycie go wprost).
- awaryjnosc serwera w centralnej (zielone zaznaczenia na kartce)
-\end_layout
-
-\begin_layout Itemize
-w rozdziale 2 są przedstawione komunikatory i co motywowało wybór tych konkretny
-ch
+instant messenger
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Komunikatory 
+) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "IM 1,IM 2,IM 3"
@@ -255,72 +209,62 @@ jaki ludzie wymieniają się informacjami.
 \end_inset
 
 formie wiadomości do grona odbiorców — najczęściej znajomych.
+ Taki komunikator jest społecznościowym systemem dużej (wręcz globalnej)
+ skali, gdyż umożliwia prowadzenie rozmów osobom znajdującym się w różnych
+ miejscach na świecie.
+ W rozdziale 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:istniejace rozwiazania"
+
+\end_inset
+
+ przedstawiono kilka istniejących komunikatorów, których dobór wynika z
+ chęci przedstawienia zróżnicowanych cech umożliwiających ich porównanie.
+ W szczególności, wyróżnić można rozwiązania bazujące na dwóch architekturach:
+ klient-serwer
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+[][][]
+\end_layout
+
+\end_inset
+
+ (z centralnym serwerem przekazującym wiadomości pomiędzy użytkownikami)
+ oraz P2P
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+peer-to-peer.
+ Pojęcia: P2P, sieć P2P, system P2P i architektura P2P są używane zamiennie.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+[][][]
+\end_layout
+
+\end_inset
+
+ (użytkownicy komunikują się bezpośrednio ze sobą).
  
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO wycięte w tym miejscu
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO !!!!! 
-\end_layout
-
-\begin_layout Plain Layout
-poniżej jest wspomniane o architekturach, ale to było w kontekście obrazka;
- teraz jest usunięte - jak to wpływa na dalszą część?
-\end_layout
-
-\begin_layout Plain Layout
-!
-\end_layout
-
-\begin_layout Plain Layout
-!
-\end_layout
-
-\begin_layout Plain Layout
-!
-\end_layout
-
-\begin_layout Plain Layout
-!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 Pod pojęciem 
 \begin_inset Quotes pld
 \end_inset
 
-serwer
+centralny serwer
 \begin_inset Quotes prd
-\end_inset
-
- na rysunku {{nie ma już rysunku}}
-\end_layout
-
 \end_inset
 
  kryje się zwykle jedno lub wiele centrów przetwarzania danych, których
@@ -359,22 +303,21 @@ key "fb-personalizowane reklamy"
 \begin_inset space ~
 \end_inset
 
-tej 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-praktyki {{jakiej praktyki?}}
-\end_layout
-
-\end_inset
-
-.
+tej praktyki.
  W
 \begin_inset space ~
 \end_inset
 
-tym celu możliwe jest zastosowanie architektury rozproszonej P2P.
+tym celu możliwe jest zastosowanie architektury P2P.
+\end_layout
+
+\begin_layout Standard
+Ponadto, cechą architektury klient-serwer jest konieczność zapewnienia ciągłego
+ dostępu do serwera.
+ Wszelkie awarie lub zaplanowane wyłączenia serwera (np.
+ w celu aktualizacji oprogramowania) skutkują niedostępnością usługi i uniemożli
+wiają użytkownikom korzystanie z komunikatora.
+ Jest to istotna wada wspomnianej architektury.
 \end_layout
 
 \begin_layout Standard
@@ -386,17 +329,7 @@ najpopularniejszych protokołów służących do dystrybucji plików w
 \begin_inset space ~
 \end_inset
 
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-sieci
-\end_layout
-
-\end_inset
-
- P2P.
+sieci P2P.
  Automatycznie dzieli udostępniane pliki na części i
 \begin_inset space ~
 \end_inset
@@ -413,52 +346,34 @@ wielu źródeł, na przykład od innych użytkowników.
 
 udostępnianiu plików oraz umożliwia dalsze pobieranie nawet gdy pierwotny
  nadawca pliku jest niedostępny.
- W
-\begin_inset space ~
-\end_inset
-
-niniejszej pracy protokół został użyty do przekazywania wiadomości.
+ Protokół nie jest jednak przystosowany do użycia wprost w kontekście komunikato
+ra.
+ Celem pracy jest zbadanie takiej możliwości i wykorzystanie protokołu do
+ przekazywania wiadomości.
+ 
 \end_layout
 
 \begin_layout Standard
-WebTorrent to biblioteka implementująca protokół BitTorrent.
+Bezpośrednie skorzystanie z protokołu BitTorrent nie jest możliwe w aplikacji
+ webowej.
+ Wykorzystano zatem dostępną publicznie (open-source) bibliotekę WebTorrent,
+ która jest implementacją protokołu BitTorrent.
  Została napisana w
 \begin_inset space ~
 \end_inset
 
-języku JavaScript, dzięki czemu możliwe jest użycie jej w
-\begin_inset space ~
-\end_inset
-
-aplikacji webowej — pozwala na wymianę plików pomiędzy przeglądarkami.
+języku JavaScript i pozwala na wymianę plików pomiędzy przeglądarkami.
  
 \end_layout
 
 \begin_layout Standard
-Celem pracy jest zaprojektowanie systemu komunikatora grupowego w
-\begin_inset space ~
-\end_inset
-
-formie aplikacji webowej.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Jednocześnie, założeniem jest jak największe wykorzystanie modelu komunikacji
- P2P w
-\begin_inset space ~
-\end_inset
-
-projekcie, aby minimalizować rolę serwerów w
-\begin_inset space ~
-\end_inset
-
-systemie.
-\end_layout
-
-\end_inset
-
+Ostatecznie, celem pracy jest zaprojektowanie systemu komunikatora grupowego.
+ Zdecydowano, że program kliencki będzie aplikacją webową ze względu na
+ uniwersalność i prostotę użycia — nie wymaga instalacji przez użytkownika
+ i jest dostępny poprzez przeglądarkę internetową zarówno z komputera stacjonarn
+ego jak i urządzenia mobilnego.
+ Oprócz tego, założeniem jest osiągnięcie przez system komunikatora jak
+ największej liczby cech systemu P2P oraz minimalizowanie roli serwerów.
  Dzięki temu komunikator powinien generować jak najmniejsze koszty.
  Do obsługi bezpośredniej komunikacji pomiędzy klientami, a
 \begin_inset space ~
@@ -501,8 +416,9 @@ reference "chap:Koncepcja"
 
 \end_inset
 
- zawarto teoretyczne podstawy działania protokołu BitTorrent, niezbędne
- do opracowania koncepcji jego wykorzystania w
+ zawarto ideę oraz model komunikatora, a także teoretyczne podstawy działania
+ protokołu BitTorrent, niezbędne do opracowania koncepcji jego wykorzystania
+ w
 \begin_inset space ~
 \end_inset
 
@@ -2985,28 +2901,6 @@ name "sec:Model"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Itemize
-co za mnie robi BT (np przy dołączaniu do swarma żeby pobrać wiadomość)
- — ZBIÓR SĄSIADÓW z doka
-\end_layout
-
-\begin_layout Itemize
-dlaczego apka webowa skoro są inne
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 W rozdziale 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3133,6 +3027,44 @@ reference "sec:bittorent"
 Kolejną decyzją projektową jest wybór platformy, dla której wdrożona zostanie
  aplikacja kliencka.
  Istniejące rozwiązania oferują aplikacje desktopowe, mobilne i webowe.
+ Ostatecznie zdecydowano o zaimplementowaniu aplikacji webowej.
+ Powody zostały podane poniżej:
+\end_layout
+
+\begin_layout Itemize
+Badanie rynku wykazało, że nie istnieje komunikator posiadający jednocześnie
+ wszystkie następujące cechy: aplikacja webowa, oprogramowanie open-source,
+ szyfrowanie wiadomości oraz architektura P2P.
+ 
+\end_layout
+
+\begin_layout Itemize
+Kolejnym argumentem jest próba zbadania, dlaczego komunikator o wspomnianych
+ cechach do tej pory nie powstał.
+ 
+\end_layout
+
+\begin_layout Itemize
+Aplikacja webowa jest najbardziej uniwersalna — istnieje możliwość uruchomienia
+ jej zarówno na komputerze stacjonarnym jak i na urządzeniu mobilnym (poprzez
+ przeglądarkę internetową).
+ Nie wymaga również od użytkownika przeprowadzenia procesu instalacji.
+ W przeciwnym przypadku wdrożenie programów klienckich wymagałoby stworzenia
+ odrębnych wersji aplikacji dostosowanych do różnych systemów operacyjnych.
+ 
+\end_layout
+
+\begin_layout Itemize
+Wykorzystanie protokołu BitTorrent w aplikacji webowej okazało się możliwe
+ — istnieje implementacja protokołu w formie biblioteki, którą można zastosować
+ w projekcie aplikacji internetowej (biblioteka opisana w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:webtorrent"
+
+\end_inset
+
+).
  
 \end_layout
 
