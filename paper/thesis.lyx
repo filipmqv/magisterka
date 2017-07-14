@@ -210,9 +210,16 @@ jaki ludzie wymieniają się informacjami.
 
 formie wiadomości do grona odbiorców — najczęściej znajomych.
  Taki komunikator jest społecznościowym systemem dużej (wręcz globalnej)
- skali, gdyż umożliwia prowadzenie rozmów osobom znajdującym się w różnych
- miejscach na świecie.
- W rozdziale 
+ skali, gdyż umożliwia prowadzenie rozmów osobom znajdującym się w
+\begin_inset space ~
+\end_inset
+
+różnych miejscach na świecie.
+ W
+\begin_inset space ~
+\end_inset
+
+rozdziale 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:istniejace rozwiazania"
@@ -220,16 +227,31 @@ reference "chap:istniejace rozwiazania"
 \end_inset
 
  przedstawiono kilka istniejących komunikatorów, których dobór wynika z
- chęci przedstawienia zróżnicowanych cech umożliwiających ich porównanie.
- W szczególności, wyróżnić można rozwiązania bazujące na dwóch architekturach:
- klient-serwer (z centralnym serwerem przekazującym wiadomości pomiędzy
- użytkownikami) oraz P2P
+\begin_inset space ~
+\end_inset
+
+chęci przedstawienia zróżnicowanych cech umożliwiających ich porównanie.
+ W
+\begin_inset space ~
+\end_inset
+
+szczególności, wyróżnić można rozwiązania bazujące na dwóch architekturach:
+ klient-serwer (z
+\begin_inset space ~
+\end_inset
+
+centralnym serwerem przekazującym wiadomości pomiędzy użytkownikami) oraz
+ P2P
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
 peer-to-peer.
- Pojęcia: P2P, sieć P2P, system P2P i architektura P2P są używane zamiennie.
+ Pojęcia: P2P, sieć P2P, system P2P i
+\begin_inset space ~
+\end_inset
+
+architektura P2P są używane zamiennie.
 \end_layout
 
 \end_inset
@@ -237,7 +259,7 @@ peer-to-peer.
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "p2p 1"
+key "p2p 1,p2p 2"
 
 \end_inset
 
@@ -302,13 +324,31 @@ tym celu możliwe jest zastosowanie architektury P2P.
 Ponadto, cechą architektury klient-serwer jest konieczność zapewnienia ciągłego
  dostępu do serwera.
  Wszelkie awarie lub zaplanowane wyłączenia serwera (np.
- w celu aktualizacji oprogramowania) skutkują niedostępnością usługi i uniemożli
-wiają użytkownikom korzystanie z komunikatora.
+ w
+\begin_inset space ~
+\end_inset
+
+celu aktualizacji oprogramowania) skutkują niedostępnością usługi i
+\begin_inset space ~
+\end_inset
+
+uniemożliwiają użytkownikom korzystanie z
+\begin_inset space ~
+\end_inset
+
+komunikatora.
  Jest to istotna wada wspomnianej architektury.
 \end_layout
 
 \begin_layout Standard
-BitTorrent jest jednym z
+BitTorrent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "bittorrent,bittorrent pdf"
+
+\end_inset
+
+ jest jednym z
 \begin_inset space ~
 \end_inset
 
@@ -333,32 +373,70 @@ wielu źródeł, na przykład od innych użytkowników.
 
 udostępnianiu plików oraz umożliwia dalsze pobieranie nawet gdy pierwotny
  nadawca pliku jest niedostępny.
- Protokół nie jest jednak przystosowany do użycia wprost w kontekście komunikato
-ra.
- Celem pracy jest zbadanie takiej możliwości i wykorzystanie protokołu do
- przekazywania wiadomości.
+ Protokół nie jest jednak przystosowany do użycia wprost w
+\begin_inset space ~
+\end_inset
+
+kontekście komunikatora.
+ Celem pracy jest zbadanie takiej możliwości i
+\begin_inset space ~
+\end_inset
+
+wykorzystanie protokołu do przekazywania wiadomości.
  
 \end_layout
 
 \begin_layout Standard
-Bezpośrednie skorzystanie z protokołu BitTorrent nie jest możliwe w aplikacji
- webowej.
- Wykorzystano zatem dostępną publicznie (open-source) bibliotekę WebTorrent,
- która jest implementacją protokołu BitTorrent.
+Bezpośrednie skorzystanie z
+\begin_inset space ~
+\end_inset
+
+protokołu BitTorrent nie jest możliwe w
+\begin_inset space ~
+\end_inset
+
+aplikacji webowej.
+ Wykorzystano zatem dostępną publicznie (open-source) bibliotekę WebTorrent
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "webtorrent,webtorrent github"
+
+\end_inset
+
+, która jest implementacją protokołu BitTorrent.
  Została napisana w
 \begin_inset space ~
 \end_inset
 
-języku JavaScript i pozwala na wymianę plików pomiędzy przeglądarkami.
+języku JavaScript i
+\begin_inset space ~
+\end_inset
+
+pozwala na wymianę plików pomiędzy przeglądarkami.
  
 \end_layout
 
 \begin_layout Standard
 Ostatecznie, celem pracy jest zaprojektowanie systemu komunikatora grupowego.
  Zdecydowano, że program kliencki będzie aplikacją webową ze względu na
- uniwersalność i prostotę użycia — nie wymaga instalacji przez użytkownika
- i jest dostępny poprzez przeglądarkę internetową zarówno z komputera stacjonarn
-ego jak i urządzenia mobilnego.
+ uniwersalność i
+\begin_inset space ~
+\end_inset
+
+prostotę użycia — nie wymaga instalacji przez użytkownika i
+\begin_inset space ~
+\end_inset
+
+jest dostępny poprzez przeglądarkę internetową zarówno z
+\begin_inset space ~
+\end_inset
+
+komputera stacjonarnego jak i
+\begin_inset space ~
+\end_inset
+
+urządzenia mobilnego.
  Oprócz tego, założeniem jest osiągnięcie przez system komunikatora jak
  największej liczby cech systemu P2P oraz minimalizowanie roli serwerów.
  Dzięki temu komunikator powinien generować jak najmniejsze koszty.
@@ -403,9 +481,12 @@ reference "chap:Koncepcja"
 
 \end_inset
 
- zawarto ideę oraz model komunikatora, a także teoretyczne podstawy działania
- protokołu BitTorrent, niezbędne do opracowania koncepcji jego wykorzystania
- w
+ zawarto ideę oraz model komunikatora, a
+\begin_inset space ~
+\end_inset
+
+także teoretyczne podstawy działania protokołu BitTorrent, niezbędne do
+ opracowania koncepcji jego wykorzystania w
 \begin_inset space ~
 \end_inset
 
@@ -526,8 +607,15 @@ grupowe.
 plików oraz dostarczanie wiadomości pod nieobecność nadawcy.
  Dostępny jest na najszerszej gamie platform — jako aplikacja webowa, mobilna
  oraz desktopowa, czym wyróżnia się na tle konkurencji.
- Architektura systemu Facebook Messenger składa się z aplikacji klienckich
- oraz centralnych serwerów pośredniczących w przekazywaniu wiadomości.
+ Architektura systemu Facebook Messenger składa się z
+\begin_inset space ~
+\end_inset
+
+aplikacji klienckich oraz centralnych serwerów pośredniczących w
+\begin_inset space ~
+\end_inset
+
+przekazywaniu wiadomości.
  Z
 \begin_inset space ~
 \end_inset
@@ -541,7 +629,11 @@ key "messenger uzytkownicy"
 
 .
  Tak wysoka popularność sprawia, że konieczne jest utrzymanie wielu współpracują
-cych serwerów znajdujących się w centrach przetwarzania danych.
+cych serwerów znajdujących się w
+\begin_inset space ~
+\end_inset
+
+centrach przetwarzania danych.
 \end_layout
 
 \begin_layout Standard
@@ -879,7 +971,11 @@ odbieraniu wiadomości pomiędzy klientem webowym i
 \end_inset
 
 resztą systemu.
- Identyczny mechanizm został zastosowany w przypadku aplikacji desktopowej.
+ Identyczny mechanizm został zastosowany w
+\begin_inset space ~
+\end_inset
+
+przypadku aplikacji desktopowej.
 \end_layout
 
 \begin_layout Section
@@ -1302,7 +1398,11 @@ zalety architektury blockchain okażą się kluczowe.
 \end_layout
 
 \begin_layout Section
-Podsumowanie i porównanie aplikacji
+Podsumowanie i
+\begin_inset space ~
+\end_inset
+
+porównanie aplikacji
 \end_layout
 
 \begin_layout Standard
@@ -1322,8 +1422,15 @@ docelowo
 \begin_inset Quotes prd
 \end_inset
 
- oznacza, że dana cecha jest w planach twórców aplikacji, ale obecnie jest
- niedostępna, a 
+ oznacza, że dana cecha jest w
+\begin_inset space ~
+\end_inset
+
+planach twórców aplikacji, ale obecnie jest niedostępna, a
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset Quotes pld
 \end_inset
 
@@ -1340,11 +1447,23 @@ centralna
 \begin_inset Quotes prd
 \end_inset
 
- oznacza, że w danym systemie komunikatora istnieje serwer pośredniczący,
- przekazujący wiadomości pomiędzy użytkownikami (architektura klient-serwer).
- W przypadku architektury P2P wiadomości przekazywane są bezpośrednio pomiędzy
+ oznacza, że w
+\begin_inset space ~
+\end_inset
+
+danym systemie komunikatora istnieje serwer pośredniczący, przekazujący
+ wiadomości pomiędzy użytkownikami (architektura klient-serwer).
+ W
+\begin_inset space ~
+\end_inset
+
+przypadku architektury P2P wiadomości przekazywane są bezpośrednio pomiędzy
  urządzeniami użytkowników.
- Architektura blockchain została opisana w artykule 
+ Architektura blockchain została opisana w
+\begin_inset space ~
+\end_inset
+
+artykule 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bitmessage-pdf"
@@ -1352,7 +1471,11 @@ key "bitmessage-pdf"
 \end_inset
 
 .
- W wierszu 
+ W
+\begin_inset space ~
+\end_inset
+
+wierszu 
 \begin_inset Quotes pld
 \end_inset
 
@@ -1386,11 +1509,33 @@ mob
 
  — aplikacja mobilna.
  Gwiazdki oznaczają, że dany komunikator posiada niestandardowe rozwiązanie
- lub dana cecha jest spełniona z pewnym zastrzeżeniem.
- Przykładowo, skorzystanie z aplikacji desktopowej lub webowej komunikatora
- WhatsApp jest możliwe tylko, gdy uruchomiona jest aplikacja mobilna, a
- komunikator Darkwire oferuje szyfrowanie wiadomości z pewnym zastrzeżeniem,
- o którym mowa w punkcie 
+ lub dana cecha jest spełniona z
+\begin_inset space ~
+\end_inset
+
+pewnym zastrzeżeniem.
+ Przykładowo, skorzystanie z
+\begin_inset space ~
+\end_inset
+
+aplikacji desktopowej lub webowej komunikatora WhatsApp jest możliwe tylko,
+ gdy uruchomiona jest aplikacja mobilna, a
+\begin_inset space ~
+\end_inset
+
+komunikator Darkwire oferuje szyfrowanie wiadomości z
+\begin_inset space ~
+\end_inset
+
+pewnym zastrzeżeniem, o
+\begin_inset space ~
+\end_inset
+
+którym mowa w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:darkwire-bezpieczenstwo"
@@ -2484,8 +2629,16 @@ reference "sec:Idea"
 \end_inset
 
 ) znajduje się opis idei komunikatora — sprecyzowano, czym jest komunikator
- oraz jakie powinien spełniać wymagania i założenia.
- Następnie, w punkcie 
+ oraz jakie powinien spełniać wymagania i
+\begin_inset space ~
+\end_inset
+
+założenia.
+ Następnie, w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Model"
@@ -2493,7 +2646,11 @@ reference "sec:Model"
 \end_inset
 
 , przedstawiono model systemu.
- W rozdziale scharakteryzowano również najważniejsze cechy protokołu BitTorrent
+ W
+\begin_inset space ~
+\end_inset
+
+rozdziale scharakteryzowano również najważniejsze cechy protokołu BitTorrent
  (punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2513,9 +2670,16 @@ reference "sec:webtorrent"
 \end_inset
 
 .
- Wspomniano także, jaką rolę w systemie pełni wyżej wymieniony protokół
- oraz jakie istotne zmiany względem specyfikacji protokołu wprowadzono w
- bibliotece.
+ Wspomniano także, jaką rolę w
+\begin_inset space ~
+\end_inset
+
+systemie pełni wyżej wymieniony protokół oraz jakie istotne zmiany względem
+ specyfikacji protokołu wprowadzono w
+\begin_inset space ~
+\end_inset
+
+bibliotece.
  
 \end_layout
 
@@ -2553,21 +2717,42 @@ key "IM 1,IM 2,IM 3"
 \end_inset
 
  jest umożliwienie użytkownikom wysyłania wiadomości do innych użytkowników,
- którzy również korzystają z tego samego komunikatora (inaczej: usługi,
- systemu, programu).
+ którzy również korzystają z
+\begin_inset space ~
+\end_inset
+
+tego samego komunikatora (inaczej: usługi, systemu, programu).
  Osoby rozmawiające ze sobą za pośrednictwem komunikatora są zwykle znajomymi,
  choć nie jest to regułą.
- W celu korzystania z danego systemu użytkownik często musi dokonać rejestracji
- — zakłada konto (profil), które będzie go jednoznacznie identyfikowało
- w danym systemie.
+ W
+\begin_inset space ~
+\end_inset
+
+celu korzystania z
+\begin_inset space ~
+\end_inset
+
+danego systemu użytkownik często musi dokonać rejestracji — zakłada konto
+ (profil), które będzie go jednoznacznie identyfikowało w
+\begin_inset space ~
+\end_inset
+
+danym systemie.
  Istnieją również komunikatory, które nie nakładają na użytkownika takiego
  obowiązku.
  Komunikator zwykle dostępny jest na różnych platformach — jako program
  desktopowy, aplikacja mobilna lub webowa.
- Dzięki temu, w odróżnieniu od wiadomości SMS, użytkownicy mogą komunikować
- się korzystając z różnych urządzeń — przykładowo wiadomość wysłana za pośrednic
-twem aplikacji mobilnej może zostać odczytana przez odbiorcę na komputerze
- stacjonarnym.
+ Dzięki temu, w
+\begin_inset space ~
+\end_inset
+
+odróżnieniu od wiadomości SMS, użytkownicy mogą komunikować się korzystając
+ z
+\begin_inset space ~
+\end_inset
+
+różnych urządzeń — przykładowo, wiadomość wysłana za pośrednictwem aplikacji
+ mobilnej może zostać odczytana przez odbiorcę na komputerze stacjonarnym.
  
 \end_layout
 
@@ -2590,14 +2775,25 @@ name "subsec:konto uzytkownika"
 \end_layout
 
 \begin_layout Standard
-Należy zagwarantować unikalność każdego użytkownika w skali całego systemu.
+Należy zagwarantować unikalność każdego użytkownika w
+\begin_inset space ~
+\end_inset
+
+skali całego systemu.
  Musi istnieć możliwość jednoznacznego zidentyfikowania osoby.
- W tym celu można przyjąć założenie, że unikalnym identyfikatorem użytkownika
+ W
+\begin_inset space ~
+\end_inset
+
+tym celu można przyjąć założenie, że unikalnym identyfikatorem użytkownika
  jest jego numer telefonu lub adres e-mail, który należy podać podczas rejestrac
 ji konta.
  Zakłada się istnienie centralnego zarządcy nadzorującego proces rejestracji
- kont i uniemożliwiającego założenie więcej niż jednego konta dla danego
- identyfikatora.
+ kont i
+\begin_inset space ~
+\end_inset
+
+uniemożliwiającego założenie więcej niż jednego konta dla danego identyfikatora.
  
 \end_layout
 
@@ -2606,19 +2802,38 @@ Treść wiadomości
 \end_layout
 
 \begin_layout Standard
-Użytkownik ma możliwość podania treści wiadomości w postaci ciągu znaków.
+Użytkownik ma możliwość podania treści wiadomości w
+\begin_inset space ~
+\end_inset
+
+postaci ciągu znaków.
  Jest to podstawowy sposób definiowania komunikatu.
- Rozszerzeniem byłoby przesyłanie w treści wiadomości plików — zdjęć, filmów,
- plików audio bądź dowolnego innego typu.
- W trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania
- plików.
+ Rozszerzeniem byłoby przesyłanie w
+\begin_inset space ~
+\end_inset
+
+treści wiadomości plików — zdjęć, filmów, plików audio bądź dowolnego innego
+ typu.
+ W
+\begin_inset space ~
+\end_inset
+
+trakcie prac nad projektem podjęto próbę zaimplementowania przesyłania plików.
  Ta funkcjonalność nie znalazła się jednak w
 \begin_inset space ~
 \end_inset
 
-końcowej wersji systemu z powodu ograniczeń technologicznych.
+końcowej wersji systemu z
+\begin_inset space ~
+\end_inset
+
+powodu ograniczeń technologicznych.
  Nie jest to jednak niezbędna opcja — możliwe było przeprowadzenie testów
- aplikacji omówionych w rozdziale 
+ aplikacji omówionych w
+\begin_inset space ~
+\end_inset
+
+rozdziale 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Wyniki testów"
@@ -2635,11 +2850,26 @@ Zdefiniowanie odbiorcy lub odbiorców
 \begin_layout Standard
 Użytkownik ma możliwość zaadresowania wiadomości do konkretnego odbiorcy
  — musi mieć gwarancję, że wiadomość będzie mogła zostać odczytana tylko
- przez zdefiniowanego adresata i nikogo poza nim.
- Jeśli w jednej rozmowie uczestniczy więcej niż 2 uczestników to taki komunikato
-r określa się mianem komunikatora grupowego, a gwarancja możliwości odczytania
- wiadomości rozszerza się na wszystkich uczestników rozmowy i nikogo poza
- nimi.
+ przez zdefiniowanego adresata i
+\begin_inset space ~
+\end_inset
+
+nikogo poza nim.
+ Jeśli w
+\begin_inset space ~
+\end_inset
+
+jednej rozmowie uczestniczy więcej niż 2 uczestników to taki komunikator
+ określa się mianem komunikatora grupowego, a
+\begin_inset space ~
+\end_inset
+
+gwarancja możliwości odczytania wiadomości rozszerza się na wszystkich uczestnik
+ów rozmowy i
+\begin_inset space ~
+\end_inset
+
+nikogo poza nimi.
  Ponadto, użytkownik powinien mieć pewność, że odbiorca jest tym, za kogo
  się podaje — brak możliwości podszycia się pod odbiorcę.
 \end_layout
@@ -2657,21 +2887,39 @@ znajomym
 
  innego użytkownika.
  Operacja zawarcia znajomości jest jednokrotna — zakłada się, że raz zawarta
- znajomość trwa aż do momentu jej anulowania i dopiero wówczas może zostać
- zawarta ponownie.
+ znajomość trwa aż do momentu jej anulowania i
+\begin_inset space ~
+\end_inset
+
+dopiero wówczas może zostać zawarta ponownie.
  Dodatkowo przyjmuje się, że użytkownicy rzadko wykonują operację anulowania
- znajomości — przykładowo, nie dochodzi do sytuacji, w której użytkownik
- anuluje znajomość każdorazowo po wysłaniu wiadomości.
+ znajomości — przykładowo, nie dochodzi do sytuacji, w
+\begin_inset space ~
+\end_inset
+
+której użytkownik anuluje znajomość każdorazowo po wysłaniu wiadomości.
  Przy spełnieniu powyższych założeń, nadawca wiadomości wybiera odbiorcę
- lub odbiorców z listy swoich znajomych.
+ lub odbiorców z
+\begin_inset space ~
+\end_inset
+
+listy swoich znajomych.
  Jednocześnie, nadawca ma gwarancję, że ponowne wybranie tego samego znajomego
  jako odbiorcy spowoduje dostarczenie wiadomości do tej samej osoby.
 \end_layout
 
 \begin_layout Standard
 W opisanym powyżej systemie konieczne jest zdefiniowanie operacji wyszukiwania
- kont użytkowników w celu zawarcia znajomości.
- W punkcie 
+ kont użytkowników w
+\begin_inset space ~
+\end_inset
+
+celu zawarcia znajomości.
+ W
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:konto uzytkownika"
@@ -2681,17 +2929,42 @@ reference "subsec:konto uzytkownika"
  przyjęto założenie, że każde konto posiada unikalny identyfikator, zatem
  możliwe staje się znalezienie konkretnego użytkownika.
  Podobny mechanizm można zastosować jeśli system nie umożliwia zawierania
- znajomości — w tej sytuacji nadawca wybiera konto odbiorcy z listy wszystkich
- kont dostępnych w systemie.
+ znajomości — w
+\begin_inset space ~
+\end_inset
+
+tej sytuacji nadawca wybiera konto odbiorcy z
+\begin_inset space ~
+\end_inset
+
+listy wszystkich kont dostępnych w
+\begin_inset space ~
+\end_inset
+
+systemie.
  
 \end_layout
 
 \begin_layout Standard
-Inne podejście definiowania odbiorców można zastosować w systemie pozbawionym
- kont użytkowników.
+Inne podejście definiowania odbiorców można zastosować w
+\begin_inset space ~
+\end_inset
+
+systemie pozbawionym kont użytkowników.
  Nadawca najpierw tworzy lub uzyskuje unikalny identyfikator rozmowy (np.
- link prowadzący do konwersacji), a następnie musi przekazać go odbiorcom
- korzystając z innego sposobu komunikacji — przykład opisany w punkcie 
+ link prowadzący do konwersacji), a
+\begin_inset space ~
+\end_inset
+
+następnie musi przekazać go odbiorcom korzystając z
+\begin_inset space ~
+\end_inset
+
+innego sposobu komunikacji — przykład opisany w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Darkwire"
@@ -2702,23 +2975,56 @@ reference "sec:Darkwire"
 \end_layout
 
 \begin_layout Standard
-Ostatecznie zdecydowano, że w systemie komunikatora będącego przedmiotem
- niniejszej pracy każdy użytkownik będzie posiadał unikalne konto, ale nie
- wprowadzono relacji znajomości.
- Ponadto, nadawca uzyskuje identyfikator konwersacji i definiuje odbiorców
- wiadomości w sposób opisany w poprzednim akapicie.
+Ostatecznie zdecydowano, że w
+\begin_inset space ~
+\end_inset
+
+systemie komunikatora będącego przedmiotem niniejszej pracy każdy użytkownik
+ będzie posiadał unikalne konto, ale nie wprowadzono relacji znajomości.
+ Ponadto, nadawca uzyskuje identyfikator konwersacji i
+\begin_inset space ~
+\end_inset
+
+definiuje odbiorców wiadomości w
+\begin_inset space ~
+\end_inset
+
+sposób opisany w
+\begin_inset space ~
+\end_inset
+
+poprzednim akapicie.
  Jest to rozwiązanie prostsze implementacyjnie.
  Dodatkowo, celem pracy jest minimalizowanie roli serwera pośredniczącego,
- a operacje zawierania znajomości i wyszukiwania kont użytkowników spowodowałyby
- jego dodatkowe obciążenie.
- Nie są to operacje istotne z punktu widzenia testów z rozdziału 
+ a
+\begin_inset space ~
+\end_inset
+
+operacje zawierania znajomości i
+\begin_inset space ~
+\end_inset
+
+wyszukiwania kont użytkowników spowodowałyby jego dodatkowe obciążenie.
+ Nie są to operacje istotne z
+\begin_inset space ~
+\end_inset
+
+punktu widzenia testów z
+\begin_inset space ~
+\end_inset
+
+rozdziału 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Wyniki testów"
 
 \end_inset
 
-, zatem można było z nich zrezygnować.
+, zatem można było z
+\begin_inset space ~
+\end_inset
+
+nich zrezygnować.
 \end_layout
 
 \begin_layout Subsection
@@ -2726,10 +3032,16 @@ Dostarczenie wiadomości do wszystkich odbiorców
 \end_layout
 
 \begin_layout Standard
-Istnieje gwarancja dostarczenia wiadomości do wszystkich odbiorców w ramach
- pojedynczej konwersacji.
- Nie może zaistnieć sytuacja, w której część uczestników rozmowy nie otrzyma
- nadanej wiadomości.
+Istnieje gwarancja dostarczenia wiadomości do wszystkich odbiorców w
+\begin_inset space ~
+\end_inset
+
+ramach pojedynczej konwersacji.
+ Nie może zaistnieć sytuacja, w
+\begin_inset space ~
+\end_inset
+
+której część uczestników rozmowy nie otrzyma nadanej wiadomości.
 \end_layout
 
 \begin_layout Subsection
@@ -2739,10 +3051,29 @@ Odebranie wiadomości
 \begin_layout Standard
 Użytkownik ma gwarancję odebrania wszystkich wiadomości, których jest adresatem.
  Dostępność odbiorcy oznacza, że program komunikatora na jego urządzeniu
- jest włączony i znajduje się w stanie gotowości do odbioru komunikatów.
- Jeśli odbiorca jest dostępny w momencie nadania wiadomości, to zostaje
- ona dostarczona do niego jak najszybciej (więcej o szybkości transmisji
- w punkcie 
+ jest włączony i
+\begin_inset space ~
+\end_inset
+
+znajduje się w
+\begin_inset space ~
+\end_inset
+
+stanie gotowości do odbioru komunikatów.
+ Jeśli odbiorca jest dostępny w
+\begin_inset space ~
+\end_inset
+
+momencie nadania wiadomości, to zostaje ona dostarczona do niego jak najszybciej
+ (więcej o
+\begin_inset space ~
+\end_inset
+
+szybkości transmisji w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:czas przesyłania wiadomości"
@@ -2750,9 +3081,19 @@ reference "subsec:czas przesyłania wiadomości"
 \end_inset
 
 ).
- Jeśli odbiorca nie jest dostępny w tym momencie, to wiadomość zostaje dostarczo
-na do niego w późniejszym czasie — kiedy będzie ponownie dostępny (w momencie
- ponownego uruchomienia komunikatora na urządzeniu).
+ Jeśli odbiorca nie jest dostępny w
+\begin_inset space ~
+\end_inset
+
+tym momencie, to wiadomość zostaje dostarczona do niego w
+\begin_inset space ~
+\end_inset
+
+późniejszym czasie — kiedy będzie ponownie dostępny (w
+\begin_inset space ~
+\end_inset
+
+momencie ponownego uruchomienia komunikatora na urządzeniu).
 \end_layout
 
 \begin_layout Subsection
@@ -2760,14 +3101,28 @@ Kolejność dostarczania wiadomości
 \end_layout
 
 \begin_layout Standard
-Kolejną istotną kwestią jest kolejność, w jakiej wiadomości docierają do
- odbiorcy (lub odbiorców, jeśli mowa o rozmowie grupowej).
+Kolejną istotną kwestią jest kolejność, w
+\begin_inset space ~
+\end_inset
+
+jakiej wiadomości docierają do odbiorcy (lub odbiorców, jeśli mowa o
+\begin_inset space ~
+\end_inset
+
+rozmowie grupowej).
  Komunikator powinien spełniać następujące założenia:
 \end_layout
 
 \begin_layout Itemize
-kolejność FIFO — wiadomości wysłane przez pojedynczego nadawcę w danej kolejnośc
-i powinny być odebrane w takiej samej kolejności przez pojedynczego odbiorcę.
+kolejność FIFO — wiadomości wysłane przez pojedynczego nadawcę w
+\begin_inset space ~
+\end_inset
+
+danej kolejności powinny być odebrane w
+\begin_inset space ~
+\end_inset
+
+takiej samej kolejności przez pojedynczego odbiorcę.
 \end_layout
 
 \begin_layout Itemize
@@ -2789,10 +3144,21 @@ key "tanenbaum causal order"
 
 \end_inset
 
- — wiadomości wysyłane przez wielu nadawców w rozmowie grupowej powinny
- być odbierane przez wszystkich odbiorców w takim samym porządku.
+ — wiadomości wysyłane przez wielu nadawców w
+\begin_inset space ~
+\end_inset
+
+rozmowie grupowej powinny być odbierane przez wszystkich odbiorców w
+\begin_inset space ~
+\end_inset
+
+takim samym porządku.
  Innymi słowy — każdy uczestnik powinien widzieć identyczną kolejność wszystkich
- wiadomości wymienionych w ramach pojedynczej rozmowy.
+ wiadomości wymienionych w
+\begin_inset space ~
+\end_inset
+
+ramach pojedynczej rozmowy.
  
 \end_layout
 
@@ -2815,12 +3181,20 @@ key "tanenbaum causal order"
 
 \end_inset
 
- — wiadomości zależne przyczynowo są odbierane w odpowiedniej kolejności.
+ — wiadomości zależne przyczynowo są odbierane w
+\begin_inset space ~
+\end_inset
+
+odpowiedniej kolejności.
  Przykładowo, użytkownik A wysyła wiadomość 
 \begin_inset Formula $m_{A}$
 \end_inset
 
-, użytkownik B otrzymuje ją i odpowiada na nią wiadomością 
+, użytkownik B otrzymuje ją i
+\begin_inset space ~
+\end_inset
+
+odpowiada na nią wiadomością 
 \begin_inset Formula $m_{B}$
 \end_inset
 
@@ -2830,7 +3204,11 @@ key "tanenbaum causal order"
 \begin_inset Formula $m_{B}$
 \end_inset
 
-, a następnie wiadomości 
+, a
+\begin_inset space ~
+\end_inset
+
+następnie wiadomości 
 \begin_inset Formula $m_{A}$
 \end_inset
 
@@ -2871,8 +3249,16 @@ instant messenger
 
 \end_inset
 
-) z definicji powinien umożliwiać przesłanie wiadomości od nadawcy do odbiorcy
- w jak najkrótszym czasie (niemalże natychmiast; ang.
+) z
+\begin_inset space ~
+\end_inset
+
+definicji powinien umożliwiać przesłanie wiadomości od nadawcy do odbiorcy
+ w
+\begin_inset space ~
+\end_inset
+
+jak najkrótszym czasie (niemalże natychmiast; ang.
  
 \begin_inset Flex Emph
 status open
@@ -2885,9 +3271,20 @@ instant
 
 ).
  System powinien cechować się zatem wysoką wydajnością.
- Ostateczna efektywność zastosowanego rozwiązania zostanie zbadana w ramach
- testów wydajnościowych.
- Ich przebieg i wyniki przedstawiono w rozdziale 
+ Ostateczna efektywność zastosowanego rozwiązania zostanie zbadana w
+\begin_inset space ~
+\end_inset
+
+ramach testów wydajnościowych.
+ Ich przebieg i
+\begin_inset space ~
+\end_inset
+
+wyniki przedstawiono w
+\begin_inset space ~
+\end_inset
+
+rozdziale 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:Wyniki testów"
@@ -2903,22 +3300,55 @@ Dostarczanie wiadomości pod nieobecność nadawcy
 
 \begin_layout Standard
 Kolejnym założeniem, które musi spełniać system komunikatora jest możliwość
- dostarczenia wiadomości do odbiorcy w momencie, gdy jej nadawca nie jest
- dostępny.
- W przeciwnym przypadku (czyli w sytuacji, w której wiadomość może zostać
- dostarczona tylko gdy nadawca i odbiorca są jednocześnie dostępni) możliwe
- byłoby naruszenie warunku żywotności (postępu) dla konwersacji.
+ dostarczenia wiadomości do odbiorcy w
+\begin_inset space ~
+\end_inset
+
+momencie, gdy jej nadawca nie jest dostępny.
+ W
+\begin_inset space ~
+\end_inset
+
+przeciwnym przypadku (czyli w
+\begin_inset space ~
+\end_inset
+
+sytuacji, w
+\begin_inset space ~
+\end_inset
+
+której wiadomość może zostać dostarczona tylko gdy nadawca i
+\begin_inset space ~
+\end_inset
+
+odbiorca są jednocześnie dostępni) możliwe byłoby naruszenie warunku żywotności
+ (postępu) dla konwersacji.
  Oznaczałoby to, że nadana wiadomość mogłaby nigdy nie dotrzeć do odbiorcy
- (nawet, jeśli okresowo nadawca i odbiorca stawaliby się dostępni).
- Rozwiązanie tego problemu dla systemu komunikatora projektowanego w ramach
- niniejszej pracy zostało zaproponowane w punktach 
+ (nawet, jeśli okresowo nadawca i
+\begin_inset space ~
+\end_inset
+
+odbiorca stawaliby się dostępni).
+ Rozwiązanie tego problemu dla systemu komunikatora projektowanego w
+\begin_inset space ~
+\end_inset
+
+ramach niniejszej pracy zostało zaproponowane w
+\begin_inset space ~
+\end_inset
+
+punktach 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Odebranie_wiadomości"
 
 \end_inset
 
- i 
+ i
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:dostarczanie wiadomości offline propozycja"
@@ -2935,12 +3365,19 @@ Liczba użytkowników systemu
 \begin_layout Standard
 Docelowo system komunikatora powinien umożliwiać prowadzenie rozmów nieograniczo
 nej liczbie użytkowników.
- Każda osoba powinna mieć możliwość skomunikowania się z dowolną inną osobą
- na świecie.
+ Każda osoba powinna mieć możliwość skomunikowania się z
+\begin_inset space ~
+\end_inset
+
+dowolną inną osobą na świecie.
  Zaprojektowanie takiego społecznościowego systemu dużej skali jest ogromnym
  wyzwaniem inżynieryjnym.
- Według źródeł, z aplikacji Facebook Messenger korzysta miesięcznie 1,2
- miliarda użytkowników 
+ Według źródeł, z
+\begin_inset space ~
+\end_inset
+
+aplikacji Facebook Messenger korzysta miesięcznie 1,2 miliarda użytkowników
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "messenger uzytkownicy"
@@ -2983,16 +3420,52 @@ reference "chap:istniejace rozwiazania"
 
  przedstawiono przykłady istniejących komunikatorów.
  Ich implementacje bazują na dwóch typach architektur.
- Pierwszym rozwiązaniem jest architektura typu klient-serwer z centralnym
- serwerem pośredniczącym w przekazywaniu wiadomości.
- W tym podejściu aplikacja zainstalowana na urządzeniu użytkownika wysyła
- wiadomości do serwera, a zadaniem serwera jest dostarczenie ich do odpowiednich
- odbiorców.
- Drugie rozwiązanie jest pozbawione takiego serwera, a komunikaty przesyłane
- są bezpośrednio pomiędzy urządzeniami użytkowników (w sieci P2P) — w tym
- przypadku zastosowano mniej lub bardziej wyrafinowane podejścia, dzięki
- czemu komunikatory w różnym stopniu spełniają wymagania, o których mowa
- w punkcie 
+ Pierwszym rozwiązaniem jest architektura typu klient-serwer z
+\begin_inset space ~
+\end_inset
+
+centralnym serwerem pośredniczącym w
+\begin_inset space ~
+\end_inset
+
+przekazywaniu wiadomości.
+ W
+\begin_inset space ~
+\end_inset
+
+tym podejściu aplikacja zainstalowana na urządzeniu użytkownika wysyła wiadomośc
+i do serwera, a
+\begin_inset space ~
+\end_inset
+
+zadaniem serwera jest dostarczenie ich do odpowiednich odbiorców.
+ Drugie rozwiązanie jest pozbawione takiego serwera, a
+\begin_inset space ~
+\end_inset
+
+komunikaty przesyłane są bezpośrednio pomiędzy urządzeniami użytkowników
+ (w
+\begin_inset space ~
+\end_inset
+
+sieci P2P) — w
+\begin_inset space ~
+\end_inset
+
+tym przypadku zastosowano mniej lub bardziej wyrafinowane podejścia, dzięki
+ czemu komunikatory w
+\begin_inset space ~
+\end_inset
+
+różnym stopniu spełniają wymagania, o
+\begin_inset space ~
+\end_inset
+
+których mowa w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Idea"
@@ -3073,17 +3546,45 @@ name "fig:Architektura-rozproszona-(po"
 
 \begin_layout Standard
 W niniejszej pracy do przesyłania wiadomości wykorzystano architekturę P2P.
- Urządzenie każdego użytkownika systemu z włączoną aplikacją komunikatora
- jest węzłem.
- Wszystkie węzły mają równe role — oznacza to, że żaden z nich nie jest
- wyróżniony.
- Węzły komunikują się ze sobą w celu wymiany komunikatów.
- Każdy węzeł musi stworzyć i utrzymywać zbiór sąsiednich węzłów, z którymi
- się komunikuje.
+ Urządzenie każdego użytkownika systemu z
+\begin_inset space ~
+\end_inset
+
+włączoną aplikacją komunikatora jest węzłem.
+ Wszystkie węzły mają równe role — oznacza to, że żaden z
+\begin_inset space ~
+\end_inset
+
+nich nie jest wyróżniony.
+ Węzły komunikują się ze sobą w
+\begin_inset space ~
+\end_inset
+
+celu wymiany komunikatów.
+ Każdy węzeł musi stworzyć i
+\begin_inset space ~
+\end_inset
+
+utrzymywać zbiór sąsiednich węzłów, z
+\begin_inset space ~
+\end_inset
+
+którymi się komunikuje.
  Zbiór sąsiadów jest dynamicznie modyfikowany na skutek dołączania nowych
  węzłów do systemu lub ich odłączanie się.
- Wspomniane w tym akapicie zadania węzła są kompetencjami protokołu BitTorrent,
- o którym mowa w punkcie 
+ Wspomniane w
+\begin_inset space ~
+\end_inset
+
+tym akapicie zadania węzła są kompetencjami protokołu BitTorrent, o
+\begin_inset space ~
+\end_inset
+
+którym mowa w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:bittorent"
@@ -3092,15 +3593,31 @@ reference "sec:bittorent"
 
 .
  Celem pracy jest użycie tego protokołu oraz zbadanie jego przydatności
- i wydajności w systemie komunikatora.
+ i
+\begin_inset space ~
+\end_inset
+
+wydajności w
+\begin_inset space ~
+\end_inset
+
+systemie komunikatora.
  
 \end_layout
 
 \begin_layout Standard
 Kolejną decyzją projektową jest wybór platformy, dla której wdrożona zostanie
  aplikacja kliencka.
- Istniejące rozwiązania oferują aplikacje desktopowe, mobilne i webowe.
- Ostatecznie zdecydowano o zaimplementowaniu aplikacji webowej.
+ Istniejące rozwiązania oferują aplikacje desktopowe, mobilne i
+\begin_inset space ~
+\end_inset
+
+webowe.
+ Ostatecznie zdecydowano o
+\begin_inset space ~
+\end_inset
+
+zaimplementowaniu aplikacji webowej.
  Powody zostały podane poniżej:
 \end_layout
 
@@ -3112,25 +3629,50 @@ Badanie rynku wykazało, że nie istnieje komunikator posiadający jednocześnie
 \end_layout
 
 \begin_layout Itemize
-Kolejnym argumentem jest próba zbadania, dlaczego komunikator o wspomnianych
- cechach do tej pory nie powstał.
+Kolejnym argumentem jest próba zbadania, dlaczego komunikator o
+\begin_inset space ~
+\end_inset
+
+wspomnianych cechach do tej pory nie powstał.
  
 \end_layout
 
 \begin_layout Itemize
 Aplikacja webowa jest najbardziej uniwersalna — istnieje możliwość uruchomienia
- jej zarówno na komputerze stacjonarnym jak i na urządzeniu mobilnym (poprzez
- przeglądarkę internetową).
+ jej zarówno na komputerze stacjonarnym jak i
+\begin_inset space ~
+\end_inset
+
+na urządzeniu mobilnym (poprzez przeglądarkę internetową).
  Nie wymaga również od użytkownika przeprowadzenia procesu instalacji.
- W przeciwnym przypadku wdrożenie programów klienckich wymagałoby stworzenia
+ W
+\begin_inset space ~
+\end_inset
+
+przeciwnym przypadku wdrożenie programów klienckich wymagałoby stworzenia
  odrębnych wersji aplikacji dostosowanych do różnych systemów operacyjnych.
  
 \end_layout
 
 \begin_layout Itemize
-Wykorzystanie protokołu BitTorrent w aplikacji webowej okazało się możliwe
- — istnieje implementacja protokołu w formie biblioteki, którą można zastosować
- w projekcie aplikacji internetowej (biblioteka opisana w punkcie 
+Wykorzystanie protokołu BitTorrent w
+\begin_inset space ~
+\end_inset
+
+aplikacji webowej okazało się możliwe — istnieje implementacja protokołu
+ w
+\begin_inset space ~
+\end_inset
+
+formie biblioteki, którą można zastosować w
+\begin_inset space ~
+\end_inset
+
+projekcie aplikacji internetowej (biblioteka opisana w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:webtorrent"
@@ -3159,7 +3701,7 @@ name "sec:bittorent"
 BitTorrent 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "bittorrent"
+key "bittorrent,bittorrent pdf"
 
 \end_inset
 
@@ -3418,16 +3960,41 @@ key "magnet link,magnet uri scheme"
  — link pozwalający na uzyskanie metadanych torrenta bez konieczności pobierania
  metapliku .torrent.
  Link powinien zawierać przynajmniej info hash torrenta oraz listę trackerów.
- W ogólności magnet link umożliwia identyfikację plików na podstawie ich
- zawartości (bazując na wyniku funkcji skrótu tejże zawartości), a nie ich
- lokalizacji, jak ma to miejsce w przypadku zwykłych linków (odnoszących
- się do pliku znajdującego się w konkretnym katalogu na konkretnej maszynie).
+ W
+\begin_inset space ~
+\end_inset
+
+ogólności magnet link umożliwia identyfikację plików na podstawie ich zawartości
+ (bazując na wyniku funkcji skrótu tejże zawartości), a
+\begin_inset space ~
+\end_inset
+
+nie ich lokalizacji, jak ma to miejsce w
+\begin_inset space ~
+\end_inset
+
+przypadku zwykłych linków (odnoszących się do pliku znajdującego się w
+\begin_inset space ~
+\end_inset
+
+konkretnym katalogu na konkretnej maszynie).
  Oprócz wspomnianych już parametrów (wynik funkcji skrótu, lista trackerów),
  magnet link może zawierać szereg innych atrybutów.
- Przykładowo są to: nazwa i rozmiar pliku, słowa kluczowe umożliwiające
- bardziej szczegółowe opisanie zawartości pliku czy zapasowy, standardowy
- link pozwalający pobrać plik ze zwykłego serwera w przypadku, gdy pobranie
- go z sieci P2P okaże się niemożliwe.
+ Przykładowo są to: nazwa i
+\begin_inset space ~
+\end_inset
+
+rozmiar pliku, słowa kluczowe umożliwiające bardziej szczegółowe opisanie
+ zawartości pliku czy zapasowy, standardowy link pozwalający pobrać plik
+ ze zwykłego serwera w
+\begin_inset space ~
+\end_inset
+
+przypadku, gdy pobranie go z
+\begin_inset space ~
+\end_inset
+
+sieci P2P okaże się niemożliwe.
  
 \end_layout
 
@@ -3899,9 +4466,20 @@ skrypcie wykonywanym w
 \end_inset
 
 przeglądarce po wejściu na stronę internetową.
- W ogólności biblioteka oferuje taką samą funkcjonalność jak protokół BitTorrent
- — umożliwia udostępnianie i pobieranie plików przy użyciu mechanizmów opisanych
- w punkcie 
+ W
+\begin_inset space ~
+\end_inset
+
+ogólności biblioteka oferuje taką samą funkcjonalność jak protokół BitTorrent
+ — umożliwia udostępnianie i
+\begin_inset space ~
+\end_inset
+
+pobieranie plików przy użyciu mechanizmów opisanych w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:bittorent"
@@ -3910,7 +4488,11 @@ reference "sec:bittorent"
 
 .
  Wartością dodaną jest przede wszystkim możliwość wykonywania tych operacji
- z poziomu przeglądarki internetowej.
+ z
+\begin_inset space ~
+\end_inset
+
+poziomu przeglądarki internetowej.
  Bibliotekę można również wykorzystać jako moduł w
 \begin_inset space ~
 \end_inset
@@ -3920,13 +4502,21 @@ programie dla platformy Node.js.
 \begin_inset space ~
 \end_inset
 
-obu wersjach (dla przeglądarki i Node.js) jest niemal identyczna.
+obu wersjach (dla przeglądarki i
+\begin_inset space ~
+\end_inset
+
+Node.js) jest niemal identyczna.
  Istnieje jednak kilka wyjątków wynikających z
 \begin_inset space ~
 \end_inset
 
 ograniczeń danej platformy.
- Różnice te zostały opisane w punkcie 
+ Różnice te zostały opisane w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:WT różnice"
@@ -4016,11 +4606,29 @@ reference "subsec:WT webrtc"
 
 \begin_layout Standard
 Z powyższych zmian protokołu wynika, że klient webowy może komunikować się
- jedynie z innymi klientami webowymi oraz z klientami sieci P2P, które wspierają
- komunikację poprzez WebRTC (na przykład klient serwerowy lub hybrydowy
- klient desktopowy).
- Klient hybrydowy oferuje komunikację zarówno poprzez WebRTC jak i przy
- użyciu protokołów TCP i µTP, używanych w oryginalnej implementacji BitTorrent.
+ jedynie z
+\begin_inset space ~
+\end_inset
+
+innymi klientami webowymi oraz z
+\begin_inset space ~
+\end_inset
+
+klientami sieci P2P, które wspierają komunikację poprzez WebRTC (na przykład
+ klient serwerowy lub hybrydowy klient desktopowy).
+ Klient hybrydowy oferuje komunikację zarówno poprzez WebRTC jak i
+\begin_inset space ~
+\end_inset
+
+przy użyciu protokołów TCP i
+\begin_inset space ~
+\end_inset
+
+µTP, używanych w
+\begin_inset space ~
+\end_inset
+
+oryginalnej implementacji BitTorrent.
  Taki klient stanowi pomost pomiędzy sieciami P2P (rysunek 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5483,7 +6091,11 @@ immutable
 
 którym użytkownik dodaje wiadomość jako kolejny plik do istniejącego torrenta
  jest na chwilę obecną niemożliwy do zrealizowania, chociaż istnieją próby
- wdrożenia takiej możliwości (w protokole BitTorrent 
+ wdrożenia takiej możliwości (w
+\begin_inset space ~
+\end_inset
+
+protokole BitTorrent 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bep39-bt,bep46-bt"
@@ -6250,8 +6862,11 @@ W sytuacji, gdy pobrano torrent kontrolny, moduł torrent usuwa z
 \begin_inset space ~
 \end_inset
 
-klienta sieci P2P torrenty, które znajdują się na liście przesłanej w polu
- 
+klienta sieci P2P torrenty, które znajdują się na liście przesłanej w
+\begin_inset space ~
+\end_inset
+
+polu 
 \begin_inset Quotes pld
 \end_inset
 
@@ -6527,8 +7142,12 @@ przesyłania im posiadanych informacji.
 \begin_inset space ~
 \end_inset
 
-DHT posiada etykietę (w przypadku systemu komunikatora jest nią user_dht_id),
- która następnie zamieniana jest na klucz przez funkcję haszującą.
+DHT posiada etykietę (w
+\begin_inset space ~
+\end_inset
+
+przypadku systemu komunikatora jest nią user_dht_id), która następnie zamieniana
+ jest na klucz przez funkcję haszującą.
  Informacją w
 \begin_inset space ~
 \end_inset
@@ -7443,17 +8062,29 @@ Wykorzystane technologie
 
 \begin_layout Standard
 Podczas pracy nad projektem systemu komunikatora użyto wielu technologii,
- zwykle standardowych i popularnych dla danej platformy.
+ zwykle standardowych i
+\begin_inset space ~
+\end_inset
+
+popularnych dla danej platformy.
  Język programowania wykorzystany do implementacji serwera REST to język
  Python.
- Aplikacja kliencka powstała w języku JavaScript.
+ Aplikacja kliencka powstała w
+\begin_inset space ~
+\end_inset
+
+języku JavaScript.
  
 \end_layout
 
 \begin_layout Standard
 Klient jest aplikacją webową typu Single Page Application.
  Do zaimplementowania tego typu programu wykorzystano framework AngularJS,
- który został opisany w punkcie 
+ który został opisany w
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:AngularJS"
@@ -7461,19 +8092,41 @@ reference "subsec:AngularJS"
 \end_inset
 
 .
- W punkcie 
+ W
+\begin_inset space ~
+\end_inset
+
+punkcie 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:grunt bower yo"
 
 \end_inset
 
- przedstawiono system budujący Grunt, menedżer pakietów Bower i generator
- szkieletu projektu Yeoman, które są zwykle wykorzystywane wraz z frameworkiem
- AngularJS.
+ przedstawiono system budujący Grunt, menedżer pakietów Bower i
+\begin_inset space ~
+\end_inset
+
+generator szkieletu projektu Yeoman, które są zwykle wykorzystywane wraz
+ z
+\begin_inset space ~
+\end_inset
+
+frameworkiem AngularJS.
  Oprócz standardowych funkcji dostępnych we wspomnianym frameworku oraz
- w języku JavaScript, skorzystano z funkcji znajdujących się w bibliotece
- Lodash (pkt.
+ w
+\begin_inset space ~
+\end_inset
+
+języku JavaScript, skorzystano z
+\begin_inset space ~
+\end_inset
+
+funkcji znajdujących się w
+\begin_inset space ~
+\end_inset
+
+bibliotece Lodash (pkt.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7482,7 +8135,11 @@ reference "subsec:lodash"
 \end_inset
 
 ).
- W celu udostępnienia zbudowanego projektu przez serwer aplikacji, zastosowano
+ W
+\begin_inset space ~
+\end_inset
+
+celu udostępnienia zbudowanego projektu przez serwer aplikacji, zastosowano
  platformę Node.js oraz framework Express (pkt.
  
 \begin_inset CommandInset ref
@@ -7504,8 +8161,11 @@ reference "subsec:py eve"
 \end_inset
 
 ).
- Do wymiany informacji pomiędzy serwerem REST a aplikacjami klienckimi wykorzyst
-ano format danych JSON (ang.
+ Do wymiany informacji pomiędzy serwerem REST a
+\begin_inset space ~
+\end_inset
+
+aplikacjami klienckimi wykorzystano format danych JSON (ang.
  
 \begin_inset Flex Emph
 status open
@@ -7517,7 +8177,11 @@ JavaScript Object Notation
 \end_inset
 
 ).
- Serwer zapisuje dane w bazie danych MongoDB (pkt.
+ Serwer zapisuje dane w
+\begin_inset space ~
+\end_inset
+
+bazie danych MongoDB (pkt.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7531,7 +8195,11 @@ reference "subsec:mongo"
 
 \begin_layout Standard
 W celu przeprowadzenia testów wydajności systemu komunikatora skorzystano
- z frameworka testującego Protractor (pkt.
+ z
+\begin_inset space ~
+\end_inset
+
+frameworka testującego Protractor (pkt.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7542,8 +8210,12 @@ reference "subsec:protractor"
 ).
  Jego zastosowanie jest rekomendowane dla aplikacji webowych wykorzystujących
  AngularJS.
- Zbadanie danych wysyłanych i odbieranych przez maszyny testowe umożliwił
- analizator protokołów sieciowych Wireshark 
+ Zbadanie danych wysyłanych i
+\begin_inset space ~
+\end_inset
+
+odbieranych przez maszyny testowe umożliwił analizator protokołów sieciowych
+ Wireshark 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wireshark"
@@ -7590,10 +8262,20 @@ key "angularjs"
 \end_inset
 
  to projekt na licencji MIT, rozwijany głównie przez firmę Google.
- Framework ten umożliwia tworzenie i rozwój aplikacji internetowych typu
- Single Page Application.
- Znacznym ułatwieniem podczas projektowania i testowania aplikacji jest
- zastosowanie w AngularJS wzorca projektowego MVC (ang.
+ Framework ten umożliwia tworzenie i
+\begin_inset space ~
+\end_inset
+
+rozwój aplikacji internetowych typu Single Page Application.
+ Znacznym ułatwieniem podczas projektowania i
+\begin_inset space ~
+\end_inset
+
+testowania aplikacji jest zastosowanie w
+\begin_inset space ~
+\end_inset
+
+AngularJS wzorca projektowego MVC (ang.
  
 \begin_inset Flex Emph
 status open
@@ -7606,8 +8288,15 @@ Model-View-Controller
 
 ).
  Pozwala on między innymi na rozdzielenie warstw modelu (danych), widoku
- (prezentacji) i kontrolera (logiki), co z kolei przyczynia się do zwiększenia
- uporządkowania projektu.
+ (prezentacji) i
+\begin_inset space ~
+\end_inset
+
+kontrolera (logiki), co z
+\begin_inset space ~
+\end_inset
+
+kolei przyczynia się do zwiększenia uporządkowania projektu.
  
 \end_layout
 
@@ -7625,14 +8314,25 @@ dependency injection
 
 ) daje możliwość zastosowania po stronie klienta serwisów typowych dla aplikacji
  serwerowych.
- Jest to istotna cecha, ponieważ system komunikatora w znacznym stopniu
- polega na współpracy klientów (komunikacja P2P).
- Rola serwera powinna być w projekcie jak najmniejsza.
+ Jest to istotna cecha, ponieważ system komunikatora w
+\begin_inset space ~
+\end_inset
+
+znacznym stopniu polega na współpracy klientów (komunikacja P2P).
+ Rola serwera powinna być w
+\begin_inset space ~
+\end_inset
+
+projekcie jak najmniejsza.
 \end_layout
 
 \begin_layout Standard
-Jedną z najważniejszych funkcji AngularJS, redukującą ilość napisanego kodu,
- jest mechanizm dwukierunkowego wiązania danych (ang.
+Jedną z
+\begin_inset space ~
+\end_inset
+
+najważniejszych funkcji AngularJS, redukującą ilość napisanego kodu, jest
+ mechanizm dwukierunkowego wiązania danych (ang.
  
 \begin_inset Flex Emph
 status open
@@ -7644,8 +8344,16 @@ two-way data binding
 \end_inset
 
 ).
- Umożliwia on dynamiczną zmianę widoku na skutek modyfikacji danych w modelu.
- Wszelkie operacje na modelu przeprowadzane są w kontrolerze.
+ Umożliwia on dynamiczną zmianę widoku na skutek modyfikacji danych w
+\begin_inset space ~
+\end_inset
+
+modelu.
+ Wszelkie operacje na modelu przeprowadzane są w
+\begin_inset space ~
+\end_inset
+
+kontrolerze.
  Ponadto, zmiany widoku również mogą wpływać na model — dlatego wiązanie
  nazwane jest dwukierunkowym.
  
@@ -7673,8 +8381,11 @@ key "grunt"
 
 \end_inset
 
- jest narzędziem automatyzującym powtarzalne czynności w trakcie projektowania
- aplikacji webowej.
+ jest narzędziem automatyzującym powtarzalne czynności w
+\begin_inset space ~
+\end_inset
+
+trakcie projektowania aplikacji webowej.
  Narzędzie pozwala między innymi na przygotowanie ostatecznej wersji projektu,
  gotowej do wdrożenia na serwerze.
  
@@ -7690,9 +8401,21 @@ key "bower"
 
 .
  Jest to menedżer umożliwiający definiowanie, jakie pakiety (biblioteki,
- moduły itp.) zostaną użyte w roboczej i docelowej wersji projektu.
- Bower automatycznie wyszukuje i instaluje określoną lub najnowszą wersję
- każdego uwzględnionego pakietu oraz sprawdza zależności między pakietami.
+ moduły itp.) zostaną użyte w
+\begin_inset space ~
+\end_inset
+
+roboczej i
+\begin_inset space ~
+\end_inset
+
+docelowej wersji projektu.
+ Bower automatycznie wyszukuje i
+\begin_inset space ~
+\end_inset
+
+instaluje określoną lub najnowszą wersję każdego uwzględnionego pakietu
+ oraz sprawdza zależności między pakietami.
 \end_layout
 
 \begin_layout Standard
@@ -7704,11 +8427,21 @@ key "yeoman"
 \end_inset
 
  to generator szkieletu projektu.
- Jest on używany jednorazowo na początku pracy i pozwala na stworzenie pierwszej
- wersji działającego systemu — podstawowej struktury katalogów projektu
- oraz niezbędnych plików.
- Dzięki temu programista może skupić się, w kolejnych krokach, jedynie na
- istotnych i unikalnych funkcjach systemu.
+ Jest on używany jednorazowo na początku pracy i
+\begin_inset space ~
+\end_inset
+
+pozwala na stworzenie pierwszej wersji działającego systemu — podstawowej
+ struktury katalogów projektu oraz niezbędnych plików.
+ Dzięki temu programista może skupić się, w
+\begin_inset space ~
+\end_inset
+
+kolejnych krokach, jedynie na istotnych i
+\begin_inset space ~
+\end_inset
+
+unikalnych funkcjach systemu.
  
 \end_layout
 
@@ -7734,15 +8467,38 @@ key "lodash"
 
 \end_inset
 
- jest biblioteką udostępnioną na licencji MIT i dostarczającą programiście
- metody rozszerzające język JavaScript.
- Zastosowanie biblioteki w projekcie pozwala na przyspieszenie implementacji
- systemu poprzez skorzystanie z gotowych fragmentów kodu.
+ jest biblioteką udostępnioną na licencji MIT i
+\begin_inset space ~
+\end_inset
+
+dostarczającą programiście metody rozszerzające język JavaScript.
+ Zastosowanie biblioteki w
+\begin_inset space ~
+\end_inset
+
+projekcie pozwala na przyspieszenie implementacji systemu poprzez skorzystanie
+ z
+\begin_inset space ~
+\end_inset
+
+gotowych fragmentów kodu.
  Do dyspozycji są między innymi metody operujące na ciągach znaków, tablicach,
- obiektach i kolekcjach obiektów.
- W ramach biblioteki dostępne są również bardziej wydajne zamienniki funkcji
- obecnych w standardzie języka JavaScript — ich użycie pozwala na przyspieszenie
- działania projektowanej aplikacji.
+ obiektach i
+\begin_inset space ~
+\end_inset
+
+kolekcjach obiektów.
+ W
+\begin_inset space ~
+\end_inset
+
+ramach biblioteki dostępne są również bardziej wydajne zamienniki funkcji
+ obecnych w
+\begin_inset space ~
+\end_inset
+
+standardzie języka JavaScript — ich użycie pozwala na przyspieszenie działania
+ projektowanej aplikacji.
  
 \end_layout
 
@@ -7768,9 +8524,25 @@ key "node"
 
 \end_inset
 
- służy do tworzenia skalowalnych aplikacji internetowych w języku JavaScript.
- W szczególności, umożliwia zaprojektowanie serwerów WWW.
- W niniejszym projekcie serwer Node.js (wraz z modułem Express 
+ służy do tworzenia skalowalnych aplikacji internetowych w
+\begin_inset space ~
+\end_inset
+
+języku JavaScript.
+ W
+\begin_inset space ~
+\end_inset
+
+szczególności, umożliwia zaprojektowanie serwerów WWW.
+ W
+\begin_inset space ~
+\end_inset
+
+niniejszym projekcie serwer Node.js (wraz z
+\begin_inset space ~
+\end_inset
+
+modułem Express 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "express"
@@ -7783,7 +8555,11 @@ kom pobranie aplikacji komunikatora.
 \end_layout
 
 \begin_layout Standard
-Framework oraz moduły, które można użyć wraz z nim, są projektami open-source.
+Framework oraz moduły, które można użyć wraz z
+\begin_inset space ~
+\end_inset
+
+nim, są projektami open-source.
 \end_layout
 
 \begin_layout Standard
@@ -7812,8 +8588,11 @@ name "subsec:py eve"
 \end_layout
 
 \begin_layout Standard
-Do implementacji serwera REST w systemie komunikatora wykorzystano framework
- Python Eve 
+Do implementacji serwera REST w
+\begin_inset space ~
+\end_inset
+
+systemie komunikatora wykorzystano framework Python Eve 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "python-eve"
@@ -7824,16 +8603,32 @@ key "python-eve"
  Do głównych zalet tego narzędzia należy zaliczyć jego prostotę oraz przyjęcie
  pewnych konwencji — dzięki temu programista definiuje tylko niezbędne,
  unikalne dla danego programu elementy.
- W szczególności, rolą projektanta jest sprecyzowanie klas — określenie
- ich nazw i atrybutów.
- W przypadku systemu komunikatora są to klasy użytkownika (punkt 
+ W
+\begin_inset space ~
+\end_inset
+
+szczególności, rolą projektanta jest sprecyzowanie klas — określenie ich
+ nazw i
+\begin_inset space ~
+\end_inset
+
+atrybutów.
+ W
+\begin_inset space ~
+\end_inset
+
+przypadku systemu komunikatora są to klasy użytkownika (punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:uzytkownicy i logowanie"
 
 \end_inset
 
-) i konwersacji (punkt 
+) i
+\begin_inset space ~
+\end_inset
+
+konwersacji (punkt 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Konwersacje"
@@ -7843,16 +8638,42 @@ reference "subsec:Konwersacje"
 ).
  Dodatkowo, należy zdefiniować zależności pomiędzy klasami, ograniczenia
  integralnościowe dla poszczególnych atrybutów oraz podstawową konfigurację
- połączenia z bazą danych.
- Wiele zadań, które powtarzają się w projektach typowych serwerów REST,
- jest zapewnionych automatycznie przez framework — są to przykładowo: walidacja
- danych, przygotowanie ścieżek dostępu do obiektów poprzez protokół HTTP
- czy obsługa bazy danych.
- Wybór tej technologii wynika z faktu, iż serwer w systemie komunikatora
- pełni jedynie rolę typowego pośrednika aplikacji klienckich z bazą danych
- i nie wykonuje niestandardowych obliczeń (nietypowych dla serwera REST).
+ połączenia z
+\begin_inset space ~
+\end_inset
+
+bazą danych.
+ Wiele zadań, które powtarzają się w
+\begin_inset space ~
+\end_inset
+
+projektach typowych serwerów REST, jest zapewnionych automatycznie przez
+ framework — są to przykładowo: walidacja danych, przygotowanie ścieżek
+ dostępu do obiektów poprzez protokół HTTP czy obsługa bazy danych.
+ Wybór tej technologii wynika z
+\begin_inset space ~
+\end_inset
+
+faktu, iż serwer w
+\begin_inset space ~
+\end_inset
+
+systemie komunikatora pełni jedynie rolę typowego pośrednika aplikacji klienckic
+h z
+\begin_inset space ~
+\end_inset
+
+bazą danych i
+\begin_inset space ~
+\end_inset
+
+nie wykonuje niestandardowych obliczeń (nietypowych dla serwera REST).
  Możliwości oferowane przez framework Python Eve okazały się wystarczające.
- System polega w większości na współpracy aplikacji klienckich.
+ System polega w
+\begin_inset space ~
+\end_inset
+
+większości na współpracy aplikacji klienckich.
  
 \end_layout
 
@@ -7879,18 +8700,44 @@ key "mongo"
 \end_inset
 
  jest systemem do zarządzania nierelacyjną bazą danych.
- Zastosowanie tej bazy danych w systemie komunikatora wynika wprost z faktu
- użycia frameworka Python Eve, który jest domyślnie przystosowany do współpracy
- z bazą danych MongoDB.
- Dane przechowywane są w niej w formie dokumentów JSON.
- Baza danych charakteryzuje się wysoką wydajnością i skalowalnością.
+ Zastosowanie tej bazy danych w
+\begin_inset space ~
+\end_inset
+
+systemie komunikatora wynika wprost z
+\begin_inset space ~
+\end_inset
+
+faktu użycia frameworka Python Eve, który jest domyślnie przystosowany do
+ współpracy z
+\begin_inset space ~
+\end_inset
+
+bazą danych MongoDB.
+ Dane przechowywane są w
+\begin_inset space ~
+\end_inset
+
+niej w
+\begin_inset space ~
+\end_inset
+
+formie dokumentów JSON.
+ Baza danych charakteryzuje się wysoką wydajnością i
+\begin_inset space ~
+\end_inset
+
+skalowalnością.
  Ponadto, jest to oprogramowanie open-source.
  
 \end_layout
 
 \begin_layout Standard
-W celu uruchomienia publicznie dostępnej bazy danych skorzystano z mLab
- 
+W celu uruchomienia publicznie dostępnej bazy danych skorzystano z
+\begin_inset space ~
+\end_inset
+
+mLab 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mlab"
@@ -7904,7 +8751,11 @@ key "mlab"
 status open
 
 \begin_layout Plain Layout
-DaaS, Database as a Service
+DaaS, Database as a
+\begin_inset space ~
+\end_inset
+
+Service
 \end_layout
 
 \end_inset
@@ -7939,10 +8790,17 @@ key "protractor"
 .
  Pozwala on na zdefiniowanie scenariuszy testowych oraz automatycznie przeprowad
 zenie zaplanowanych testów.
- Możliwe jest również ustalanie parametrów testowych oraz warunków, w jakich
- poszczególne testy należy uznać za zakończone pomyślnie.
+ Możliwe jest również ustalanie parametrów testowych oraz warunków, w
+\begin_inset space ~
+\end_inset
+
+jakich poszczególne testy należy uznać za zakończone pomyślnie.
  Zastosowanie tej technologii umożliwiło zbadanie wydajności systemu komunikator
-a w powtarzalny sposób.
+a w
+\begin_inset space ~
+\end_inset
+
+powtarzalny sposób.
  
 \end_layout
 
@@ -7968,27 +8826,49 @@ key "heroku"
 
 \end_inset
 
- to platforma chmurowa, działająca w modelu PaaS (ang.
+ to platforma chmurowa, działająca w
+\begin_inset space ~
+\end_inset
+
+modelu PaaS (ang.
  
 \begin_inset Flex Emph
 status open
 
 \begin_layout Plain Layout
-Platform as a Service
+Platform as a
+\begin_inset space ~
+\end_inset
+
+Service
 \end_layout
 
 \end_inset
 
 ).
- Serwer REST oraz serwer aplikacji zostały umieszczone w wirtualnych środowiskac
-h oferowanych przez tę usługę.
+ Serwer REST oraz serwer aplikacji zostały umieszczone w
+\begin_inset space ~
+\end_inset
+
+wirtualnych środowiskach oferowanych przez tę usługę.
  Dzięki temu obie aplikacje są dostępne publicznie — posiadają publiczny
  adres IP oraz domenę internetową.
- Aplikacja kliencka może komunikować się z serwerem REST.
+ Aplikacja kliencka może komunikować się z
+\begin_inset space ~
+\end_inset
+
+serwerem REST.
  Platforma Heroku umożliwia między innymi zarządzanie aplikacjami, wyłączanie
- ich, modyfikację ustawień oraz automatycznie buduje i uruchamia nową wersję
- oprogramowania po zaktualizowaniu jej kodu źródłowego w publicznym repozytorium
- kodu.
+ ich, modyfikację ustawień oraz automatycznie buduje i
+\begin_inset space ~
+\end_inset
+
+uruchamia nową wersję oprogramowania po zaktualizowaniu jej kodu źródłowego
+ w
+\begin_inset space ~
+\end_inset
+
+publicznym repozytorium kodu.
  
 \end_layout
 
@@ -8313,9 +9193,20 @@ reference "chap:istniejace rozwiazania"
 
  posiadają możliwość wysyłania różnych plików jako załączniki lub jako osobne
  wiadomości.
- Ponadto, częstą praktyką w popularnych komunikatorach jest umieszczanie
- w aplikacji wbudowanych obrazów wyrażających określone emocje, które użytkownik
- może przeszukiwać i wysyłać.
+ Ponadto, częstą praktyką w
+\begin_inset space ~
+\end_inset
+
+popularnych komunikatorach jest umieszczanie w
+\begin_inset space ~
+\end_inset
+
+aplikacji wbudowanych obrazów wyrażających określone emocje, które użytkownik
+ może przeszukiwać i
+\begin_inset space ~
+\end_inset
+
+wysyłać.
  
 \end_layout
 
@@ -8683,7 +9574,15 @@ tej samej podsieci).
 \end_layout
 
 \begin_layout Standard
-Specyfikacja komputera K2 (w laboratorium) oraz K3 (w sieci domowej):
+Specyfikacja komputera K2 (w
+\begin_inset space ~
+\end_inset
+
+laboratorium) oraz K3 (w
+\begin_inset space ~
+\end_inset
+
+sieci domowej):
 \end_layout
 
 \begin_layout Itemize
@@ -8889,8 +9788,12 @@ sieci domowej (K3 <> K4).
 \begin_inset space ~
 \end_inset
 
-K4 były uruchomione 1 lub 2 klienty (w osobnych oknach przeglądarki) — stąd
- możliwość przetestowania od 2 do 4 klientów.
+K4 były uruchomione 1 lub 2 klienty (w
+\begin_inset space ~
+\end_inset
+
+osobnych oknach przeglądarki) — stąd możliwość przetestowania od 2 do 4
+ klientów.
  Średni czas wynosi od około 2
 \begin_inset space ~
 \end_inset
@@ -9071,7 +9974,11 @@ reference "fig:Uśredniony-czas-przesłania-1"
 \begin_inset space ~
 \end_inset
 
-K4 (w sieci domowej).
+K4 (w
+\begin_inset space ~
+\end_inset
+
+sieci domowej).
  W
 \begin_inset space ~
 \end_inset
@@ -10479,7 +11386,11 @@ reference "sec:Wpływ alg"
 
 \end_inset
 
- (a konkretnie próbie z
+ (a
+\begin_inset space ~
+\end_inset
+
+konkretnie próbie z
 \begin_inset space ~
 \end_inset
 
@@ -10892,7 +11803,7 @@ różnych względów nie umieszczono w
 \end_inset
 
 projekcie.
- Zrezygnowano chociażby z
+ Zrezygnowano z
 \begin_inset space ~
 \end_inset
 
@@ -11041,7 +11952,11 @@ Jure Leskovec, Eric Horvitz,
 \begin_inset Quotes pld
 \end_inset
 
-Planetary-Scale Views on a Large Instant-Messaging Network
+Planetary-Scale Views on a
+\begin_inset space ~
+\end_inset
+
+Large Instant-Messaging Network
 \begin_inset Quotes prd
 \end_inset
 
@@ -11084,6 +11999,25 @@ Peer-to-Peer Systems and Applications
 \end_inset
 
 , Springer-Verlag Berlin Heidelberg, 2005, strony 9-16
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "p2p 2"
+
+\end_inset
+
+Quang H.
+ Vu, 
+\begin_inset Quotes pld
+\end_inset
+
+Peer-to-Peer Computing: Principles and Applications
+\begin_inset Quotes prd
+\end_inset
+
+, Springer, 2010, strony 1-10
 \end_layout
 
 \begin_layout Bibliography
@@ -11165,7 +12099,11 @@ key "signal artykuł"
 
 \end_inset
 
-Katriel Cohn-Gordon, Cas Cremers, Luke Garratt i inni, 
+Katriel Cohn-Gordon, Cas Cremers, Luke Garratt i
+\begin_inset space ~
+\end_inset
+
+inni, 
 \begin_inset Quotes pld
 \end_inset
 
@@ -11321,7 +12259,7 @@ key "merkle"
 
 \end_inset
 
-Becker, Georg, 
+Georg Becker, 
 \begin_inset Quotes pld
 \end_inset
 
@@ -11436,6 +12374,24 @@ key "bittorrent"
 \end_inset
 
 http://www.bittorrent.org/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "bittorrent pdf"
+
+\end_inset
+
+Bram Cohen, 
+\begin_inset Quotes pld
+\end_inset
+
+Incentives Build Robustness in BitTorrent
+\begin_inset Quotes prd
+\end_inset
+
+, 2003, 5 stron, http://www.bittorrent.org/bittorrentecon.pdf (dostęp 14.07.2017)
 \end_layout
 
 \begin_layout Bibliography
