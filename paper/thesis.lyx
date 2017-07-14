@@ -222,18 +222,8 @@ reference "chap:istniejace rozwiazania"
  przedstawiono kilka istniejących komunikatorów, których dobór wynika z
  chęci przedstawienia zróżnicowanych cech umożliwiających ich porównanie.
  W szczególności, wyróżnić można rozwiązania bazujące na dwóch architekturach:
- klient-serwer
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-[][][]
-\end_layout
-
-\end_inset
-
- (z centralnym serwerem przekazującym wiadomości pomiędzy użytkownikami)
- oraz P2P
+ klient-serwer (z centralnym serwerem przekazującym wiadomości pomiędzy
+ użytkownikami) oraz P2P
 \begin_inset Foot
 status open
 
@@ -244,13 +234,10 @@ peer-to-peer.
 
 \end_inset
 
- 
-\begin_inset Note Note
-status open
 
-\begin_layout Plain Layout
-[][][]
-\end_layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "p2p 1"
 
 \end_inset
 
@@ -672,7 +659,18 @@ przeciwnym przypadku wiadomość umieszczana jest w
 \begin_inset space ~
 \end_inset
 
-DHT (Distributed Hash Table) i
+DHT (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Distributed Hash Table
+\end_layout
+
+\end_inset
+
+) i
 \begin_inset space ~
 \end_inset
 
@@ -1003,9 +1001,29 @@ punktów przyszłego rozwoju.
 \end_inset
 
 sytuacji gdy połączenie internetowe jest niedostępne.
- Aplikacja wykorzystuje algorytm plotkowania (gossiping) oraz replikuje
- wiadomości przy użyciu drzewa skrótów (hash tree, Merkle DAG, DAG — Directed
- Acyclic Graph 
+ Aplikacja wykorzystuje algorytm plotkowania (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+gossiping
+\end_layout
+
+\end_inset
+
+) oraz replikuje wiadomości przy użyciu drzewa skrótów (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+hash tree, Merkle DAG, DAG — Directed Acyclic Graph
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "merkle"
@@ -1193,7 +1211,18 @@ bloku, obliczenia funkcji skrótu z
 \begin_inset space ~
 \end_inset
 
-zadanym prefiksem (proof of work) i
+zadanym prefiksem (dowód pracy; ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+proof of work
+\end_layout
+
+\end_inset
+
+) i
 \begin_inset space ~
 \end_inset
 
@@ -1201,7 +1230,18 @@ umieszczenia bloku w
 \begin_inset space ~
 \end_inset
 
-łańcuchu (blockchain).
+łańcuchu (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+blockchain
+\end_layout
+
+\end_inset
+
+).
  Samo tylko wyliczenie funkcji skrótu powinno z
 \begin_inset space ~
 \end_inset
@@ -2553,8 +2593,8 @@ name "subsec:konto uzytkownika"
 Należy zagwarantować unikalność każdego użytkownika w skali całego systemu.
  Musi istnieć możliwość jednoznacznego zidentyfikowania osoby.
  W tym celu można przyjąć założenie, że unikalnym identyfikatorem użytkownika
- jest jego numer telefonu lub adres email, który należy podać podczas rejestracj
-i konta.
+ jest jego numer telefonu lub adres e-mail, który należy podać podczas rejestrac
+ji konta.
  Zakłada się istnienie centralnego zarządcy nadzorującego proces rejestracji
  kont i uniemożliwiającego założenie więcej niż jednego konta dla danego
  identyfikatora.
@@ -2731,7 +2771,18 @@ i powinny być odebrane w takiej samej kolejności przez pojedynczego odbiorcę.
 \end_layout
 
 \begin_layout Itemize
-globalne uporządkowanie wiadomości (total order) 
+globalne uporządkowanie wiadomości (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+total order
+\end_layout
+
+\end_inset
+
+) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tanenbaum causal order"
@@ -2746,7 +2797,18 @@ key "tanenbaum causal order"
 \end_layout
 
 \begin_layout Itemize
-przyczynowe uporządkowanie wiadomości (causal order) 
+przyczynowe uporządkowanie wiadomości (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+causal order
+\end_layout
+
+\end_inset
+
+) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tanenbaum causal order"
@@ -2810,7 +2872,18 @@ instant messenger
 \end_inset
 
 ) z definicji powinien umożliwiać przesłanie wiadomości od nadawcy do odbiorcy
- w jak najkrótszym czasie (niemalże natychmiast).
+ w jak najkrótszym czasie (niemalże natychmiast; ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+instant
+\end_layout
+
+\end_inset
+
+).
  System powinien cechować się zatem wysoką wydajnością.
  Ostateczna efektywność zastosowanego rozwiązania zostanie zbadana w ramach
  testów wydajnościowych.
@@ -2875,7 +2948,7 @@ key "messenger uzytkownicy"
 \end_inset
 
 .
- Dla porównania, liczba użytkowników email wynosi około 3,7 miliarda 
+ Dla porównania, liczba użytkowników e-mail wynosi około 3,7 miliarda 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "email-liczba"
@@ -3154,7 +3227,18 @@ torrent — plik lub zbiór plików udostępnionych do pobrania.
 \end_layout
 
 \begin_layout Itemize
-metaplik .torrent (.torrent metafile) — dodatkowy plik z
+metaplik .torrent (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+.torrent metafile
+\end_layout
+
+\end_inset
+
+) — dodatkowy plik z
 \begin_inset space ~
 \end_inset
 
@@ -3194,7 +3278,18 @@ adresy URL trackerów.
 \end_deeper
 \begin_layout Itemize
 piece, block — podczas przygotowywania torrenta pliki dzielone są na fragmenty
- (piece), a
+ (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+piece
+\end_layout
+
+\end_inset
+
+), a
 \begin_inset space ~
 \end_inset
 
@@ -3202,7 +3297,18 @@ każdy taki fragment składa się z
 \begin_inset space ~
 \end_inset
 
-bloków (block).
+bloków (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+block
+\end_layout
+
+\end_inset
+
+).
  Blok jest najmniejszą jednostką, którą można przesłać przez sieć między
  użytkownikami.
  Aby udostępniać fragment użytkownik musi posiadać wszystkie jego bloki.
@@ -3227,8 +3333,19 @@ tracker — serwer, którego zadaniem jest przechowywanie adresów IP użytkowni
 \end_layout
 
 \begin_layout Itemize
-klient (client) — program uruchomiony na komputerze użytkownika, który pozwala
- na pobieranie plików z
+klient (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+client
+\end_layout
+
+\end_inset
+
+) — program uruchomiony na komputerze użytkownika, który pozwala na pobieranie
+ plików z
 \begin_inset space ~
 \end_inset
 
@@ -3746,13 +3863,6 @@ problem ostatniego fragmentu
 
 \begin_layout Section
 WebTorrent 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "webtorrent"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3766,12 +3876,21 @@ name "sec:webtorrent"
 \end_layout
 
 \begin_layout Standard
-WebTorrent to biblioteka napisana w
+WebTorrent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "webtorrent,webtorrent github"
+
+\end_inset
+
+ to biblioteka napisana w
 \begin_inset space ~
 \end_inset
 
 języku JavaScript, implementująca protokół BitTorrent.
- Dzięki zastosowaniu tego języka możliwe jest użycie protokołu w
+ Kod źródłowy biblioteki jest dostępny publicznie — jest to oprogramowanie
+ open-source.
+ Dzięki zastosowaniu języka JavaScript możliwe jest użycie protokołu w
 \begin_inset space ~
 \end_inset
 
@@ -3780,6 +3899,18 @@ skrypcie wykonywanym w
 \end_inset
 
 przeglądarce po wejściu na stronę internetową.
+ W ogólności biblioteka oferuje taką samą funkcjonalność jak protokół BitTorrent
+ — umożliwia udostępnianie i pobieranie plików przy użyciu mechanizmów opisanych
+ w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:bittorent"
+
+\end_inset
+
+.
+ Wartością dodaną jest przede wszystkim możliwość wykonywania tych operacji
+ z poziomu przeglądarki internetowej.
  Bibliotekę można również wykorzystać jako moduł w
 \begin_inset space ~
 \end_inset
@@ -3789,13 +3920,35 @@ programie dla platformy Node.js.
 \begin_inset space ~
 \end_inset
 
-obu przypadkach jest niemal identyczna (poza kilkoma wyjątkami wynikającymi
- z
+obu wersjach (dla przeglądarki i Node.js) jest niemal identyczna.
+ Istnieje jednak kilka wyjątków wynikających z
 \begin_inset space ~
 \end_inset
 
-ograniczeń danej platformy).
+ograniczeń danej platformy.
+ Różnice te zostały opisane w punkcie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:WT różnice"
+
+\end_inset
+
+.
  
+\end_layout
+
+\begin_layout Subsection
+Różnice względem oryginalnego protokołu
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:WT różnice"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3805,8 +3958,40 @@ Główną różnicą pomiędzy wersjami biblioteki WebTorrent i
 
 protokołem BitTorrent jest wykorzystany protokół komunikacyjny.
  BitTorrent do komunikacji pomiędzy klientami wykorzystuje połączeniowy
- protokół TCP lub bezpołączeniowy µTP (Micro Transport Protocol), który
- bazuje na UDP.
+ protokół TCP (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Transmission Control Protocol
+\end_layout
+
+\end_inset
+
+) lub bezpołączeniowy µTP (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Micro Transport Protocol
+\end_layout
+
+\end_inset
+
+), który bazuje na UDP (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+User Datagram Protocol)
+\end_layout
+
+\end_inset
+
+.
  W
 \begin_inset space ~
 \end_inset
@@ -3816,12 +4001,119 @@ przypadku biblioteki WebTorrent, klient serwerowy (Node.js) również wykorzystu
 \begin_inset space ~
 \end_inset
 
-tym przypadku do komunikacji pomiędzy przeglądarkami użyto protokołu WebRTC.
+tym przypadku do komunikacji pomiędzy przeglądarkami użyto protokołu WebRTC
+ (punkt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:WT webrtc"
+
+\end_inset
+
+).
+ Klient serwerowy także ma możliwość komunikowania się przy użyciu WebRTC.
  
 \end_layout
 
 \begin_layout Standard
-WebRTC (Web Real-Time Communication) 
+Z powyższych zmian protokołu wynika, że klient webowy może komunikować się
+ jedynie z innymi klientami webowymi oraz z klientami sieci P2P, które wspierają
+ komunikację poprzez WebRTC (na przykład klient serwerowy lub hybrydowy
+ klient desktopowy).
+ Klient hybrydowy oferuje komunikację zarówno poprzez WebRTC jak i przy
+ użyciu protokołów TCP i µTP, używanych w oryginalnej implementacji BitTorrent.
+ Taki klient stanowi pomost pomiędzy sieciami P2P (rysunek 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Połączenie-sieci-BitTorrent"
+
+\end_inset
+
+).
+ Przykładem klienta hybrydowego jest Vuze 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "vuze wiki"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/webtorrent hybrid.png
+	width 80line%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Połączenie dwóch sieci P2P poprzez klienty hybrydowe 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "webtorrent github"
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Połączenie-sieci-BitTorrent"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+WebRTC
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:WT webrtc"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+WebRTC (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Web Real-Time Communication
+\end_layout
+
+\end_inset
+
+) 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "webrtc"
@@ -3832,14 +4124,35 @@ key "webrtc"
 \begin_inset space ~
 \end_inset
 
-interfejsów programistycznych (API), pozwalającym na komunikację w
+interfejsów programistycznych (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+API, Application Programming Interface
+\end_layout
+
+\end_inset
+
+), pozwalającym na komunikację w
 \begin_inset space ~
 \end_inset
 
 czasie rzeczywistym pomiędzy przeglądarkami dzięki wykorzystaniu połączeń
  P2P.
- WebRTC wymaga serwera pośredniczącego (signalling server) do nawiązania
- połączenia między przeglądarkami.
+ WebRTC wymaga serwera pośredniczącego (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+signalling server
+\end_layout
+
+\end_inset
+
+) do nawiązania połączenia między przeglądarkami.
  Po poprawnym rozpoczęciu połączenia dane przesyłane są już bezpośrednio
  między użytkownikami.
  W
@@ -3849,10 +4162,24 @@ czasie rzeczywistym pomiędzy przeglądarkami dzięki wykorzystaniu połączeń
 przypadku biblioteki WebTorrent rolę signalling server pełnią trackery.
 \end_layout
 
+\begin_layout Subsection
+Translacja adresów sieciowych
+\end_layout
+
 \begin_layout Standard
 Komputery użytkowników rzadko posiadają publiczne adresy IP — zazwyczaj
- router stosujący translację adresów (NAT — Network Address Translation)
- przydziela im prywatny adres IP w
+ router stosujący translację adresów (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+NAT — Network Address Translation
+\end_layout
+
+\end_inset
+
+) przydziela im prywatny adres IP w
 \begin_inset space ~
 \end_inset
 
@@ -3867,8 +4194,18 @@ zapory sieciowej (firewall), co dodatkowo utrudnia nawiązanie bezpośredniego
 \begin_inset space ~
 \end_inset
 
-tych sytuacjach konieczne jest użycie techniki ICE (Interactive Connectivity
- Establishment).
+tych sytuacjach konieczne jest użycie techniki ICE (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Interactive Connectivity Establishment
+\end_layout
+
+\end_inset
+
+).
  Polega ona na znalezieniu optymalnego sposobu nawiązania połączenia — w
 \begin_inset space ~
 \end_inset
@@ -3878,15 +4215,34 @@ pierwszej kolejności używając wprost adresów IP danych maszyn.
 \begin_inset space ~
 \end_inset
 
-przypadku niepowodzenia wykorzystywane są serwery STUN (Session Traversal
- Utilities for NAT) do przekazania faktycznego (publicznego) adresu IP danego
- komputera.
+przypadku niepowodzenia wykorzystywane są serwery STUN (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Session Traversal Utilities for NAT
+\end_layout
+
+\end_inset
+
+) do przekazania faktycznego (publicznego) adresu IP danego komputera.
  Gdy i
 \begin_inset space ~
 \end_inset
 
-ta metoda zawiedzie, możliwe jest użycie serwera TURN (Traversal Using Relays
- around NAT), który funkcjonuje jako pośrednik pomiędzy komputerami.
+ta metoda zawiedzie, możliwe jest użycie serwera TURN (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Traversal Using Relays around NAT
+\end_layout
+
+\end_inset
+
+), który funkcjonuje jako pośrednik pomiędzy komputerami.
  Ostatniej metody nie można jednak nazwać komunikacją P2P.
  
 \end_layout
@@ -3918,8 +4274,18 @@ t).
 \begin_inset space ~
 \end_inset
 
-pierwszym typie architektury można wyróżnić 3 warstwy logiczne (3-layer
- architecture) — klienty, serwer oraz baza danych.
+pierwszym typie architektury można wyróżnić 3 warstwy logiczne (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+3-layer architecture
+\end_layout
+
+\end_inset
+
+) — klienty, serwer oraz baza danych.
  Rysunek 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3972,7 +4338,18 @@ name "fig:Architektura-komunikatora"
 \end_layout
 
 \begin_layout Standard
-Klient jest aplikacją webową typu Single Page Application.
+Klient jest aplikacją webową typu SPA (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Single Page Application
+\end_layout
+
+\end_inset
+
+).
  Oznacza to, że cały kod źródłowy oraz niezbędne widoki pobierane są z
 \begin_inset space ~
 \end_inset
@@ -4002,7 +4379,18 @@ Oprócz wspomnianego serwera aplikacji umożliwiającego pobranie plików HTML,
 \begin_inset space ~
 \end_inset
 
-architekturze REST.
+architekturze REST (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Representational State Transfer
+\end_layout
+
+\end_inset
+
+).
  Umożliwia on rejestrację i
 \begin_inset space ~
 \end_inset
@@ -4093,8 +4481,18 @@ rozpocząć pobieranie komunikatu.
 \end_layout
 
 \begin_layout Standard
-Ostatnim elementem są publiczne serwery STUN (Session Traversal Utilities
- for NAT).
+Ostatnim elementem są publiczne serwery STUN (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Session Traversal Utilities for NAT
+\end_layout
+
+\end_inset
+
+).
  Dzięki nim możliwe jest skomunikowanie ze sobą dwóch klientów znajdujących
  się w
 \begin_inset space ~
@@ -4562,8 +4960,8 @@ reference "fig:Ekran-logowania"
 \end_inset
 
  zaprezentowano wygląd ekranu logowania.
- Formularz pozwala na podanie adresu email oraz hasła niezbędnych do zalogowania
- się do systemu komunikatora.
+ Formularz pozwala na podanie adresu e-mail oraz hasła niezbędnych do zalogowani
+a się do systemu komunikatora.
  Zatwierdzenie danych przyciskiem 
 \begin_inset Quotes pld
 \end_inset
@@ -4934,7 +5332,7 @@ reference "sec:Darkwire"
 
 \end_inset
 
-), na przykład za pośrednictwem email, SMS lub przekazać osobiście.
+), na przykład za pośrednictwem e-mail, SMS lub przekazać osobiście.
 \end_layout
 
 \begin_layout Standard
@@ -5064,8 +5462,18 @@ previousInfoHash (wartość info hash poprzedniej wiadomości).
 \end_layout
 
 \begin_layout Standard
-Z własności protokołu BitTorrent wynika, że torrenty są niezmienne (immutable)
- — zawartość plików lub ich liczba nie może ulec zmianie bez zmiany wartości
+Z własności protokołu BitTorrent wynika, że torrenty są niezmienne (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+immutable
+\end_layout
+
+\end_inset
+
+) — zawartość plików lub ich liczba nie może ulec zmianie bez zmiany wartości
  info hash.
  Konieczne zatem było przyjęcie założenia, że każda nowa wiadomość wysłana
  przez użytkownika staje się nowym torrentem.
@@ -5113,8 +5521,18 @@ stanie posortować odbierane komunikaty zgodnie z
 \end_inset
 
 porządkiem FIFO.
- Znaczniki dodatkowo gwarantują globalne uporządkowanie wiadomości (total
- order) — jeśli wszyscy użytkownicy uczestniczący w
+ Znaczniki dodatkowo gwarantują globalne uporządkowanie wiadomości (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+total order
+\end_layout
+
+\end_inset
+
+) — jeśli wszyscy użytkownicy uczestniczący w
 \begin_inset space ~
 \end_inset
 
@@ -5138,8 +5556,18 @@ trakcie implementowania projektu zdecydowano, że każda odebrana wiadomość
 \end_layout
 
 \begin_layout Standard
-Użycie znaczników nie gwarantuje jednak przyczynowego uporządkowania (causal
- order), ponieważ zegary na maszynach użytkowników nie są zsynchronizowane.
+Użycie znaczników nie gwarantuje jednak przyczynowego uporządkowania (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+causal order
+\end_layout
+
+\end_inset
+
+), ponieważ zegary na maszynach użytkowników nie są zsynchronizowane.
  W
 \begin_inset space ~
 \end_inset
@@ -5866,13 +6294,34 @@ sytuacji, gdy jej nadawca nie jest dostępny.
 \begin_inset space ~
 \end_inset
 
-których każdy posiada fragmenty wiadomości (pieces).
+których każdy posiada fragmenty wiadomości (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+pieces
+\end_layout
+
+\end_inset
+
+).
  W
 \begin_inset space ~
 \end_inset
 
-drugim przypadku niezbędne jest założenie, że każdy fragment (piece) torrenta
- został pobrany przez co najmniej jednego użytkownika.
+drugim przypadku niezbędne jest założenie, że każdy fragment (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+piece
+\end_layout
+
+\end_inset
+
+) torrenta został pobrany przez co najmniej jednego użytkownika.
 \end_layout
 
 \begin_layout Subsection
@@ -6052,7 +6501,7 @@ name "sec:DHT"
 \end_layout
 
 \begin_layout Standard
-Moduł DHT czyli rozproszona tablica mieszająca jest systemem składającym
+Moduł DHT, czyli rozproszona tablica mieszająca, jest systemem składającym
  się z
 \begin_inset space ~
 \end_inset
@@ -6157,7 +6606,28 @@ bezpołączeniowego protokołu komunikacji UDP.
 
 \begin_layout Itemize
 Kolejnym, bardzo istotnym problemem jest brak wsparcia protokołu WebRTC
- dla dedykowanych wątków roboczych (WebWorker, ServiceWorker, itp.).
+ dla dedykowanych wątków roboczych (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+WebWorker
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+ServiceWorker
+\end_layout
+
+\end_inset
+
+, itp.).
  Bez tego wsparcia kod obsługujący DHT musi być wykonywany w
 \begin_inset space ~
 \end_inset
@@ -6433,8 +6903,18 @@ key "darkwire szyfrowanie how it works"
 \end_layout
 
 \begin_layout Enumerate
-Podczas uruchomienia, program tworzy nową rozmowę (chat room) oraz parę
- kluczy (publiczny i
+Podczas uruchomienia, program tworzy nową rozmowę (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+chat room
+\end_layout
+
+\end_inset
+
+) oraz parę kluczy (publiczny i
 \begin_inset space ~
 \end_inset
 
@@ -6451,7 +6931,18 @@ W momencie dołączenia nowej osoby do rozmowy, aplikacje użytkowników wymieni
 \begin_layout Enumerate
 W celu wysłania wiadomości program najpierw generuje 3 nowe klucze: symetryczny
  klucz sesji, klucz podpisujący (umożliwiający weryfikację sygnatury wiadomości)
- oraz wektor inicjujący (initialization vector).
+ oraz wektor inicjujący (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+initialization vector
+\end_layout
+
+\end_inset
+
+).
  
 \end_layout
 
@@ -6545,8 +7036,18 @@ niezabezpieczony sposób w
 \end_inset
 
 local storage czy IndexedDB).
- Wykorzystując choćby atak XSS (Cross-site scripting), czyli uruchomienie
- własnego skryptu osadzonego w
+ Wykorzystując choćby atak XSS (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Cross-site scripting
+\end_layout
+
+\end_inset
+
+), czyli uruchomienie własnego skryptu osadzonego w
 \begin_inset space ~
 \end_inset
 
@@ -6614,7 +7115,18 @@ przechowywania poufnych informacji (np.
 \begin_inset space ~
 \end_inset
 
-mianowicie ciasteczka (cookies).
+mianowicie ciasteczka (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+cookies
+\end_layout
+
+\end_inset
+
+).
  Te małe fragmenty tekstu są wysyłane przez serwer do klienta w
 \begin_inset space ~
 \end_inset
@@ -6707,7 +7219,18 @@ key "signal double ratchet"
 
 \end_inset
 
- — algorytm gwarantujący własność utajnienia przekazywania (forward secrecy).
+ — algorytm gwarantujący własność utajnienia przekazywania (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+forward secrecy
+\end_layout
+
+\end_inset
+
+).
  Każda wiadomość jest szyfrowana innym kluczem.
  Ponadto, nawet jeśli cracker uzyskałby dostęp do pojedynczej wiadomości
  i
@@ -6982,7 +7505,18 @@ reference "subsec:py eve"
 
 ).
  Do wymiany informacji pomiędzy serwerem REST a aplikacjami klienckimi wykorzyst
-ano format danych JSON (JavaScript Object Notation).
+ano format danych JSON (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+JavaScript Object Notation
+\end_layout
+
+\end_inset
+
+).
  Serwer zapisuje dane w bazie danych MongoDB (pkt.
  
 \begin_inset CommandInset ref
@@ -7059,7 +7593,18 @@ key "angularjs"
  Framework ten umożliwia tworzenie i rozwój aplikacji internetowych typu
  Single Page Application.
  Znacznym ułatwieniem podczas projektowania i testowania aplikacji jest
- zastosowanie w AngularJS wzorca projektowego MVC (Model-View-Controller).
+ zastosowanie w AngularJS wzorca projektowego MVC (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Model-View-Controller
+\end_layout
+
+\end_inset
+
+).
  Pozwala on między innymi na rozdzielenie warstw modelu (danych), widoku
  (prezentacji) i kontrolera (logiki), co z kolei przyczynia się do zwiększenia
  uporządkowania projektu.
@@ -7067,9 +7612,19 @@ key "angularjs"
 \end_layout
 
 \begin_layout Standard
-Ponadto, użycie wzorca projektowego wstrzykiwania zależności (dependency
- injection) daje możliwość zastosowania po stronie klienta serwisów typowych
- dla aplikacji serwerowych.
+Ponadto, użycie wzorca projektowego wstrzykiwania zależności (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+dependency injection
+\end_layout
+
+\end_inset
+
+) daje możliwość zastosowania po stronie klienta serwisów typowych dla aplikacji
+ serwerowych.
  Jest to istotna cecha, ponieważ system komunikatora w znacznym stopniu
  polega na współpracy klientów (komunikacja P2P).
  Rola serwera powinna być w projekcie jak najmniejsza.
@@ -7077,7 +7632,18 @@ Ponadto, użycie wzorca projektowego wstrzykiwania zależności (dependency
 
 \begin_layout Standard
 Jedną z najważniejszych funkcji AngularJS, redukującą ilość napisanego kodu,
- jest mechanizm dwukierunkowego wiązania danych (two-way data binding).
+ jest mechanizm dwukierunkowego wiązania danych (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+two-way data binding
+\end_layout
+
+\end_inset
+
+).
  Umożliwia on dynamiczną zmianę widoku na skutek modyfikacji danych w modelu.
  Wszelkie operacje na modelu przeprowadzane są w kontrolerze.
  Ponadto, zmiany widoku również mogą wpływać na model — dlatego wiązanie
@@ -7332,8 +7898,18 @@ key "mlab"
 \end_inset
 
 .
- Jest to chmurowa platforma udostępniająca bazę danych jako serwis (DaaS,
- Database as a Service).
+ Jest to chmurowa platforma udostępniająca bazę danych jako serwis (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+DaaS, Database as a Service
+\end_layout
+
+\end_inset
+
+).
  
 \end_layout
 
@@ -7392,7 +7968,18 @@ key "heroku"
 
 \end_inset
 
- to platforma chmurowa, działająca w modelu PaaS (Platform as a Service).
+ to platforma chmurowa, działająca w modelu PaaS (ang.
+ 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Platform as a Service
+\end_layout
+
+\end_inset
+
+).
  Serwer REST oraz serwer aplikacji zostały umieszczone w wirtualnych środowiskac
 h oferowanych przez tę usługę.
  Dzięki temu obie aplikacje są dostępne publicznie — posiadają publiczny
@@ -10263,10 +10850,6 @@ dalszym ciągu znacząco poprawić.
 \begin_inset space ~
 \end_inset
 
-rozwiązaniach scentralizowanych oraz w
-\begin_inset space ~
-\end_inset
-
 założeniach dowolnego komunikatora dąży się do osiągnięcia czasu przesłania
  komunikatu bliskiego zero (rozmowy w
 \begin_inset space ~
@@ -10278,11 +10861,7 @@ czasie rzeczywistym).
 \end_inset
 
 przypadku komunikatora będącego przedmiotem niniejszej pracy, czas przesłania
- komunikatu w
-\begin_inset space ~
-\end_inset
-
-najbardziej sprzyjających warunkach wyniósł około 0,5
+ komunikatu wyniósł minimalnie około 0,5
 \begin_inset space ~
 \end_inset
 
@@ -10414,24 +10993,6 @@ istniejącymi, scentralizowanymi produktami.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\begin_layout Plain Layout
-więcej artykułów, można wymieniać strony (zakres lub napisać ile stron ma
- całość), opisać że coś jest raportem technicznym (jeśli faktycznie jest)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \start_of_appendix
 
 \lang english
@@ -10510,11 +11071,29 @@ Uses and Gratifications of Social Media: A Comparison of Facebook and Instant
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "p2p 1"
+
+\end_inset
+
+Ralf Steinmetz, 
+\begin_inset Quotes pld
+\end_inset
+
+Peer-to-Peer Systems and Applications
+\begin_inset Quotes prd
+\end_inset
+
+, Springer-Verlag Berlin Heidelberg, 2005, strony 9-16
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "fb-personalizowane reklamy"
 
 \end_inset
 
-https://www.facebook.com/help/568137493302217
+https://www.facebook.com/help/568137493302217 (dostęp 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -10594,8 +11173,8 @@ A Formal Security Analysis of the Signal Messaging Protocol
 \begin_inset Quotes prd
 \end_inset
 
-, University of Oxford, 2016, https://eprint.iacr.org/2016/1013.pdf (dostęp
- 11.07.2017) 
+, University of Oxford, 2016, (raport techniczny), https://eprint.iacr.org/2016/10
+13.pdf (dostęp 11.07.2017) 
 \end_layout
 
 \begin_layout Bibliography
@@ -10623,8 +11202,8 @@ Wire Privacy Whitepaper
 \begin_inset Quotes prd
 \end_inset
 
-, Wire Swiss GmbH, 2017, https://wire.com/resource/Wire%20Privacy%20Whitepaper/do
-wnload/ (dostęp 11.07.2017)
+, Wire Swiss GmbH, 2017, (raport techniczny), https://wire.com/resource/Wire%20Pr
+ivacy%20Whitepaper/download/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -10642,8 +11221,8 @@ Wire Security Whitepaper
 \begin_inset Quotes prd
 \end_inset
 
-, Wire Swiss GmbH, 2017, https://wire.com/resource/Wire%20Security%20Whitepaper/d
-ownload/ (dostęp 11.07.2017)
+, Wire Swiss GmbH, 2017, (raport techniczny), https://wire.com/resource/Wire%20Se
+curity%20Whitepaper/download/ (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -10701,8 +11280,8 @@ WhatsApp Encryption Overview, Technical white paper
 \begin_inset Quotes prd
 \end_inset
 
-, WhatsApp, 2017, https://www.whatsapp.com/security/WhatsApp-Security-Whitepaper.pd
-f (dostęp 11.07.2017)
+, WhatsApp, 2017, (raport techniczny), https://www.whatsapp.com/security/WhatsApp-
+Security-Whitepaper.pdf (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -10807,7 +11386,8 @@ Bitmessage: A Peer-to-Peer Message Authentication and Delivery System
 \begin_inset Quotes prd
 \end_inset
 
-, 2012, https://bitmessage.org/bitmessage.pdf (dostęp 09.06.2017)
+, 2012, (raport techniczny), https://bitmessage.org/bitmessage.pdf (dostęp
+ 09.06.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -10886,6 +11466,26 @@ key "webtorrent"
 \end_inset
 
 https://webtorrent.io/ (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "webtorrent github"
+
+\end_inset
+
+https://github.com/webtorrent/webtorrent (dostęp 09.06.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "vuze wiki"
+
+\end_inset
+
+https://wiki.vuze.com/w/WebTorrent (dostęp 14.07.2017)
 \end_layout
 
 \begin_layout Bibliography
@@ -10993,8 +11593,8 @@ The Double Ratchet Algorithm
 \begin_inset Quotes prd
 \end_inset
 
-, 2016, https://whispersystems.org/docs/specifications/doubleratchet/doubleratche
-t.pdf (dostęp 13.06.2017)
+, 2016, (raport techniczny), https://whispersystems.org/docs/specifications/doubl
+eratchet/doubleratchet.pdf (dostęp 13.06.2017)
 \end_layout
 
 \begin_layout Bibliography
