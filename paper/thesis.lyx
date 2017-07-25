@@ -210,27 +210,42 @@ jaki ludzie wymieniają się informacjami.
 
 formie wiadomości do grona odbiorców — najczęściej znajomych.
  Taki komunikator jest społecznościowym systemem dużej (wręcz globalnej)
- skali, gdyż umożliwia prowadzenie rozmów osobom znajdującym się w
+ skali.
+ Przede wszystkim, może z
 \begin_inset space ~
 \end_inset
 
-różnych miejscach na świecie.
- W
+niego korzystać jednocześnie ogromna liczba użytkowników 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "messenger uzytkownicy,messenger użytkownicy 2"
+
+\end_inset
+
+ znajdujących się w
 \begin_inset space ~
 \end_inset
 
-rozdziale 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:istniejace rozwiazania"
+różnych miejscach na świecie (rozproszenie geograficzne).
+ Ponadto, użytkownicy generują znaczne ilości danych — codziennie przesyłane
+ są miliardy wiadomości 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "miliardy"
 
 \end_inset
 
- przedstawiono kilka istniejących komunikatorów, których dobór wynika z
+ o
 \begin_inset space ~
 \end_inset
 
-chęci przedstawienia zróżnicowanych cech umożliwiających ich porównanie.
+zróżnicowanej zawartości i
+\begin_inset space ~
+\end_inset
+
+rozmiarze.
+ Istniejące komunikatory oferują zbliżoną funkcjonalność, ale różnią się
+ chociażby pod względem budowy systemu.
  W
 \begin_inset space ~
 \end_inset
@@ -264,11 +279,17 @@ key "p2p 1,p2p 2"
 \end_inset
 
  (użytkownicy komunikują się bezpośrednio ze sobą).
+ Zastosowany typ architektury oraz popularność komunikatora mają wpływ na
+ koszty utrzymania systemu oraz jego awaryjność.
  
 \end_layout
 
 \begin_layout Standard
-Pod pojęciem 
+W
+\begin_inset space ~
+\end_inset
+
+przypadku architektury klient-serwer, pod pojęciem 
 \begin_inset Quotes pld
 \end_inset
 
@@ -357,11 +378,11 @@ najpopularniejszych protokołów służących do dystrybucji plików w
 \end_inset
 
 sieci P2P.
- Automatycznie dzieli udostępniane pliki na części i
+ Udostępniane pliki są dzielone na części, a
 \begin_inset space ~
 \end_inset
 
-umożliwia ich pobieranie z
+ich pobieranie jest możliwe z
 \begin_inset space ~
 \end_inset
 
@@ -377,13 +398,10 @@ udostępnianiu plików oraz umożliwia dalsze pobieranie nawet gdy pierwotny
 \begin_inset space ~
 \end_inset
 
-kontekście komunikatora.
- Celem pracy jest zbadanie takiej możliwości i
-\begin_inset space ~
-\end_inset
-
-wykorzystanie protokołu do przekazywania wiadomości.
- 
+kontekście komunikatora — nie oferuje funkcjonalności typowej dla takiego
+ systemu.
+ Celem pracy jest odpowiednie wykorzystanie protokołu, by możliwe było przekazyw
+ania wiadomości za jego pośrednictwem.
 \end_layout
 
 \begin_layout Standard
@@ -395,9 +413,20 @@ protokołu BitTorrent nie jest możliwe w
 \begin_inset space ~
 \end_inset
 
-aplikacji webowej.
- Wykorzystano zatem dostępną publicznie (open-source) bibliotekę WebTorrent
+aplikacji webowej, ponieważ protokół jest jedynie specyfikacją techniczną
+ opisującą działanie różnych modułów i algorytmów.
+ Wykorzystano zatem dostępną publicznie (ang.
  
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+open-source
+\end_layout
+
+\end_inset
+
+) bibliotekę WebTorrent 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "webtorrent,webtorrent github"
@@ -439,7 +468,8 @@ komputera stacjonarnego jak i
 urządzenia mobilnego.
  Oprócz tego, założeniem jest osiągnięcie przez system komunikatora jak
  największej liczby cech systemu P2P oraz minimalizowanie roli serwerów.
- Dzięki temu komunikator powinien generować jak najmniejsze koszty.
+ Dzięki temu komunikator powinien generować jak najmniejsze koszty oraz
+ być odporny na awarie.
  Do obsługi bezpośredniej komunikacji pomiędzy klientami, a
 \begin_inset space ~
 \end_inset
@@ -450,7 +480,7 @@ konkretnie do przesyłania wiadomości, wykorzystano wspomnianą bibliotekę
 \begin_inset space ~
 \end_inset
 
-dalszej kolejności zbadano możliwości poprawy bezpieczeństwa przetwarzanych
+dalszej kolejności zbadano możliwość poprawy bezpieczeństwa przetwarzanych
  danych oraz zwiększenia prywatności użytkowników poprzez wprowadzenie szyfrowan
 ia wiadomości.
  
@@ -469,7 +499,17 @@ reference "chap:istniejace rozwiazania"
 
 \end_inset
 
- opisuje istniejące obecnie na rynku komunikatory.
+ przedstawia istniejące obecnie na rynku komunikatory.
+ Wybrano kilka komunikatorów o
+\begin_inset space ~
+\end_inset
+
+zróżnicowanych cechach, aby możliwe było porównanie ich pod wieloma względami
+ i
+\begin_inset space ~
+\end_inset
+
+przeanalizowanie zastosowanych rozwiązań.
  W
 \begin_inset space ~
 \end_inset
@@ -545,8 +585,8 @@ name "chap:istniejace rozwiazania"
 \end_layout
 
 \begin_layout Standard
-W tym rozdziale zaprezentowano istniejące komunikatory dla dwóch osób oraz
- komunikatory grupowe.
+W tym rozdziale zaprezentowano istniejące komunikatory umożliwiające wymianę
+ informacji pomiędzy 2 osobami oraz komunikatory grupowe.
  Ich cele i
 \begin_inset space ~
 \end_inset
@@ -623,7 +663,7 @@ przekazywaniu wiadomości.
 komunikatora korzysta 1,2 miliarda użytkowników na całym świecie 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "messenger uzytkownicy"
+key "messenger uzytkownicy,messenger użytkownicy 2"
 
 \end_inset
 
@@ -1413,7 +1453,7 @@ reference "tab:Porównanie-cech-komunikatorów"
 
 \end_inset
 
- przedstawiono porównanie cech poszczególnych komunikatorów.
+ przedstawiono porównanie cech zaprezentowanych komunikatorów.
  Sformułowanie 
 \begin_inset Quotes pld
 \end_inset
@@ -3380,7 +3420,7 @@ aplikacji Facebook Messenger korzysta miesięcznie 1,2 miliarda użytkowników
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "messenger uzytkownicy"
+key "messenger uzytkownicy,messenger użytkownicy 2"
 
 \end_inset
 
@@ -11986,6 +12026,37 @@ Uses and Gratifications of Social Media: A Comparison of Facebook and Instant
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
+key "messenger uzytkownicy"
+
+\end_inset
+
+https://messenger.fb.com/?ref=platform (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "messenger użytkownicy 2"
+
+\end_inset
+
+https://techcrunch.com/2017/04/12/messenger/ (dostęp 11.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "miliardy"
+
+\end_inset
+
+https://www.theverge.com/2016/4/12/11415198/facebook-messenger-whatsapp-number-mes
+sages-vs-sms-f8-2016 (dostęp 25.07.2017)
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
 key "p2p 1"
 
 \end_inset
@@ -12038,16 +12109,6 @@ key "messenger"
 \end_inset
 
 https://pl-pl.messenger.com/ (dostęp 09.06.2017)
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "messenger uzytkownicy"
-
-\end_inset
-
-https://messenger.fb.com/?ref=platform (dostęp 11.07.2017)
 \end_layout
 
 \begin_layout Bibliography
