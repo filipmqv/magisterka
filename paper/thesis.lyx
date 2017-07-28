@@ -209,9 +209,9 @@ jaki ludzie wymieniają się informacjami.
 \end_inset
 
 formie wiadomości do grona odbiorców — najczęściej znajomych.
- Taki komunikator jest społecznościowym systemem dużej (wręcz globalnej)
- skali.
- Przede wszystkim, może z
+ System udostępniający możliwość komunikacji jest społecznościowym systemem
+ wielkiej skali.
+ Może z
 \begin_inset space ~
 \end_inset
 
@@ -226,9 +226,9 @@ key "messenger uzytkownicy,messenger użytkownicy 2"
 \begin_inset space ~
 \end_inset
 
-różnych miejscach na świecie (rozproszenie geograficzne).
- Ponadto, użytkownicy generują znaczne ilości danych — codziennie przesyłane
- są miliardy wiadomości 
+różnych miejscach na świecie.
+ Użytkownicy generują znaczne ilości danych — codziennie przesyłane są miliardy
+ wiadomości 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "miliardy"
@@ -279,8 +279,8 @@ key "p2p 1,p2p 2"
 \end_inset
 
  (użytkownicy komunikują się bezpośrednio ze sobą).
- Zastosowany typ architektury oraz popularność komunikatora mają wpływ na
- koszty utrzymania systemu oraz jego awaryjność.
+ Zastosowany typ architektury oraz popularność komunikatorów mają wpływ
+ na koszty utrzymania systemu oraz jego awaryjność.
  
 \end_layout
 
@@ -297,8 +297,8 @@ centralny serwer
 \begin_inset Quotes prd
 \end_inset
 
- kryje się zwykle jedno lub wiele centrów przetwarzania danych, których
- utrzymanie jest niezwykle kosztowne ze względu na duże obciążenie systemu.
+ kryje się zwykle centrum przetwarzania danych, którego utrzymanie jest
+ niezwykle kosztowne ze względu na duże obciążenie systemu.
  Częstą praktyką firm jest gromadzenie i
 \begin_inset space ~
 \end_inset
@@ -338,7 +338,8 @@ tej praktyki.
 \begin_inset space ~
 \end_inset
 
-tym celu możliwe jest zastosowanie architektury P2P.
+celu wyeliminowania wspomnianych wad, możliwe jest zastosowanie architektury
+ P2P do budowy komunikatora.
 \end_layout
 
 \begin_layout Standard
@@ -387,7 +388,7 @@ ich pobieranie jest możliwe z
 \end_inset
 
 wielu źródeł, na przykład od innych użytkowników.
- Pozwala to na równomierne rozłożenie obciążenia pomiędzy komputery biorące
+ Pozwala to na równomierne rozłożenie obciążenia pomiędzy komputerami biorącymi
  udział w
 \begin_inset space ~
 \end_inset
