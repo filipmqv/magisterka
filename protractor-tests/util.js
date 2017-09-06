@@ -14,6 +14,7 @@ function range(begin, end) {
 var start;
 function startCounting(browser) {
 	browser.controlFlow().execute(function() {
+		console.log('start counting')
 	 	start = new Date().getTime();
 	});
 }
@@ -22,7 +23,7 @@ function finishCounting(browser, text) {
 	browser.controlFlow().execute(function() {
 		var endTime = new Date().getTime();
 		var total = endTime - start;
-		console.log(text + ' >>> ' + total + 'ms');
+		console.log(text + ' >>> ' + total);
 	});
 }
 

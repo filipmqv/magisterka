@@ -19,7 +19,7 @@ describe('Protractor WCC Tests With Other Browsers with Auto Replying', function
 
   function doWaitingTest(i, idToWait) {
     it('should wait for response with ID', function() {
-      waitForMessageWithId(idToWait, 120);
+      waitForMessageWithId(idToWait, util.waitingTime);
       util.finishCounting(browser, '    ' + 'AUTO_REPLY_REQUEST ' + i);
     })
   }
@@ -59,7 +59,7 @@ describe('Protractor WCC Tests With Other Browsers with Auto Replying', function
   if (params.offset) {
     it('should get X (offset) messages first', function() {
       util.startCounting(browser);
-      waitForMessageWithId(params.offset - 1, 120);
+      waitForMessageWithId(params.offset - 1, util.waitingTime);
       util.finishCounting(browser, 'waiting for ' + params.offset + ' msgs');
     });
   }
@@ -78,11 +78,18 @@ describe('Protractor WCC Tests With Other Browsers with Auto Replying', function
 
   if (params.doSendingWithoutResposeTest) {
     it('should send X messages without waiting', function() {
+      util.startCounting(browser);
       for(var i = 0; i < params.numberOfMsgsToSendWithoutResponse; i++) {
         var msgId = params.offset + i * params.numOfOnlineUsers + params.numOfOnlineUsers - 1;
         util.sendMessage(browser, 'normal msg ' + i);
+        if (params.sleepAfterSending) {
+          util.sleep(browser, params.sleepAfterSending)
+        }
       }
-      util.sleep(browser, 120)
+      util.finishCounting(browser, 'sent ' + params.numberOfMsgsToSendWithoutResponse + ' msgs');
+      var elToWait = $('.jumbotron')
+      browser.wait(until.presenceOf(elToWait), params.waitingTime * 1000);
+      util.finishCounting(browser, 'delivered ' + params.numberOfMsgsToSendWithoutResponse + ' msgs');
     })
   }
 
